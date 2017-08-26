@@ -1,0 +1,1083 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <title>Změna Skupin PC</title> 
+<HTA:APPLICATION 
+     ID="oGroupChange"
+     APPLICATIONNAME="Change Local Groups"
+     SCROLL="no"
+     SINGLEINSTANCE="no"
+     WINDOWSTATE="normal"
+     icon="C:\Windows\SysWOW64\shrpubw.exe" 
+     contextmenu="yes"
+     sysmenu="yes"
+     MINIMIZEBUTTON="yes" 
+     caption="yes"        
+     version="1.1"
+     borderStyle="Sunken"
+     Border="Thin"
+     requireAdministrator="yes"
+/>
+<style type="text/css" >
+<!--
+body{
+  margin:0px;
+  padding:0px;
+  background-color: white;
+  color: #666666;
+  font-family: Verdana;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;  
+  overflow: hidden;
+}
+input {
+  border: 0px;
+}
+td {
+  border-bottom: 1px solid #555555;
+  font-size: 12px;
+}
+.noBorder {
+  border: 0px;
+}
+.pxBorder {
+  border: 1px solid grey;
+}
+h1 {    
+  font-family: Verdana;
+  font-size: 22px;
+}
+table {
+  border: 0px;
+  padding: 0px; 
+}
+select, input, #SAPInfo {
+  width: 220px;  
+  font-family: "Lucida Sans Typewriter", "Lucida Console";  
+  font-size: 12px;      
+  height: 18px;
+  background-color: transparent;
+} 
+.button {
+  background-color: rgb(239,239,239);
+ }
+.bottomForm { 
+  width: 220px; 
+}
+#obal{
+  position:absolute;
+  margin:0px;
+  padding:0px;
+}
+#zahlavi{
+  position:absolute;  
+  font-size: 10px;
+  top:0px;
+  color: black;
+  left:0px;
+  width:500px;
+  height:14px;
+  margin:0px;
+  padding-top:10px; 
+  text-align: center; 
+  background-color:rgb(75,168,46);   
+}
+a {
+  text-decoration: none;
+  color:rgb(0,102,212);
+}
+a:hover {
+  text-decoration: none;
+  color:rgb(81,164,255);
+}
+a:active {
+  text-decoration: none;
+  color:rgb(126,197,255);
+}
+a:visited {
+  text-decoration: none;
+  color:rgb(0,55,117);
+}
+#zahlavi2{
+  position:absolute;
+  top:60px;
+  left:2px;
+  width:500px;
+  height:100px;
+  margin:10px;
+  padding-left:50px;
+}
+#zapati{
+  position:absolute;
+  left:0px;
+  top:645px;
+  width:500px;
+  background-color:rgb(75,168,46);
+  padding-top:10px;
+  padding-Left:10px;
+  vertical-align:middle;
+} 
+#obsah{
+  position:relative;
+  top:150px;
+  left:60px;
+} 
+#Log {
+  width: 360px;
+  height: 120px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid silver;
+}
+#cn {
+  text-transform: uppercase;
+}
+//-->
+</style>
+  
+<script type="text/vbscript" language="VBScript">  
+
+Const ForReading = 1, ForWriting = 2, ForAppending = 8
+Const TristateUseDefault = -2, TristateTrue = -1, TristateFalse = 0 
+  
+Dim strComputer
+Dim User
+Dim typAkce
+Dim appWaiting, WaitingApp
+Dim enableLogging
+Dim logData()
+Dim Finished
+Dim newItemNameValue
+Dim newItemFullValue
+Dim newItemDescValue
+Dim newItemPassValue
+
+enableLogging = True 
+recreate = False      
+vCheck = True
+isOnline = False 
+hasRights = False  
+typAkce = 0
+  
+versionCheck()
+
+If HTAElevate() = True Then   
+  appWaiting = False 
+End If 
+
+Function HTAElevate()
+  Const Elev = " /elevated"
+  stCh =  "Open_App"
+  StoreChanges (stCh)
+  HTAElevate = True
+  If InStr( LCase( oGroupChange.commandLine ), Elev) > 0 then Exit Function 
+  createobject("Shell.Application").ShellExecute "mshta.exe", oGroupChange.commandLine & Elev, "", "runas", 1
+  HTAElevate = False
+  self.close
+End Function ' HTAElevate()
+
+Function onLoadFunc()
+  window.resizeTo 500,670
+  statusIcon(-1)   
+End Function 
+  
+Function checkPermisions(file)
+  checkPermisions = False           
+  On Error Resume Next
+    Set fso  = CreateObject("Scripting.FileSystemObject")       
+    Set fObj = fso.GetFile(file)  
+    Err.Clear
+    Set fTs  = fObj.OpenAsTextStream(ForReading, TristateUseDefault) 
+    If Err.Number = 0 Then
+      checkPermisions = True
+    End If
+    Set fso = Nothing
+    Set fTs = Nothing
+End Function
+     
+Function versionCheck()    
+  If vCheck = True Then 
+    FullName = replace(oGroupChange.commandLine,chr(34),"")  
+    arrFN=split(FullName,"\")  
+    FileName = arrFN(ubound(arrFN))  
+    SourceDir=replace(FullName,FileName,"") 
+
+    UNC     = "\\skoda.vwg\data\T\@TE\TE.4\Aplikace\"
+    verFile = "version.txt"
+    tFName  = "Change_Groups.hta"
+    tFLoc   = Replace(Replace(document.location.href, "file:///", ""), "/", "\") ' -8
+    Version = oGroupChange.version
+    uFile   = UNC & tFName 
+    vFile   = UNC & verFile 
+    Set fso  = CreateObject("Scripting.FileSystemObject") 
+    If checkPermisions(uFile) = True Then     
+      Set fObj = fso.GetFile(vFile)
+      Set fTs  = fObj.OpenAsTextStream(ForReading, TristateUseDefault)
+      Set oTF  = fso.Getfile(tFLoc)
+      Set oRF  = fso.Getfile(uFile)
+      
+      Do While fTs.AtEndOfStream <> True 
+      TMP = fTs.ReadLine
+        lines = Split(TMP,";") 
+        If lines(0) = tFName AND (oRF.Size <> oTF.Size OR lines(1) <> Version)Then
+        StoreChanges ("Update_required;;;;;" & Version)             
+            MsgBox "Nepoužíváte nejnovejší verzi Aplikace." & vbCrLf & vbCrLf _
+                    & "Vaše verze: " & vbTab & Version & " (" & oTF.Size & ")" & vbCrLf _ 
+                    & "Aktuální verze: " & vbTab & lines(1) & " (" & oRF.Size & ")"  & vbCrLf & vbCrLf _ 
+                    & "Bude Provedena Aktualizace."     
+            stCh =  "Update_App"
+            StoreChanges (stCh)
+            createobject("Shell.Application").ShellExecute "mshta.exe", UNC & "Updater.hta" & " /" & tFName & " /" & SourceDir & " /" & FileName   
+            self.Close
+        End If
+      Loop  
+    Else
+      MsgBox "Nepodařilo se ověřit aktualizace aplikace."
+    End If
+      Set fObj = Nothing
+      Set fTs  = Nothing
+      Set oTF  = Nothing
+      Set oRF  = Nothing
+  End If
+End Function  
+
+Sub Sleep(iSeconds)
+    Dim oShell  : Set oShell = CreateObject("WScript.Shell")
+    oShell.run "cmd /c ping localhost -n " & iSeconds,0,True
+End Sub
+
+Function StoreChanges(txt)
+  If enableLogging = True Then   
+    Dim buff()
+    
+    Set oNet = CreateObject("Wscript.Network")
+      From = oNet.ComputerName
+      Who = oNet.UserName       
+    Set oNet = Nothing  
+    
+    txt = Replace("AG"  & ";" & Now() & ";" & From & ";" & Who & ";" & txt & ";", Chr(10), Chr(255)) 
+      
+    For i = 1 To Len(txt)
+        Reply = Reply & Chr(CLng("&H" & Suffle(Str_pad(Hex(Move(Asc(Mid(txt, i, 1)))), 0, 2, "L")))) 
+    Next
+    
+    Set logFSO  = CreateObject("Scripting.FileSystemObject")      
+    Const ForAppending = 8       
+  
+    
+    Set docLoc = logFSO.GetFolder("\\skoda.vwg\data\T\@TE\.Public")    
+    Set newFileO = CreateObject("Scripting.FileSystemObject")
+    logFileLoc = docLoc & "\History.bin"
+    
+    if Not logFSO.FileExists(logFileLoc) Then 
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      Set newFile  = newFileO.CreateTextFile(logFileLoc, True) 
+      Set newFileO = Nothing
+      Set newFile  = Nothing
+    End If 
+       
+    Set logFile = logFSO.OpenTextFile(logFileLoc, ForAppending, True, True)  
+      logFile.WriteLine Replace(Reply, Chr(10), Chr(255))
+      logFile.Close 
+    Set logFSO = Nothing
+    Set logFile = Nothing  
+  End If
+End Function
+
+Function Move(txt)
+  If txt > 128 Then
+    Move = txt - 128
+  ElseIf  txt < 128 Then
+    Move = txt + 128
+  Else
+    Move = txt
+  End If     
+End Function
+
+Function Suffle(txt)
+  A = Mid(txt, 1, 1)
+  B = Mid(txt, 2, 1)  
+  Suffle = B & A
+End Function
+
+
+Public Function CleanString(strSource)
+  On Error Resume Next
+    strSource = Replace(strSource, vbTab, "")
+    strSource = Replace(strSource, vbCrLf, "") 
+  Do While (InStr(strSource, " "))
+    strSource = Replace(strSource, " ", "")
+  Loop
+    CleanString = Trim(strSource)
+Exit Function
+
+CleanStringErr:
+    ' Insert error-handling code here
+End Function
+
+Function Str_pad(str, pChr, pLen, side)
+  Padlength = pLen - Len(str) 
+  If Padlength > 0 Then
+    For x = 1 To Padlength
+      PadString = PadString & pChr
+    Next
+  End If
+  If side = "P" Then
+    Str_pad = str & PadString
+  else
+    Str_pad = PadString & str
+  End If
+End Function
+
+Function QuickSort(vArray, inLow, inHi)
+  Dim pivot
+  Dim tmpSwap 
+  Dim tmpLow 
+  Dim tmpHi       
+  tmpLow = inLow
+  tmpHi = inHi
+  pivot = vArray((inLow + inHi) \ 2)
+  
+  While (tmpLow <= tmpHi)
+    While (vArray(tmpLow) < pivot And tmpLow < inHi)
+      tmpLow = tmpLow + 1
+    Wend
+    While (pivot < vArray(tmpHi) And tmpHi > inLow)
+      tmpHi = tmpHi - 1
+    Wend
+    If (tmpLow <= tmpHi) Then
+      tmpSwap = vArray(tmpLow)
+      vArray(tmpLow) = vArray(tmpHi)
+      vArray(tmpHi) = tmpSwap
+      tmpLow = tmpLow + 1
+      tmpHi = tmpHi - 1
+    End If
+  Wend
+  If (inLow < tmpHi) Then QuickSort vArray, inLow, tmpHi
+  If (tmpLow < inHi) Then QuickSort vArray, tmpLow, inHi
+End Function 
+
+Function roundDown(num)
+  num = Replace(num, ".", ",")
+  TMP = Split(num, ",")
+  roundDown = TMP(0)
+End Function  
+
+Function InArray(strValue,List,Col)
+Dim i
+For i = 0 to UBound(List)
+If List(i,col) = cstr(strValue) Then
+InArray = True
+Exit Function
+End If
+Next
+InArray = False
+End Function
+
+Public Function valueUpdate()
+  Set objEvent = Window.event
+  Set objElement = objEvent.srcElement 
+
+  Select Case objElement.id
+    Case "newName" 
+      newItemNameValue = objElement.Value
+    Case "newFull"
+      newItemFullValue = objElement.Value
+    Case "newDesc"
+      newItemDescValue = objElement.Value
+    Case "newPass"
+      newItemPassValue = objElement.Value
+    Case Else
+  End Select
+       
+window.event.returnvalue=false
+End Function
+
+Function readGroups_onclick()    
+On Error Resume Next 
+
+changeColor 0, "readGroups"  
+
+  hasRights = False
+  isOnline = False 
+
+  For Each objOption in document.bSelect.users.Options
+    objOption.RemoveNode
+  Next 
+  For Each objOption in document.bSelect.groups.Options
+    objOption.RemoveNode
+  Next
+    
+  statusIcon(2)
+  Sleep(1)
+  
+  document.getElementById("cn").value = UCase(document.getElementById("cn").value )
+  strComputer = document.getElementById("cn").value 
+  strFileName = "\\" & strComputer & "\c$\Windows\system.ini"
+  Set objFSO = CreateObject("Scripting.FileSystemObject") 
+  If objFSO.FileExists(strFileName) Then hasRights = True   
+  
+  'Win32_PingStatus'        
+  Set objPing = GetObject("winmgmts:").Get("Win32_PingStatus.Address='" & strComputer & "'")
+  If IsNull(objPing.StatusCode) = False Then 
+    status = objPing.StatusCode 
+    Select Case status
+      Case 0 
+        isOnline = True 
+        mS("Online")
+      Case 11001
+        mS("Buffer Too Small")
+      Case 11002
+        mS("Destination Net Unreachable")
+      Case 11003
+        mS("Destination Host Unreachable")
+      Case 11004
+        mS("Destination Protocol Unreachable")
+      Case 11005
+        mS("Destination Port Unreachable")
+      Case 11006
+        mS("No Resources")
+      Case 11007
+        mS("Bad Option")
+      Case 11008
+        mS("Hardware Error")
+      Case 11009
+        mS("Packet Too Big")
+      Case 11010
+        mS("Request Timed Out")
+      Case 11011
+        mS("Bad Request")
+      Case 11012
+        mS("Bad Route")
+      Case 11013
+        mS("TimeToLive Expired Transit")
+      Case 11014
+        mS("TimeToLive Expired Reassembly")
+      Case 11015
+        mS("Parameter Problem")
+      Case 11016
+        mS("Source Quench")
+      Case 11017
+        mS("Option Too Big")
+      Case 11018
+        mS("Bad Destination")
+      Case 11032
+        mS("Negotiating IPSEC")
+      Case 11050
+        mS("General Failure")
+      Case Else
+      End Select    
+  End If
+  
+  if isOnline = True AND hasRights = True Then 
+    statusIcon(0)
+    Sleep(1)
+    strComputer = document.getElementById("cn").value
+    
+    For Each objOption in document.bSelect.groups.Options
+      objOption.RemoveNode
+    Next
+  
+    Set objOption = Document.createElement("OPTION")
+    objOption.Text = "Local Users"
+    objOption.Value = "Local Users"
+    document.bSelect.groups.Add(objOption)
+    Sleep(1)
+  
+    Set colGroups = GetObject("WinNT://" & strComputer & "")
+    colGroups.Filter = Array("group")
+    For Each objGroup In colGroups
+      Set objOption = Document.createElement("OPTION")
+      objOption.Text = objGroup.Name 
+      objOption.Value = objGroup.Name 
+      document.bSelect.groups.Add(objOption) 
+      Sleep(1)
+    Next      
+    stCh =  "Read_Groups;" & strComputer & ";;;;Success"
+    StoreChanges (stCh)
+  Else
+    document.getElementById("buttonSubmit").disabled = True  
+    statusIcon(3)
+    Sleep(1)     
+    stCh =  "Read_Groups;" & strComputer & ";;;;Fail"
+    StoreChanges (stCh)
+  End If
+  If isOnline = True AND hasRights = False Then  
+    statusIcon(9)
+    Sleep(1)
+  End If
+  
+  changeColor 999, "readGroups"
+  checkAbility()
+  Sleep(1)
+window.event.returnvalue=false
+End Function
+
+Function changeColor (id, el)
+  Select Case id
+    Case 0
+      document.getElementById(el).style.color = "rgb(255,104,4)"
+    Case 1
+      document.getElementById(el).style.color = "rgb(214,10,81)"
+    Case Else
+      On Error Resume Next
+      document.getElementById(el).style.color = "rgb(0,0,0)"
+  End Select
+End Function
+
+Function statusIcon(Status)
+  Select Case Status
+    Case 0
+      Img = "00_available"  
+      mS("PC Online")   
+    Case 1
+      Img = "01_offline"
+      mS("PC Offline")
+    Case 2
+      Img = "02_inactive_away"
+      mS("Checking PC status")
+    Case 3
+      Img = "03_busy"
+      mS("PC Offline")    
+    Case 9
+      Img = "09_do_not_disturb"
+      mS("PC online - No Access")       
+    Case Else
+      Img = "unknown"  
+      mS("Čekání na vstup...")  
+  End Select
+  
+  document.getElementById("cn").style.backgroundImage = "url(""https://eportal.skoda.vwg/b2eweb80/img/theme/lync_status_icons/" & Img & ".png"")"
+  document.getElementById("cn").style.backgroundRepeat = "no-repeat"
+  document.getElementById("cn").style.backgroundPosition = "center left"
+  document.getElementById("cn").style.paddingLeft = "15px" 
+End Function
+
+Function readMemgers()    
+On Error Resume Next   
+  mS("Čtení členů skupiny")
+  Sleep(1)  
+  strComputer = document.getElementById("cn").value
+  
+  For Each objOption in document.bSelect.users.Options
+    objOption.RemoveNode
+  Next 
+  
+  Group = document.bSelect.groups.Value
+  
+  If Group = "Local Users" Then
+    Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2") 
+    Set colItems = objWMIService.ExecQuery("Select * from Win32_UserAccount Where LocalAccount = True") 
+    
+    For Each objItem in colItems
+      Set objOption = Document.createElement("OPTION")
+      objOption.Text = objItem.Name  
+      objOption.Value = objItem.Name 
+      document.bSelect.users.Add(objOption) 
+    Next
+  Else 
+    Set objGroup = GetObject("WinNT://" & strComputer & "/" & Group & ",group")
+    For Each objUser in objGroup.Members 
+      Set objOption = Document.createElement("OPTION")
+      objOption.Text = objUser.Name 
+      objOption.Value = objUser.Name 
+      document.bSelect.users.Add(objOption) 
+    Next 
+  End If
+
+window.event.returnvalue=false
+  mS("Čtení členů skupiny: Dokončeno")    
+  stCh =  "Read_Group_users;" & strComputer & "\" & Group & ";;;;Success"
+  StoreChanges (stCh)
+End Function
+
+Function readUserInfo()     
+  mS("Čtení informací o uživateli")
+  Q = MsgBox("Přejete si zobrazit podrobnosti účtu?", vbYesNo, "Dotaz")
+  If Q = vbYes Then
+    Sleep(1)
+    strComputer = document.getElementById("cn").value  
+    
+    Group = document.bSelect.groups.Value
+    User  = document.bSelect.users.Value
+    
+    Set colItems = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2").ExecQuery("Select * from Win32_UserAccount Where Name = '" & User & "'") 
+       
+    For Each objItem in colItems 
+      userInfo = "Account Type: " & vbTab &objItem.AccountType & vbCrLf _ 
+         & "Caption: " & vbTab & vbTab & objItem.Caption & vbCrLf _ 
+         & "Description: " & vbTab & objItem.Description & vbCrLf _ 
+         & "Disabled: " & vbTab & vbTab & objItem.Disabled & vbCrLf _ 
+         & "Domain: " & vbTab & vbTab & objItem.Domain & vbCrLf _ 
+         & "Full Name: " & vbTab & objItem.FullName & vbCrLf _ 
+         & "Local Account: " & vbTab & objItem.LocalAccount & vbCrLf _
+         & "Lockout: " & vbTab & vbTab & objItem.Lockout & vbCrLf _ 
+         & "Name: " & vbTab & vbTab & objItem.Name & vbCrLf _
+         & "Pass. Changeable: " & vbTab & objItem.PasswordChangeable & vbCrLf _ 
+         & "Pass. Expires: " & vbTab & objItem.PasswordExpires & vbCrLf _ 
+         & "Pass. Required: " & vbTab & objItem.PasswordRequired & vbCrLf  _
+         & "SID: " & vbTab & vbTab & objItem.SID & vbCrLf _ 
+         & "SID Type: " & vbTab & vbTab & objItem.SIDType  & vbCrLf _
+         & "Status: " & vbTab & vbTab & objItem.Status & vbCrLf
+      MsgBox userInfo, vbOKOnly, "Informace o " & objItem.Name 
+      Domena = objItem.Domain
+    Next   
+    stCh =  "Read_User_Info;" & Domena & "\" & User & ";;;;Success"   
+    Set colItems = Nothing  
+    StoreChanges (stCh)
+  End If
+  
+End Function
+
+Function sb(id, txt)
+  typAkce = id
+  document.getElementById("buttonSubmit").value = txt
+  newItemName = " <input type=""text"" name=""newName"" id=""newName"" style=""border: 1px solid grey;width: 350px;"" onkeyup=""valueUpdate()"" /> <br />"  
+  newItemFull = "Jméno: <br /> <input type=""text"" name=""newFull"" id=""newFull"" style=""border: 1px solid grey;width: 350px;"" onkeyup=""valueUpdate()"" /> <br />"
+  newItemDesc = "Popis: <br /> <input type=""text"" name=""newDesc"" id=""newDesc"" style=""border: 1px solid grey;width: 350px;"" onkeyup=""valueUpdate()"" /> <br />"
+  newItemPass = "Heslo: <br /> <input type=""text"" name=""newPass"" id=""newPass"" style=""border: 1px solid grey;width: 350px;"" onkeyup=""valueUpdate()"" /> <br />"
+  
+  Select Case id
+    Case 1
+      Document.getElementById("akceData").innerHTML = "Zadejte název nové skupiny: <br />" & newItemName & newItemDesc & "<br />"  
+      mS("Funkce: Vytvoření nové skupiny")
+    Case 2
+      Document.getElementById("akceData").innerHTML = "Vyber skupinu ze seznamu." & "<br />"    
+      mS("Funkce: Smazání skupiny")
+    Case 3
+      Document.getElementById("akceData").innerHTML = "Zadejte název účtu: <br />" & newItemName & newItemFull & newItemDesc & newItemPass & "<br />" 
+      mS("Funkce: Vytvoření nového uživatele") 
+    Case 4 
+      Document.getElementById("akceData").innerHTML = "Vyber skupinu 'Local Users' a zvol uživatele k vymazání." & "<br />"   
+      mS("Funkce: Smazání uživatele") 
+    Case 5
+      Document.getElementById("akceData").innerHTML = "Vyber požadovanou skupina a zadej jméno uživatele. <br />" & newItemName & "<i>(Doménové učty zadávejte ve tvaru <b>DOMAIN\User</b>)</i>" & "<br />"   
+      mS("Funkce: Přidání uživatele do skupiny") 
+    Case 6
+      Document.getElementById("akceData").innerHTML = "Vyber skupinu a zvol uživatele k vymazání." & "<br />" 
+      mS("Funkce: Vymyzání uživatele ze skupiny")
+    Case 7
+      Document.getElementById("akceData").innerHTML = "Vyber skupinu a zvol uživatele." & "<br />"
+      mS("Funkce: Čtení informací o uživateli")
+    Case Else
+  End Select    
+  checkAbility() 
+End Function
+
+Function testCN(cn)  
+  l = Len(cn)    
+  If Left(UCase(cn),7) = "SKDATVL" And l = 12 And IsNumeric(Right(cn,4)) = True Then 
+    testCN = True
+  ElseIf Left(UCase(cn),7) = "SKDATVW" And l = 12 And IsNumeric(Right(cn,4)) = True Then 
+    testCN = True
+  ElseIf Left(UCase(cn),8) = "SKDATVM" And l = 12 And IsNumeric(Right(cn,5)) = True Then 
+    testCN = True
+  ElseIf Left(UCase(cn),3) = "XTV" And l > 5  Then 
+    testCN = True
+  Else                
+    testCN = False
+  End If 
+End Function
+
+Function checkAbility()
+On Error Resume Next
+  strComputer = document.getElementById("cn").value 
+  if typAkce > 0 And isOnline = True And hasRights = True Then  
+    document.getElementById("buttonSubmit").disabled = False
+  End If
+End Function
+  
+Function errChk(no)
+  Select Case no
+    Case -2147023517
+      errChk = "Název již existuje"
+    Case 424
+      errChk = "Název obsahuje nepovolené znaky."
+    Case -2147022675
+      errChk = "Vybraný uživatel neexistuje."
+    Case -2147022676
+      errChk = "Vybraná skupina neexistuje."
+    Case -2147463168
+      errChk = "Nebyl vybrán žádný objekt."
+    Case -2147022651
+      errChk = "Doménová politika odmítla heslo."
+    Case Else
+      errChk = "Neznámá chyba: " & no
+  End Select
+End Function
+
+Function DeleteUser() 
+On Error Resume Next                       
+  strComputer = document.getElementById("cn").value
+  user = document.getElementById("users").value
+  Q = MsgBox("Opravdu si přejete smazat účet " & user & "?", vbYesNo, "Dotaz")
+  If Q = vbYes Then  
+    Set objComputer = GetObject("WinNT://" & strComputer & "")
+    objComputer.Delete "user", user
+    If Err.Number = 0 Then
+      iT = "Uživatel " & user & " byl odstraněn." 
+      MsgBox iT, vbOKOnly, "Úspěch!"  
+      mS(iT)  
+      stCh =  "Delete_User;" & strComputer & "\" & user & ";;;;Success"
+      StoreChanges (stCh)
+      readMemgers() 
+    Else  
+      iT = "Uživatel nebyl odstraněn." & vbCrLf & vbCrLf & "Chyba: " & vbCrLf & errChk(Err.Number) 
+      MsgBox iT, vbOKOnly, "Chyba!"    
+      mS(iT)  
+      stCh =  "Delete_User;" & strComputer & "\" & user & ";;;;Fail"
+      StoreChanges (stCh)
+    End If    
+  End If
+End Function
+
+Function DeleteGroup() 
+On Error Resume Next   
+  strComputer = document.getElementById("cn").value
+  group = document.getElementById("groups").value
+  Q = MsgBox("Opravdu si přejete smazat skupinu " & group & "?", vbYesNo, "Dotaz")
+  If Q = vbYes Then  
+    Set objComputer = GetObject("WinNT://" & strComputer & "")
+    objComputer.Delete "group", group
+    If Err.Number = 0 Then
+      iT = "Skupina " & group & " byla odstraněna."
+      MsgBox iT, vbOKOnly, "Úspěch!"  
+      mS(iT)  
+      readGroups_onclick()               
+      stCh =  "Delete_Group;" & strComputer & "\" & group & ";;;;Success"
+      StoreChanges (stCh)
+    Else  
+      iT = "Skupina nebyla odstraněna." & vbCrLf & vbCrLf & "Chyba: " & vbCrLf & errChk(Err.Number) 
+      MsgBox iT, vbOKOnly, "Chyba!" 
+      mS(iT)  
+      stCh =  "Delete_Group;" & strComputer & "\" & group & ";;;;Fail"
+      StoreChanges (stCh)
+    End If
+  End If    
+End Function
+
+Function CreateNewGroup()  
+On Error Resume Next 
+  if Len(newItemNameValue) > 2 And Len(newItemDescValue) > 5 Then
+    Set colAccounts = GetObject("WinNT://" & strComputer & "")
+    Set objUser = colAccounts.Create("group", newItemNameValue)
+    objUser.Description = newItemDescValue
+    objUser.SetInfo
+    If Err.Number = 0 Then
+      iT = "Skupina " & newItemNameValue & " byla vytvořena."
+      MsgBox iT, vbOKOnly, "Úspěch!"  
+      mS(iT)  
+      readGroups_onclick()  
+      stCh =  "Create_Group;" & strComputer & "\" & newItemNameValue & ";;;;Success"
+      StoreChanges (stCh)
+    Else
+      iT = "Skupina nebyla vytvořena." & vbCrLf & vbCrLf & "Chyba: " & vbCrLf & errChk(Err.Number)   
+      MsgBox iT, vbOKOnly, "Chyba!"
+      mS(iT)  
+      stCh =  "Create_Group;" & strComputer & "\" & newItemNameValue & ";;;;Fail"
+      StoreChanges (stCh)
+    End If
+  Else
+    iT = "Délka jména skupiny musí být delší než 2 znaky." & vbCrLf & "Délka popisu musí být delší než 5 znaků."   
+    MsgBox iT, vbOKOnly, "Chyba zadání"     
+    mS(iT)  
+  End If
+End Function
+  
+Function CreateNewUser()       
+On Error Resume Next 
+  If PasswordStrengthCheck(newItemPassValue) >= 3 And Len(newItemPassValue) > 9 Then
+    If Len(newItemNameValue) > 2 And Len(newItemDescValue) > 5 Then
+      Set colAccounts = GetObject("WinNT://" & strComputer & "")
+      Set objUser = colAccounts.Create("User", newItemNameValue)     
+      objUser.FullName = newItemFullValue
+      objUser.Description = newItemDescValue 
+      objUser.SetPassword newItemPassValue
+      objUser.SetInfo 
+      If Err.Number = 0 Then
+        iT = "Lokální účet byl vytvořen."
+        MsgBox iT, vbOKOnly, "Úspěch!"
+        mS(iT)    
+        readMemgers()                    
+        stCh =  "Create_User;" & strComputer & "\" & user & ";;;;Success"
+        StoreChanges (stCh)
+      Else   
+        iT = "Lokální účet nebyl vytvořen." & vbCrLf & vbCrLf & "Chyba: " & vbCrLf & errChk(Err.Number)
+        MsgBox iT, vbOKOnly, "Chyba!"
+        mS(iT)    
+        stCh =  "Create_User;" & strComputer & "\" & user & ";;;;Fail"
+        StoreChanges (stCh)
+      End If
+    Else
+      iT = "Délka uživatelského jména musí být delší než 2 znaky." & vbCrLf & "Délka popisu musí být delší než 5 znaků."
+      MsgBox iT , vbOKOnly, "Chyba zadání" 
+      mS(iT)  
+    End If
+  Else 
+    iT = "Heslo nesplňuje požadavky na složitost."  
+      MsgBox iT, vbOKOnly, "Chyba zadání" 
+      mS(iT)  
+  End If
+End Function
+
+Function AddUserToGroup()    
+'On Error Resume Next        
+  strComputer = document.getElementById("cn").value
+  group = document.getElementById("groups").value
+  toAdd = ""
+  w = "user"
+  
+  If group <> "Local Users" And Len(group) > 1 Then
+    If InStr(1, newItemNameValue, "\", 1) Then 
+      TMP = Split(newItemNameValue, "\")
+      usrIsFrom = TMP(0) 
+      usrNameIs = TMP(1)  
+      tmp = UCase(newItemNameValue)
+      tmp = Replace(tmp,"CZSKDA01\", "")   
+      If Left(tmp, 4) = "APP." OR Left(tmp, 6) = "SKODA." OR Left(tmp, 4) = "E4T." OR Left(tmp, 4) = "SAS." Then 
+        w = "group"     
+      ElseIf Left(tmp, 3) = "DZC" OR (Left(tmp, 1) = "D" And IsNumeric(Right(tmp, 6)) = True) Then
+        w = "user"   
+      Else
+        MsgBox "Chyba"
+      End If               
+    Else
+      usrIsFrom = strComputer 
+      usrNameIs = newItemNameValue  
+    End If    
+    Set objGroup = GetObject("WinNT://" & strComputer & "/" & group & ",group")
+    Set objUser = GetObject("WinNT://" & usrIsFrom & "/" & usrNameIs & "," & w)
+    objGroup.Add(objUser.ADsPath)
+    If Err.Number = 0 Then
+      iT = "Uživatel " & newItemNameValue & " byl přidán do skupiny " & group & "."  
+      MsgBox iT, vbOKOnly, "Úspěch!" 
+      mS(iT)    
+      stCh =  "Add_User;" & strComputer & "\" & group & "\" & usrNameIs & ";;;;Success"
+      StoreChanges (stCh)
+      readMemgers() 
+    Else   
+      iT = "Uživatel nebyl přidán do skupiny." & vbCrLf & vbCrLf & "Chyba: " & vbCrLf & errChk(Err.Number)
+      MsgBox iT, vbOKOnly, "Chyba!"
+      mS(iT)  
+      stCh =  "Add_User;" & strComputer & "\" & group & "\" & usrNameIs & ";;;;Fail"
+      StoreChanges (stCh)
+    End If    
+  Else
+    MsgBox "Vyberte správnou skupinu.", vbOKOnly, "Chyba"
+  End If
+End Function
+
+Function DelUserFromGroup()    
+On Error Resume Next 
+  d = 0       
+  strComputer = document.getElementById("cn").value
+  group = document.getElementById("groups").value   
+  User = document.getElementById("users").value   
+  
+  w = "user"
+  If group <> "Local Users" Then
+    If left(UCase(User), 3) = "APP" Then 
+      d = 1
+      w = "group"
+    End If
+    If left(UCase(User), 6) = "SKODA." Then
+      d = 1
+      w = "group"
+    End If
+    If left(UCase(User), 4) = "E4T." Then
+      d = 1
+      w = "group"
+    End If
+    If left(UCase(User), 4) = "SAS." Then
+      d = 1
+      w = "group"
+    End If
+    If left(UCase(User), 3) = "DZC" And Len(user) = 7 Then
+      d = 1
+      w = "user"
+    End If
+    If left(UCase(User), 1) = "D" And IsNumeric(Right(User, 6)) = True Then
+      d = 1
+      w = "user"
+    End If
+    
+    If d = 1 Then
+      domain = "CZSKDA01"
+    Else
+      domain = strComputer
+    End If 
+  
+    Set objGroup = GetObject("WinNT://" & strComputer & "/" & group & ",group")
+    Set objUser = GetObject("WinNT://" & domain & "/" & User & "," & w)
+    objGroup.Remove(objUser.ADsPath)
+    If Err.Number = 0 Then
+      iT = "Uživatel " & newItemNameValue & " byl odebrán ze skupiny " & group & "."
+      MsgBox iT, vbOKOnly, "Úspěch!"
+      mS(iT) 
+      readMemgers()    
+    stCh =  "Remove_User;" & strComputer & "\" & group & "\" & user & ";;;;Success"
+    StoreChanges (stCh)
+    Else   
+      iT = "Uživatel nebyl odebrán skupiny." & vbCrLf & vbCrLf & "Chyba: " & vbCrLf & errChk(Err.Number)
+      MsgBox iT, vbOKOnly, "Chyba!"  
+      mS(iT) 
+    stCh = "Remove_User;" & strComputer & "\" & group & "\" & user & ";;;;Fail"
+    StoreChanges (stCh)
+    End If
+  Else
+    MsgBox "Vyberte správnou skupinu.", vbOKOnly, "Chyba"
+  End If
+End Function
+
+Function buttonSubmit_onclick()
+changeColor 1, "buttonSubmit"
+Sleep(1)
+  Select Case typAkce
+    Case 1        
+      CreateNewGroup()
+    Case 2
+      DeleteGroup()  
+    Case 3   
+      CreateNewUser()  
+    Case 4
+      DeleteUser()    
+    Case 5
+      AddUserToGroup()  
+    Case 6
+      DelUserFromGroup()    
+    Case 7
+      readUserInfo()     
+    Case Else
+    MsgBox "Chyba"
+  End Select  
+changeColor 999, "buttonSubmit"
+Sleep(1) 
+End Function
+
+Function PasswordStrengthCheck(pwd)
+  passwordLength = Len(pwd)
+ 
+  ' loop ONCE through password
+  For i = 1 To passwordLength
+    l = Asc(Mid(pwd, i, 1))
+    If l >= 97 And l <= 122 Then ' lowercase
+      If Not hasLowerCase Then
+        strength = strength + 1
+        hasLowerCase = True
+      End If
+    End If
+    If l >= 65 And l <= 90 Then   ' uppercase
+      If Not hasUpperCase Then
+        strength = strength + 1
+        hasUpperCase = True
+      End If
+    End If
+    If l >= 48 And l <= 57 Then   ' numbers
+      If Not hasNumber Then
+        strength = strength + 1
+        hasNumber = True
+      End If
+    End If
+    If l >= 33 And l <= 47 Then   ' specialchars
+      If Not hasSpecialChar Then
+        strength = strength + 1
+        hasSpecialChar1 = True
+      End If
+    End If
+    If l >= 58 And l <= 64 Then   ' specialchars
+      If Not hasSpecialChar Then
+        strength = strength + 1
+        hasSpecialChar2 = True
+      End If 
+    End If
+    If l >= 91 And l <= 96 Then  ' specialchars
+      If Not hasSpecialChar Then
+        strength = strength + 1
+        hasSpecialChar3 = True
+      End If 
+    End If
+    If l >= 123 And l <= 255 Then   ' specialchars
+      If Not hasSpecialChar Then
+        strength = strength + 1
+        hasSpecialChar4 = True
+      End If 
+    End If 
+  Next 
+ 
+  PasswordStrengthCheck = strength
+ 
+End Function
+
+Function mS(txt)
+  document.getElementById("messages").innerText = txt
+End Function
+</script>
+
+
+</head>
+<body onload="onLoadFunc()">
+  <div id="obal">
+  <div id="zahlavi"">
+       <h1 id="titulek">Změna skupin PC</h1> 
+	
+  </div>
+	<div id="zahlavi2"">
+       <table border=0> 
+       <tr><td class="noBorder">
+       <input type="text" name="cn" id="cn" style="border: 1px solid grey;width: 350px;" />  
+       </td></tr>  
+       <tr><td class="noBorder">                                                             
+       <input type="button" class="button" value="Načti skupiny" name="readGroups" id="readGroups" style="width: 350px;" />
+       </td></tr>  
+       </table>
+  </div>    
+        
+    <div id="obsah">
+    <table border=0>
+       <tr><td class="noBorder">                      
+       <form name="bSelect" id="bSelect">
+       <input type="radio" name="akce" value="addG" id="addG" onclick="sb 1, 'Vytvoř skupinu'" style="width:75px" /> Vytvoř skupinu <br />
+       <input type="radio" name="akce" value="delG" id="delG" onclick="sb 2, 'Smaž skupinu'" style="width:75px" /> Smaž skupinu <br />  
+       <input type="radio" name="akce" value="delG" id="delG" onclick="sb 7, 'Ukaž informace o uživateli / skupině'" style="width:75px" /> Ukaž informace o uživateli / skupině <br />  
+       <input type="radio" name="akce" value="addU" id="addU" onclick="sb 3, 'Vytvoř lokálního uživatele'" style="width:75px" /> Vytvoř lokálního uživatele <br />
+       <input type="radio" name="akce" value="delU" id="delU" onclick="sb 4, 'Smaž lokálního uživatele'" style="width:75px" /> Smaž lokálního uživatele <br />    
+       <input type="radio" name="akce" value="addU" id="addU" onclick="sb 5, 'Přidej uživatele do skupiny'" style="width:75px" /> Přidej uživatele do skupiny <br />
+       <input type="radio" name="akce" value="delU" id="delU" onclick="sb 6, 'Vymaž uživatele ze skupiny'" style="width:75px" /> Vymaž uživatele ze skupiny <br />   
+       </td></tr>   
+       <tr><td class="noBorder"> 
+       &nbsp;    
+       </td></tr>   
+       <tr><td class="noBorder" id="akce">
+        <table border=0>
+          <tr><td class="noBorder">
+            Skupiny  <br />
+            <Select name="groups" id="groups" type="text" style="border: 1px solid grey; width:175;height:100px;padding:0px;margin:0px;" size=5 onchange="readMemgers"></select> 
+          </td><td class="noBorder">
+            Uživatelé <br />
+            <Select name="users" id="users" type="text" style="border: 1px solid grey; width:175;height:100px;padding:0px;margin:0px;" size=5></select> <!--  onchange="readUserInfo" -->
+          </tr></tr>
+        </table>
+       </td></tr>  
+       <tr><td class="noBorder" id="akceData"> 
+       &nbsp;    
+       </td></tr>   
+       <tr><td class="noBorder" id="akceSubmit">
+       <input type="button" name="buttonSubmit" class="button" id="buttonSubmit" Value="Vyber Akci" style="width: 350px;" disabled /> 
+       </td></tr>   
+       <tr><td class="noBorder" id=>
+       </td></tr>  
+       </form>  
+    </table>
+
+    </div> <!-- obsah --> 
+    <div id="zapati">
+         
+    &nbsp;
+    </div><!-- zapati -->
+
+  </div> <!-- obal -->
+    <div id="messages" style="position:absolute;bottom:0px;left:0px;width:100%;border:1px solid grey;color:grey">Stavové zprávy</div>
+  </body>
+</html> 

@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D41B8FC8-B358-4CE0-88C6-0EF8201034B7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TechnolToolkit</RootNamespace>
+    <AssemblyName>TechnolToolkit</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AltoControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AltoControls.1.0.1\lib\AltoControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation, Version=1.5.6298.3372, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.5.6298.3372\lib\net35-client\WinFormAnimation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bitlocker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bitlocker.Designer.cs">
+      <DependentUpon>Bitlocker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VASConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VASConfig.Designer.cs">
+      <DependentUpon>VASConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstalledPrograms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstalledPrograms.Designer.cs">
+      <DependentUpon>InstalledPrograms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MSIUninstall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MSIUninstall.Designer.cs">
+      <DependentUpon>MSIUninstall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesy.Designer.cs">
+      <DependentUpon>Procesy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RemoteControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoteControl.Designer.cs">
+      <DependentUpon>RemoteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="statusBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="statusBox.Designer.cs">
+      <DependentUpon>statusBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlNastaveni.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlNastaveni.Designer.cs">
+      <DependentUpon>UserControlNastaveni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAdmin.Designer.cs">
+      <DependentUpon>UserControlAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlOther.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlOther.Designer.cs">
+      <DependentUpon>UserControlOther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSAP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSAP.Designer.cs">
+      <DependentUpon>UserControlSAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSCCM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSCCM.Designer.cs">
+      <DependentUpon>UserControlSCCM.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Bitlocker.resx">
+      <DependentUpon>Bitlocker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VASConfig.resx">
+      <DependentUpon>VASConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstalledPrograms.resx">
+      <DependentUpon>InstalledPrograms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MSIUninstall.resx">
+      <DependentUpon>MSIUninstall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesy.resx">
+      <DependentUpon>Procesy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoteControl.resx">
+      <DependentUpon>RemoteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="statusBox.resx">
+      <DependentUpon>statusBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAdmin.resx">
+      <DependentUpon>UserControlAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlNastaveni.resx">
+      <DependentUpon>UserControlNastaveni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlOther.resx">
+      <DependentUpon>UserControlOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSAP.resx">
+      <DependentUpon>UserControlSAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSCCM.resx">
+      <DependentUpon>UserControlSCCM.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Resources\VAS6154.zip" />
+    <None Include="Scripts\bower.json" />
+    <None Include="Scripts\build.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\runpwshell_parameter.bat" />
+    <EmbeddedResource Include="Resources\RemoteDialog.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NajdiDZC.vbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\PC_INFO.hta" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Najdi_PC.hta" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\msi_vyhledavac.vbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Change_Groups.hta" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\PsExec.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Key-96.png" />
+    <None Include="Resources\icons8-Name-96.png" />
+    <None Include="Resources\icons8-SAP-96.png" />
+    <None Include="Resources\icons8-Command Line-96.png" />
+    <None Include="Resources\icons8-Server-96.png" />
+    <None Include="Resources\icons8-Admin-96.png" />
+    <None Include="Resources\icons8-User-96.png" />
+    <None Include="Resources\icons8-Message-96.png" />
+    <None Include="Resources\icons8-User Group Man Man-96.png" />
+    <None Include="Resources\icons8-Software-96.png" />
+    <None Include="Resources\icons8-Computer-Find-96.png" />
+    <None Include="Resources\icons8-Processor-96.png" />
+    <None Include="Resources\icons8-Software Uninstaller-96.png" />
+    <None Include="Resources\icons8-Remote Control-96.png" />
+    <None Include="Resources\icons8-Restart-96.png" />
+    <None Include="Resources\icons8-Settings-96.png" />
+    <None Include="Resources\icons8-Crown-96.png" />
+    <None Include="Resources\icons8-Monitor-Refresh-96.png" />
+    <None Include="Resources\icons8-Monitor-96.png" />
+    <None Include="Resources\icons8-Monitor-Star-96.png" />
+    <None Include="Resources\icons8-Laptop-96.png" />
+    <None Include="Resources\icons8-Network Card-96.png" />
+    <None Include="Resources\icons8-Registry Editor-96.png" />
+    <None Include="Resources\icons8-Name Tag-96.png" />
+    <None Include="Resources\icons8-Support-96.png" />
+    <None Include="Resources\icons8-Table-96.png" />
+    <None Include="Resources\icons8-Table-96_white.png" />
+    <None Include="Resources\icons8-User Group Man Man-96_white.png" />
+    <None Include="Resources\icons8-User-96_white.png" />
+    <None Include="Resources\icons8-Account-96_white.png" />
+    <None Include="Resources\icons8-Admin-96_white.png" />
+    <None Include="Resources\icons8-Administrative Tools-96_white.png" />
+    <None Include="Resources\icons8-Close Window-96_white.png" />
+    <None Include="Resources\icons8-Command Line-96_white.png" />
+    <None Include="Resources\icons8-Computer-Find-96_white.png" />
+    <None Include="Resources\icons8-Crown-96_white.png" />
+    <None Include="Resources\icons8-Key-96_white.png" />
+    <None Include="Resources\icons8-Laptop-96_white.png" />
+    <None Include="Resources\icons8-Lock-96_white.png" />
+    <None Include="Resources\icons8-Message-96_white.png" />
+    <None Include="Resources\icons8-Monitor-96_white.png" />
+    <None Include="Resources\icons8-Monitor-Refresh-96_white.png" />
+    <None Include="Resources\icons8-Monitor-Star-96_white.png" />
+    <None Include="Resources\icons8-Name Tag-96_white.png" />
+    <None Include="Resources\icons8-Name-96_white.png" />
+    <None Include="Resources\icons8-Network Card-96_white.png" />
+    <None Include="Resources\icons8-Processor-96_white.png" />
+    <None Include="Resources\icons8-Registry Editor-96_white.png" />
+    <None Include="Resources\icons8-Remote Control-96_white.png" />
+    <None Include="Resources\icons8-Restart-96_white.png" />
+    <None Include="Resources\icons8-SAP-96_white.png" />
+    <None Include="Resources\icons8-Server-96_white.png" />
+    <None Include="Resources\icons8-Settings-96_white.png" />
+    <None Include="Resources\icons8-Software Uninstaller-96_white.png" />
+    <None Include="Resources\icons8-Software-96_white.png" />
+    <None Include="Resources\icons8-Support-96_white.png" />
+    <EmbeddedResource Include="Resources\ASCII_znaky.vbs" />
+    <EmbeddedResource Include="Resources\RegSearch.exe" />
+    <EmbeddedResource Include="Resources\Zjistit_IPconfig.vbs" />
+    <None Include="Resources\icons8-Data Encryption-96.png" />
+    <None Include="Resources\icons8-Data Encryption-96_white.png" />
+    <EmbeddedResource Include="Resources\bitlocker.vbs" />
+    <Content Include="logo.ico" />
+    <Content Include="Scripts\LICENSE.txt" />
+    <Content Include="Scripts\polymer-micro.html" />
+    <Content Include="Scripts\polymer-mini.html" />
+    <Content Include="Scripts\polymer.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

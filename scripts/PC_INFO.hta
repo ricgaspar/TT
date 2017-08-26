@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>MIRAS information SCRIPT</title>
+  
+   <STYLE>
+    H1, H3 { color: green }
+  </STYLE>
+
+
+	<script language="VBScript"
+	        type="text/vbscript">
+'*************************************************
+Option Explicit 'nucená deklarace promnìnných
+
+Dim Text, Title
+Dim WshNetwork, oDevices,  oDrives, myOlApp      ' Object variable
+Dim key1, i, myNameSpace
+Dim WshShell
+Dim fso, oDrive, wsh, Shell, drive     'objects
+
+' Get WshShell object for Registry access.Nutné pro W98.
+Set WshShell = CreateObject("WScript.Shell")
+Text = "<H3>User Information Page</H3>"
+Title = "WSH sample - by MiRAS"
+
+' Create a new WshNetwork object to access network properties.
+Set WshNetwork = CreateObject("WScript.Network")
+Text = text & "Computer name : " & WshNetworK.ComputerName & "&nbsp &nbsp &nbsp &nbsp &nbsp"
+Text = text & "Domain : " & WshNetworK.UserDomain & "&nbsp &nbsp &nbsp &nbsp &nbsp"
+Text = text & "User name : " & WshNetworK.UserName & "<br>"
+'Text = text & "Workgroup name : " & "<br>"
+document.write Text
+
+'WMI Information
+Dim strComputer, objWMIService, colOperatingSystems, objOperatingSystem 
+Text = "<H3>Operating System </H3>"
+document.write Text
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+Set colOperatingSystems = objWMIService.ExecQuery _
+    ("Select * from Win32_OperatingSystem")
+For Each objOperatingSystem in colOperatingSystems
+    Text =  objOperatingSystem.Caption & " " & objOperatingSystem.Version
+    document.write Text  & "&nbsp &nbsp &nbsp &nbsp &nbsp"
+
+    Text = objOperatingSystem.ServicePackMajorVersion  _
+        & "." & objOperatingSystem.ServicePackMinorVersion
+    document.write "Service Pack  " & Text  & "<br>"
+Next
+
+Dim colBIOS, objBIOS, Bios 
+Set colBIOS = objWMIService.ExecQuery _
+    ("Select * from Win32_BIOS")
+For each objBIOS in colBIOS
+    Bios = "Serial Number: " & objBIOS.SerialNumber
+Next
+
+Dim colSettings,objComputer
+Set colSettings = objWMIService.ExecQuery _
+    ("Select * from Win32_ComputerSystem")
+For Each objComputer In colSettings 
+    Text = "<H3>Manufacturer and Model </H3>"
+    Text = Text &  "System Manufacturer: " & objComputer.Manufacturer & "&nbsp &nbsp &nbsp &nbsp &nbsp"
+    Text = Text & "System Model: " & objComputer.Model & "<br>"
+    Text = Text & Bios & "<br>"
+    Text = Text & "<H3>Operating Memory </H3>"
+    Text = Text & "Total Physical Memory: " & _
+    	FormatNumber(objComputer.TotalPhysicalMemory/(1024*1024), 0)  & " MB"
+        
+    document.write Text  & "<br>"    
+Next
+
+
+
+' Informace o C
+Text = "<H3>Drive C:\ Information </H3>"
+drive = "C"
+Set fso = CreateObject("Scripting.FileSystemObject")
+Set oDrive = fso.GetDrive(drive)
+  
+  Text = text & "Capacity: " & FormatNumber(oDrive.TotalSize/(1024*1024), 0) & " MB" & "&nbsp &nbsp &nbsp &nbsp &nbsp"
+
+  Text = text & "Free: " & FormatNumber(oDrive.FreeSpace/(1024*1024), 0) & " MB"
+document.write Text
+
+' Check whether Workgroup entry (a value) exists.
+key1 = "HKEY_LOCAL_MACHINE\System\CurrentControlSet" & _
+        "\Services\VxD\VNETSUP\Workgroup"
+If (KeyExists(key1) = True) Then
+     Text = Text & WshShell.RegRead(key1)
+End If 
+Text = Text
+
+'MsgBox Text, vbOKOnly + vbInformation, Title
+
+'##############################################
+' Helper function tests whether the key exists.
+'##############################################
+Function KeyExists(key)
+    Dim key2
+    On Error Resume Next
+    key2 = WshShell.RegRead(key)
+    If Err <> 0 Then
+        KeyExists = False
+    Else
+        KeyExists = True
+    End If
+    On Error GoTo 0
+End Function
+
+Text = "<H3>Printer mapping</H3>" & "<br>"
+Set oDevices = WshNetwork.EnumPrinterConnections
+For i = 0 To oDevices.Count - 1 Step 2
+    Text = Text & oDevices(i) & "    " & oDevices(i+1) & "<br>"
+Next
+document.write Text
+
+Text = "<H3>Network Drives mapping</H3>"
+Set oDrives = WshNetwork.EnumNetworkDrives
+For i = 0 To oDrives.Count - 1 Step 2
+    If oDrives(i) <> " " Then
+        Text = Text & oDrives(i) & "   " & oDrives(i+1) & "<br>"
+    End If
+Next
+document.write Text
+'Informace o SMS
+
+Dim objFSO 
+	Text = "<H3>Operating System </H3>"
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+		If objFSO.FileExists("C:\FSO\ScriptLog.txt") Then
+    Text = "SMS client presents."
+		Else
+    Text = "SMS client does not present."
+	End If
+Text = "<H3>System Management Server</H3>" & Text & "<br>"
+document.write Text
+'informace z Outlook
+'Text = "<H3>OtlookFolders mapping</H3>" & vbCrLf & "<br>"
+'Set myOlApp = CreateObject("Outlook.Application")
+'Set myNameSpace = myOlApp.GetNameSpace("MAPI")
+'for i = 1 to MyOlApp.GetNameSpace("MAPI").Folders.count
+'	Text = Text & myOlApp.GetNameSpace("MAPI").folders(i).name & vbCrLf & "<br>"
+'next
+'document.write Text
+
+Function clickIt()
+	'msgbox "Ještì nefunguje, ale bude to bomba."
+	window.print()
+end Function
+
+'*** End
+</script>
+</head>
+
+<body>
+<FORM>
+<INPUT TYPE=button ID=btnEmergency VALUE="Print this Page, 
+push this button!"
+    onClick=clickIT()>
+</form>
+
+
+</body>
+</html>

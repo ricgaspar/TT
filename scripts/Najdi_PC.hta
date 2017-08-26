@@ -1,0 +1,2353 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <title>PC Info (Online) </title> 
+<HTA:APPLICATION 
+     ID="oPCInfoSearchForm"
+     APPLICATIONNAME="PC Info Search"
+     SCROLL="no"
+     SINGLEINSTANCE="no"
+     WINDOWSTATE="normal"
+     icon="http://popular.mb.skoda.vwg/siben/PC.ico"
+     contextmenu="yes"
+     sysmenu="yes"
+     MINIMIZEBUTTON="yes" 
+     caption="yes"                            
+     version="4.1.00"
+     borderStyle="Sunken"
+     Border="Thin"
+     requireAdministrator="yes"
+/>
+<style type="text/css" >
+<!--
+body{
+  margin:0px;
+  padding:0px;
+  background-color: white;
+  color: #666666;
+  font-family: Verdana;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;  
+  overflow: hidden;
+}
+input {
+  border: 0px;
+}
+td {
+  border-bottom: 1px solid #555555;
+  font-size: 12px;
+}
+.noBorder {
+  border: 0px;
+}
+.pxBorder {
+  border: 1px solid grey;
+}
+h1 {    
+  font-family: Verdana;
+  font-size: 22px;
+}
+table {
+  border: 0px;
+  padding: 0px; 
+}
+select, input, #SAPInfo {
+  width: 220px;                                          
+  font-family: "Lucida Sans Typewriter", "Lucida Console";  
+  font-size: 12px;      
+  height: 18px;
+  background-color: transparent;
+} 
+.button {
+  background-color: rgb(239,239,239);
+ }
+.bottomForm { 
+  width: 220px; 
+}
+#obal{
+  position:absolute;
+  margin:0px;
+  padding:0px;
+}
+#zahlavi{
+  position:absolute;  
+  font-size: 10px;
+  top:0px;
+  color: black;
+  left:0px;
+  width:500px;
+  height:14px;
+  margin:0px;
+  padding-top:10px; 
+  text-align: center; 
+  background-color:rgb(75,168,46);   
+}
+a {
+  text-decoration: none;
+  color:rgb(0,102,212);
+}
+a:hover {
+  text-decoration: none;
+  color:rgb(81,164,255);
+}
+a:active {
+  text-decoration: none;
+  color:rgb(126,197,255);
+}
+a:visited {
+  text-decoration: none;
+  color:rgb(0,55,117);
+}
+#zahlavi2{
+  position:absolute;
+  top:60px;
+  left:2px;
+  width:500px;
+  height:100px;
+  margin:10px;
+  padding-left:50px;
+}
+#zapati{
+  position:absolute;
+  left:0px;
+  top:645px;
+  width:500px;
+  background-color:rgb(75,168,46);
+  padding-top:10px;
+  padding-Left:10px;
+  vertical-align:middle;
+} 
+#obsah{
+  position:relative;
+  top:150px;
+  left:40;
+} 
+#networkInfo {
+  width: 360px;
+  height: 120px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid silver;
+}
+//-->
+</style>
+  
+<script type="text/vbscript" language="VBScript">  
+
+Const ForReading = 1, ForWriting = 2, ForAppending = 8
+Const TristateUseDefault = -2, TristateTrue = -1, TristateFalse = 0 
+  
+Dim strComputer
+Dim User
+Dim dwValueDatLocal, szValueEpoLocal, szValueAvvLocal
+Dim appWaiting, WaitingApp
+Dim excelHeader, excelFooter
+Dim stopRepete
+Dim enableLogging
+Dim logData()
+
+enableLogging = False
+vCheck = False
+
+excelHeader = "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.01 Transitional//EN"">" & vbCrLf & "<html>" & vbCrLf & "<head>" & vbCrLf & "<meta http-equiv=""content-type"" content=""text/html; charset=windows-1250"">" & vbCrLf  
+excelFooter = "</body>"  & vbCrLf & "</html>" & vbCrLf
+
+versionCheck() 
+  
+Function checkPermisions(file)
+  checkPermisions = False 
+  On Error Resume Next
+    Set fso  = CreateObject("Scripting.FileSystemObject")       
+    Set fObj = fso.GetFile(file)      
+    Err.Clear
+    Set fTs  = fObj.OpenAsTextStream(ForReading, TristateUseDefault) 
+    If Err.Number = 0 Then
+      checkPermisions = True
+    End If
+    Set fso = Nothing
+    Set fTs = Nothing
+End Function
+     
+Function versionCheck()  
+  If vCheck = True Then   
+    UNC     = "\\skoda.vwg\data\T\@TE\TE.4\Aplikace\"
+    verFile = "version.txt"
+    tFName  = "Najdi_PC.hta"
+    tFLoc   = Replace(Replace(document.location.href, "file:///", ""), "/", "\") ' -8
+    Version = oPCInfoSearchForm.version
+    uFile   = UNC & tFName 
+    vFile   = UNC & verFile 
+    Set fso  = CreateObject("Scripting.FileSystemObject") 
+    If checkPermisions(uFile) = True Then               
+      Set fObj = fso.GetFile(vFile)
+      Set fTs  = fObj.OpenAsTextStream(ForReading, TristateUseDefault)
+      Set oTF  = fso.Getfile(tFLoc)
+      Set oRF  = fso.Getfile(uFile)
+      
+      Do While fTs.AtEndOfStream <> True 
+      TMP = fTs.ReadLine
+        lines = Split(TMP,";") 
+        If lines(0) = tFName AND (oRF.Size <> oTF.Size OR lines(1) <> Version)Then
+            StoreChanges ("Update_required;;;;;" & Version)             
+            MsgBox "Nepoužíváte nejnovejší verzi Aplikace." & vbCrLf & vbCrLf _
+                    & "Vaše verze: " & vbTab & Version & " (" & oTF.Size & ")" & vbCrLf _ 
+                    & "Aktuální verze: " & vbTab & lines(1) & " (" & oRF.Size & ")"  & vbCrLf & vbCrLf _ 
+                    & "Bude Provedena Aktualizace."     
+            stCh =  "Update_App"
+            StoreChanges (stCh)
+            Set fso = CreateObject("Scripting.FileSystemObject")
+            FullName = replace(oPCInfoSearchForm.commandLine,chr(34),"")  
+            arrFN=split(FullName,"\")  
+            FileName = arrFN(ubound(arrFN))  
+            SourceDir=replace(FullName,FileName,"")  
+            fso.CopyFile uFile, SourceDir, True 
+            createobject("Shell.Application").ShellExecute "mshta.exe", UNC & "Updater.hta" & " /" & tFName & " /" & SourceDir & " /" & FileName   
+            Sleep(1)
+            self.Close
+            Sleep(1)
+        End If
+      Loop  
+    Else
+      MsgBox "Nepodařilo se ověřit aktualizace aplikace."
+    End If
+    Set fObj = Nothing
+    Set fTs  = Nothing
+    Set oTF  = Nothing
+    Set oRF  = Nothing
+  End If
+End Function  
+
+If HTAElevate() = True Then   
+  appWaiting = False 
+End If 
+
+Function HTAElevate()
+  Const Elev = " /elevated"
+  stCh =  "Open_App"
+  cmdLine = ""
+  StoreChanges (stCh)
+  HTAElevate = True
+  If InStr(UCase(oPCInfoSearchForm.commandLine), "/PC:") > 0 Then
+    tmpCmd = Split(oPCInfoSearchForm.commandLine, "/PC:")
+    cmdLine = " /PC:" & tmpCmd(UBound(tmpCmd))
+  End If
+  If InStr( LCase( oPCInfoSearchForm.commandLine ), Elev) > 0 then Exit Function 
+  createobject("Shell.Application").ShellExecute "mshta.exe", oPCInfoSearchForm.commandLine & Elev & cmdLine, "", "runas", 1
+  HTAElevate = False
+  self.close
+End Function ' HTAElevate()
+
+Function LocalAV()  
+  stCh =  "Read_Local_AV_Info"
+  StoreChanges (stCh)
+  Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+  Set colOS = objWMIService.ExecQuery("Select * from Win32_OperatingSystem")
+  For Each objOS In colOS 
+    OSv = Left(objOS.Version, 1)                                   
+    If OSv > 5 Then OSa = objOS.OSArchitecture   
+    Exit For
+  Next
+
+  If InStr(document.uForm.ar.value, "64") Then                    
+    strKeyPathDat = "SOFTWARE\Wow6432Node\McAfee\AVEngine\"           
+    strKeyPathEpo = "SOFTWARE\Wow6432Node\McAfee\Agent\"           
+    strKeyPathAVv = "SOFTWARE\Wow6432Node\McAfee\DesktopProtection\"
+  Else    
+    strKeyPathDat = "SOFTWARE\McAfee\AVEngine\"           
+    strKeyPathEpo = "SOFTWARE\McAfee\Agent\"            
+    strKeyPathAVv = "SOFTWARE\McAfee\DesktopProtection\"  
+  End If
+   
+  const HKEY_LOCAL_MACHINE = &H80000002 
+  Set oReg=GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+  oReg.GetDWORDValue HKEY_LOCAL_MACHINE,strKeyPathDat,"AVDatVersion",dwValueDatLocal 
+  oReg.GetStringValue HKEY_LOCAL_MACHINE,strKeyPathEpo,"AgentVersion",szValueEpoLocal 
+  oReg.GetStringValue HKEY_LOCAL_MACHINE,strKeyPathAVv,"szProductVer",szValueAvvLocal 
+End Function
+
+
+Function uFormA_onsubmit()
+changeColor 0, "uFormAButton"
+statusIcon(2) 
+Sleep(1)
+
+  Dim onLine, Logged, Who, hasRights, pingError
+  isOnline = False                      
+  isLogged = False                   
+  isAdmin  = False                              
+  hasRights= False
+  
+  uForm.Reset()
+  
+  strComputer = Trim(UCase(CStr(document.uFormA.fPC.value)))
+  
+  document.uFormA.fPC.value = strComputer 
+  strFileName = "\\" & strComputer & "\c$\Windows\system.ini"
+  Set objFSO = CreateObject("Scripting.FileSystemObject") 
+  If objFSO.FileExists(strFileName) Then hasRights = True   
+  
+  'Win32_PingStatus'  
+  isOnline = TestOnlinePC()   
+  if isOnline = True AND hasRights = True Then
+    stCh =  "Try_PC_Info;" & strComputer
+    StoreChanges (stCh)      
+
+    'logged user on remote PC 
+    Dim colCompSys, objComputer, objWMI  
+                                                                 
+    Set objWMI = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+    Set colCompSys = objWMI.ExecQuery("SELECT UserName FROM Win32_ComputerSystem")
+    For Each objComputer In colCompSys
+      User = objComputer.UserName 
+    Next
+    
+    If Len(User) > 7 Then             
+      isLogged = True 
+      document.uForm.dzc.value = Right(User, 7)    
+      document.uForm.TMPUser.value = Right(User, 7)
+      User = Right(User, 7) 
+    End If
+    
+    'logged user basic info 
+    If isLogged = True Then 
+    stCh =  "Read_User_Info" & ";" & ";" & User
+    StoreChanges (stCh)    
+    
+      StartNode = "DC=skoda,DC=vwg" 
+      Set objCommand = CreateObject("ADODB.Command")
+      Set objConnection = CreateObject("ADODB.Connection")
+      objConnection.Provider = "ADsDSOObject"
+      objConnection.Open "Active Directory Provider"
+      objCommand.ActiveConnection = objConnection
+      objCommand.Properties("Page Size") = 1500
+      objCommand.Properties("Timeout") = 30
+      objCommand.Properties("Cache Results") = False
+      SearchScope = "subtree" 
+      FilterString = "(&(objectCategory=person)(objectClass=user)(sAMAccountName=" & User & "))"
+      Attributes = "adspath" 
+      LDAPQuery = "<LDAP://" & StartNode & ">;" & FilterString & ";" & Attributes & ";" & SearchScope
+      objCommand.CommandText = LDAPQuery
+      Set objRecordset = objCommand.Execute
+      If Not objRecordset.EOF Then
+        objRecordset.MoveFirst
+        Do Until objRecordset.EOF
+          strUserPath = objRecordset.Fields("ADsPath").Value
+          Set oUser = GetObject(strUserPath)
+          document.uForm.jmeno.value = oUser.displayName 
+          document.uForm.oscis.value = oUser.employeeNumber
+          If IsNumeric(oUser.employeeNumber) AND Left(oUser.department, 2) <> "E4" Then 
+            SAPInfo.innerHTML = "<a href=""http://skdambseoiweb.mb.skoda.vwg/intranet/index.php?id=647&search[send]=hledej&search[what]=Partner&search[content]=" & oUser.employeeNumber & """>Otevři</a>"
+          Else
+            SAPInfo.innerHTML = "<a href=""http://skdambseoiweb.mb.skoda.vwg/intranet/index.php?id=647&search[send]=hledej&search[what]=ExtUserSearch&search[content]=" & oUser.sn &  " " & oUser.givenName & """>Otevři</a>"
+          End If
+          document.uForm.oddel.value = oUser.department
+          document.uForm.Who.value   = oUser.distinguishedName
+          objRecordset.MoveNext
+        Loop 
+      End If 
+    Else
+      SAPInfo.innerHTML = " &nbsp; "
+      document.uForm.dzc.value = "Nepřihlášen" 
+    End If
+    
+    Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+    Set colOS = objWMIService.ExecQuery("Select * from Win32_OperatingSystem")
+    
+    stCh =  "Read_PC_Info" & ";" & strComputer & ";;;;Success"
+    StoreChanges (stCh)    
+    
+    For Each objOS In colOS
+      document.uForm.os.value = objOS.Caption   
+      OSv = Left(objOS.Version, 1)                                   
+      If OSv > 5 Then document.uForm.ar.value = objOS.OSArchitecture
+      document.uForm.sp.value = "SP " & objOS.ServicePackMajorVersion   
+      Exit For
+    Next
+    
+    Set colOS = objWMIService.ExecQuery("Select * from Win32_BIOS")
+    For Each objOS In colOS                   
+      document.uForm.sn.value = objOS.SerialNumber 
+    Next
+    
+    Set colOS = objWMIService.ExecQuery("Select * from Win32_ComputerSystem")
+    For Each objOS In colOS
+        document.uForm.man.value = objOS.Manufacturer
+        document.uForm.typ.value = objOS.Model
+    Next
+     
+    Set objVMI = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+    Set vAdptr = objVMI.ExecQuery("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = True")
+    z = 0
+    NetAdapterDiv = "<table border=0>" 
+    For Each objAdptr In vAdptr
+        if Len(objAdptr.Description) > 50 Then
+          net = Left(objAdptr.Description, 45) & "..."
+        Else
+          net = objAdptr.Description        
+        End If                                      
+        If Not IsNull(objAdptr.IPAddress) Then
+          For i = LBound(objAdptr.IPAddress) To UBound(objAdptr.IPAddress)
+            If Not InStr(objAdptr.IPAddress(i), ":") > 0 And Len(objAdptr.IPAddress(i)) > 7 Then
+            ip = objAdptr.IPAddress(i)
+            End If
+            Exit For
+          Next
+        End If  
+        if Left(CStr(ip),2) = 10 Then  
+          dns = Replace(objAdptr.DNSDomain, strComputer,"")
+        end If                    
+        mac = objAdptr.MACAddress 
+        NetAdapterDiv =  NetAdapterDiv _
+            & "<tr>" _
+            & "<td colspan=2 id=""netcard0"" title=""" & objAdptr.Description & """>" & net & "</td>" _
+            & "</tr>" _
+            & "<tr>" _
+            & "<td>IP Adresa</td>" _
+            & "<td><input type=""text"" name=""ip" & z & """ style=""width: 205px;"" readonly onclick=""copyToClip document.uForm.ip" & z & ".value, 'ip" & z & "'"" value=""" & ip & """ title=""Kliknutím zkopírujete do schránky"" /></td>" _
+            & "</tr>" _
+            & "<tr>" _
+            & "<td>MAC Adresa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" _
+            & "<td><input type=""text"" name=""mac" & z & """ style=""width: 205px;"" readonly onclick=""copyToClip document.uForm.mac" & z & ".value, 'mac" & z & "'"" value=""" & mac & """ title=""Kliknutím zkopírujete do schránky"" /></td>" _
+            & "</tr>" _
+            & "<tr>" _
+            & "<td>DNS Suffix</td>" _
+            & "<td><input type=""text"" name=""dns" & z & """ style=""width: 205px;"" readonly onclick=""copyToClip document.uForm.dns" & z & ".value, 'dns" & z & "'"" value=""" & dns & """ title=""Kliknutím zkopírujete do schránky"" /></td>" _
+            & "</tr>" _ 
+            & "<tr>" _
+            & "<td class=""noBorder"">&nbsp;</td>" _
+            & "<td class=""noBorder"">&nbsp;</td>" _
+            & "</tr>"             
+        z = z + 1
+    Next  
+    NetAdapterDiv = NetAdapterDiv & "</table>"
+    networkInfo.innerHTML = NetAdapterDiv
+    
+  loadAdmins(strComputer)
+  
+  document.uForm.cn.value = strComputer
+  Else
+    If isOnline = True And hasRights = False Then 
+      document.uForm.cn.value = "Online bez oprávnění"
+      statusIcon(9)
+    End If
+    If isOnline = False Then
+      If testCN(strComputer) = True Then 
+        document.uForm.cn.value = "Offline - " & pingError   
+      Else
+        document.uForm.cn.value = "Offline " 
+        MsgBox "Zadané jméno neodpovídá jmenné konvenci." & vbCrLf & "Pravděpodobně je v něm chyba." & vbCrLf & vbCrLf & "Prosím, proveďte kontrolu.", vbExclamation + vbOkOnly,"Upozornění"
+      End If             
+      statusIcon(3)
+    End If
+    SAPInfo.innerHTML = " &nbsp; "  
+    networkInfo.innerHTML = "No network adapter info..."
+    stCh =  "Try_PC_Info;" & strComputer & ";;;;" & document.uForm.cn.value
+    StoreChanges (stCh)
+  End If 'Is Online
+ 
+ 
+changeColor 999, "uFormAButton"   
+Sleep(1)
+document.body.style.backgroundColor = "white"  
+Sleep(1)
+window.event.returnvalue=false 
+End Function
+
+Dim pingError
+Private Function TestOnlinePC()
+  strComputer = Trim(UCase(CStr(document.uFormA.fPC.value)))
+  isOnline = False  
+  
+  'Win32_PingStatus' 
+  document.uForm.cn.value = "Ping [pokus 1]" 
+  Sleep(1)      
+  Set objPing = GetObject("winmgmts:").Get("Win32_PingStatus.Address='" & strComputer & ".tv.skoda.vwg'")
+  If IsNull(objPing.StatusCode) = False Then 
+    status = objPing.StatusCode 
+    Select Case status
+      Case 0 
+        TestOnlinePC = True 
+        statusIcon(0)
+        Exit Function
+      Case 11001
+        pingError = "Buffer Too Small"
+      Case 11002
+        pingError = "Destination Net Unreachable"
+      Case 11003
+        pingError = "Destination Host Unreachable"
+      Case 11004
+        pingError = "Destination Protocol Unreachable"
+      Case 11005
+        pingError = "Destination Port Unreachable"
+      Case 11006
+        pingError = "No Resources"
+      Case 11007
+        pingError = "Bad Option"
+      Case 11008
+        pingError = "Hardware Error"
+      Case 11009
+        pingError = "Packet Too Big"
+      Case 11010
+        pingError = "Request Timed Out"
+      Case 11011
+        pingError = "Bad Request"
+      Case 11012
+        pingError = "Bad Route"
+      Case 11013
+        pingError = "TimeToLive Expired Transit"
+      Case 11014
+        pingError = "TimeToLive Expired Reassembly"
+      Case 11015
+        pingError = "Parameter Problem"
+      Case 11016
+        pingError = "Source Quench"
+      Case 11017
+        pingError = "Option Too Big"
+      Case 11018
+        pingError = "Bad Destination"
+      Case 11032
+        pingError = "Negotiating IPSEC"
+      Case 11050
+        pingError = "General Failure"
+      Case Else
+        pingError = status & " - Unknown Error"
+      End Select    
+  End If
+  
+  document.uForm.cn.value = "Ping [pokus 2]"  
+  Sleep(1)
+  Set objPing = GetObject("winmgmts:").Get("Win32_PingStatus.Address='" & strComputer & ".mb.skoda.vwg'")
+  If IsNull(objPing.StatusCode) = False Then 
+    status = objPing.StatusCode 
+    Select Case status
+      Case 0 
+        TestOnlinePC = True 
+        statusIcon(0)
+        Exit Function
+    End Select  
+  End If
+  
+  document.uForm.cn.value = "Ping [pokus 3]"
+  Sleep(1)
+  Set objPing = GetObject("winmgmts:").Get("Win32_PingStatus.Address='" & strComputer & "vr.skoda.vwg'")
+  If IsNull(objPing.StatusCode) = False Then 
+    status = objPing.StatusCode 
+    Select Case status
+      Case 0 
+        TestOnlinePC = True 
+        statusIcon(0)
+        Exit Function
+    End Select  
+  End If
+  
+  document.uForm.cn.value = "Ping [pokus 4]" 
+  Sleep(1) 
+  Set objPing = GetObject("winmgmts:").Get("Win32_PingStatus.Address='" & strComputer & "kv.skoda.vwg'")
+  If IsNull(objPing.StatusCode) = False Then
+    status = objPing.StatusCode 
+    Select Case status
+      Case 0 
+        TestOnlinePC = True    
+        statusIcon(0)
+        Exit Function
+    End Select  
+  End If
+   
+  TestOnlinePC = False 
+End Function
+
+Function loadAdmins(strComputer)
+  User = document.uForm.dzc.value      
+  stCh =  "Read_Admins;" & strComputer
+  StoreChanges (stCh) 
+  
+  For Each objOption in document.uForm.Admin.Options
+    objOption.RemoveNode
+  Next
+  
+  document.getElementById("dzc").style.color = "rgb(0,0,0)"  
+  document.uForm.dzc.value = document.uForm.TMPUser.value
+  Set colGroups = GetObject("WinNT://" & strComputer)
+  colGroups.Filter = Array("group")
+  For Each objGroup In colGroups
+    If objGroup.Name = "Administrators" then
+      For Each objUser in objGroup.Members  
+        If objUser.Name <> "Administrator" AND objUser.Name <> "App.LA.PC.Development.GS" AND objUser.Name <> "App.LA.PC.Audit.LS" AND objUser.Name <> "App.SCCM.Clinst" AND objUser.Name <> "AdminTVT" Then
+          Set objOption = Document.createElement("OPTION")
+          objOption.Text = objUser.Name
+          objOption.Value = objUser.Name
+          document.uForm.Admin.Add(objOption)
+        End If                              
+        If objUser.Name = User Then  
+          document.getElementById("dzc").style.color = "rgb(210,57,5)"
+          isAdmin = True
+        End If
+      Next
+    End If
+  Next 
+End Function
+
+
+Function delAdmin_onclick()  
+changeColor 0, "delAdmin"
+Sleep(1)
+On Error Resume Next  
+  Where = document.uForm.cn.value  
+  Who   = document.uForm.Admin.value
+  Set oGroup = GetObject("WinNT://" & Where & "/Administrators,group")
+  Set oUser = GetObject("WinNT://CZSKDA01/" & Who & ",user") 
+  oGroup.Remove(oUser.ADsPath) 
+  If Err.Number = 0 Then                                                              
+    loadAdmins(Where)
+    MsgBox "Administrátor " & Who & " na " & Where & " byl odebrán."
+    logAdmChanges Who, Where, "DEL"        
+    stCh =  "Delete_Admin;" & strComputer & ";" & Who & ";;;" & "Success"
+    StoreChanges (stCh) 
+  Else
+    MsgBox "Odebrání se nezdařilo"  
+    stCh =  "Delete_Admin;" & strComputer & ";" & Who & ";;;" & "Error"
+    StoreChanges (stCh) 
+  End If    
+
+  changeColor 999, "delAdmin" 
+  Sleep(1)
+  window.event.returnvalue=false  
+End Function
+    
+Function addAdmin_onclick()
+changeColor 0, "addAdmin"     
+Sleep(1)
+On Error Resume Next  
+  Where = document.uForm.cn.value  
+  Who   = document.uForm.dzc.value
+  Set oGroup = GetObject("WinNT://" & Where & "/Administrators,group")
+  Set oUser = GetObject("WinNT://CZSKDA01/" & Who & ",user")    
+  oGroup.Add(oUser.ADsPath)   
+  If Err.Number = 0 Then                                                            
+    loadAdmins(Where)                            
+    MsgBox "Administrátor " & Who & " na " & Where & " byl přidán."  
+    logAdmChanges Who, Where, "ADD"
+    document.uForm.dzc.value = document.uForm.TMPUser.value 
+    stCh =  "Add_Admin;" &Where & ";" & Who & ";;;" & "Success"
+    StoreChanges (stCh) 
+  Else
+    MsgBox "Přidání se nezdařilo"   
+    stCh =  "Add_Admin;" & Where & ";" & Who & ";;;" & "Error"
+    StoreChanges (stCh) 
+  End If    
+
+  changeColor 999, "addAdmin"  
+  Sleep(1)
+  window.event.returnvalue=false
+End Function
+
+Function runAVUpdate_onclick()
+  If Len(document.uForm.cn.value) > 5 And InStr(document.uForm.cn.value, "Offline") = False Then  
+    strComputer = document.uForm.cn.value 
+      If InStr(document.uForm.ar.value, "64") Then
+        sRun  = """C:\Program Files (x86)\McAfee\VirusScan Enterprise\mcupdate.exe"" /task {A14CD6FC-3BA8-4703-87BF-E3247CE382F5} /update /quiet"   
+      Else
+        sRun  = """C:\Program Files\McAfee\VirusScan Enterprise\mcupdate.exe"" /task {A14CD6FC-3BA8-4703-87BF-E3247CE382F5} /update /quiet"
+      End If    
+      Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2:Win32_Process")
+      errReturn = objWMIService.Create(sRun, Null, Null, intProcessID) 
+      ColoriseRepete 5, "runAVUpdate"
+      If errReturn = 0 Then
+        Reply = "Aktualizace na " & strComputer & " byla úspěšná."       
+        stCh =  "Update_AV" & ";" & strComputer & ";;;;" & "Success"
+        StoreChanges (stCh) 
+      Else
+        Reply = "Aktualizace na " & strComputer & " nebyla úspěšná." & vbCrLf & "Chyba: " & errReturn & ":" & errAVUpdate(errReturn)       
+        stCh =  "Update_AV" & ";" & strComputer & ";;;;" & "Error"
+        StoreChanges (stCh) 
+      End If 
+      MsgBox Reply,,"Výsledek Aktualizace"
+  Else
+    MsgBox "Nejdříve vyhledejte PC."
+  End If
+    
+End Function 
+
+Function errAVUpdate(id)					
+	Select Case id				
+		Case	0		
+			errAVUpdate	=	"Successful Completion"
+		Case	2		
+			errAVUpdate	=	"Access Denied"
+		Case	3		
+			errAVUpdate	=	"Insufficient Privilege"
+		Case	8		
+			errAVUpdate	=	"Unknown failure"
+		Case	9		
+			errAVUpdate	=	"Path Not Found"
+		Case	21		
+			errAVUpdate	=	"Invalid Parameter"
+	End Select				
+End Function					
+
+
+Function copyToClip(txt,el)
+  window.clipboardData.setData "text", txt
+  Colorise(el)
+End Function
+
+Function Colorise(el)
+  document.getElementById(el).style.color = "rgb(120,250,95)"
+  Sleep(1)
+  document.getElementById(el).style.color = "rgb(88,248,41)"
+  Sleep(1)
+  document.getElementById(el).style.color = "rgb(47,185,6)"
+  Sleep(1)
+  document.getElementById(el).style.color = "rgb(34,136,4)"
+  Sleep(1)
+  document.getElementById(el).style.color = "rgb(24,97,3)"
+  Sleep(1)
+  document.getElementById(el).style.color = "rgb(19,77,2)"
+  Sleep(1)
+  document.getElementById(el).style.color = "rgb(12,57,1)"
+  Sleep(1)
+  document.getElementById(el).style.color = "rgb(0,0,0)" 
+End Function
+
+Function changeColor (id, el)
+  Select Case id
+    Case 0
+      document.getElementById(el).style.color = "rgb(255,104,4)"
+    Case 1
+      document.getElementById(el).style.color = "rgb(214,10,81)"
+    Case Else
+      On Error Resume Next
+      document.getElementById(el).style.color = "rgb(0,0,0)"
+  End Select
+End Function
+ 
+Function ColoriseRepete(Count, el)
+  cTemp = document.getElementById(el).style.color
+  For i = 0 To Count 
+      document.getElementById(el).style.color = "rgb(255,90,21)"
+      Sleep(1)
+      document.getElementById(el).style.color = "rgb(255,100,21)"
+      Sleep(1)
+      document.getElementById(el).style.color = "rgb(255,110,31)"
+      Sleep(1)
+      document.getElementById(el).style.color = "rgb(255,120,21)"
+      Sleep(1)
+      document.getElementById(el).style.color = "rgb(255,130,21)"
+      Sleep(1)
+      document.getElementById(el).style.color = "rgb(255,140,21)"
+      Sleep(1)
+      document.getElementById(el).style.color = "rgb(255,150,21)"  
+      Sleep(1)
+      document.getElementById(el).style.color = "rgb(255,160,21)"   
+      Sleep(1)       
+      document.getElementById(el).style.color = "rgb(255,150,21)"             
+      Sleep(1)  
+      document.getElementById(el).style.color = "rgb(255,140,21)"
+      Sleep(1)                
+      document.getElementById(el).style.color = "rgb(255,130,21)"
+      Sleep(1)                         
+      document.getElementById(el).style.color = "rgb(255,120,21)"
+      Sleep(1)                     
+      document.getElementById(el).style.color = "rgb(255,110,21)"  
+      Sleep(1)                     
+      document.getElementById(el).style.color = "rgb(255,100,21)"   
+      Sleep(1)                
+  Next
+  document.getElementById(el).style.color = cTemp
+End Function                                        
+
+Sub Sleep(iSeconds)
+    Dim oShell  : Set oShell = CreateObject("WScript.Shell")
+    oShell.run "cmd /c ping localhost -n " & iSeconds,0,True
+End Sub
+
+Function help_onsubmit()
+  MsgBox  "Doporučené nastavení pro správnou funkci:" & vbNewLine & vbNewLine _
+              & "DNS SERVERY: "   & vbTab & "DNS SUFFIXY:"   & vbNewLine _
+              & "10.217.112.32"   & vbTab & "mb.skoda.vwg"  & vbNewLine _
+              & "10.217.112.33"   & vbTab & "skoda.vwg"     & vbNewLine _
+              & "10.186.112.131"  & vbTab & "tv.skoda.vwg"  & vbNewLine _
+              & "10.186.16.35"    & vbTab & "fw.skoda.vwg"  & vbNewLine _
+              & "10.186.106.46"   & vbTab & "e4t.skoda.vwg" & vbNewLine _
+              & "10.144.246.24"   & vbTab & "wob.vw.vwg"    & vbNewLine _
+              & "10.136.101.210"  & vbTab & "vw.vwg"        & vbNewLine _
+              & "10.137.130.211"  & vbTab & "vr.skoda.vwg"  & vbNewLine _
+              & "10.199.254.117"  & vbTab & "kv.skoda.vwg"  & vbNewLine _  
+              & "10.199.34.18"    & vbTab & "in.audi.vwg"   & vbNewLine _  
+              & "10.221.196.74"   & vbTab & "audi.vwg"      & vbNewLine   
+                   
+  window.event.returnvalue=false         
+    stCh =  "App_Help_Show"
+    StoreChanges (stCh) 
+End Function 
+
+Function logAdmChanges(Whom, Where, How)    
+  If enableLogging = True Then    
+    Set objFSO  = CreateObject("Scripting.FileSystemObject")  
+    Set logFSO  = CreateObject("Scripting.FileSystemObject")      
+    Const ForAppending = 8       
+    
+    Set oNet = CreateObject("Wscript.Network")
+      From = oNet.ComputerName
+      Who = oNet.UserName                 
+    Set oNet = Nothing
+  
+    docLoc = document.location.href
+    docLoc = Replace(Right(docLoc, Len(docLoc) - 8), "/", "\") 
+    Set docLoc = objFSO.GetFile(docLoc) 
+    docLoc = docLoc.ParentFolder 
+    Set docLoc = objFSO.GetFolder(docLoc)
+    
+    logFileLoc = docLoc & "\ADM_Change_Log.txt"
+    
+    if Not logFSO.FileExists(logFileLoc) Then 
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      Set newFile  = newFileO.CreateTextFile(logFileLoc, True)
+        newFile.WriteLine "Datum Změny        " & vbTab & "Vzdálené PC"  & vbTab & "Admin"  & vbTab & "Typ"  & vbTab & "Odkud změněno"  & vbTab & "Kým změněno" 
+        newFile.Close
+      Set newFileO = Nothing
+      Set newFile = Nothing       
+    End If
+                                    
+    lineToWrite = Now() & vbTab & UCase(Where) & vbTab & UCase(Whom) & vbTab & How & vbTab & UCase(From) & vbTab & UCase(Who)                                 
+    Set logFile = logFSO.OpenTextFile(logFileLoc, ForAppending, True) 
+      logFile.WriteLine lineToWrite
+      logFile.Close 
+    Set logFSO = Nothing
+    Set logFile = Nothing
+  End If
+End Function
+
+Function StoreChanges(txt)
+  If enableLogging = True Then   
+    Dim buff()
+    
+    Set oNet = CreateObject("Wscript.Network")
+      From = oNet.ComputerName
+      Who = oNet.UserName                 
+    Set oNet = Nothing  
+    
+    txt = Replace("AP"  & ";" & Now() & ";" & From & ";" & Who & ";" & txt & ";", Chr(10), Chr(255)) 
+      
+    For i = 1 To Len(txt)
+        Reply = Reply & Chr(CLng("&H" & Suffle(Str_pad(Hex(Move(Asc(Mid(txt, i, 1)))), 0, 2, "L")))) 
+    Next
+    
+    Set logFSO  = CreateObject("Scripting.FileSystemObject")      
+    Const ForAppending = 8       
+  
+    
+    Set docLoc = logFSO.GetFolder("\\skoda.vwg\data\T\@TE\.Public")    
+    Set newFileO = CreateObject("Scripting.FileSystemObject")
+    logFileLoc = docLoc & "\History.bin"
+    
+    if Not logFSO.FileExists(logFileLoc) Then 
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      Set newFile  = newFileO.CreateTextFile(logFileLoc, True) 
+      Set newFileO = Nothing
+      Set newFile  = Nothing
+    End If                               
+                                     
+    Set logFile = logFSO.OpenTextFile(logFileLoc, ForAppending, True, True)  
+      logFile.WriteLine Replace(Reply, Chr(10), Chr(255))
+      logFile.Close 
+    Set logFSO = Nothing
+    Set logFile = Nothing  
+  End If
+End Function
+
+Function Move(txt)
+  If txt > 128 Then
+    Move = txt - 128
+  ElseIf  txt < 128 Then
+    Move = txt + 128
+  Else
+    Move = txt
+  End If     
+End Function
+
+Function Suffle(txt)
+  A = Mid(txt, 1, 1)
+  B = Mid(txt, 2, 1)  
+  Suffle = B & A
+End Function
+
+Function AVInfo_onclick()
+  LocalAV               
+
+  If Len(document.uForm.cn.value) > 5 And InStr(document.uForm.cn.value, "Offline") = False Then
+    If InStr(document.uForm.ar.value, "64") Then                    
+      strKeyPathDat = "SOFTWARE\Wow6432Node\McAfee\AVEngine\"           
+      strKeyPathEpo = "SOFTWARE\Wow6432Node\McAfee\Agent\"           
+      strKeyPathAVv = "SOFTWARE\Wow6432Node\McAfee\DesktopProtection\"
+    Else    
+      strKeyPathDat = "SOFTWARE\McAfee\AVEngine\"           
+      strKeyPathEpo = "SOFTWARE\McAfee\Agent\"            
+      strKeyPathAVv = "SOFTWARE\McAfee\DesktopProtection\"  
+    End If
+     
+    const HKEY_LOCAL_MACHINE = &H80000002 
+    Set oReg=GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & document.uForm.cn.value & "\root\default:StdRegProv")
+    oReg.GetDWORDValue HKEY_LOCAL_MACHINE,strKeyPathDat,"AVDatVersion",dwValueDat 
+    oReg.GetStringValue HKEY_LOCAL_MACHINE,strKeyPathEpo,"AgentVersion",szValueEpo 
+    oReg.GetStringValue HKEY_LOCAL_MACHINE,strKeyPathAVv,"szProductVer",szValueAvv 
+                                                        
+    MsgBox "Informace o AV na "  & UCase(document.uForm.cn.value) & vbCrLf & vbCrLf _
+          & vbTab & vbTab & "Vzdálený PC" & vbTab & "Místní PC " & vbCrLf _
+          & "Verze AV:    " & vbTab & szValueAvv & vbTab & vbTab & "" & szValueAvvLocal & "" & vbCrLf _
+          & "Verze ePo:   " & vbTab & szValueEpo & vbTab & vbTab & "" & szValueEpoLocal & ""  & vbCrLf _
+          & "Verze DAT:   " & vbTab & dwValueDat & vbTab & vbTab & "" & dwValueDatLocal & ""  & vbCrLf    
+
+    stCh =  "Read_AV_Info" & ";" & UCase(document.uForm.cn.value)
+    StoreChanges (stCh) 
+  Else
+    MsgBox "Musíte nejdříve vyhledat PC!"      
+  End If
+  window.event.returnvalue=false
+End Function
+
+Function toCzDate(ENdate)
+  TMP = Split(ENdate, "/")
+  toCzDate = TMP(1) & "." & TMP(0) & "." & TMP(2)  
+End Function
+
+Function showSW_onclick()      
+  changeColor 0, "IDShowSW"
+  Sleep(1)
+  If appWaiting = False Then
+    appWaiting = True
+    WaitingApp = "Seznam SW"
+    If InStr(document.uForm.ar.value, "64") Then
+      Const HKEY_LOCAL_MACHINE = &H80000002  
+      strComputer = document.uForm.cn.value 
+      sRegPath = "Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\"
+    
+      GetTmpPath  = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2)
+      strComputer = document.uForm.cn.value 
+      Temp = GetTmpPath & "\SW_" & strComputer & "_(01).htm" 
+    
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      If newFileO.FileExists(Temp) Then 
+        For No = 1 To 50
+          Temp = GetTmpPath & "\SW_" & strComputer & "_(" & Str_Pad(No, "0", 2, "L") & ").htm"
+            If newFileO.FileExists(Temp) = False Then
+              Exit For
+            End If
+        Next
+      End If  
+                                                  
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      Set newFile  = newFileO.CreateTextFile(Temp, True)
+        newFile.WriteLine excelHeader
+        newFile.WriteLine "<table>" & vbCrLf
+        newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Název SW </b></td><td><b>Verze SW </b></td><td><b>Výrobce SW </b></td><td><b>Umístění instalace </b></td><td><b>Odinstalace </b></td><td><b>Ikona </b></td><td><b>Datum instalace </b></td><td><b>Registry Key </b></td></tr>" & vbCrLf    
+      Set oReg=GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\default:StdRegProv")
+      oReg.EnumKey HKEY_LOCAL_MACHINE, sRegPath, arrSubKeys
+      For Each strAsk In arrSubKeys    
+        'On Error Resume Next
+        keyStr = sRegPath & strAsk & "\"
+        oReg.GetStringValue HKEY_LOCAL_MACHINE,keyStr,"DisplayName",DisplayName  
+        oReg.GetStringValue HKEY_LOCAL_MACHINE,keyStr,"DisplayVersion",DisplayVersion  
+        oReg.GetStringValue HKEY_LOCAL_MACHINE,keyStr,"InstallLocation",InstallLocation  
+        oReg.GetStringValue HKEY_LOCAL_MACHINE,keyStr,"Publisher",Publisher 
+        oReg.GetStringValue HKEY_LOCAL_MACHINE,keyStr,"UninstallString",UninstallString 
+        oReg.GetStringValue HKEY_LOCAL_MACHINE,keyStr,"DisplayIcon",DisplayIcon  
+        oReg.GetStringValue HKEY_LOCAL_MACHINE,keyStr,"InstallDate",InstallDate  
+        If Len(DisplayName) > 1 And InStr(DisplayName, "Service Pack") = False And InStr(DisplayName, "Security Update") = False And InStr(DisplayName, "Update for") = False Then 
+          If TRcol = "#FFFFFF" Then TRcol = "#DDDDDD" Else TRcol = "#FFFFFF"
+          newFile.WriteLine  "<tr style=""background-color:" & TRcol & "; color: black;""><td><b>" & DisplayName & "</b></td><td style=""float:left"">" & DisplayVersion & "&nbsp;</td><td>" & Publisher & "</td><td>" & InstallLocation & "</td><td>" & UninstallString & "</td><td>" & DisplayIcon & "</td><td>" & InstallDate & "</td><td>" & keyStr & "</td></tr>" & vbCrLf
+        End If     
+      Next         
+      newFile.WriteLine "</table>" & vbCrLf
+      newFile.WriteLine excelFooter
+      newFile.Close
+      Set newFile = Nothing    
+      Set wShell = CreateObject("WScript.Shell")  
+      changeColor 1, "IDShowSW"
+      wShell.Run "excel.exe " & Temp, 1, True
+      newFileO.DeleteFile(Temp)              
+      Set newFileO = Nothing         
+      
+      stCh =  "Read_SW_Info" & ";" & UCase(document.uForm.cn.value)
+      StoreChanges (stCh)                                     
+    Else
+      MsgBox "Pouze pro 64bit systémy."
+    End If
+    appWaiting = False
+    WaitingApp = ""
+  Else
+    MsgBox "Nejdříve musíte uzavřít Tabulku '" & WaitingApp & "'." & vbCrLf _
+  	& "Před uložením doporučujeme soubor uložit."
+  End If  
+  changeColor 999, "IDShowSW"
+  window.event.returnvalue=false
+End Function
+
+Function showUpdates_onclick()   
+  If Len(document.uForm.cn.value) > 5 And InStr(document.uForm.cn.value, "Offline") = False Then  
+    changeColor 0, "IDshowUpdates"    
+    Sleep(1)
+    If appWaiting = False Then   
+      appWaiting = True
+      WaitingApp = "Seznam Aktualizací"
+    
+      GetTmpPath  = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2)
+      strComputer = document.uForm.cn.value
+      Temp = GetTmpPath & "\App_" & strComputer & "_(01).htm" 
+      
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      If newFileO.FileExists(Temp) Then 
+        For No = 1 To 50
+          Temp = GetTmpPath & "\App_" & strComputer & "_(" & Str_Pad(No, "0", 2, "L") & ").htm"
+            If newFileO.FileExists(Temp) = False Then
+              Exit For
+            End If
+        Next
+      End If  
+      
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      Set newFile  = newFileO.CreateTextFile(Temp, True)
+        newFile.WriteLine excelHeader
+        newFile.WriteLine "<table>" & vbCrLf
+        newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Installation Date</b></td><td><b>Hot Fix ID</b></td><td><b>Hot Fix Comments</b></td><td><b>Hot Fix Description</b></td><td><b>Hot Fix Caption</b></td><td><b>Installed By</b></td><td><b>Hot Fix Status</b></td></tr>" & vbCrLf   
+      Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+      Set colQuickFixes = objWMIService.ExecQuery("SELECT * FROM Win32_QuickFixEngineering")
+      For Each objQuickFix in colQuickFixes
+        If TRcol = "#FFFFFF" Then TRcol = "#DDDDDD" Else TRcol = "#FFFFFF"
+        newFile.WriteLine  "<tr style=""background-color:" & TRcol & "; color: black;""><td>" & toCzDate(objQuickFix.InstalledOn) & "</td><td>" & objQuickFix.HotFixID & "</td><td>" & objQuickFix.FixComments & "</td><td>" & objQuickFix.Description  & "</td><td>" & objQuickFix.Caption  & "</td><td>" & objQuickFix.InstalledBy  & "</td><td>" & objQuickFix.Status & "</td></tr>" & vbCrLf 
+      Next
+      newFile.WriteLine "</table>" & vbCrLf
+      newFile.WriteLine excelFooter 
+      newFile.Close
+      Set newFile = Nothing    
+      Set wShell = CreateObject("WScript.Shell")         
+      
+      stCh =  "Read_Updates_Info" & ";" & UCase(document.uForm.cn.value)
+      StoreChanges (stCh) 
+      
+      changeColor 1, "IDshowUpdates"
+      wShell.Run "excel.exe " & Temp, 1, True
+      newFileO.DeleteFile(Temp)              
+      Set newFileO = Nothing
+      appWaiting = False
+      WaitingApp = "" 
+    Else
+      MsgBox "Nejdříve musíte uzavřít Tabulku '" & WaitingApp & "'." & vbCrLf _
+    	& "Před uložením doporučujeme soubor uložit."
+    End If  
+    changeColor 999, "IDshowUpdates"   
+  Else
+    MsgBox "Nejdříve vyhledejte PC."
+  End If
+  
+  window.event.returnvalue=false
+End Function  
+
+Function showServices()                                                                                                                      
+  changeColor 0, "IDshowServices"
+  answer = MsgBox("Načítání služeb po sítí může trvat několik minut." & vbCrLf & "Přejete si pokračovat?", vbYesNo + vbQuestion, "UPOZORNĚNÍ")      
+    If Answer = vbYes Then
+      If appWaiting = False Then
+        strComputer = document.uForm.cn.value
+        appWaiting  = True
+        WaitingApp  = "Seznam Služeb"
+        
+        GetTmpPath  = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2)
+        strComputer = document.uForm.cn.value
+        Temp = GetTmpPath & "\Serv_" & strComputer & "_(01).htm" 
+    
+        Set newFileO = CreateObject("Scripting.FileSystemObject")
+        If newFileO.FileExists(Temp) Then 
+          For No = 1 To 50
+            Temp = GetTmpPath & "\Serv_" & strComputer & "_(" & Str_Pad(No, "0", 2, "L") & ").htm"
+              If newFileO.FileExists(Temp) = False Then
+                Exit For
+              End If
+          Next
+        End If  
+        
+        Set newFileO = CreateObject("Scripting.FileSystemObject")
+        Set newFile  = newFileO.CreateTextFile(Temp, True)        
+          newFile.WriteLine excelHeader
+          newFile.WriteLine "<table>" & vbCrLf 
+          newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Name</b></td><td><b>Caption</b></td><td><b>Status</b></td><td><b>Started</b></td><td><b>StartMode</b></td><td><b>Description</b></td></tr>" & vbCrLf 
+        Set objWMI = GetObject("winmgmts:\\" & strComputer & "\root\cimv2") 
+        Set objInstances = objWMI.InstancesOf("CIM_Service",48)
+        For Each objInstance in objInstances
+          If Len(objInstance.Caption) > 1 Then 
+            If TRcol = "#FFFFFF" Then TRcol = "#DDDDDD" Else TRcol = "#FFFFFF"
+            newFile.WriteLine  "<tr style=""background-color:" & TRcol & "; color: black;""><td>" & objInstance.Name & "</td><td><b>" & objInstance.Caption & "</b></td><td>" & objInstance.Status  & "</td><td>" & objInstance.Started  & "</td><td>" & objInstance.StartMode & "</td><td>" & CleanString(objInstance.Description) & "</td></tr>" & vbCrLf
+          End If
+        Next
+        newFile.WriteLine "</table>" & vbCrLf
+        newFile.WriteLine excelFooter 
+        newFile.Close
+        Set newFile = Nothing    
+        Set wShell = CreateObject("WScript.Shell")  
+        
+        stCh =  "Read_Services_Info" & ";" & UCase(document.uForm.cn.value)
+        StoreChanges (stCh) 
+                                                                                                                       
+        changeColor 1, "IDshowServices"
+        wShell.Run "excel.exe " & Temp, 1, True
+        newFileO.DeleteFile(Temp)              
+        Set newFileO = Nothing
+        appWaiting = False
+        WaitingApp = ""
+      Else
+        MsgBox "Nejdříve musíte uzavřít Tabulku '" & WaitingApp & "'." & vbCrLf _
+      	& "Před uložením doporučujeme soubor uložit."
+      End If  
+    End If                                                                                                             
+  changeColor 999, "IDshowServices"
+  window.event.returnvalue=false
+End Function
+
+  serNames = Array("MBAMAgent","MpsSvc","wscsvc","Dhcp","Dnscache","masvc","McShield","McTaskManager","Schedule","PlugPlay","lmhosts","Browser","hidserv","Netman","BITS","Netlogon","Spooler","CcmExec","RasMan","TermService","RemoteRegistry","WSearch","wuauserv","AudioSrv")
+  serCapts = Array("BitLocker Management Client Service","Brána Windows Firewall","Centrum zabezpečení","Klient DHCP","Klient DNS","McAfee Agent Service","McAfee McShield","McAfee Task Manager","Plánovač úloh","Plug and Play","Podpora rozhraní NetBIOS","Prohledávání počítačů","Přístup k zařízením HID","Síťová připojení","Služba inteligentního přenosu na pozadí","Služba Netlogon","Služba zařazování tisku","SMS Agent Host","Správce vzdáleného přístupu","Vzdálená plocha","Vzdálený registr","Windows Search","Windows Update","Zvuk systému Windows")
+  Dim networkInfoBackup
+Function servicesChStat(cmd, service)
+  If Len(document.uForm.cn.value) > 5 And InStr(document.uForm.cn.value, "Offline") = False Then                                                                 
+    Set cimv2 = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+    If cmd = "Show" Then       
+       
+      stCh =  "Show_PC_Services_Basic;" & strComputer
+      StoreChanges (stCh)                                                                           
+      serText = "<table>" & vbCrLf
+      networkInfoBackup = networkInfo.innerHTML     
+      For i = LBound(serNames) To UBound(serNames)     
+      bT = "Nenalezeno"
+      tD = "Diabled"
+      On Error Resume Next 
+        Set oService = cimv2.Get("Win32_Service.Name='" & serNames(i) & "'") 
+        If oService.State = "Running" Then      
+          tD = ""
+          bT = "Vypnout"   
+        ElseIf oService.State = "Stopped" Then  
+          tD = ""                
+          bT = "Zapnout" 
+        Else
+          bT = "Nelze"
+          tD = "Diabled"
+        End If 
+        serText = serText & "<tr><td>" & serCapts(i) & "</td><td><input type=""button"" class=""button"" name=""cmd" & serNames (i) & """ id=""cmd" & serNames (i) & """ value=""" & bT & """ onclick=""servicesChStat 'chState', '" &  serNames(i) & "'"" style=""width:110px"" " & tD & " /></td></tr>" & vbCrLf
+      Next
+      serText = serText & "<tr><td colspan=""2""><input type=""button"" class=""button"" name=""cmdDiscard"" id=""cmdDiscard"" value=""Skryj Služby a ukaž síť."" onclick=""servicesChStat 'Hide', 'Null'"" /></td></tr>" & vbCrLf 
+      serText = serText & "<tr><td colspan=""2""><input type=""button"" class=""button"" name=""showServices"" onclick=""rShowServices 'null', '1'"" id=""IDshowServices"" Value=""Vypiš všechny služby"" title=""Vypíše všechny služby na PC"" /> </td></tr>" & vbCrLf
+      serText = serText & "</table>" & vbCrLf
+      networkInfo.innerHTML = serText   
+    ElseIf cmd = "Hide" Then
+      networkInfo.innerHTML = networkInfoBackup
+    ElseIf cmd = "chState" And Not IsNull(service) Then
+      Sleep(1)
+      doWhat = document.getElementById("cmd" & service).value
+      If doWhat = "Zapnout" Then
+        StartService strComputer, service, "On"    
+        Sleep(1)
+        Set oService = cimv2.Get("Win32_Service.Name='" & service & "'")  
+        If oService.State = "Running" Then
+          document.getElementById("cmd" & service).value = "Vypnout"
+        Else
+          If oService.State = "Start Pending" Then
+            sSP = vbCrLf & vbCrLf & "Čekejte"     
+            sWS = "Running"
+            sWB = "Vypnout"   
+          End If
+          MsgBox "Zapnutí se nezdařilo." & vbCrLf & "Aktuální stav: " & oService.State & sSP
+        End If
+      Else 
+        StartService strComputer, service, "Off"  
+        Sleep(1)                 
+        Set oService = cimv2.Get("Win32_Service.Name='" & service & "'") 
+        If oService.State = "Stopped" Then
+          document.getElementById("cmd" & service).value = "Zapnout"
+        Else
+          If oService.State = "Stop Pending" Then
+            sSP = vbCrLf & vbCrLf & "Čekejte"
+            sWS = "Stopped"   
+            sWB = "Zapnout"
+          End If
+          MsgBox "Vypnutí se nezdařilo." & vbCrLf & "Aktuální stav: " & oService.State & sSP
+        End If
+      End If
+    Else
+      MsgBox "Chybné parametry."
+    End If
+    If sSP = vbCrLf & vbCrLf & "Čekejte" Then
+    ColoriseRepete 5, "cmd" & service   
+    Set oService = cimv2.Get("Win32_Service.Name='" & service & "'")  
+      If oService.State = sWS Then 
+        document.getElementById("cmd" & service).value = sWB
+        MsgBox "Stav služby úspšně změněn"
+      Else
+        MsgBox "Stav služby se nepodařilo změnit."
+        document.getElementById("cmd" & service).Disabled = True   
+        document.getElementById("cmd" & service).value = "Chyba"
+        document.getElementById("cmd" & service).style.color = "red"
+      End If 
+    End If
+    Set oService = Nothing
+  Else
+    MsgBox "Nejdříve vyhledejte PC."
+  End If
+  window.event.returnvalue=false
+End Function
+
+Function rShowServices(a, z)
+  sleep(z)
+  showServices()
+End Function
+
+Function showHardware_onclick()
+  If Len(document.uForm.cn.value) > 5 And InStr(document.uForm.cn.value, "Offline") = False Then
+    changeColor 0, "IDshowHardware" 
+    Sleep(1)
+    If appWaiting = False Then
+      appWaiting = True
+      WaitingApp = "Seznam Hardware"
+    
+      GetTmpPath  = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2)
+      strComputer = document.uForm.cn.value
+      Temp = GetTmpPath & "\HW_" & strComputer & "_(01).htm" 
+      
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      If newFileO.FileExists(Temp) Then 
+        For No = 2 To 99
+          Temp = GetTmpPath & "\HW_" & strComputer & "_(" & Str_Pad(No, "0", 2, "L") & ").htm"
+            If newFileO.FileExists(Temp) = False Then
+              Exit For
+            End If
+        Next
+      End If 
+      
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      Set newFile  = newFileO.CreateTextFile(Temp, True)                                                            
+      newFile.WriteLine excelHeader
+      newFile.WriteLine "<table>" & vbCrLf
+      Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2") 
+      'BaseBoard'
+      Set colItems = objWMIService.ExecQuery("Select * from Win32_BaseBoard")  
+        newFile.WriteLine "<tr><td style=""font: italic bold 15px/1.5 Arial"">BaseBoard</td></tr>" 
+        TRcol = "#DDDDDD"                                               
+        newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Description</b></td><td><b>Manufacturer</b></td><td><b>Name</b></td><td><b>SerialNumber</b></td><td><b>Version</b></td></tr>" & vbCrLf   
+      For Each objItem in colItems 
+        If TRcol = "#FFFFFF" Then TRcol = "#DDDDDD" Else TRcol = "#FFFFFF"                                                                                          
+        newFile.WriteLine  "<tr style=""background-color:" & TRcol & "; color: black;""><td><b>" & objItem.Description & "</b></td><td>" & objItem.Manufacturer & "</td><td>" & objItem.Name  & "</td><td>" & objItem.SerialNumber  & "</td><td>" & objItem.Version & "</td></tr>" & vbCrLf 
+      Next 
+      'Processor'
+      Set colItems = objWMIService.ExecQuery("Select * from Win32_Processor")
+        newFile.WriteLine "<tr><td>&nbsp;</td></tr>"                                          
+        newFile.WriteLine "<tr><td style=""font: italic bold 15px/1.5 Arial"">Processor</td></tr>"                                               
+        newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Caption</b></td><td><b>Manufacturer</b></td><td><b>Family</b></td><td><b>MaxClockSpeed</b></td><td><b>Architecture</b></td></tr>" & vbCrLf                  
+        TRcol = "#DDDDDD"
+      For Each objItem in colItems  
+        If TRcol = "#FFFFFF" Then TRcol = "#DDDDDD" Else TRcol = "#FFFFFF"              
+        newFile.WriteLine  "<tr style=""background-color:" & TRcol & "; color: black;""><td><b>" & objItem.Caption & "</b></td><td>" & objItem.Manufacturer & "</td><td>" & modelCPU(objItem.Family) & "</td><td>" & objItem.MaxClockSpeed & " MHz</td><td>" & typeCPU(objItem.Architecture) & "</td></tr>" & vbCrLf  
+      Next 
+      'PhysicalMemory'  
+        newFile.WriteLine "<tr><td>&nbsp;</td></tr>"                                          
+        newFile.WriteLine "<tr><td style=""font: italic bold 15px/1.5 Arial"">PhysicalMemory</td></tr>"                                               
+        newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Description</b></td><td><b>Manufacturer</b></td><td><b>Capacity</b></td><td><b>Speed</b></td></tr>" & vbCrLf      
+        TRcol = "#DDDDDD"
+      For Each objItem in objWMIService.InstancesOf("Win32_PhysicalMemory") 
+        If TRcol = "#FFFFFF" Then TRcol = "#DDDDDD" Else TRcol = "#FFFFFF"  
+        newFile.WriteLine  "<tr style=""background-color:" & TRcol & "; color: black;""><td><b>" & objItem.Tag  & "</b></td><td>" & objItem.Manufacturer & "</td><td>" & (CStr(objItem.Capacity) / 1024 / 1024) & " GB</td><td>" & objItem.Speed & " MHz</td></tr>" & vbCrLf      
+      Next  
+      'DesktopMonitor'  
+        newFile.WriteLine "<tr><td>&nbsp;</td></tr>"                                   
+        newFile.WriteLine "<tr><td style=""font: italic bold 15px/1.5 Arial"">DesktopMonitor</td></tr>"  
+        newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Monitor ID</b></td><td><b>Model Name</b></td><td><b>Serial Number</b></td><td><b>VESA Manufacturer ID</b></td><td><b>Manufacture Date</b></td></tr>" & vbCrLf    
+        newFile.WriteLine readMonInfo(strComputer) 
+      'PnPEntity'
+      Set colItems = objWMIService.ExecQuery("Select * from Win32_PnPEntity") 
+        newFile.WriteLine "<tr><td>&nbsp;</td></tr>"
+        newFile.WriteLine "<tr><td style=""font: italic bold 15px/1.5 Arial"">PnPEntity</tr></td>"                                               
+        newFile.WriteLine "<tr style=""background-color:black;color:silver""><td><b>Caption</b></td><td><b>Manufacturer</b></td><td><b>PNPDeviceID</b></td><td><b>Status</b></td><td><b>ConfigManagerErrorCode</b></td></tr>" & vbCrLf             
+        TRcol = "#DDDDDD"  
+      For Each objItem in colItems      
+        If TRcol = "#FFFFFF" Then TRcol = "#DDDDDD" Else TRcol = "#FFFFFF"  
+        If objItem.ConfigManagerErrorCode <> 0 Then
+          sRed = "<span style=""color:red"">"
+          eRed = "</span>"
+        Else 
+          sRed = "<span style=""color:green"">"
+          eRed = "</span>"                       
+        End If
+        newFile.WriteLine  "<tr style=""background-color:" & TRcol & "; color: black;""><td><b>" & objItem.Caption & "</b></td><td>" & objItem.Manufacturer & "</td><td>" & objItem.PNPDeviceID  & "</td><td>" & objItem.Status  & "</td><td>" & sRed & statusPNP(objItem.ConfigManagerErrorCode) & eRed &"</td></tr>" & vbCrLf   
+      Next 
+      newFile.WriteLine "</table>" & vbCrLf
+      newFile.WriteLine excelFooter
+      newFile.Close
+      Set newFile = Nothing    
+      Set wShell = CreateObject("WScript.Shell")       
+      
+      stCh =  "Read_HW_Info" & ";" & UCase(document.uForm.cn.value)
+      StoreChanges (stCh) 
+      
+      changeColor 1, "IDshowHardware"
+      wShell.Run "excel.exe " & Temp, 1, True
+      newFileO.DeleteFile(Temp)              
+      Set newFileO = Nothing
+      appWaiting = False
+      WaitingApp = ""
+      document.getElementById("IDshowHardware").style.color = "rgb(0,0,0)"
+    Else
+      MsgBox "Nejdříve musíte uzavřít Tabulku '" & WaitingApp & "'." & vbCrLf _
+    	& "Před uložením doporučujeme soubor uložit."
+    End If        
+    changeColor 999, "IDshowHardware" 
+  Else
+    MsgBox "Nejdříve vyhledejte PC."
+  End If
+  
+  window.event.returnvalue=false
+End Function
+
+Public Function CleanString(strSource)
+  On Error Resume Next
+    strSource = Replace(strSource, vbTab, " ")
+    strSource = Replace(strSource, vbCrLf, " ")
+  Do While (InStr(strSource, "  "))
+    strSource = Replace(strSource, "  ", " ")
+  Loop
+    CleanString = Trim(strSource)
+Exit Function
+
+CleanStringErr:
+    ' Insert error-handling code here
+End Function
+
+Function Str_pad(str, pChr, pLen, side)
+  Padlength = pLen - Len(str) 
+  If Padlength > 0 Then
+    For x = 1 To Padlength
+      PadString = PadString & pChr
+    Next
+  End If
+  If side = "P" Then
+    Str_pad = str & PadString
+  else
+    Str_pad = PadString & str
+  End If
+End Function
+  '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'
+Function readMonInfo(CN)
+Dim WshShell
+Set WshShell = CreateObject("WScript.Shell")
+Dim strComputer, message
+
+Dim intMonitorCount
+Dim oRegistry, sBaseKey, sBaseKey2, sBaseKey3, skey, skey2, skey3
+Dim sValue
+dim i, iRC, iRC2, iRC3
+Dim arSubKeys, arSubKeys2, arSubKeys3, arrintEDID
+Dim strRawEDID
+Dim ByteValue, strSerFind, strMdlFind
+Dim intSerFoundAt, intMdlFoundAt, findit
+Dim tmp, tmpser, tmpmdl, tmpctr
+Dim batch, bHeader
+batch = False 
+ 
+strComputer = UCase(CN)
+
+If batch Then
+Dim fso,logfile, appendout
+logfile = wshShell.ExpandEnvironmentStrings("%userprofile%") & "\desktop\MonitorInfo.csv"
+
+'setup Log
+Const ForAppend = 8
+Set fso = CreateObject("Scripting.FileSystemObject")
+If Not fso.FileExists(logfile) Then bHeader = True
+set appendout = fso.OpenTextFile(logfile, ForAppend, True)
+
+If bHeader Then
+appendout.writeline "Computer,Model,Serial #,Vendor ID,Manufacture Date,Messages"
+End If
+End If
+
+Dim strarrRawEDID()
+intMonitorCount=0
+Const HKLM = &H80000002 'HKEY_LOCAL_MACHINE
+'get a handle to the WMI registry object
+On Error Resume Next
+Set oRegistry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "/root/default:StdRegProv")
+
+If Err <> 0 Then
+If batch Then
+EchoAndLog strComputer & ",,,,," & Err.Description
+Else
+MsgBox "Failed. " & Err.Description,vbCritical + vbOKOnly,strComputer
+WScript.Quit
+End If
+End If
+
+
+sBaseKey = "SYSTEM\CurrentControlSet\Enum\DISPLAY\"
+'enumerate all the keys HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\
+iRC = oRegistry.EnumKey(HKLM, sBaseKey, arSubKeys)
+For Each sKey In arSubKeys
+'we are now in the registry at the level of:
+'HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\<VESA_Monitor_ID\
+'we need to dive in one more level and check the data of the "HardwareID" value
+sBaseKey2 = sBaseKey & sKey & "\"
+iRC2 = oRegistry.EnumKey(HKLM, sBaseKey2, arSubKeys2)
+For Each sKey2 In arSubKeys2
+'now we are at the level of:
+'HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\<VESA_Monitor_ID\<PNP_ID>\
+'so we can check the "HardwareID" value
+oRegistry.GetMultiStringValue HKLM, sBaseKey2 & sKey2 & "\", "HardwareID", sValue
+for tmpctr=0 to ubound(svalue)
+If lcase(left(svalue(tmpctr),8))="monitor\" then
+'If it is a monitor we will check for the existance of a control subkey
+'that way we know it is an active monitor
+sBaseKey3 = sBaseKey2 & sKey2 & "\"
+iRC3 = oRegistry.EnumKey(HKLM, sBaseKey3, arSubKeys3)
+For Each sKey3 In arSubKeys3
+'Kaplan edit
+strRawEDID = ""
+If skey3="Control" Then
+'If the Control sub-key exists then we should read the edid info
+oRegistry.GetBinaryValue HKLM, sbasekey3 & "Device Parameters\", "EDID", arrintEDID
+If vartype(arrintedid) <> 8204 then 'and If we don't find it...
+strRawEDID="EDID Not Available" 'store an "unavailable message
+else
+for each bytevalue in arrintedid 'otherwise conver the byte array from the registry into a string (for easier processing later)
+strRawEDID=strRawEDID & chr(bytevalue)
+Next
+End If
+'now take the string and store it in an array, that way we can support multiple monitors
+redim preserve strarrRawEDID(intMonitorCount)
+strarrRawEDID(intMonitorCount)=strRawEDID
+intMonitorCount=intMonitorCount+1
+End If
+Next
+End If
+Next
+Next
+Next
+'*****************************************************************************************
+'now the EDID info for each active monitor is stored in an array of strings called strarrRawEDID
+'so we can process it to get the good stuff out of it which we will store in a 5 dimensional array
+'called arrMonitorInfo, the dimensions are as follows:
+'0=VESA Mfg ID, 1=VESA Device ID, 2=MFG Date (M/YYYY),3=Serial Num (If available),4=Model Descriptor
+'5=EDID Version
+'*****************************************************************************************
+On Error Resume Next
+dim arrMonitorInfo()
+redim arrMonitorInfo(intMonitorCount-1,5)
+dim location(3)
+for tmpctr=0 to intMonitorCount-1
+If strarrRawEDID(tmpctr) <> "EDID Not Available" then
+'*********************************************************************
+'first get the model and serial numbers from the vesa descriptor
+'blocks in the edid. the model number is required to be present
+'according to the spec. (v1.2 and beyond)but serial number is not
+'required. There are 4 descriptor blocks in edid at offset locations
+'&H36 &H48 &H5a and &H6c each block is 18 bytes long
+'*********************************************************************
+location(0)=mid(strarrRawEDID(tmpctr),&H36+1,18)
+location(1)=mid(strarrRawEDID(tmpctr),&H48+1,18)
+location(2)=mid(strarrRawEDID(tmpctr),&H5a+1,18)
+location(3)=mid(strarrRawEDID(tmpctr),&H6c+1,18)
+
+'you can tell If the location contains a serial number If it starts with &H00 00 00 ff
+strSerFind=chr(&H00) & chr(&H00) & chr(&H00) & chr(&Hff)
+'or a model description If it starts with &H00 00 00 fc
+strMdlFind=chr(&H00) & chr(&H00) & chr(&H00) & chr(&Hfc)
+
+intSerFoundAt=-1
+intMdlFoundAt=-1
+for findit = 0 to 3
+If instr(location(findit),strSerFind)>0 then
+intSerFoundAt=findit
+End If
+If instr(location(findit),strMdlFind)>0 then
+intMdlFoundAt=findit
+End If
+Next
+
+'If a location containing a serial number block was found then store it
+If intSerFoundAt<>-1 then
+tmp=right(location(intSerFoundAt),14)
+If instr(tmp,chr(&H0a))>0 then
+tmpser=trim(left(tmp,instr(tmp,chr(&H0a))-1))
+Else
+tmpser=trim(tmp)
+End If
+'although it is not part of the edid spec it seems as though the
+'serial number will frequently be preceeded by &H00, this
+'compensates for that
+If left(tmpser,1)=chr(0) then tmpser=right(tmpser,len(tmpser)-1)
+else
+tmpser="Not Found"
+End If
+
+'If a location containing a model number block was found then store it
+If intMdlFoundAt<>-1 then
+tmp=right(location(intMdlFoundAt),14)
+If instr(tmp,chr(&H0a))>0 then
+tmpmdl=trim(left(tmp,instr(tmp,chr(&H0a))-1))
+else
+tmpmdl=trim(tmp)
+End If
+'although it is not part of the edid spec it seems as though the
+'serial number will frequently be preceeded by &H00, this
+'compensates for that
+If left(tmpmdl,1)=chr(0) then tmpmdl=right(tmpmdl,len(tmpmdl)-1)
+else
+tmpmdl="Not Found"
+End If
+
+'**************************************************************
+'Next get the mfg date
+'**************************************************************
+Dim tmpmfgweek,tmpmfgyear,tmpmdt
+'the week of manufacture is stored at EDID offset &H10
+tmpmfgweek=asc(mid(strarrRawEDID(tmpctr),&H10+1,1))
+
+'the year of manufacture is stored at EDID offset &H11
+'and is the current year -1990
+tmpmfgyear=(asc(mid(strarrRawEDID(tmpctr),&H11+1,1)))+1990
+
+'store it in month/year format
+tmpmdt=month(dateadd("ww",tmpmfgweek,datevalue("1/1/" & tmpmfgyear))) & "/" & tmpmfgyear
+
+'**************************************************************
+'Next get the edid version
+'**************************************************************
+'the version is at EDID offset &H12
+Dim tmpEDIDMajorVer, tmpEDIDRev, tmpVer
+tmpEDIDMajorVer=asc(mid(strarrRawEDID(tmpctr),&H12+1,1))
+
+'the revision level is at EDID offset &H13
+tmpEDIDRev=asc(mid(strarrRawEDID(tmpctr),&H13+1,1))
+
+'store it in month/year format
+tmpver=chr(48+tmpEDIDMajorVer) & "." & chr(48+tmpEDIDRev)
+
+'**************************************************************
+'Next get the mfg id
+'**************************************************************
+'the mfg id is 2 bytes starting at EDID offset &H08
+'the id is three characters long. using 5 bits to represent
+'each character. the bits are used so that 1=A 2=B etc..
+'
+'get the data
+Dim tmpEDIDMfg, tmpMfg
+dim Char1, Char2, Char3
+Dim Byte1, Byte2
+tmpEDIDMfg=mid(strarrRawEDID(tmpctr),&H08+1,2)
+Char1=0 : Char2=0 : Char3=0
+Byte1=asc(left(tmpEDIDMfg,1)) 'get the first half of the string
+Byte2=asc(right(tmpEDIDMfg,1)) 'get the first half of the string
+'now shift the bits
+'shift the 64 bit to the 16 bit
+If (Byte1 and 64) > 0 then Char1=Char1+16
+'shift the 32 bit to the 8 bit
+If (Byte1 and 32) > 0 then Char1=Char1+8
+'etc....
+If (Byte1 and 16) > 0 then Char1=Char1+4
+If (Byte1 and 8) > 0 then Char1=Char1+2
+If (Byte1 and 4) > 0 then Char1=Char1+1
+
+'the 2nd character uses the 2 bit and the 1 bit of the 1st byte
+If (Byte1 and 2) > 0 then Char2=Char2+16
+If (Byte1 and 1) > 0 then Char2=Char2+8
+'and the 128,64 and 32 bits of the 2nd byte
+If (Byte2 and 128) > 0 then Char2=Char2+4
+If (Byte2 and 64) > 0 then Char2=Char2+2
+If (Byte2 and 32) > 0 then Char2=Char2+1
+
+'the bits for the 3rd character don't need shifting
+'we can use them as they are
+Char3=Char3+(Byte2 and 16)
+Char3=Char3+(Byte2 and 8)
+Char3=Char3+(Byte2 and 4)
+Char3=Char3+(Byte2 and 2)
+Char3=Char3+(Byte2 and 1)
+tmpmfg=chr(Char1+64) & chr(Char2+64) & chr(Char3+64)
+
+'**************************************************************
+'Next get the device id
+'**************************************************************
+'the device id is 2bytes starting at EDID offset &H0a
+'the bytes are in reverse order.
+'this code is not text. it is just a 2 byte code assigned
+'by the manufacturer. they should be unique to a model
+Dim tmpEDIDDev1, tmpEDIDDev2, tmpDev
+
+tmpEDIDDev1=hex(asc(mid(strarrRawEDID(tmpctr),&H0a+1,1)))
+tmpEDIDDev2=hex(asc(mid(strarrRawEDID(tmpctr),&H0b+1,1)))
+If len(tmpEDIDDev1)=1 then tmpEDIDDev1="0" & tmpEDIDDev1
+If len(tmpEDIDDev2)=1 then tmpEDIDDev2="0" & tmpEDIDDev2
+tmpdev=tmpEDIDDev2 & tmpEDIDDev1
+
+'**************************************************************
+'finally store all the values into the array
+'**************************************************************
+'Kaplan adds code to avoid duplication...
+
+If Not InArray(tmpser,arrMonitorInfo,3) Then
+arrMonitorInfo(tmpctr,0)=tmpmfg
+arrMonitorInfo(tmpctr,1)=tmpdev
+arrMonitorInfo(tmpctr,2)=tmpmdt
+arrMonitorInfo(tmpctr,3)=tmpser
+arrMonitorInfo(tmpctr,4)=tmpmdl
+arrMonitorInfo(tmpctr,5)=tmpVer
+End If
+End If
+Next
+
+'For now just a simple screen print will suffice for output.
+'But you could take this output and write it to a database or a file
+'and in that way use it for asset management.
+i = 0
+for tmpctr = 0 to intMonitorCount-1
+If arrMonitorInfo(tmpctr,1) <> "" And arrMonitorInfo(tmpctr,0) <> "PNP" Then
+If batch Then
+EchoAndLog strComputer & "," & arrMonitorInfo(tmpctr,4) & "," & _
+arrMonitorInfo(tmpctr,3)& "," & arrMonitorInfo(tmpctr,0) & "," & _
+arrMonitorInfo(tmpctr,2)
+Else
+  message = message _
+  & "<tr><td>" & chr(i+65) & "</td>" & _
+  "<td>" & arrMonitorInfo(tmpctr,4) & "</td>" & _
+  "<td>" & arrMonitorInfo(tmpctr,3)& "</td>" & _
+  "<td>" & arrMonitorInfo(tmpctr,0) & "</td>" & _
+  "<td>" & arrMonitorInfo(tmpctr,2) & "</td></tr>" & VbCrLf
+  
+i = i + 1
+End If
+End If
+Next
+ readMonInfo = message
+End Function
+
+Function sysLogRun_onclick()                                                                      
+  changeColor 0, "sysLogRunId"
+  Sleep(1) 
+  If Len(document.uForm.cn.value) > 5 And InStr(document.uForm.cn.value, "Offline") = False Then
+    StartService strComputer, "RemoteRegistry", "On"                 
+    StoreChanges ("Read_PC_Usage;" & strComputer & ";;;;" & Version) 
+    ic = 0
+    If appWaiting = False Then
+      appWaiting = True
+      WaitingApp = "Vzužití systému"
+      GetTmpPath  = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2) 
+      Temp = GetTmpPath & "\PC_Usage.html" 
+    
+      Set wShell   = CreateObject("WScript.Shell")  
+      Set newFileO = CreateObject("Scripting.FileSystemObject")
+      Set newFile  = newFileO.CreateTextFile(Temp, True)
+    
+      Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate,(Security)}!\\" & strComputer & "\root\cimv2")
+      Set EventSet = objWMIService.ExecQuery("SELECT * FROM Win32_NTLogEvent WHERE (Logfile='Application' AND (EventCode=1531 OR EventCode=1532)) OR (Logfile='System' AND EventCode=1)")         '4624
+      if (EventSet.Count = 0) then 
+        MsgBox "No Events"
+      else
+        newFile.WriteLine excelHeader
+        newFile.WriteLine "<table>" 
+        newFile.WriteLine "<tr><td>Typ události</td><td>Datum události</td> " 
+        For Each objEvent in EventSet    
+          If objEvent.EventCode = 1531 Then 
+            ic = ic + 1
+            ReDim Preserve logData(ic)                                  
+            logData(UBound(logData)) = objEvent.TimeWritten & "|" & "<tr style=""color:black""><td style=""background-color:green"">Zapnutí PC</td><td>" & sysLogDate(objEvent.TimeWritten, "CZ") & "</td><td></td></tr>" 
+          ElseIf objEvent.EventCode = 1532 Then 
+            ic = ic + 1
+            ReDim Preserve logData(ic)                                  
+            logData(UBound(logData)) = objEvent.TimeWritten & "|" & "<tr style=""color:black""><td style=""background-color:red"">Vypnutí PC</td><td>" & sysLogDate(objEvent.TimeWritten, "CZ") & "</td><td></td></tr>"  
+          ElseIf objEvent.EventCode = 1 And InStr(1, objEvent.Message, "Systém byl obnoven z režimu spánku.") Then   
+            ic = ic + 1
+            ReDim Preserve logData(ic)                                  
+            logData(UBound(logData)) = objEvent.TimeWritten & "|" & "<tr style=""color:black""><td style=""background-color:orange"">Obnovení ze Spánku</td><td>" & sysLogDate(objEvent.TimeWritten, "CZ") & "</td><td></td></tr>" 
+          Else
+          End If
+        Next      
+        
+        QuickSort logData, LBound(logData), UBound(logData) 
+    
+        For i = 1 To UBound(logData)                     
+          TMP = Split(logData(i), "|")
+          newFile.WriteLine TMP(1)
+        Next
+           
+        newFile.WriteLine "</table>"
+        newFile.WriteLine excelFooter
+        newFile.Close
+        Set wShell = CreateObject("WScript.Shell") 
+        changeColor 1, "sysLogRunId"       
+        Sleep(1)
+        wShell.Run "excel.exe " & Temp, 1, True
+        newFileO.DeleteFile(Temp)                   
+        StartService strComputer, "RemoteRegistry", "Off"
+        Set newFileO = Nothing
+        Set newFile = Nothing 
+      End If     
+      
+    End If             
+  Else
+    MsgBox "Nejdříve vyhledejte PC."
+  End If          
+                                    
+  changeColor 999, "sysLogRunId"  
+  Sleep(1)    
+  window.event.returnvalue=false
+End Function
+
+Sub StartService(Computer, ServiceName, state)
+  If Len(document.uForm.cn.value) > 5 And InStr(document.uForm.cn.value, "Offline") = False Then 
+    Dim cimv2, oService, Result          
+    Set cimv2 = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & Computer & "\root\cimv2")   
+    Set oService = cimv2.Get("Win32_Service.Name='" & ServiceName & "'")       
+    If State = "On" Then
+      If oService.Started Then
+        exit Sub
+      End If
+      Result = oService.StartService
+      If Result = 0 Then s = "Success" Else s = "Fail" End If 
+      stCh =  "Start_PC_Service;" & strComputer & ";" & ServiceName & ";;;" & s
+      StoreChanges (stCh)
+    ElseIf State = "Off" Then     
+      If Not oService.Started Then
+        exit Sub
+      End If
+      Result = oService.StopService
+      If Result = 0 Then s = "Success" Else s = "Fail" End If 
+      stCh =  "Stop_PC_Service;" & strComputer & ";" & ServiceName & ";;;" & s
+      StoreChanges (stCh) 
+    Else
+    End If  
+  Else
+    MsgBox "Nejdříve vyhledejte PC."
+  End If
+          
+End Sub
+
+Function actionGetUptime()
+  remoteComputer = strComputer
+  Set objWMIService = getWMIobject(remoteComputer, "root\CIMV2")
+  Set colOS = objWMIService.ExecQuery("SELECT LastBootUpTime FROM Win32_OperatingSystem")
+ 	For Each objItem in colOS
+		LastBootUp = convertWMIDate(objItem.LastBootUpTime)
+	Next
+	actionGetUptime = datediffToWords(LastBootUp, Now())
+End Function
+
+Function QuickSort(vArray, inLow, inHi)
+  Dim pivot
+  Dim tmpSwap 
+  Dim tmpLow 
+  Dim tmpHi       
+  tmpLow = inLow
+  tmpHi = inHi
+  pivot = vArray((inLow + inHi) \ 2)
+  
+  While (tmpLow <= tmpHi)
+    While (vArray(tmpLow) < pivot And tmpLow < inHi)
+      tmpLow = tmpLow + 1
+    Wend
+    While (pivot < vArray(tmpHi) And tmpHi > inLow)
+      tmpHi = tmpHi - 1
+    Wend
+    If (tmpLow <= tmpHi) Then
+      tmpSwap = vArray(tmpLow)
+      vArray(tmpLow) = vArray(tmpHi)
+      vArray(tmpHi) = tmpSwap
+      tmpLow = tmpLow + 1
+      tmpHi = tmpHi - 1
+    End If
+  Wend
+  If (inLow < tmpHi) Then QuickSort vArray, inLow, tmpHi
+  If (tmpLow < inHi) Then QuickSort vArray, tmpLow, inHi
+End Function 
+
+Function sysLogDate(t, x)
+  If x = "CZ" Then                                                                                        
+    sysLogDate = mid(t,7,2) & ". " & mid(t,5,2) & ". " & mid(t,1,4) & " " & mid(t,9,2) + 1 & ":" & mid(t,11,2) & ":" & mid(t,13,2)     
+  Else  
+    h = mid(t,9,2)
+    if h > 12 Then 
+      h  = h - 12
+      dp = "PM"
+    Else         
+      dp = "AM"
+    End If                                                                                                                         
+    sysLogDate = mid(t,1,4) & "/" & mid(t,5,2) & "/" & mid(t,7,2) & " " & mid(t,9,2) + 1 & ":" & mid(t,11,2) & ":" & mid(t,13,2) & " " & dp 
+  End If  
+End Function 
+
+Function roundDown(num)
+  num = Replace(num, ".", ",")
+  TMP = Split(num, ",")
+  roundDown = TMP(0)
+End Function  
+
+Function InArray(strValue,List,Col)
+Dim i
+For i = 0 to UBound(List)
+If List(i,col) = cstr(strValue) Then
+InArray = True
+Exit Function
+End If
+Next
+InArray = False
+End Function
+
+Function statusPNP(id)					 
+	Select Case id				
+		Case	0		
+			statusPNP	=	"Device is working properly."
+		Case	1		
+			statusPNP	=	"Device is not configured correctly."
+		Case	2		
+			statusPNP	=	"Windows cannot load the driver for this device."
+		Case	3		
+			statusPNP	=	"Driver for this device might be corrupted, or the system may be low on memory or other resources."
+		Case	4		
+			statusPNP	=	"Device is not working properly. One of its drivers or the registry might be corrupted."
+		Case	5		
+			statusPNP	=	"Driver for the device requires a resource that Windows cannot manage."
+		Case	6		
+			statusPNP	=	"Boot configuration for the device conflicts with other devices."
+		Case	7		
+			statusPNP	=	"Cannot filter."
+		Case	8		
+			statusPNP	=	"Driver loader for the device is missing."
+		Case	9		
+			statusPNP	=	"Device is not working properly. The controlling firmware is incorrectly reporting the resources for the device."
+		Case	10		
+			statusPNP	=	"Device cannot start."
+		Case	11		
+			statusPNP	=	"Device failed."
+		Case	12		
+			statusPNP	=	"Device cannot find enough free resources to use."
+		Case	13		
+			statusPNP	=	"Windows cannot verify the device's resources."
+		Case	14		
+			statusPNP	=	"Device cannot work properly until the computer is restarted."
+		Case	15		
+			statusPNP	=	"Device is not working properly due to a possible re-enumeration problem."
+		Case	16		
+			statusPNP	=	"Windows cannot identify all of the resources that the device uses."
+		Case	17		
+			statusPNP	=	"Device is requesting an unknown resource type."
+		Case	18		
+			statusPNP	=	"Device drivers must be reinstalled."
+		Case	19		
+			statusPNP	=	"Failure using the VxD loader."
+		Case	20		
+			statusPNP	=	"Registry might be corrupted."
+		Case	21		
+			statusPNP	=	"System failure. If changing the device driver is ineffective, see the hardware documentation. Windows is removing the device."
+		Case	22		
+			statusPNP	=	"Device is disabled."
+		Case	23		
+			statusPNP	=	"System failure. If changing the device driver is ineffective, see the hardware documentation."
+		Case	24		
+			statusPNP	=	"Device is not present, not working properly, or does not have all of its drivers installed."
+		Case	25		
+			statusPNP	=	"Windows is still setting up the device."
+		Case	26		
+			statusPNP	=	"Windows is still setting up the device."
+		Case	27		
+			statusPNP	=	"Device does not have valid log configuration."
+		Case	28		
+			statusPNP	=	"Device drivers are not installed."
+		Case	29		
+			statusPNP	=	"Device is disabled. The device firmware did not provide the required resources."
+		Case	30		
+			statusPNP	=	"Device is using an IRQ resource that another device is using."
+		Case	31		
+			statusPNP	=	"Device is not working properly. Windows cannot load the required device drivers."
+		Case	Else		
+			statusPNP	=	"Unknown status"
+	End Select				
+End Function					
+
+Function typeCPU(id)
+  Select Case id
+    Case	0		
+    	typeCPU	=	"x86"
+    Case	1		
+    	typeCPU	=	"MIPS"
+    Case	2		
+    	typeCPU	=	"Alpha"
+    Case	3		
+    	typeCPU	=	"PowerPC"
+    Case	5		
+    	typeCPU	=	"ARM"
+    Case	6		
+    	typeCPU	=	"Itanium-based systems"
+    Case	9		
+    	typeCPU	=	"x64"
+    Case Else		
+    	typeCPU	=	"Uknwon type"
+  End Select
+End Function
+
+Function modelCPU(id)
+  Select Case id
+    Case	1		
+    	modelCPU	=	"Other"
+    Case	2		
+    	modelCPU	=	"Unknown"
+    Case	3		
+    	modelCPU	=	"8086"
+    Case	4		
+    	modelCPU	=	"80286"
+    Case	5		
+    	modelCPU	=	"Intel386™ Processor"
+    Case	6		
+    	modelCPU	=	"Intel486™ Processor"
+    Case	7		
+    	modelCPU	=	"8087"
+    Case	8		
+    	modelCPU	=	"80287"
+    Case	9		
+    	modelCPU	=	"80387"
+    Case	10		
+    	modelCPU	=	"80487"
+    Case	11		
+    	modelCPU	=	"Pentium Brand"
+    Case	12		
+    	modelCPU	=	"Pentium Pro"
+    Case	13		
+    	modelCPU	=	"Pentium II"
+    Case	14		
+    	modelCPU	=	"Pentium Processor with MMX™ Technology"
+    Case	15		
+    	modelCPU	=	"Celeron™"
+    Case	16		
+    	modelCPU	=	"Pentium II Xeon™"
+    Case	17		
+    	modelCPU	=	"Pentium III"
+    Case	18		
+    	modelCPU	=	"M1 Family"
+    Case	19		
+    	modelCPU	=	"M2 Family"
+    Case	24		
+    	modelCPU	=	"AMD Duron™ Processor Family"
+    Case	25		
+    	modelCPU	=	"K5 Family"
+    Case	26		
+    	modelCPU	=	"K6 Family"
+    Case	27		
+    	modelCPU	=	"K6-2"
+    Case	28		
+    	modelCPU	=	"K6-3"
+    Case	29		
+    	modelCPU	=	"AMD Athlon™ Processor Family"
+    Case	30		
+    	modelCPU	=	"AMD2900 Family"
+    Case	31		
+    	modelCPU	=	"K6-2+"
+    Case	32		
+    	modelCPU	=	"Power PC Family"
+    Case	33		
+    	modelCPU	=	"Power PC 601"
+    Case	34		
+    	modelCPU	=	"Power PC 603"
+    Case	35		
+    	modelCPU	=	"Power PC 603+"
+    Case	36		
+    	modelCPU	=	"Power PC 604"
+    Case	37		
+    	modelCPU	=	"Power PC 620"
+    Case	38		
+    	modelCPU	=	"Power PC X704"
+    Case	39		
+    	modelCPU	=	"Power PC 750"
+    Case	48		
+    	modelCPU	=	"Alpha Family"
+    Case	49		
+    	modelCPU	=	"Alpha 21064"
+    Case	50		
+    	modelCPU	=	"Alpha 21066"
+    Case	51		
+    	modelCPU	=	"Alpha 21164"
+    Case	52		
+    	modelCPU	=	"Alpha 21164PC"
+    Case	53		
+    	modelCPU	=	"Alpha 21164a"
+    Case	54		
+    	modelCPU	=	"Alpha 21264"
+    Case	55		
+    	modelCPU	=	"Alpha 21364"
+    Case	64		
+    	modelCPU	=	"MIPS Family"
+    Case	65		
+    	modelCPU	=	"MIPS R4000"
+    Case	66		
+    	modelCPU	=	"MIPS R4200"
+    Case	67		
+    	modelCPU	=	"MIPS R4400"
+    Case	68		
+    	modelCPU	=	"MIPS R4600"
+    Case	69		
+    	modelCPU	=	"MIPS R10000"
+    Case	80		
+    	modelCPU	=	"SPARC Family"
+    Case	81		
+    	modelCPU	=	"SuperSPARC"
+    Case	82		
+    	modelCPU	=	"microSPARC II"
+    Case	83		
+    	modelCPU	=	"microSPARC IIep"
+    Case	84		
+    	modelCPU	=	"UltraSPARC"
+    Case	85		
+    	modelCPU	=	"UltraSPARC II"
+    Case	86		
+    	modelCPU	=	"UltraSPARC IIi"
+    Case	87		
+    	modelCPU	=	"UltraSPARC III"
+    Case	88		
+    	modelCPU	=	"UltraSPARC IIIi"
+    Case	96		
+    	modelCPU	=	"68040"
+    Case	97		
+    	modelCPU	=	"68xxx Family"
+    Case	98		
+    	modelCPU	=	"68000"
+    Case	99		
+    	modelCPU	=	"68010"
+    Case	100		
+    	modelCPU	=	"68020"
+    Case	101		
+    	modelCPU	=	"68030"
+    Case	112		
+    	modelCPU	=	"Hobbit Family"
+    Case	120		
+    	modelCPU	=	"Crusoe™ TM5000 Family"
+    Case	121		
+    	modelCPU	=	"Crusoe™ TM3000 Family"
+    Case	122		
+    	modelCPU	=	"Efficeon™ TM8000 Family"
+    Case	128		
+    	modelCPU	=	"Weitek"
+    Case	130		
+    	modelCPU	=	"Itanium™ Processor"
+    Case	131		
+    	modelCPU	=	"AMD Athlon™ 64 Processor Family"
+    Case	132		
+    	modelCPU	=	"AMD Opteron™ Processor Family"
+    Case	144		
+    	modelCPU	=	"PA-RISC Family"
+    Case	145		
+    	modelCPU	=	"PA-RISC 8500"
+    Case	146		
+    	modelCPU	=	"PA-RISC 8000"
+    Case	147		
+    	modelCPU	=	"PA-RISC 7300LC"
+    Case	148		
+    	modelCPU	=	"PA-RISC 7200"
+    Case	149		
+    	modelCPU	=	"PA-RISC 7100LC"
+    Case	150		
+    	modelCPU	=	"PA-RISC 7100"
+    Case	160		
+    	modelCPU	=	"V30 Family"
+    Case	176		
+    	modelCPU	=	"Pentium III Xeon™ Processor"
+    Case	177		
+    	modelCPU	=	"Pentium III Processor with Intel SpeedStep™ Technology"
+    Case	178		
+    	modelCPU	=	"Pentium 4"
+    Case	179		
+    	modelCPU	=	"Intel Xeon™"
+    Case	180		
+    	modelCPU	=	"AS400 Family"
+    Case	181		
+    	modelCPU	=	"Intel Xeon™ Processor MP"
+    Case	182		
+    	modelCPU	=	"AMD Athlon™ XP Family"
+    Case	183		
+    	modelCPU	=	"AMD Athlon™ MP Family"
+    Case	184		
+    	modelCPU	=	"Intel Itanium 2"
+    Case	185		
+    	modelCPU	=	"Intel Pentium M Processor"
+    Case	190		
+    	modelCPU	=	"K7"
+    Case	198		
+    	modelCPU	=	"Intel Core™ i7-2760QM"
+    Case	200		
+    	modelCPU	=	"IBM390 Family"
+    Case	201		
+    	modelCPU	=	"G4"
+    Case	202		
+    	modelCPU	=	"G5"
+    Case	203		
+    	modelCPU	=	"G6"
+    Case	204		
+    	modelCPU	=	"z/Architecture Base"
+    Case	250		
+    	modelCPU	=	"i860"
+    Case	251		
+    	modelCPU	=	"i960"
+    Case	260		
+    	modelCPU	=	"SH-3"
+    Case	261		
+    	modelCPU	=	"SH-4"
+    Case	280		
+    	modelCPU	=	"ARM"
+    Case	281		
+    	modelCPU	=	"StrongARM"
+    Case	300		
+    	modelCPU	=	"6x86"
+    Case	301		
+    	modelCPU	=	"MediaGX"
+    Case	302		
+    	modelCPU	=	"MII"
+    Case	320		
+    	modelCPU	=	"WinChip"
+    Case	350		
+    	modelCPU	=	"DSP"
+    Case	500		
+    	modelCPU	=	"Video Processor"
+    Case Else			
+    	modelCPU	=	"Unknown"
+  End Select
+End Function
+
+Function testCN(cn) 
+  l = Len(cn)   
+  If Left(UCase(cn),8) = "SKDATVLT" And l = 12 And IsNumeric(Right(cn,4)) = True Then 
+    testCN = True
+  ElseIf Left(UCase(cn),8) = "SKDATVWT" And l = 12 And IsNumeric(Right(cn,4)) = True Then 
+    testCN = True
+  ElseIf Left(UCase(cn),8) = "SKDATVM" And l = 12 And IsNumeric(Right(cn,5)) = True Then 
+    testCN = True
+  ElseIf Left(UCase(cn),3) = "XTV" And l > 5  Then 
+    testCN = True
+  Else                
+    testCN = False
+  End If 
+End Function
+
+Function statusIcon(Status)
+  Select Case Status
+    Case 0
+      Img = "00_available"   
+    Case 1
+      Img = "01_offline" 
+    Case 2
+      Img = "02_inactive_away" 
+    Case 3
+      Img = "03_busy" 
+    Case 9
+      Img = "09_do_not_disturb"        
+    Case Else
+      Img = "unknown"   
+  End Select
+  
+  document.getElementById("fPC").style.backgroundImage = "url(""https://eportal.skoda.vwg/b2eweb80/img/theme/lync_status_icons/" & Img & ".png"")"
+  document.getElementById("fPC").style.backgroundRepeat = "no-repeat"
+  document.getElementById("fPC").style.backgroundPosition = "center left"
+  document.getElementById("fPC").style.paddingLeft = "15px"  
+End Function
+
+
+
+Function onLoadFunc()
+  window.resizeTo 500,755
+  document.uFormA.fPC.focus()
+  statusIcon(1)
+  If InStr(UCase(oPCInfoSearchForm.commandLine), "/PC:") > 0 Then
+    tmpCmd = Split(oPCInfoSearchForm.commandLine, "/PC:")
+    document.uFormA.fPC.value = tmpCmd(UBound(tmpCmd))
+    uFormA_onsubmit()  
+  End If
+End Function
+
+Function ReDirect_onclick() 
+'On Error Resume Next    
+  Set objWMIService = GetObject("winmgmts:" & "{impersonationLevel=impersonate}!\\.\root\cimv2")       
+  Set fso = CreateObject("Scripting.FileSystemObject")
+  
+  FullName = replace(oPCInfoSearchForm.commandLine,chr(34),"")
+  arrFN    = split(FullName,"\")
+  FileName = arrFN(ubound(arrFN))
+  SourceDir= replace(FullName,FileName,"")
+  appName  = SourceDir & "Najdi_uzivatele.hta"
+  
+  If (fso.FileExists(appName)) Then 
+    Set colProcessList = objWMIService.ExecQuery("SELECT * FROM Win32_Process WHERE Name = 'mshta.exe' And CommandLine Like '%Najdi_uzivatele%'")
+    For Each objProcess In colProcessList
+      objProcess.Terminate()  
+    Next
+    createobject("Shell.Application").ShellExecute "mshta.exe", appName & " /User:" & document.getElementById("dzc").value
+  Else
+    MsgBox       "Pro tuto funkci musíte mít aplikaci ""Najdi_uzivatele.hta""" _ 
+      & vbCrLf & "umístěnu ve stejném adresáři jako je tato aplikace." _
+      & vbCrLf & "", vbCritical, "Chyba!"
+  End If 
+  
+  window.event.returnvalue=false     
+End Function
+
+</script>
+
+
+</head>
+<body onload="onLoadFunc()">
+  <div id="obal">
+  <div id="zahlavi"">
+       <h1 id="titulek">Vyhledání Online PC</h1> 
+	
+  </div>
+	<div id="zahlavi2"">
+       <form name="uFormA" ID="uFormA"> 
+       <table border=0> 
+       <tr><td class="noBorder">
+       <input name="fPC" id="fPC" type="text" style="padding-left:15px;border: 1px solid grey;text-transform: uppercase;" onkeydown="statusIcon(1)" />
+       </td><td class="noBorder">
+       <input type="submit" class="button" value="Hledej" id="uFormAButton" style="width: 135px;"> <!--  Onclick="SearchUsers(), returnvalue=false" -->
+       </tr></tr>  
+       </form> 
+      <td class="noBorder">&nbsp;</td>
+      <td class="noBorder">&nbsp;</td>
+      </tr>
+       </form>
+  </div>    
+        
+    <div id="obsah">
+    <form name="uForm" ID="uForm">
+    <table border=0>
+    <tr>
+    <td>Jméno: <sup style="color:rgb(250,250,250)">copy</sup></td>
+    <td><input type="text" name="jmeno" readonly onclick="copyToClip document.uForm.jmeno.value, 'jmeno'" title="Kliknutím zkopírujete do schránky" /></td>
+    </tr>
+    <tr>
+    <td>Oddělení:</td>
+    <td><input type="text" name="oddel" readonly onclick="copyToClip document.uForm.oddel.value, 'oddel'" title="Kliknutím zkopírujete do schránky" /></td>
+    </tr>
+    <tr>
+    <td>Osobní číslo:</td>
+    <td><input type="text" name="oscis" id="oscis" readonly onclick="copyToClip document.uForm.oscis.value, 'oscis' " title="Kliknutím zkopírujete do schránky" style="text-transform: uppercase;width: 105px" />
+      <input type="hidden" name="WhomToFind" Value="" style="width: 55px" /> 
+      <input type="button" name="ReDirect" id="ReDirect" Value="Info" class="button" style="width:105" />
+    </td>
+    </tr>
+    <tr>
+    <td>DZC:</td>                    
+    <td>
+    <input type="text" name="dzc" id="dzc" onclick="copyToClip document.uForm.dzc.value, 'dzc'" title="Kliknutím zkopírujete do schránky" style="text-transform: uppercase;width: 105px" />
+    <input type="hidden" name="How" Value="Add" style="width: 55px" /> 
+    <input type="button" class="button" name="addAdmin" id="addAdmin" Value="Přidej" style="width: 105px" /></td>
+    </tr>
+    <tr>
+    <td>SAP Info:</td>
+    <td id="SAPInfo">&nbsp;</td>
+    </tr>
+    <tr>
+    <td class="noBorder">&nbsp;</td>
+    <td class="noBorder">&nbsp;</td>
+    </tr>
+    
+    <tr>
+    <td>Název PC</td>
+    <td>
+    <input type="text" name="cn" readonly onclick="copyToClip document.uForm.cn.value, 'cn'" title="Kliknutím zkopírujete do schránky" style="width:110px" />
+    <input type="button" class="button" name="sysLogRun" id="sysLogRunId" Value="Využití PC" style="width:110px" title="Zobrazí seznam změn stavu služby &#10;'Profil Uživatele' a 'Obnovení ze spánku'." />
+    </td>
+    </tr>
+    <tr>
+    <td>Operační systém</td>
+    <td><input type="text" name="os" readonly onclick="copyToClip document.uForm.os.value, 'os'" title="Kliknutím zkopírujete do schránky" /></td>
+    </tr>
+    <tr>
+    <td>Architektura</td>
+    <td><input type="text" name="ar" readonly onclick="copyToClip document.uForm.ar.value, 'ar'" title="Kliknutím zkopírujete do schránky" />
+    </td>
+    </tr>
+    <tr>
+    <td>Service pack</td>
+    <td><input type="text" name="sp" readonly onclick="copyToClip document.uForm.sp.value, 'sp'" title="Kliknutím zkopírujete do schránky" />
+    </td>
+    </tr>
+    <tr>
+    <td class="noBorder">&nbsp;</td>
+    <td class="noBorder">&nbsp;</td>
+    </tr>
+    
+    <tr>
+    <td>Výrobce PC</td>
+    <td><input type="text" name="man" readonly onclick="copyToClip document.uForm.man.value, 'man'" title="Kliknutím zkopírujete do schránky" />
+    </td>
+    </tr>
+    <tr>
+    <td>Typové označení PC&nbsp;&nbsp;</td>
+    <td><input type="text" name="typ" readonly onclick="copyToClip document.uForm.typ.value, 'typ'" title="Kliknutím zkopírujete do schránky"  /></td>
+    </tr>
+    <tr>
+    <td>Výrobní číslo</td>
+    <td><input type="text" name="sn" readonly onclick="copyToClip document.uForm.sn.value, 'sn'" title="Kliknutím zkopírujete do schránky" /> 
+    </td>
+    </tr> 
+    <tr>
+    <td class="noBorder">&nbsp;</td>
+    <td class="noBorder">&nbsp;</td>
+    </tr>
+    
+    <tr>
+    <td>Admnistrátoři PC</td>
+    <td><select type="text" name="Admin" readonly style="width: 105px" /> </select>
+    <input type="hidden" name="How" Value="" style="width: 55px" />
+    <input type="hidden" name="Who" Value="" style="width: 55px" />
+    <input type="button" class="button" name="delAdmin" id="delAdmin" Value="Odeber" style="width: 105px" /></td>
+    </tr>  
+    <tr>
+    <td class="noBorder">&nbsp;</td>
+    <td class="noBorder">&nbsp;</td>
+    </tr>
+    <tr><td colspan="2" class="noBorder">
+    <div id="networkInfo" name="networkInfo"> No network adapter info... </div> 
+    </tr></td>   
+    <input type="hidden" name="TMPUser" id="TMPUser" Value="" style="width: 55px" />
+    </form>
+    </table>
+
+    </div> <!-- obsah --> 
+    <div id="zapati">
+    <table style="margin:0px;padding:0px; ">
+    <tr>
+      <td class="noBorder">  
+          <input type="button" class="button" name="showSW" id="IDShowSW" Value="Instal. SW" style="width:110px" />  
+      </td>
+      <td class="noBorder">
+          <input type="button" class="button" name="showHardware" id="IDshowHardware" Value="Instal. HW" style="width:110px" />     
+      </td>
+      <td class="noBorder">                                                                                             
+          <input type="button" class="button" name="showUpdates" id="IDshowUpdates" Value="Aktualizce" style="width:110px"  />      
+      </td>
+      <td class="noBorder"> 
+          <input type="button" class="button" name="servicesChStat" id="servicesChStat" Value="Služby" onclick="servicesChStat 'Show', Null" style="width:110px" title="Zobrazí základní služby a &#10;umožní jejich vypnutí/zapnutí." /> 
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2 class="noBorder">
+        <form name="help" id="help"  style="margin:0px;padding:0px;padding-top:3px;"> 
+          <input name="h" type="text" style="display:none" /> 
+          <input name="Help" type="submit" class="button" value="Doporučená nastavení sítě..." style="width:225px" /> 
+        </form>  
+      </td>
+      <td class="noBorder">    
+        <input type="button" class="button" name="AVInfo" value="Info o AV" style="width:110px"  title="Zobrazí informace o verzích DAT, AV a ePO &#10;v porovnání s tímto PC." />      
+      </td>
+      <td class="noBorder"> 
+        <input type="button"  class="button" name="runAVUpdate"  id="runAVUpdate" Value="Update AV" style="width:110px" title="Spustí úkol aktualizace AV" /> <!--  name="runAVUpdate"  id="runAVUpdate" Value="Update AV" --> 
+      </td>
+    </tr>
+    </table>
+    <br />                                                                                
+    &nbsp;
+    </div><!-- zapati -->
+
+  </div> <!-- obal -->
+
+  </body>
+</html> 
