@@ -31,10 +31,10 @@
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelHorniVnitrni = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxPCname = new System.Windows.Forms.TextBox();
-            this.buttonVyhledat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxZarizeni = new System.Windows.Forms.CheckBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.buttonVyhledat = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelHorniVnitrni.SuspendLayout();
             this.SuspendLayout();
@@ -63,9 +63,9 @@
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.textBoxPCname, 1, 0);
-            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.buttonVyhledat, 2, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.checkBoxZarizeni, 3, 0);
+            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.buttonVyhledat, 2, 0);
             this.tableLayoutPanelHorniVnitrni.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelHorniVnitrni.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelHorniVnitrni.Margin = new System.Windows.Forms.Padding(0);
@@ -89,23 +89,6 @@
             this.textBoxPCname.TextChanged += new System.EventHandler(this.textBoxPCname_TextChanged);
             this.textBoxPCname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPCname_KeyDown);
             // 
-            // buttonVyhledat
-            // 
-            this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonVyhledat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(79)))));
-            this.buttonVyhledat.Enabled = false;
-            this.buttonVyhledat.FlatAppearance.BorderSize = 0;
-            this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVyhledat.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
-            this.buttonVyhledat.Location = new System.Drawing.Point(375, 6);
-            this.buttonVyhledat.Name = "buttonVyhledat";
-            this.buttonVyhledat.Size = new System.Drawing.Size(98, 27);
-            this.buttonVyhledat.TabIndex = 2;
-            this.buttonVyhledat.Text = "Vyhledat";
-            this.buttonVyhledat.UseVisualStyleBackColor = false;
-            this.buttonVyhledat.Click += new System.EventHandler(this.buttonVyhledat_Click);
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -124,7 +107,8 @@
             this.checkBoxZarizeni.AutoSize = true;
             this.checkBoxZarizeni.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxZarizeni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
-            this.checkBoxZarizeni.Location = new System.Drawing.Point(495, 11);
+            this.checkBoxZarizeni.Location = new System.Drawing.Point(502, 12);
+            this.checkBoxZarizeni.Margin = new System.Windows.Forms.Padding(10, 5, 3, 3);
             this.checkBoxZarizeni.Name = "checkBoxZarizeni";
             this.checkBoxZarizeni.Size = new System.Drawing.Size(152, 17);
             this.checkBoxZarizeni.TabIndex = 3;
@@ -150,6 +134,19 @@
             this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
+            // buttonVyhledat
+            // 
+            this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonVyhledat.Enabled = false;
+            this.buttonVyhledat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonVyhledat.Location = new System.Drawing.Point(375, 7);
+            this.buttonVyhledat.Name = "buttonVyhledat";
+            this.buttonVyhledat.Size = new System.Drawing.Size(114, 25);
+            this.buttonVyhledat.TabIndex = 4;
+            this.buttonVyhledat.Text = "Vyhledat";
+            this.buttonVyhledat.UseVisualStyleBackColor = true;
+            this.buttonVyhledat.Click += new System.EventHandler(this.buttonVyhledat_Click);
+            // 
             // UserControlSAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,8 +169,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorniVnitrni;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxPCname;
-        private System.Windows.Forms.Button buttonVyhledat;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.CheckBox checkBoxZarizeni;
+        private System.Windows.Forms.Button buttonVyhledat;
     }
 }

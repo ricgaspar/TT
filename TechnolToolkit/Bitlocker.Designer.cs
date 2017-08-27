@@ -42,19 +42,24 @@
             // textBoxDevice
             // 
             this.textBoxDevice.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxDevice.Location = new System.Drawing.Point(98, 5);
+            this.textBoxDevice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxDevice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxDevice.ForeColor = System.Drawing.Color.White;
+            this.textBoxDevice.Location = new System.Drawing.Point(98, 3);
             this.textBoxDevice.Name = "textBoxDevice";
-            this.textBoxDevice.Size = new System.Drawing.Size(209, 20);
+            this.textBoxDevice.Size = new System.Drawing.Size(209, 25);
             this.textBoxDevice.TabIndex = 0;
             this.textBoxDevice.TextChanged += new System.EventHandler(this.textBoxDevice_TextChanged);
             this.textBoxDevice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDevice_KeyDown);
             // 
             // buttonSearch
             // 
+            this.buttonSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.buttonSearch.Enabled = false;
-            this.buttonSearch.Location = new System.Drawing.Point(313, 3);
+            this.buttonSearch.Location = new System.Drawing.Point(310, 3);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(75, 24);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "Vyhledat";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -62,10 +67,13 @@
             // 
             // listView1
             // 
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(3, 63);
+            this.listView1.ForeColor = System.Drawing.Color.White;
+            this.listView1.Location = new System.Drawing.Point(0, 60);
+            this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(877, 438);
+            this.listView1.Size = new System.Drawing.Size(883, 444);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
@@ -94,9 +102,9 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.buttonSearch, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBoxDevice, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonSearch, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -111,6 +119,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(25, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(25, 0, 3, 0);
             this.label1.Name = "label1";
@@ -123,6 +132,7 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(246, 30);
@@ -133,6 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.ClientSize = new System.Drawing.Size(883, 504);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimizeBox = false;

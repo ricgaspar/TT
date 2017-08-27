@@ -40,25 +40,25 @@
             // textBoxComputerName
             // 
             this.textBoxComputerName.AllowDrop = true;
-            this.textBoxComputerName.BackColor = System.Drawing.Color.LightGray;
-            this.textBoxComputerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxComputerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.textBoxComputerName.Enabled = false;
-            this.textBoxComputerName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxComputerName.ForeColor = System.Drawing.Color.Black;
-            this.textBoxComputerName.Location = new System.Drawing.Point(157, 44);
+            this.textBoxComputerName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxComputerName.ForeColor = System.Drawing.Color.White;
+            this.textBoxComputerName.Location = new System.Drawing.Point(157, 40);
             this.textBoxComputerName.Name = "textBoxComputerName";
-            this.textBoxComputerName.Size = new System.Drawing.Size(259, 23);
+            this.textBoxComputerName.Size = new System.Drawing.Size(259, 25);
             this.textBoxComputerName.TabIndex = 4;
             this.textBoxComputerName.TextChanged += new System.EventHandler(this.textBoxComputerName_TextChanged);
+            this.textBoxComputerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxComputerName_KeyDown);
             // 
             // buttonOK
             // 
             this.buttonOK.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonOK.Enabled = false;
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonOK.Location = new System.Drawing.Point(178, 110);
+            this.buttonOK.Location = new System.Drawing.Point(181, 113);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(179, 33);
+            this.buttonOK.Size = new System.Drawing.Size(179, 26);
             this.buttonOK.TabIndex = 6;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(301, 25);
@@ -81,8 +81,8 @@
             this.checkBoxTentoPC.Checked = true;
             this.checkBoxTentoPC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxTentoPC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxTentoPC.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxTentoPC.Location = new System.Drawing.Point(434, 46);
+            this.checkBoxTentoPC.ForeColor = System.Drawing.Color.White;
+            this.checkBoxTentoPC.Location = new System.Drawing.Point(434, 40);
             this.checkBoxTentoPC.Name = "checkBoxTentoPC";
             this.checkBoxTentoPC.Size = new System.Drawing.Size(82, 21);
             this.checkBoxTentoPC.TabIndex = 3;
@@ -92,21 +92,21 @@
             // 
             // textBoxMSIstring
             // 
-            this.textBoxMSIstring.BackColor = System.Drawing.Color.LightGray;
-            this.textBoxMSIstring.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxMSIstring.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxMSIstring.ForeColor = System.Drawing.Color.Black;
+            this.textBoxMSIstring.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxMSIstring.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxMSIstring.ForeColor = System.Drawing.Color.White;
             this.textBoxMSIstring.Location = new System.Drawing.Point(157, 76);
             this.textBoxMSIstring.Name = "textBoxMSIstring";
-            this.textBoxMSIstring.Size = new System.Drawing.Size(359, 22);
+            this.textBoxMSIstring.Size = new System.Drawing.Size(359, 25);
             this.textBoxMSIstring.TabIndex = 5;
             this.textBoxMSIstring.TextChanged += new System.EventHandler(this.textBoxMSIstring_TextChanged);
+            this.textBoxMSIstring.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMSIstring_KeyDown);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(20, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 21);
@@ -117,7 +117,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(20, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 21);
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.ClientSize = new System.Drawing.Size(535, 151);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

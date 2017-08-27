@@ -154,6 +154,7 @@ namespace TechnolToolkit
         MSIUninstall msi = new MSIUninstall();
         private void buttonMSI_Click(object sender, EventArgs e)
         {
+            msi.restartMsiUninstall();
             msi.ShowDialog();
         }
 

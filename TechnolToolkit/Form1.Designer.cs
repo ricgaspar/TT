@@ -37,7 +37,6 @@
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonAdminTools = new System.Windows.Forms.Button();
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
-            this.toggleButton1 = new TechnolToolkit.toggleButton();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +73,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(42)))), ((int)(((byte)(49)))));
-            this.panel1.Controls.Add(this.toggleButton1);
             this.panel1.Controls.Add(this.buttonSAP);
             this.panel1.Controls.Add(this.buttonMenu);
             this.panel1.Controls.Add(this.buttonAdminTools);
@@ -145,14 +143,7 @@
             // 
             this.timerMenu.Interval = 15;
             this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.Location = new System.Drawing.Point(0, 0);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.Size = new System.Drawing.Size(0, 0);
-            this.toggleButton1.TabIndex = 0;
-            // 
+            //
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,7 +174,6 @@
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Timer timerMenu;
         private System.Windows.Forms.Button buttonSAP;
-        private toggleButton toggleButton1;
     }
 }
 

@@ -80,9 +80,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="toggleButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="VASConfig.cs">
       <SubType>Form</SubType>
     </Compile>
