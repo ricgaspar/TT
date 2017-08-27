@@ -33,8 +33,8 @@
             this.textBoxPCname = new System.Windows.Forms.TextBox();
             this.buttonVyhledat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.checkBoxZarizeni = new System.Windows.Forms.CheckBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelHorniVnitrni.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +56,7 @@
             // 
             // tableLayoutPanelHorniVnitrni
             // 
+            this.tableLayoutPanelHorniVnitrni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.tableLayoutPanelHorniVnitrni.ColumnCount = 4;
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
@@ -76,13 +77,14 @@
             // 
             // textBoxPCname
             // 
-            this.textBoxPCname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPCname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.textBoxPCname.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxPCname.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxPCname.Location = new System.Drawing.Point(75, 8);
-            this.textBoxPCname.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.textBoxPCname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxPCname.ForeColor = System.Drawing.Color.White;
+            this.textBoxPCname.Location = new System.Drawing.Point(75, 7);
+            this.textBoxPCname.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.textBoxPCname.Name = "textBoxPCname";
-            this.textBoxPCname.Size = new System.Drawing.Size(294, 22);
+            this.textBoxPCname.Size = new System.Drawing.Size(294, 25);
             this.textBoxPCname.TabIndex = 1;
             this.textBoxPCname.TextChanged += new System.EventHandler(this.textBoxPCname_TextChanged);
             this.textBoxPCname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPCname_KeyDown);
@@ -90,20 +92,25 @@
             // buttonVyhledat
             // 
             this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonVyhledat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(79)))));
             this.buttonVyhledat.Enabled = false;
+            this.buttonVyhledat.FlatAppearance.BorderSize = 0;
+            this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVyhledat.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
             this.buttonVyhledat.Location = new System.Drawing.Point(375, 6);
             this.buttonVyhledat.Name = "buttonVyhledat";
             this.buttonVyhledat.Size = new System.Drawing.Size(98, 27);
             this.buttonVyhledat.TabIndex = 2;
             this.buttonVyhledat.Text = "Vyhledat";
-            this.buttonVyhledat.UseVisualStyleBackColor = true;
+            this.buttonVyhledat.UseVisualStyleBackColor = false;
             this.buttonVyhledat.Click += new System.EventHandler(this.buttonVyhledat_Click);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
             this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 25);
@@ -111,26 +118,12 @@
             this.label1.Text = "Zařízení";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listView1
-            // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.Location = new System.Drawing.Point(3, 43);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(975, 624);
-            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
-            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
-            // 
             // checkBoxZarizeni
             // 
             this.checkBoxZarizeni.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxZarizeni.AutoSize = true;
             this.checkBoxZarizeni.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxZarizeni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
             this.checkBoxZarizeni.Location = new System.Drawing.Point(495, 11);
             this.checkBoxZarizeni.Name = "checkBoxZarizeni";
             this.checkBoxZarizeni.Size = new System.Drawing.Size(152, 17);
@@ -138,12 +131,32 @@
             this.checkBoxZarizeni.Text = "Kopírovat jméno zařízení";
             this.checkBoxZarizeni.UseVisualStyleBackColor = true;
             // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listView1.ForeColor = System.Drawing.Color.White;
+            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView1.Location = new System.Drawing.Point(0, 40);
+            this.listView1.Margin = new System.Windows.Forms.Padding(0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(981, 630);
+            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
+            // 
             // UserControlSAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanelVnejsi);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserControlSAP";
             this.Size = new System.Drawing.Size(981, 670);
             this.tableLayoutPanelVnejsi.ResumeLayout(false);

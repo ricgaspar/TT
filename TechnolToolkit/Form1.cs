@@ -12,33 +12,8 @@ namespace TechnolToolkit
     {
         bool menuVisible = true;
         string aktivniPanel = "ucA";
-        #region Barvy...
-        //Definovani barev pro themes
-        //Blue Nadpis - 96,162,232
-        /*
-                Color panelDark = Color.FromArgb(53, 53, 55);
-                Color menuButtonDark = Color.FromArgb(53, 53, 55); //pozadi normalni
-                Color menuButtonDarkHover = Color.FromArgb(63, 63, 66); //pri hover
-                Color menuButtonDarkClick = Color.FromArgb(105, 105, 107); //pri drzeni mysi
-                Color menuMenuDark = Color.FromArgb(0, 120, 215); //barva se nemeni ani pri hover ci stisknuti
-                Color formBkgDark = Color.FromArgb(36, 35, 38);
-                //----
-                Color panelBlue = Color.FromArgb(1, 73, 141);
-                Color menuButtonBlue = Color.FromArgb(1, 73, 141);
-                Color menuButtonBlueHover = Color.FromArgb(103, 181, 255);
-                Color menuButtonBlueClick = Color.FromArgb(179, 218, 255);
-                Color menuMenuBlue = Color.FromArgb(0, 120, 215);
-                Color formBkgBlue = Color.FromArgb(36, 35, 38);
-        */
-        #endregion
         //Admin Tools
         UserControl ucA = new UserControlAdmin();
-        //Other Tools
-        UserControlOther ucO = new UserControlOther();
-        //SCCM Tools
-        UserControl ucSCCM = new UserControlSCCM();
-        //Nastaveni
-        UserControl ucN = new UserControlNastaveni();
         //Nahled do SAPu
         UserControl ucS = new UserControlSAP();
         //Login
@@ -51,9 +26,6 @@ namespace TechnolToolkit
             //Vyhozi obrazovka
             flowLayoutPanel1.Controls.Add(ucA);
             ucA.Size = flowLayoutPanel1.Size;
-            ucO.Size = flowLayoutPanel1.Size;
-            ucSCCM.Size = flowLayoutPanel1.Size;
-            ucN.Size = flowLayoutPanel1.Size;
             ucS.Size = flowLayoutPanel1.Size;
             pozadiAktivnihoButtonu(aktivniPanel);
 
@@ -97,15 +69,6 @@ namespace TechnolToolkit
                 case "ucA":
                     ucA.Size = flowLayoutPanel1.Size;
                     break;
-                case "ucO":
-                    ucO.Size = flowLayoutPanel1.Size;
-                    break;
-                case "ucSCCM":
-                    ucSCCM.Size = flowLayoutPanel1.Size;
-                    break;
-                case "ucN":
-                    ucN.Size = flowLayoutPanel1.Size;
-                    break;
                 case "ucS":
                     ucS.Size = flowLayoutPanel1.Size;
                     break;
@@ -120,9 +83,6 @@ namespace TechnolToolkit
         private void timerMenu_Tick(object sender, EventArgs e)
         {
             ucA.Size = flowLayoutPanel1.Size;
-            ucO.Size = flowLayoutPanel1.Size;
-            ucSCCM.Size = flowLayoutPanel1.Size;
-            ucN.Size = flowLayoutPanel1.Size;
             ucS.Size = flowLayoutPanel1.Size;
             
             if (menuVisible == true)
@@ -152,7 +112,7 @@ namespace TechnolToolkit
         //Nastavuje pozadi pro aktivni buttony
         private void pozadiAktivnihoButtonu(string activePanel)
         {
-            Color barvaButtonu = Color.FromArgb(163, 163, 163);
+            Color barvaButtonu = Color.FromArgb(37, 51, 79);
             if (activePanel == "ucA")
             {
                 
@@ -160,58 +120,6 @@ namespace TechnolToolkit
                 buttonAdminTools.BackColor = barvaButtonu;
                 buttonAdminTools.FlatAppearance.MouseOverBackColor = barvaButtonu;
                 //neaktivni
-                //buttonOtherTools.BackColor = Color.Transparent;
-                //buttonOtherTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonSCCM.BackColor = Color.Transparent;
-                //buttonSCCM.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonNastaveni.BackColor = Color.Transparent;
-                //buttonNastaveni.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                buttonSAP.BackColor = Color.Transparent;
-                buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            }
-            if (activePanel == "ucO")
-            {
-                //aktivni
-                //buttonOtherTools.BackColor = barvaButtonu;
-                //buttonOtherTools.FlatAppearance.MouseOverBackColor = barvaButtonu;
-                //neaktivni
-                buttonAdminTools.BackColor = Color.Transparent;
-                buttonAdminTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonSCCM.BackColor = Color.Transparent; ;
-                //buttonSCCM.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonNastaveni.BackColor = Color.Transparent;
-                //buttonNastaveni.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                buttonSAP.BackColor = Color.Transparent;
-                buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            }
-            if (activePanel == "ucSCCM")
-            {
-                //aktivni
-                //buttonSCCM.BackColor = barvaButtonu;
-                //buttonSCCM.FlatAppearance.MouseOverBackColor = barvaButtonu;
-                //neaktivni
-                buttonAdminTools.BackColor = Color.Transparent;
-                buttonAdminTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonOtherTools.BackColor = Color.Transparent;
-                //buttonOtherTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonNastaveni.BackColor = Color.Transparent;
-                //buttonNastaveni.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                buttonSAP.BackColor = Color.Transparent;
-                buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
-
-            }
-            if (activePanel == "ucN")
-            {
-                //aktivni
-                //buttonNastaveni.BackColor = barvaButtonu;
-                //buttonNastaveni.FlatAppearance.MouseOverBackColor = barvaButtonu;
-                //neaktivni
-                buttonAdminTools.BackColor = Color.Transparent;
-                buttonAdminTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonOtherTools.BackColor = Color.Transparent;
-                //buttonOtherTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonSCCM.BackColor = Color.Transparent;
-                //buttonSCCM.FlatAppearance.MouseOverBackColor = Color.Transparent;
                 buttonSAP.BackColor = Color.Transparent;
                 buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
             }
@@ -223,28 +131,10 @@ namespace TechnolToolkit
                 //neaktivni
                 buttonAdminTools.BackColor = Color.Transparent;
                 buttonAdminTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonOtherTools.BackColor = Color.Transparent;
-                //buttonOtherTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonSCCM.BackColor = Color.Transparent;
-                //buttonSCCM.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //buttonNastaveni.BackColor = Color.Transparent;
-                //buttonNastaveni.FlatAppearance.MouseOverBackColor = Color.Transparent;
             }
         }
         
         #region Button Click funkce
-        private void buttonSCCM_Click(object sender, EventArgs e)
-        {
-            activePanelFuntion(aktivniPanel, "ucSCCM");
-        }
-        private void buttonNastaveni_Click(object sender, EventArgs e)
-        {
-            activePanelFuntion(aktivniPanel, "ucN");
-        }
-        private void buttonOtherTools_Click(object sender, EventArgs e)
-        {
-            activePanelFuntion(aktivniPanel, "ucO");
-        }
         private void buttonAdminTools_Click(object sender, EventArgs e)
         {
             activePanelFuntion(aktivniPanel, "ucA");
@@ -264,7 +154,7 @@ namespace TechnolToolkit
         private void buttonAdminTools_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_Crown_96, 50, 50), 10, 2);
+            g.DrawImage(ResizeImage(Properties.Resources.icons8_Crown_96_white, 50, 50), 10, 2);
 
         }
         //Menu button (skryvani menu)
@@ -277,7 +167,7 @@ namespace TechnolToolkit
         private void buttonSAP_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_SAP_96, 50, 50), 14, 2);
+            g.DrawImage(ResizeImage(Properties.Resources.icons8_SAP_96_white, 50, 50), 14, 2);
         }
         #endregion
 
@@ -300,15 +190,6 @@ namespace TechnolToolkit
                             case "ucA":
                                 flowLayoutPanel1.Controls.Remove(ucA);
                                 break;
-                            case "ucO":
-                                flowLayoutPanel1.Controls.Remove(ucO);
-                                break;
-                            case "ucSCCM":
-                                flowLayoutPanel1.Controls.Remove(ucSCCM);
-                                break;
-                            case "ucN":
-                                flowLayoutPanel1.Controls.Remove(ucN);
-                                break;
                             case "ucS":
                                 flowLayoutPanel1.Controls.Remove(ucS);
                                 break;
@@ -316,105 +197,6 @@ namespace TechnolToolkit
                         flowLayoutPanel1.Controls.Add(ucA);
                         ucA.Size = flowLayoutPanel1.Size;
                         aktivniPanel = "ucA";
-                    }
-                    #endregion
-                    break;
-                case "ucO":
-                    #region ucO code...
-                    //Kliknuli jsme na jiz zobrazovany button(user control)?
-                    if(activePanel == "ucO")
-                        return;
-                    //Neni zobrazovany!
-                    else
-                    {
-                        //Klikli jsme na Ostatni nastroje. Ostatni nastroje nejsou zobrazovany(je zobrazovana jina sekce). Smazeme soucasny user control a nahradime ho ucO
-                        switch (activePanel)
-                        {
-                            case "ucA":
-                                flowLayoutPanel1.Controls.Remove(ucA);
-                                break;
-                            case "ucO":
-                                flowLayoutPanel1.Controls.Remove(ucO);
-                                break;
-                            case "ucSCCM":
-                                flowLayoutPanel1.Controls.Remove(ucSCCM);
-                                break;
-                            case "ucN":
-                                flowLayoutPanel1.Controls.Remove(ucN);
-                                break;
-                            case "ucS":
-                                flowLayoutPanel1.Controls.Remove(ucS);
-                                break;
-                        }
-                        flowLayoutPanel1.Controls.Add(ucO);
-                        ucO.Size = flowLayoutPanel1.Size;
-                        aktivniPanel = "ucO";
-                    }
-                    #endregion
-                    break;
-                case "ucSCCM":
-                    #region ucSCCM code...
-                    //Kliknuli jsme na jiz zobrazovany button(user control)?
-                    if (activePanel == "ucSCCM")
-                        return;
-                    //Neni zobrazovany!
-                    else
-                    {
-                        //Klikli jsme na SCCM nastroje. Ostatni nastroje nejsou zobrazovany(je zobrazovana jina sekce). Smazeme soucasny user control a nahradime ho ucSCCM
-                        switch (activePanel)
-                        {
-                            case "ucA":
-                                flowLayoutPanel1.Controls.Remove(ucA);
-                                break;
-                            case "ucO":
-                                flowLayoutPanel1.Controls.Remove(ucO);
-                                break;
-                            case "ucSCCM":
-                                flowLayoutPanel1.Controls.Remove(ucSCCM);
-                                break;
-                            case "ucN":
-                                flowLayoutPanel1.Controls.Remove(ucN);
-                                break;
-                            case "ucS":
-                                flowLayoutPanel1.Controls.Remove(ucS);
-                                break;
-                        }
-                        flowLayoutPanel1.Controls.Add(ucSCCM);
-                        ucSCCM.Size = flowLayoutPanel1.Size;
-                        aktivniPanel = "ucSCCM";
-                    }
-                    #endregion
-                    break;
-                case "ucN":
-                    #region ucN code...
-                    //Kliknuli jsme na jiz zobrazovany button(user control)?
-                    if (activePanel == "ucN")
-                        return;
-                    //Neni zobrazovany!
-                    else
-                    {
-                        //Klikli jsme na Nastaveni. Nastaveni neni zobrazovany(je zobrazovana jina sekce). Smazeme soucasny user control a nahradime ho ucN
-                        switch (activePanel)
-                        {
-                            case "ucA":
-                                flowLayoutPanel1.Controls.Remove(ucA);
-                                break;
-                            case "ucO":
-                                flowLayoutPanel1.Controls.Remove(ucO);
-                                break;
-                            case "ucSCCM":
-                                flowLayoutPanel1.Controls.Remove(ucSCCM);
-                                break;
-                            case "ucN":
-                                flowLayoutPanel1.Controls.Remove(ucN);
-                                break;
-                            case "ucS":
-                                flowLayoutPanel1.Controls.Remove(ucS);
-                                break;
-                        }
-                        flowLayoutPanel1.Controls.Add(ucN);
-                        ucN.Size = flowLayoutPanel1.Size;
-                        aktivniPanel = "ucN";
                     }
                     #endregion
                     break;
@@ -431,15 +213,6 @@ namespace TechnolToolkit
                         {
                             case "ucA":
                                 flowLayoutPanel1.Controls.Remove(ucA);
-                                break;
-                            case "ucO":
-                                flowLayoutPanel1.Controls.Remove(ucO);
-                                break;
-                            case "ucSCCM":
-                                flowLayoutPanel1.Controls.Remove(ucSCCM);
-                                break;
-                            case "ucN":
-                                flowLayoutPanel1.Controls.Remove(ucN);
                                 break;
                             case "ucS":
                                 flowLayoutPanel1.Controls.Remove(ucS);

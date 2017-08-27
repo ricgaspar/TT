@@ -63,9 +63,19 @@ namespace TechnolToolkit
             string url = "http://skdambsaimod01.mb.skoda.vwg/AISAPWEB/ai_sap.aspx?computername="+pc;
 
             WebClient client = new WebClient();
-            
+
             //Vezme web a hodi ho do jednoho stringu
-            string obsahWebu = ReadTextFromUrl(url);
+            string obsahWebu = String.Empty;
+            try
+            {
+                 obsahWebu = ReadTextFromUrl(url);
+            }
+            catch(Exception ex)
+            {
+                obsahWebu = String.Empty;
+                MessageBox.Show("Jste připojeni do sítě Škoda?\n--------------------------------------\n"+ ex.ToString(),"Chyba!");
+            }
+            
             //Vyberem si pouze cast, ktera zacina <Software> a konci </Software>
             string obsahWebuSoftware = getBetween(obsahWebu, "<Software>", "</Software>");
             Console.WriteLine(obsahWebuSoftware);

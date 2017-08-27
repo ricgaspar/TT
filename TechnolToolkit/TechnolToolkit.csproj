@@ -75,6 +75,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="toggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VASConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,11 +113,6 @@
     <Compile Include="Procesy.Designer.cs">
       <DependentUpon>Procesy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="RemoteControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +125,6 @@
     <Compile Include="statusBox.Designer.cs">
       <DependentUpon>statusBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlNastaveni.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlNastaveni.Designer.cs">
-      <DependentUpon>UserControlNastaveni.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControlAdmin.cs">
@@ -136,23 +133,11 @@
     <Compile Include="UserControlAdmin.Designer.cs">
       <DependentUpon>UserControlAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlOther.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlOther.Designer.cs">
-      <DependentUpon>UserControlOther.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControlSAP.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlSCCM.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlSCCM.Designer.cs">
-      <DependentUpon>UserControlSCCM.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Bitlocker.resx">
       <DependentUpon>Bitlocker.cs</DependentUpon>
@@ -189,17 +174,8 @@
     <EmbeddedResource Include="UserControlAdmin.resx">
       <DependentUpon>UserControlAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlNastaveni.resx">
-      <DependentUpon>UserControlNastaveni.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlOther.resx">
-      <DependentUpon>UserControlOther.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControlSAP.resx">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlSCCM.resx">
-      <DependentUpon>UserControlSCCM.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -223,7 +199,7 @@
     <EmbeddedResource Include="Resources\RemoteDialog.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Menu_96px.png" />
+    <None Include="Resources\Menu_icons\Menu_96px.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\NajdiDZC.vbs" />
@@ -244,74 +220,40 @@
     <EmbeddedResource Include="Resources\PsExec.exe" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-Key-96.png" />
-    <None Include="Resources\icons8-Name-96.png" />
-    <None Include="Resources\icons8-SAP-96.png" />
-    <None Include="Resources\icons8-Command Line-96.png" />
-    <None Include="Resources\icons8-Server-96.png" />
-    <None Include="Resources\icons8-Admin-96.png" />
-    <None Include="Resources\icons8-User-96.png" />
-    <None Include="Resources\icons8-Message-96.png" />
-    <None Include="Resources\icons8-User Group Man Man-96.png" />
-    <None Include="Resources\icons8-Software-96.png" />
-    <None Include="Resources\icons8-Computer-Find-96.png" />
-    <None Include="Resources\icons8-Processor-96.png" />
-    <None Include="Resources\icons8-Software Uninstaller-96.png" />
-    <None Include="Resources\icons8-Remote Control-96.png" />
-    <None Include="Resources\icons8-Restart-96.png" />
-    <None Include="Resources\icons8-Settings-96.png" />
-    <None Include="Resources\icons8-Crown-96.png" />
-    <None Include="Resources\icons8-Monitor-Refresh-96.png" />
-    <None Include="Resources\icons8-Monitor-96.png" />
-    <None Include="Resources\icons8-Monitor-Star-96.png" />
-    <None Include="Resources\icons8-Laptop-96.png" />
-    <None Include="Resources\icons8-Network Card-96.png" />
-    <None Include="Resources\icons8-Registry Editor-96.png" />
-    <None Include="Resources\icons8-Name Tag-96.png" />
-    <None Include="Resources\icons8-Support-96.png" />
-    <None Include="Resources\icons8-Table-96.png" />
-    <None Include="Resources\icons8-Table-96_white.png" />
-    <None Include="Resources\icons8-User Group Man Man-96_white.png" />
-    <None Include="Resources\icons8-User-96_white.png" />
-    <None Include="Resources\icons8-Account-96_white.png" />
-    <None Include="Resources\icons8-Admin-96_white.png" />
-    <None Include="Resources\icons8-Administrative Tools-96_white.png" />
-    <None Include="Resources\icons8-Close Window-96_white.png" />
-    <None Include="Resources\icons8-Command Line-96_white.png" />
-    <None Include="Resources\icons8-Computer-Find-96_white.png" />
-    <None Include="Resources\icons8-Crown-96_white.png" />
-    <None Include="Resources\icons8-Key-96_white.png" />
-    <None Include="Resources\icons8-Laptop-96_white.png" />
-    <None Include="Resources\icons8-Lock-96_white.png" />
-    <None Include="Resources\icons8-Message-96_white.png" />
-    <None Include="Resources\icons8-Monitor-96_white.png" />
-    <None Include="Resources\icons8-Monitor-Refresh-96_white.png" />
-    <None Include="Resources\icons8-Monitor-Star-96_white.png" />
-    <None Include="Resources\icons8-Name Tag-96_white.png" />
-    <None Include="Resources\icons8-Name-96_white.png" />
-    <None Include="Resources\icons8-Network Card-96_white.png" />
-    <None Include="Resources\icons8-Processor-96_white.png" />
-    <None Include="Resources\icons8-Registry Editor-96_white.png" />
-    <None Include="Resources\icons8-Remote Control-96_white.png" />
-    <None Include="Resources\icons8-Restart-96_white.png" />
-    <None Include="Resources\icons8-SAP-96_white.png" />
-    <None Include="Resources\icons8-Server-96_white.png" />
-    <None Include="Resources\icons8-Settings-96_white.png" />
-    <None Include="Resources\icons8-Software Uninstaller-96_white.png" />
-    <None Include="Resources\icons8-Software-96_white.png" />
-    <None Include="Resources\icons8-Support-96_white.png" />
-    <EmbeddedResource Include="Resources\ASCII_znaky.vbs" />
+    <None Include="Resources\Login_icons\icons8-Key-96.png" />
+    <None Include="Resources\Login_icons\icons8-Name-96.png" />
+    <None Include="Resources\Login_icons\icons8-Key-96_white.png" />
+    <None Include="Resources\Login_icons\icons8-Name-96_white.png" />
+    <None Include="Resources\Menu_icons\icons8-SAP-96_white.png" />
     <EmbeddedResource Include="Resources\RegSearch.exe" />
     <EmbeddedResource Include="Resources\Zjistit_IPconfig.vbs" />
-    <None Include="Resources\icons8-Data Encryption-96.png" />
-    <None Include="Resources\icons8-Data Encryption-96_white.png" />
     <EmbeddedResource Include="Resources\bitlocker.vbs" />
     <Content Include="logo.ico" />
+    <None Include="Resources\Menu_icons\icons8-Crown-96_white.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Under Computer-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-User Group Man Man-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-User-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Car Service-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Electrical-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Heart Monitor-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Laptop-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-LaptopInfo-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Message-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Network Card-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Processor-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Registry Editor-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Remote Working-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Software Installer-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Software-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Text Color-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Heart MonitorWarning-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Encrypt-96.png" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\polymer-micro.html" />
     <Content Include="Scripts\polymer-mini.html" />
     <Content Include="Scripts\polymer.html" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

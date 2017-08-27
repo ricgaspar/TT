@@ -80,6 +80,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
             this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(183, 21);
@@ -100,11 +101,11 @@
             // 
             // buttonZasadyPC
             // 
-            this.buttonZasadyPC.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonZasadyPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonZasadyPC.FlatAppearance.BorderSize = 0;
             this.buttonZasadyPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonZasadyPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonZasadyPC.ForeColor = System.Drawing.Color.Black;
+            this.buttonZasadyPC.ForeColor = System.Drawing.Color.White;
             this.buttonZasadyPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZasadyPC.Location = new System.Drawing.Point(6, 6);
             this.buttonZasadyPC.Margin = new System.Windows.Forms.Padding(6);
@@ -118,11 +119,11 @@
             // 
             // buttonAkceVsechny
             // 
-            this.buttonAkceVsechny.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonAkceVsechny.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonAkceVsechny.FlatAppearance.BorderSize = 0;
             this.buttonAkceVsechny.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAkceVsechny.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAkceVsechny.ForeColor = System.Drawing.Color.Black;
+            this.buttonAkceVsechny.ForeColor = System.Drawing.Color.White;
             this.buttonAkceVsechny.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAkceVsechny.Location = new System.Drawing.Point(323, 6);
             this.buttonAkceVsechny.Margin = new System.Windows.Forms.Padding(6);
@@ -136,11 +137,11 @@
             // 
             // buttonRemoteControl
             // 
-            this.buttonRemoteControl.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonRemoteControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonRemoteControl.FlatAppearance.BorderSize = 0;
             this.buttonRemoteControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemoteControl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonRemoteControl.ForeColor = System.Drawing.Color.Black;
+            this.buttonRemoteControl.ForeColor = System.Drawing.Color.White;
             this.buttonRemoteControl.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonRemoteControl.Location = new System.Drawing.Point(640, 6);
             this.buttonRemoteControl.Margin = new System.Windows.Forms.Padding(6);
@@ -196,11 +197,11 @@
             // 
             // buttonDZC
             // 
-            this.buttonDZC.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonDZC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonDZC.FlatAppearance.BorderSize = 0;
             this.buttonDZC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDZC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonDZC.ForeColor = System.Drawing.Color.Black;
+            this.buttonDZC.ForeColor = System.Drawing.Color.White;
             this.buttonDZC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonDZC.Location = new System.Drawing.Point(6, 6);
             this.buttonDZC.Margin = new System.Windows.Forms.Padding(6);
@@ -215,11 +216,11 @@
             // 
             // buttonZprava
             // 
-            this.buttonZprava.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonZprava.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonZprava.FlatAppearance.BorderSize = 0;
             this.buttonZprava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonZprava.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonZprava.ForeColor = System.Drawing.Color.Black;
+            this.buttonZprava.ForeColor = System.Drawing.Color.White;
             this.buttonZprava.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZprava.Location = new System.Drawing.Point(164, 6);
             this.buttonZprava.Margin = new System.Windows.Forms.Padding(6);
@@ -234,11 +235,11 @@
             // 
             // buttonZmenaSkupin
             // 
-            this.buttonZmenaSkupin.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonZmenaSkupin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonZmenaSkupin.FlatAppearance.BorderSize = 0;
             this.buttonZmenaSkupin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonZmenaSkupin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonZmenaSkupin.ForeColor = System.Drawing.Color.Black;
+            this.buttonZmenaSkupin.ForeColor = System.Drawing.Color.White;
             this.buttonZmenaSkupin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZmenaSkupin.Location = new System.Drawing.Point(322, 6);
             this.buttonZmenaSkupin.Margin = new System.Windows.Forms.Padding(6);
@@ -254,11 +255,11 @@
             // buttonInstalovanyProgramy
             // 
             this.buttonInstalovanyProgramy.AccessibleDescription = "";
-            this.buttonInstalovanyProgramy.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonInstalovanyProgramy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonInstalovanyProgramy.FlatAppearance.BorderSize = 0;
             this.buttonInstalovanyProgramy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.Black;
+            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.White;
             this.buttonInstalovanyProgramy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(480, 6);
             this.buttonInstalovanyProgramy.Margin = new System.Windows.Forms.Padding(6);
@@ -273,11 +274,11 @@
             // 
             // buttonNajdiPC
             // 
-            this.buttonNajdiPC.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonNajdiPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonNajdiPC.FlatAppearance.BorderSize = 0;
             this.buttonNajdiPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNajdiPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonNajdiPC.ForeColor = System.Drawing.Color.Black;
+            this.buttonNajdiPC.ForeColor = System.Drawing.Color.White;
             this.buttonNajdiPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonNajdiPC.Location = new System.Drawing.Point(638, 6);
             this.buttonNajdiPC.Margin = new System.Windows.Forms.Padding(6);
@@ -292,11 +293,11 @@
             // 
             // buttonBitlocker
             // 
-            this.buttonBitlocker.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonBitlocker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonBitlocker.FlatAppearance.BorderSize = 0;
             this.buttonBitlocker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBitlocker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonBitlocker.ForeColor = System.Drawing.Color.Black;
+            this.buttonBitlocker.ForeColor = System.Drawing.Color.White;
             this.buttonBitlocker.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonBitlocker.Location = new System.Drawing.Point(796, 6);
             this.buttonBitlocker.Margin = new System.Windows.Forms.Padding(6);
@@ -311,11 +312,11 @@
             // 
             // buttonProcesy
             // 
-            this.buttonProcesy.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonProcesy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonProcesy.FlatAppearance.BorderSize = 0;
             this.buttonProcesy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProcesy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonProcesy.ForeColor = System.Drawing.Color.Black;
+            this.buttonProcesy.ForeColor = System.Drawing.Color.White;
             this.buttonProcesy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonProcesy.Location = new System.Drawing.Point(6, 139);
             this.buttonProcesy.Margin = new System.Windows.Forms.Padding(6);
@@ -330,11 +331,11 @@
             // 
             // buttonNapajeniPC
             // 
-            this.buttonNapajeniPC.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonNapajeniPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonNapajeniPC.FlatAppearance.BorderSize = 0;
             this.buttonNapajeniPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNapajeniPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonNapajeniPC.ForeColor = System.Drawing.Color.Black;
+            this.buttonNapajeniPC.ForeColor = System.Drawing.Color.White;
             this.buttonNapajeniPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonNapajeniPC.Location = new System.Drawing.Point(164, 139);
             this.buttonNapajeniPC.Margin = new System.Windows.Forms.Padding(6);
@@ -349,11 +350,11 @@
             // buttonInfoPC
             // 
             this.buttonInfoPC.AccessibleDescription = "";
-            this.buttonInfoPC.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonInfoPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonInfoPC.FlatAppearance.BorderSize = 0;
             this.buttonInfoPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInfoPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonInfoPC.ForeColor = System.Drawing.Color.Black;
+            this.buttonInfoPC.ForeColor = System.Drawing.Color.White;
             this.buttonInfoPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonInfoPC.Location = new System.Drawing.Point(322, 139);
             this.buttonInfoPC.Margin = new System.Windows.Forms.Padding(6);
@@ -367,11 +368,11 @@
             // 
             // buttonMSI
             // 
-            this.buttonMSI.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonMSI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonMSI.FlatAppearance.BorderSize = 0;
             this.buttonMSI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMSI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonMSI.ForeColor = System.Drawing.Color.Black;
+            this.buttonMSI.ForeColor = System.Drawing.Color.White;
             this.buttonMSI.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonMSI.Location = new System.Drawing.Point(480, 139);
             this.buttonMSI.Margin = new System.Windows.Forms.Padding(6);
@@ -387,11 +388,11 @@
             // buttonRegSearch
             // 
             this.buttonRegSearch.AccessibleDescription = "";
-            this.buttonRegSearch.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonRegSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonRegSearch.FlatAppearance.BorderSize = 0;
             this.buttonRegSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonRegSearch.ForeColor = System.Drawing.Color.Black;
+            this.buttonRegSearch.ForeColor = System.Drawing.Color.White;
             this.buttonRegSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonRegSearch.Location = new System.Drawing.Point(322, 6);
             this.buttonRegSearch.Margin = new System.Windows.Forms.Padding(6);
@@ -407,11 +408,11 @@
             // buttonIPConfig
             // 
             this.buttonIPConfig.AccessibleDescription = "";
-            this.buttonIPConfig.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonIPConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonIPConfig.FlatAppearance.BorderSize = 0;
             this.buttonIPConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonIPConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonIPConfig.ForeColor = System.Drawing.Color.Black;
+            this.buttonIPConfig.ForeColor = System.Drawing.Color.White;
             this.buttonIPConfig.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonIPConfig.Location = new System.Drawing.Point(796, 6);
             this.buttonIPConfig.Margin = new System.Windows.Forms.Padding(6);
@@ -427,11 +428,11 @@
             // buttonUserPCname
             // 
             this.buttonUserPCname.AccessibleDescription = "";
-            this.buttonUserPCname.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonUserPCname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonUserPCname.FlatAppearance.BorderSize = 0;
             this.buttonUserPCname.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserPCname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonUserPCname.ForeColor = System.Drawing.Color.Black;
+            this.buttonUserPCname.ForeColor = System.Drawing.Color.White;
             this.buttonUserPCname.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonUserPCname.Location = new System.Drawing.Point(6, 6);
             this.buttonUserPCname.Margin = new System.Windows.Forms.Padding(6);
@@ -445,11 +446,11 @@
             // 
             // buttonASCII
             // 
-            this.buttonASCII.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonASCII.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonASCII.FlatAppearance.BorderSize = 0;
             this.buttonASCII.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonASCII.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonASCII.ForeColor = System.Drawing.Color.Black;
+            this.buttonASCII.ForeColor = System.Drawing.Color.White;
             this.buttonASCII.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonASCII.Location = new System.Drawing.Point(480, 6);
             this.buttonASCII.Margin = new System.Windows.Forms.Padding(6);
@@ -464,11 +465,11 @@
             // 
             // buttonVAS
             // 
-            this.buttonVAS.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonVAS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.buttonVAS.FlatAppearance.BorderSize = 0;
             this.buttonVAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVAS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVAS.ForeColor = System.Drawing.Color.Black;
+            this.buttonVAS.ForeColor = System.Drawing.Color.White;
             this.buttonVAS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonVAS.Location = new System.Drawing.Point(638, 6);
             this.buttonVAS.Margin = new System.Windows.Forms.Padding(6);
@@ -514,6 +515,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
             this.label1.Location = new System.Drawing.Point(3, 328);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 21);
@@ -524,6 +526,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
             this.label3.Location = new System.Drawing.Point(3, 506);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 21);

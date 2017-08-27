@@ -37,6 +37,7 @@
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonAdminTools = new System.Windows.Forms.Button();
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
+            this.toggleButton1 = new TechnolToolkit.toggleButton();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +55,7 @@
             this.tableLayoutPanelVnejsi.Name = "tableLayoutPanelVnejsi";
             this.tableLayoutPanelVnejsi.RowCount = 1;
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 713F));
             this.tableLayoutPanelVnejsi.Size = new System.Drawing.Size(1227, 713);
             this.tableLayoutPanelVnejsi.TabIndex = 0;
             // 
@@ -63,15 +64,17 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(253, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(255, 12);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 12, 0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(971, 707);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(972, 701);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(42)))), ((int)(((byte)(49)))));
+            this.panel1.Controls.Add(this.toggleButton1);
             this.panel1.Controls.Add(this.buttonSAP);
             this.panel1.Controls.Add(this.buttonMenu);
             this.panel1.Controls.Add(this.buttonAdminTools);
@@ -88,7 +91,7 @@
             this.buttonSAP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.buttonSAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSAP.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSAP.ForeColor = System.Drawing.Color.Black;
+            this.buttonSAP.ForeColor = System.Drawing.Color.White;
             this.buttonSAP.Location = new System.Drawing.Point(0, 123);
             this.buttonSAP.Name = "buttonSAP";
             this.buttonSAP.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
@@ -102,16 +105,16 @@
             // 
             // buttonMenu
             // 
-            this.buttonMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(54)))), ((int)(((byte)(65)))));
             this.buttonMenu.FlatAppearance.BorderSize = 0;
-            this.buttonMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buttonMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(54)))), ((int)(((byte)(65)))));
+            this.buttonMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(54)))), ((int)(((byte)(65)))));
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMenu.ForeColor = System.Drawing.Color.White;
             this.buttonMenu.Location = new System.Drawing.Point(-3, 12);
             this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Padding = new System.Windows.Forms.Padding(62, 0, 0, 0);
+            this.buttonMenu.Padding = new System.Windows.Forms.Padding(66, 0, 0, 0);
             this.buttonMenu.Size = new System.Drawing.Size(253, 50);
             this.buttonMenu.TabIndex = 0;
             this.buttonMenu.Text = "Menu";
@@ -123,10 +126,10 @@
             // buttonAdminTools
             // 
             this.buttonAdminTools.FlatAppearance.BorderSize = 0;
-            this.buttonAdminTools.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.buttonAdminTools.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(79)))));
             this.buttonAdminTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdminTools.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAdminTools.ForeColor = System.Drawing.Color.Black;
+            this.buttonAdminTools.ForeColor = System.Drawing.Color.White;
             this.buttonAdminTools.Location = new System.Drawing.Point(0, 68);
             this.buttonAdminTools.Name = "buttonAdminTools";
             this.buttonAdminTools.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
@@ -143,11 +146,18 @@
             this.timerMenu.Interval = 15;
             this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
             // 
+            // toggleButton1
+            // 
+            this.toggleButton1.Location = new System.Drawing.Point(0, 0);
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.Size = new System.Drawing.Size(0, 0);
+            this.toggleButton1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(1227, 713);
             this.Controls.Add(this.tableLayoutPanelVnejsi);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -173,6 +183,7 @@
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Timer timerMenu;
         private System.Windows.Forms.Button buttonSAP;
+        private toggleButton toggleButton1;
     }
 }
 
