@@ -63,11 +63,11 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(255, 12);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 12, 0, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(250, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(972, 701);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(977, 713);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // panel1
@@ -90,7 +90,7 @@
             this.buttonSAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSAP.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSAP.ForeColor = System.Drawing.Color.White;
-            this.buttonSAP.Location = new System.Drawing.Point(0, 123);
+            this.buttonSAP.Location = new System.Drawing.Point(0, 113);
             this.buttonSAP.Name = "buttonSAP";
             this.buttonSAP.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.buttonSAP.Size = new System.Drawing.Size(250, 50);
@@ -110,7 +110,7 @@
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMenu.ForeColor = System.Drawing.Color.White;
-            this.buttonMenu.Location = new System.Drawing.Point(-3, 12);
+            this.buttonMenu.Location = new System.Drawing.Point(-3, 1);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Padding = new System.Windows.Forms.Padding(66, 0, 0, 0);
             this.buttonMenu.Size = new System.Drawing.Size(253, 50);
@@ -128,7 +128,7 @@
             this.buttonAdminTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdminTools.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonAdminTools.ForeColor = System.Drawing.Color.White;
-            this.buttonAdminTools.Location = new System.Drawing.Point(0, 68);
+            this.buttonAdminTools.Location = new System.Drawing.Point(0, 58);
             this.buttonAdminTools.Name = "buttonAdminTools";
             this.buttonAdminTools.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.buttonAdminTools.Size = new System.Drawing.Size(250, 50);
@@ -139,11 +139,6 @@
             this.buttonAdminTools.Click += new System.EventHandler(this.buttonAdminTools_Click);
             this.buttonAdminTools.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAdminTools_Paint);
             // 
-            // timerMenu
-            // 
-            this.timerMenu.Interval = 15;
-            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
-            //
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

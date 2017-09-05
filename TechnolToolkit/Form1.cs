@@ -78,36 +78,6 @@ namespace TechnolToolkit
             }
             
         }
-
-        //Skryvani menu
-        private void timerMenu_Tick(object sender, EventArgs e)
-        {
-            ucA.Size = flowLayoutPanel1.Size;
-            ucS.Size = flowLayoutPanel1.Size;
-            
-            if (menuVisible == true)
-            {
-                tableLayoutPanelVnejsi.ColumnStyles[0].SizeType = SizeType.Absolute;
-                tableLayoutPanelVnejsi.ColumnStyles[0].Width = tableLayoutPanelVnejsi.ColumnStyles[0].Width - 10;
-                if (tableLayoutPanelVnejsi.ColumnStyles[0].Width <= 70)
-                {
-                    timerMenu.Stop();
-                    menuVisible = false;
-                }
-            }
-            else
-            {
-                
-                tableLayoutPanelVnejsi.ColumnStyles[0].SizeType = SizeType.Absolute;
-                tableLayoutPanelVnejsi.ColumnStyles[0].Width = tableLayoutPanelVnejsi.ColumnStyles[0].Width + 10;
-                if(tableLayoutPanelVnejsi.ColumnStyles[0].Width >= 250)
-                {
-                    timerMenu.Stop();
-                    menuVisible = true;
-                }
-                
-            }
-        }
         
         //Nastavuje pozadi pro aktivni buttony
         private void pozadiAktivnihoButtonu(string activePanel)
@@ -144,8 +114,22 @@ namespace TechnolToolkit
             activePanelFuntion(aktivniPanel, "ucS");
         }
         private void buttonMenu_Click(object sender, EventArgs e)
-        {
-            timerMenu.Start();
+        {          
+            if (menuVisible == true)
+            {
+                tableLayoutPanelVnejsi.ColumnStyles[0].SizeType = SizeType.Absolute;
+                tableLayoutPanelVnejsi.ColumnStyles[0].Width = 70;
+                menuVisible = false;
+            }
+            else
+            {
+
+                tableLayoutPanelVnejsi.ColumnStyles[0].SizeType = SizeType.Absolute;
+                tableLayoutPanelVnejsi.ColumnStyles[0].Width = 250;
+                menuVisible = true;
+            }
+            ucA.Size = flowLayoutPanel1.Size;
+            ucS.Size = flowLayoutPanel1.Size;
         }
         #endregion
 

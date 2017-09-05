@@ -41,13 +41,13 @@
             // 
             this.textBoxComputerName.AllowDrop = true;
             this.textBoxComputerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.textBoxComputerName.Enabled = false;
             this.textBoxComputerName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxComputerName.ForeColor = System.Drawing.Color.White;
-            this.textBoxComputerName.Location = new System.Drawing.Point(157, 40);
+            this.textBoxComputerName.Location = new System.Drawing.Point(157, 49);
             this.textBoxComputerName.Name = "textBoxComputerName";
             this.textBoxComputerName.Size = new System.Drawing.Size(259, 25);
             this.textBoxComputerName.TabIndex = 4;
+            this.textBoxComputerName.Visible = false;
             this.textBoxComputerName.TextChanged += new System.EventHandler(this.textBoxComputerName_TextChanged);
             this.textBoxComputerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxComputerName_KeyDown);
             // 
@@ -82,7 +82,7 @@
             this.checkBoxTentoPC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxTentoPC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxTentoPC.ForeColor = System.Drawing.Color.White;
-            this.checkBoxTentoPC.Location = new System.Drawing.Point(434, 40);
+            this.checkBoxTentoPC.Location = new System.Drawing.Point(434, 51);
             this.checkBoxTentoPC.Name = "checkBoxTentoPC";
             this.checkBoxTentoPC.Size = new System.Drawing.Size(82, 21);
             this.checkBoxTentoPC.TabIndex = 3;
@@ -95,7 +95,7 @@
             this.textBoxMSIstring.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
             this.textBoxMSIstring.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxMSIstring.ForeColor = System.Drawing.Color.White;
-            this.textBoxMSIstring.Location = new System.Drawing.Point(157, 76);
+            this.textBoxMSIstring.Location = new System.Drawing.Point(157, 82);
             this.textBoxMSIstring.Name = "textBoxMSIstring";
             this.textBoxMSIstring.Size = new System.Drawing.Size(359, 25);
             this.textBoxMSIstring.TabIndex = 5;
@@ -107,7 +107,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(20, 44);
+            this.label3.Location = new System.Drawing.Point(20, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 21);
             this.label3.TabIndex = 9;
@@ -118,7 +118,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(20, 76);
+            this.label4.Location = new System.Drawing.Point(20, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 21);
             this.label4.TabIndex = 10;

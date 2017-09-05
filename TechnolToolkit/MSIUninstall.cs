@@ -22,10 +22,10 @@ namespace TechnolToolkit
         {
             if(checkBoxTentoPC.CheckState == CheckState.Unchecked)
             {
-                textBoxComputerName.Enabled = true;
+                textBoxComputerName.Visible = true;
             } else
             {
-                textBoxComputerName.Enabled = false;
+                textBoxComputerName.Visible = false;
             }
         }
         public void restartMsiUninstall()
@@ -51,7 +51,7 @@ namespace TechnolToolkit
             this.Close();
 
             checkBoxTentoPC.Checked = true;
-            textBoxComputerName.Enabled = false;
+            textBoxComputerName.Visible = false;
         }
         private void buttonOK_Click(object sender, EventArgs e)
         {
