@@ -22,31 +22,40 @@ namespace TechnolToolkit
         {
             if(checkBoxTentoPC.CheckState == CheckState.Unchecked)
             {
-                textBoxComputerName.Enabled = true;
+                textBoxComputerName.Visible = true;
             } else
             {
-                textBoxComputerName.Enabled = false;
+                textBoxComputerName.Visible = false;
             }
         }
-
-        private void buttonOK_Click(object sender, EventArgs e)
+        public void restartMsiUninstall()
+        {
+            textBoxMSIstring.Text = "";
+            textBoxComputerName.Text = "";
+            buttonOK.Enabled = false;
+            checkBoxTentoPC.Checked = true;
+        }
+        private void kliknutiNeboEnter()
         {
             Process p = new Process();
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\msi_vyhledavac.vbs";
-                if (checkBoxTentoPC.CheckState == CheckState.Unchecked)
-                {
-                    p.StartInfo.Arguments = textBoxComputerName.Text + " \"" + textBoxMSIstring.Text + "\"";
-                }
-                else
-                {
-                    p.StartInfo.Arguments = "\".\"" + " \"" + textBoxMSIstring.Text + "\"";
-                }
+            if (checkBoxTentoPC.CheckState == CheckState.Unchecked)
+            {
+                p.StartInfo.Arguments = textBoxComputerName.Text + " \"" + textBoxMSIstring.Text + "\"";
+            }
+            else
+            {
+                p.StartInfo.Arguments = "\".\"" + " \"" + textBoxMSIstring.Text + "\"";
+            }
             p.Start();
             this.Close();
 
             checkBoxTentoPC.Checked = true;
-            textBoxComputerName.Enabled = false;
-            textBoxComputerName.Text = "Jméno pc";
+            textBoxComputerName.Visible = false;
+        }
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            kliknutiNeboEnter();
         }
 
         private void textBoxComputerName_TextChanged(object sender, EventArgs e)
@@ -71,6 +80,24 @@ namespace TechnolToolkit
             {
                 buttonOK.Enabled = true;
             }
+        }
+
+        private void textBoxComputerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+                if(textBoxMSIstring.Text != "")
+                {
+                    kliknutiNeboEnter();
+                }
+        }
+
+        private void textBoxMSIstring_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                if (textBoxMSIstring.Text != "")
+                {
+                    kliknutiNeboEnter();
+                }
         }
     }
 }

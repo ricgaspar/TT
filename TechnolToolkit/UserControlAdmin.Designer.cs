@@ -70,7 +70,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Location = new System.Drawing.Point(3, 26);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(966, 1);
+            this.pictureBox2.Size = new System.Drawing.Size(967, 1);
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
@@ -96,7 +96,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 359);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(966, 144);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(967, 144);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // buttonZasadyPC
@@ -159,7 +159,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(3, 532);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(966, 1);
+            this.pictureBox1.Size = new System.Drawing.Size(967, 1);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -169,7 +169,7 @@
             this.pictureBoxLine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxLine.Location = new System.Drawing.Point(3, 354);
             this.pictureBoxLine.Name = "pictureBoxLine";
-            this.pictureBoxLine.Size = new System.Drawing.Size(966, 1);
+            this.pictureBoxLine.Size = new System.Drawing.Size(967, 1);
             this.pictureBoxLine.TabIndex = 2;
             this.pictureBoxLine.TabStop = false;
             this.pictureBoxLine.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxLine_Paint);
@@ -192,7 +192,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(972, 300);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(973, 300);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonDZC
@@ -345,6 +345,7 @@
             this.buttonNapajeniPC.Text = "Napájení PC";
             this.buttonNapajeniPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNapajeniPC.UseVisualStyleBackColor = false;
+            this.buttonNapajeniPC.Click += new System.EventHandler(this.buttonNapajeniPC_Click);
             this.buttonNapajeniPC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonNapajeniPC_Paint);
             // 
             // buttonInfoPC
@@ -508,7 +509,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(972, 680);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(973, 680);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -544,7 +545,7 @@
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 537);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(966, 140);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(967, 140);
             this.flowLayoutPanel3.TabIndex = 9;
             // 
             // UserControlAdmin
@@ -557,7 +558,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "UserControlAdmin";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.Size = new System.Drawing.Size(975, 683);
+            this.Size = new System.Drawing.Size(976, 683);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

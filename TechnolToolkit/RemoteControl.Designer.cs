@@ -38,7 +38,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 29);
@@ -47,30 +47,31 @@
             // 
             // textBoxCilPC
             // 
-            this.textBoxCilPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBoxCilPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxCilPC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxCilPC.ForeColor = System.Drawing.Color.White;
-            this.textBoxCilPC.Location = new System.Drawing.Point(180, 48);
+            this.textBoxCilPC.Location = new System.Drawing.Point(144, 48);
             this.textBoxCilPC.Name = "textBoxCilPC";
-            this.textBoxCilPC.Size = new System.Drawing.Size(177, 20);
+            this.textBoxCilPC.Size = new System.Drawing.Size(177, 25);
             this.textBoxCilPC.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(28, 46);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(28, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 20);
+            this.label2.Size = new System.Drawing.Size(109, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Computername / IP";
+            this.label2.Text = "Jméno PC / IP";
             // 
             // button1
             // 
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(363, 48);
+            this.button1.Location = new System.Drawing.Point(327, 48);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 23);
+            this.button1.Size = new System.Drawing.Size(89, 25);
             this.button1.TabIndex = 3;
             this.button1.Text = "Připojit";
             this.button1.UseVisualStyleBackColor = true;
@@ -80,8 +81,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(469, 82);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(54)))), ((int)(((byte)(65)))));
+            this.ClientSize = new System.Drawing.Size(425, 82);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxCilPC);
@@ -92,7 +93,7 @@
             this.Name = "RemoteControl";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Vzdálená správa";
+            this.Text = "Vzdálené připojení k PC";
             this.ResumeLayout(false);
             this.PerformLayout();
 

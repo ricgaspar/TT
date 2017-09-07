@@ -42,12 +42,19 @@ namespace TechnolToolkit
             resetListView();
 
             //Rozdeli data do listu tmp vzdy, kdyz narazi na novy radek
-            List<string> tmp = data.Split(new[] {"\n"},StringSplitOptions.RemoveEmptyEntries).ToList();
-            //Ostraneni prvniho radku
-            tmp.RemoveAt(0);
-            //Ostraneni vsech prazdnych radku
-            tmp.RemoveAll(string.IsNullOrWhiteSpace);
-
+            List<string> tmp = data.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            try
+            {
+                //Ostraneni prvniho radku
+                tmp.RemoveAt(0);
+                //Ostraneni vsech prazdnych radku
+                tmp.RemoveAll(string.IsNullOrWhiteSpace);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Pravděpodobně nejste připojeni do sítě Škoda nebo jste nezadali správně název počítače" +
+                                "\n-------------------------------------------------------------------------------\n"+ex.ToString(),"Chyba");
+            }
             //Deklarace promenych
             List<string> threeLine = new List<string>();
             string temp = string.Empty;

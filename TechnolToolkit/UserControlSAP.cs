@@ -73,7 +73,7 @@ namespace TechnolToolkit
             catch(Exception ex)
             {
                 obsahWebu = String.Empty;
-                MessageBox.Show("Jste připojeni do sítě Škoda?\n--------------------------------------\n"+ ex.ToString(),"Chyba!");
+                MessageBox.Show("Pravděpodobně nejste připojeni do sítě Škoda!\n--------------------------------------\n"+ ex.ToString(),"Chyba!");
             }
             
             //Vyberem si pouze cast, ktera zacina <Software> a konci </Software>

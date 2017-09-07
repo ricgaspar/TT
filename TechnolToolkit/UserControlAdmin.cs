@@ -154,6 +154,7 @@ namespace TechnolToolkit
         MSIUninstall msi = new MSIUninstall();
         private void buttonMSI_Click(object sender, EventArgs e)
         {
+            msi.restartMsiUninstall();
             msi.ShowDialog();
         }
 
@@ -246,6 +247,10 @@ namespace TechnolToolkit
             bit.resetTextBox();
             bit.ShowDialog();
         }
-        
+
+        private void buttonNapajeniPC_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -37,7 +37,6 @@
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonAdminTools = new System.Windows.Forms.Button();
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
-            this.toggleButton1 = new TechnolToolkit.toggleButton();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -64,17 +63,16 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(255, 12);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 12, 0, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(250, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(972, 701);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(977, 713);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(42)))), ((int)(((byte)(49)))));
-            this.panel1.Controls.Add(this.toggleButton1);
             this.panel1.Controls.Add(this.buttonSAP);
             this.panel1.Controls.Add(this.buttonMenu);
             this.panel1.Controls.Add(this.buttonAdminTools);
@@ -92,7 +90,7 @@
             this.buttonSAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSAP.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSAP.ForeColor = System.Drawing.Color.White;
-            this.buttonSAP.Location = new System.Drawing.Point(0, 123);
+            this.buttonSAP.Location = new System.Drawing.Point(0, 113);
             this.buttonSAP.Name = "buttonSAP";
             this.buttonSAP.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.buttonSAP.Size = new System.Drawing.Size(250, 50);
@@ -112,7 +110,7 @@
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMenu.ForeColor = System.Drawing.Color.White;
-            this.buttonMenu.Location = new System.Drawing.Point(-3, 12);
+            this.buttonMenu.Location = new System.Drawing.Point(-3, 1);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Padding = new System.Windows.Forms.Padding(66, 0, 0, 0);
             this.buttonMenu.Size = new System.Drawing.Size(253, 50);
@@ -130,7 +128,7 @@
             this.buttonAdminTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdminTools.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonAdminTools.ForeColor = System.Drawing.Color.White;
-            this.buttonAdminTools.Location = new System.Drawing.Point(0, 68);
+            this.buttonAdminTools.Location = new System.Drawing.Point(0, 58);
             this.buttonAdminTools.Name = "buttonAdminTools";
             this.buttonAdminTools.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.buttonAdminTools.Size = new System.Drawing.Size(250, 50);
@@ -140,18 +138,6 @@
             this.buttonAdminTools.UseVisualStyleBackColor = true;
             this.buttonAdminTools.Click += new System.EventHandler(this.buttonAdminTools_Click);
             this.buttonAdminTools.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAdminTools_Paint);
-            // 
-            // timerMenu
-            // 
-            this.timerMenu.Interval = 15;
-            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.Location = new System.Drawing.Point(0, 0);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.Size = new System.Drawing.Size(0, 0);
-            this.toggleButton1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -183,7 +169,6 @@
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Timer timerMenu;
         private System.Windows.Forms.Button buttonSAP;
-        private toggleButton toggleButton1;
     }
 }
 

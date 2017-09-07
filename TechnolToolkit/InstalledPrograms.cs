@@ -114,7 +114,7 @@ namespace TechnolToolkit
             {
                 textBox1.Enabled = false;
                 buttonVyhledat.Enabled = true;
-                textBox1.Text = "Lokální pc";
+                textBox1.Text = "Lokální PC";
             }
             //Nechceme
             else
@@ -127,7 +127,7 @@ namespace TechnolToolkit
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Lokální pc")
+            if (textBox1.Text == "Lokální PC")
                 textBox1.Text = "";
             else
                 return;
@@ -252,7 +252,7 @@ namespace TechnolToolkit
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox1.Text == "Lokální pc")
+            if (textBox1.Text == "" || textBox1.Text == "Lokální PC")
                 if (!checkBoxLocalPC.Checked)
                     buttonVyhledat.Enabled = false;
                 else

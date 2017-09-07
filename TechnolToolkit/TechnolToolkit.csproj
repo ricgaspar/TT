@@ -80,9 +80,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="toggleButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="VASConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +136,12 @@
     <Compile Include="UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="VASconfigHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VASconfigHelp.Designer.cs">
+      <DependentUpon>VASconfigHelp.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Bitlocker.resx">
       <DependentUpon>Bitlocker.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSAP.resx">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VASconfigHelp.resx">
+      <DependentUpon>VASconfigHelp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -248,6 +254,7 @@
     <None Include="Resources\UserControl_Admin_icons\icons8-Text Color-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Heart MonitorWarning-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Encrypt-96.png" />
+    <None Include="Resources\vasConfigHelp.png" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\polymer-micro.html" />
     <Content Include="Scripts\polymer-mini.html" />
