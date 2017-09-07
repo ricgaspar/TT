@@ -477,10 +477,14 @@ namespace TechnolToolkit
 
         private void buttonRun_Click(object sender, EventArgs e)
         {
+            buttonRun.Enabled = false;
             editConfig();
             Process p = new Process();
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\VAS6154\start.bat";
             p.Start();
+            p.WaitForExit();
+            if (p.HasExited)
+                buttonRun.Enabled = true;
         }
 
         private void radioButtonTV_CheckedChanged(object sender, EventArgs e)

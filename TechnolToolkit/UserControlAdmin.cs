@@ -247,6 +247,10 @@ namespace TechnolToolkit
             bit.resetTextBox();
             bit.ShowDialog();
         }
-        
+
+        private void buttonNapajeniPC_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

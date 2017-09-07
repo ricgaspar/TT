@@ -151,15 +151,17 @@
             // 
             // buttonVyhledat
             // 
+            this.buttonVyhledat.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVyhledat.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVyhledat.ForeColor = System.Drawing.Color.Black;
+            this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
             this.buttonVyhledat.Location = new System.Drawing.Point(337, 13);
             this.buttonVyhledat.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
             this.buttonVyhledat.Name = "buttonVyhledat";
             this.buttonVyhledat.Size = new System.Drawing.Size(80, 25);
             this.buttonVyhledat.TabIndex = 3;
             this.buttonVyhledat.Text = "Vyhledat";
-            this.buttonVyhledat.UseVisualStyleBackColor = true;
+            this.buttonVyhledat.UseVisualStyleBackColor = false;
             this.buttonVyhledat.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // checkBoxKopirujVerze
