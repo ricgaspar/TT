@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonZasadyPC = new System.Windows.Forms.Button();
             this.buttonAkceVsechny = new System.Windows.Forms.Button();
             this.buttonRemoteControl = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxLine = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonDZC = new System.Windows.Forms.Button();
             this.buttonZprava = new System.Windows.Forms.Button();
@@ -53,34 +50,27 @@
             this.buttonASCII = new System.Windows.Forms.Button();
             this.buttonVAS = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxLine = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 26);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(967, 1);
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(183, 21);
@@ -94,18 +84,19 @@
             this.flowLayoutPanel2.Controls.Add(this.buttonAkceVsechny);
             this.flowLayoutPanel2.Controls.Add(this.buttonRemoteControl);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 359);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 315);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(967, 144);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(967, 154);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // buttonZasadyPC
             // 
-            this.buttonZasadyPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonZasadyPC.FlatAppearance.BorderSize = 0;
+            this.buttonZasadyPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonZasadyPC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonZasadyPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonZasadyPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonZasadyPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonZasadyPC.ForeColor = System.Drawing.Color.White;
+            this.buttonZasadyPC.ForeColor = System.Drawing.Color.Black;
             this.buttonZasadyPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZasadyPC.Location = new System.Drawing.Point(6, 6);
             this.buttonZasadyPC.Margin = new System.Windows.Forms.Padding(6);
@@ -119,11 +110,12 @@
             // 
             // buttonAkceVsechny
             // 
-            this.buttonAkceVsechny.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonAkceVsechny.FlatAppearance.BorderSize = 0;
+            this.buttonAkceVsechny.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonAkceVsechny.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonAkceVsechny.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonAkceVsechny.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAkceVsechny.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAkceVsechny.ForeColor = System.Drawing.Color.White;
+            this.buttonAkceVsechny.ForeColor = System.Drawing.Color.Black;
             this.buttonAkceVsechny.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAkceVsechny.Location = new System.Drawing.Point(323, 6);
             this.buttonAkceVsechny.Margin = new System.Windows.Forms.Padding(6);
@@ -137,11 +129,12 @@
             // 
             // buttonRemoteControl
             // 
-            this.buttonRemoteControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonRemoteControl.FlatAppearance.BorderSize = 0;
+            this.buttonRemoteControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonRemoteControl.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonRemoteControl.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonRemoteControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemoteControl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonRemoteControl.ForeColor = System.Drawing.Color.White;
+            this.buttonRemoteControl.ForeColor = System.Drawing.Color.Black;
             this.buttonRemoteControl.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonRemoteControl.Location = new System.Drawing.Point(640, 6);
             this.buttonRemoteControl.Margin = new System.Windows.Forms.Padding(6);
@@ -153,26 +146,6 @@
             this.buttonRemoteControl.UseVisualStyleBackColor = false;
             this.buttonRemoteControl.Click += new System.EventHandler(this.buttonRemoteControl_Click);
             this.buttonRemoteControl.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonRemoteControl_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 532);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(967, 1);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            // 
-            // pictureBoxLine
-            // 
-            this.pictureBoxLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxLine.Location = new System.Drawing.Point(3, 354);
-            this.pictureBoxLine.Name = "pictureBoxLine";
-            this.pictureBoxLine.Size = new System.Drawing.Size(967, 1);
-            this.pictureBoxLine.TabIndex = 2;
-            this.pictureBoxLine.TabStop = false;
-            this.pictureBoxLine.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxLine_Paint);
             // 
             // flowLayoutPanel1
             // 
@@ -192,16 +165,17 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(973, 300);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(973, 256);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonDZC
             // 
-            this.buttonDZC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonDZC.FlatAppearance.BorderSize = 0;
+            this.buttonDZC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonDZC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonDZC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonDZC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDZC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonDZC.ForeColor = System.Drawing.Color.White;
+            this.buttonDZC.ForeColor = System.Drawing.Color.Black;
             this.buttonDZC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonDZC.Location = new System.Drawing.Point(6, 6);
             this.buttonDZC.Margin = new System.Windows.Forms.Padding(6);
@@ -216,11 +190,12 @@
             // 
             // buttonZprava
             // 
-            this.buttonZprava.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonZprava.FlatAppearance.BorderSize = 0;
+            this.buttonZprava.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonZprava.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonZprava.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonZprava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonZprava.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonZprava.ForeColor = System.Drawing.Color.White;
+            this.buttonZprava.ForeColor = System.Drawing.Color.Black;
             this.buttonZprava.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZprava.Location = new System.Drawing.Point(164, 6);
             this.buttonZprava.Margin = new System.Windows.Forms.Padding(6);
@@ -235,11 +210,12 @@
             // 
             // buttonZmenaSkupin
             // 
-            this.buttonZmenaSkupin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonZmenaSkupin.FlatAppearance.BorderSize = 0;
+            this.buttonZmenaSkupin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonZmenaSkupin.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonZmenaSkupin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonZmenaSkupin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonZmenaSkupin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonZmenaSkupin.ForeColor = System.Drawing.Color.White;
+            this.buttonZmenaSkupin.ForeColor = System.Drawing.Color.Black;
             this.buttonZmenaSkupin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZmenaSkupin.Location = new System.Drawing.Point(322, 6);
             this.buttonZmenaSkupin.Margin = new System.Windows.Forms.Padding(6);
@@ -255,11 +231,12 @@
             // buttonInstalovanyProgramy
             // 
             this.buttonInstalovanyProgramy.AccessibleDescription = "";
-            this.buttonInstalovanyProgramy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonInstalovanyProgramy.FlatAppearance.BorderSize = 0;
+            this.buttonInstalovanyProgramy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonInstalovanyProgramy.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonInstalovanyProgramy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonInstalovanyProgramy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.White;
+            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.Black;
             this.buttonInstalovanyProgramy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(480, 6);
             this.buttonInstalovanyProgramy.Margin = new System.Windows.Forms.Padding(6);
@@ -274,11 +251,12 @@
             // 
             // buttonNajdiPC
             // 
-            this.buttonNajdiPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonNajdiPC.FlatAppearance.BorderSize = 0;
+            this.buttonNajdiPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonNajdiPC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonNajdiPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonNajdiPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNajdiPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonNajdiPC.ForeColor = System.Drawing.Color.White;
+            this.buttonNajdiPC.ForeColor = System.Drawing.Color.Black;
             this.buttonNajdiPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonNajdiPC.Location = new System.Drawing.Point(638, 6);
             this.buttonNajdiPC.Margin = new System.Windows.Forms.Padding(6);
@@ -293,11 +271,12 @@
             // 
             // buttonBitlocker
             // 
-            this.buttonBitlocker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonBitlocker.FlatAppearance.BorderSize = 0;
+            this.buttonBitlocker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonBitlocker.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonBitlocker.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonBitlocker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBitlocker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonBitlocker.ForeColor = System.Drawing.Color.White;
+            this.buttonBitlocker.ForeColor = System.Drawing.Color.Black;
             this.buttonBitlocker.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonBitlocker.Location = new System.Drawing.Point(796, 6);
             this.buttonBitlocker.Margin = new System.Windows.Forms.Padding(6);
@@ -312,11 +291,12 @@
             // 
             // buttonProcesy
             // 
-            this.buttonProcesy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonProcesy.FlatAppearance.BorderSize = 0;
+            this.buttonProcesy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonProcesy.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonProcesy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonProcesy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProcesy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonProcesy.ForeColor = System.Drawing.Color.White;
+            this.buttonProcesy.ForeColor = System.Drawing.Color.Black;
             this.buttonProcesy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonProcesy.Location = new System.Drawing.Point(6, 139);
             this.buttonProcesy.Margin = new System.Windows.Forms.Padding(6);
@@ -331,11 +311,12 @@
             // 
             // buttonNapajeniPC
             // 
-            this.buttonNapajeniPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonNapajeniPC.FlatAppearance.BorderSize = 0;
+            this.buttonNapajeniPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonNapajeniPC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonNapajeniPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonNapajeniPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNapajeniPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonNapajeniPC.ForeColor = System.Drawing.Color.White;
+            this.buttonNapajeniPC.ForeColor = System.Drawing.Color.Black;
             this.buttonNapajeniPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonNapajeniPC.Location = new System.Drawing.Point(164, 139);
             this.buttonNapajeniPC.Margin = new System.Windows.Forms.Padding(6);
@@ -351,11 +332,12 @@
             // buttonInfoPC
             // 
             this.buttonInfoPC.AccessibleDescription = "";
-            this.buttonInfoPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonInfoPC.FlatAppearance.BorderSize = 0;
+            this.buttonInfoPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonInfoPC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonInfoPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonInfoPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInfoPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonInfoPC.ForeColor = System.Drawing.Color.White;
+            this.buttonInfoPC.ForeColor = System.Drawing.Color.Black;
             this.buttonInfoPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonInfoPC.Location = new System.Drawing.Point(322, 139);
             this.buttonInfoPC.Margin = new System.Windows.Forms.Padding(6);
@@ -365,15 +347,17 @@
             this.buttonInfoPC.Text = "Info o PC";
             this.buttonInfoPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonInfoPC.UseVisualStyleBackColor = false;
+            this.buttonInfoPC.Click += new System.EventHandler(this.buttonInfoPC_Click);
             this.buttonInfoPC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonInfoPC_Paint);
             // 
             // buttonMSI
             // 
-            this.buttonMSI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonMSI.FlatAppearance.BorderSize = 0;
+            this.buttonMSI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonMSI.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonMSI.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonMSI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMSI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonMSI.ForeColor = System.Drawing.Color.White;
+            this.buttonMSI.ForeColor = System.Drawing.Color.Black;
             this.buttonMSI.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonMSI.Location = new System.Drawing.Point(480, 139);
             this.buttonMSI.Margin = new System.Windows.Forms.Padding(6);
@@ -389,11 +373,12 @@
             // buttonRegSearch
             // 
             this.buttonRegSearch.AccessibleDescription = "";
-            this.buttonRegSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonRegSearch.FlatAppearance.BorderSize = 0;
+            this.buttonRegSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonRegSearch.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonRegSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonRegSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonRegSearch.ForeColor = System.Drawing.Color.White;
+            this.buttonRegSearch.ForeColor = System.Drawing.Color.Black;
             this.buttonRegSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonRegSearch.Location = new System.Drawing.Point(322, 6);
             this.buttonRegSearch.Margin = new System.Windows.Forms.Padding(6);
@@ -409,11 +394,12 @@
             // buttonIPConfig
             // 
             this.buttonIPConfig.AccessibleDescription = "";
-            this.buttonIPConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonIPConfig.FlatAppearance.BorderSize = 0;
+            this.buttonIPConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonIPConfig.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonIPConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonIPConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonIPConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonIPConfig.ForeColor = System.Drawing.Color.White;
+            this.buttonIPConfig.ForeColor = System.Drawing.Color.Black;
             this.buttonIPConfig.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonIPConfig.Location = new System.Drawing.Point(796, 6);
             this.buttonIPConfig.Margin = new System.Windows.Forms.Padding(6);
@@ -429,11 +415,12 @@
             // buttonUserPCname
             // 
             this.buttonUserPCname.AccessibleDescription = "";
-            this.buttonUserPCname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonUserPCname.FlatAppearance.BorderSize = 0;
+            this.buttonUserPCname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonUserPCname.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonUserPCname.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonUserPCname.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserPCname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonUserPCname.ForeColor = System.Drawing.Color.White;
+            this.buttonUserPCname.ForeColor = System.Drawing.Color.Black;
             this.buttonUserPCname.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonUserPCname.Location = new System.Drawing.Point(6, 6);
             this.buttonUserPCname.Margin = new System.Windows.Forms.Padding(6);
@@ -443,15 +430,17 @@
             this.buttonUserPCname.Text = "Aktuální uživatel a PC Name";
             this.buttonUserPCname.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonUserPCname.UseVisualStyleBackColor = false;
+            this.buttonUserPCname.Click += new System.EventHandler(this.buttonUserPCname_Click);
             this.buttonUserPCname.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonUserPCname_Paint);
             // 
             // buttonASCII
             // 
-            this.buttonASCII.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonASCII.FlatAppearance.BorderSize = 0;
+            this.buttonASCII.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonASCII.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonASCII.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonASCII.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonASCII.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonASCII.ForeColor = System.Drawing.Color.White;
+            this.buttonASCII.ForeColor = System.Drawing.Color.Black;
             this.buttonASCII.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonASCII.Location = new System.Drawing.Point(480, 6);
             this.buttonASCII.Margin = new System.Windows.Forms.Padding(6);
@@ -466,11 +455,12 @@
             // 
             // buttonVAS
             // 
-            this.buttonVAS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
-            this.buttonVAS.FlatAppearance.BorderSize = 0;
+            this.buttonVAS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonVAS.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonVAS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.buttonVAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVAS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVAS.ForeColor = System.Drawing.Color.White;
+            this.buttonVAS.ForeColor = System.Drawing.Color.Black;
             this.buttonVAS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonVAS.Location = new System.Drawing.Point(638, 6);
             this.buttonVAS.Margin = new System.Windows.Forms.Padding(6);
@@ -502,22 +492,52 @@
             this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(973, 680);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // pictureBoxLine
+            // 
+            this.pictureBoxLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxLine.Location = new System.Drawing.Point(3, 310);
+            this.pictureBoxLine.Name = "pictureBoxLine";
+            this.pictureBoxLine.Size = new System.Drawing.Size(967, 1);
+            this.pictureBoxLine.TabIndex = 2;
+            this.pictureBoxLine.TabStop = false;
+            this.pictureBoxLine.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxLine_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 498);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(967, 1);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 26);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(967, 1);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
-            this.label1.Location = new System.Drawing.Point(3, 328);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(3, 284);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 21);
             this.label1.TabIndex = 7;
@@ -527,12 +547,12 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
-            this.label3.Location = new System.Drawing.Point(3, 506);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 472);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 21);
+            this.label3.Size = new System.Drawing.Size(131, 21);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Ostatní (lokální) nástroje";
+            this.label3.Text = "Ostatní nástroje";
             // 
             // flowLayoutPanel3
             // 
@@ -543,9 +563,9 @@
             this.flowLayoutPanel3.Controls.Add(this.buttonVAS);
             this.flowLayoutPanel3.Controls.Add(this.buttonIPConfig);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 537);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 503);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(967, 140);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(967, 174);
             this.flowLayoutPanel3.TabIndex = 9;
             // 
             // UserControlAdmin
@@ -559,13 +579,13 @@
             this.Name = "UserControlAdmin";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 3, 3);
             this.Size = new System.Drawing.Size(976, 683);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 

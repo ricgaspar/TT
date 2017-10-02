@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelHorniVnitrni = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxPCname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxZarizeni = new System.Windows.Forms.CheckBox();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.buttonVyhledat = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.kopírovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zrušitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelHorniVnitrni.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVnejsi
@@ -56,7 +61,7 @@
             // 
             // tableLayoutPanelHorniVnitrni
             // 
-            this.tableLayoutPanelHorniVnitrni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.tableLayoutPanelHorniVnitrni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
             this.tableLayoutPanelHorniVnitrni.ColumnCount = 4;
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
@@ -77,10 +82,10 @@
             // 
             // textBoxPCname
             // 
-            this.textBoxPCname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxPCname.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxPCname.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBoxPCname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxPCname.ForeColor = System.Drawing.Color.White;
+            this.textBoxPCname.ForeColor = System.Drawing.Color.Black;
             this.textBoxPCname.Location = new System.Drawing.Point(75, 7);
             this.textBoxPCname.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.textBoxPCname.Name = "textBoxPCname";
@@ -92,8 +97,9 @@
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 25);
@@ -105,23 +111,38 @@
             // 
             this.checkBoxZarizeni.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxZarizeni.AutoSize = true;
+            this.checkBoxZarizeni.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxZarizeni.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxZarizeni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(207)))));
+            this.checkBoxZarizeni.ForeColor = System.Drawing.Color.Black;
             this.checkBoxZarizeni.Location = new System.Drawing.Point(502, 12);
             this.checkBoxZarizeni.Margin = new System.Windows.Forms.Padding(10, 5, 3, 3);
             this.checkBoxZarizeni.Name = "checkBoxZarizeni";
             this.checkBoxZarizeni.Size = new System.Drawing.Size(152, 17);
             this.checkBoxZarizeni.TabIndex = 3;
             this.checkBoxZarizeni.Text = "Kopírovat jméno zařízení";
-            this.checkBoxZarizeni.UseVisualStyleBackColor = true;
+            this.checkBoxZarizeni.UseVisualStyleBackColor = false;
+            // 
+            // buttonVyhledat
+            // 
+            this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonVyhledat.Enabled = false;
+            this.buttonVyhledat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonVyhledat.ForeColor = System.Drawing.Color.Black;
+            this.buttonVyhledat.Location = new System.Drawing.Point(375, 7);
+            this.buttonVyhledat.Name = "buttonVyhledat";
+            this.buttonVyhledat.Size = new System.Drawing.Size(114, 25);
+            this.buttonVyhledat.TabIndex = 2;
+            this.buttonVyhledat.Text = "Vyhledat";
+            this.buttonVyhledat.UseVisualStyleBackColor = true;
+            this.buttonVyhledat.Click += new System.EventHandler(this.buttonVyhledat_Click);
             // 
             // listView1
             // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
+            this.listView1.BackColor = System.Drawing.Color.White;
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listView1.ForeColor = System.Drawing.Color.White;
+            this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listView1.ForeColor = System.Drawing.Color.Black;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.Location = new System.Drawing.Point(0, 40);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
@@ -134,18 +155,29 @@
             this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
-            // buttonVyhledat
+            // contextMenuStrip1
             // 
-            this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonVyhledat.Enabled = false;
-            this.buttonVyhledat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVyhledat.Location = new System.Drawing.Point(375, 7);
-            this.buttonVyhledat.Name = "buttonVyhledat";
-            this.buttonVyhledat.Size = new System.Drawing.Size(114, 25);
-            this.buttonVyhledat.TabIndex = 4;
-            this.buttonVyhledat.Text = "Vyhledat";
-            this.buttonVyhledat.UseVisualStyleBackColor = true;
-            this.buttonVyhledat.Click += new System.EventHandler(this.buttonVyhledat_Click);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kopírovatToolStripMenuItem,
+            this.zrušitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 48);
+            // 
+            // kopírovatToolStripMenuItem
+            // 
+            this.kopírovatToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
+            this.kopírovatToolStripMenuItem.Name = "kopírovatToolStripMenuItem";
+            this.kopírovatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.kopírovatToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.kopírovatToolStripMenuItem.Text = "Kopírovat";
+            this.kopírovatToolStripMenuItem.Click += new System.EventHandler(this.kopírovatToolStripMenuItem_Click);
+            // 
+            // zrušitToolStripMenuItem
+            // 
+            this.zrušitToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
+            this.zrušitToolStripMenuItem.Name = "zrušitToolStripMenuItem";
+            this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.zrušitToolStripMenuItem.Text = "Zrušit";
             // 
             // UserControlSAP
             // 
@@ -159,6 +191,7 @@
             this.tableLayoutPanelVnejsi.ResumeLayout(false);
             this.tableLayoutPanelHorniVnitrni.ResumeLayout(false);
             this.tableLayoutPanelHorniVnitrni.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -172,5 +205,8 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.CheckBox checkBoxZarizeni;
         private System.Windows.Forms.Button buttonVyhledat;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem kopírovatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zrušitToolStripMenuItem;
     }
 }

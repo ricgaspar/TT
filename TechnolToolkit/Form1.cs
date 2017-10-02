@@ -82,10 +82,11 @@ namespace TechnolToolkit
         //Nastavuje pozadi pro aktivni buttony
         private void pozadiAktivnihoButtonu(string activePanel)
         {
-            Color barvaButtonu = Color.FromArgb(37, 51, 79);
+            Color barvaButtonu = Color.FromArgb(212, 223, 237); 
+            //Black - Color barvaButtonu = Color.FromArgb(37, 51, 79);
             if (activePanel == "ucA")
             {
-                
+
                 //aktivni
                 buttonAdminTools.BackColor = barvaButtonu;
                 buttonAdminTools.FlatAppearance.MouseOverBackColor = barvaButtonu;
@@ -108,6 +109,13 @@ namespace TechnolToolkit
         private void buttonAdminTools_Click(object sender, EventArgs e)
         {
             activePanelFuntion(aktivniPanel, "ucA");
+            /*if (aktivniPanel == "ucA")
+            {
+              */  Graphics dc = this.CreateGraphics();
+                Pen pen = new Pen(Color.Blue, 3);
+                dc.DrawRectangle(pen, 0, 0, 50, 50);
+                Refresh();
+            //}
         }
         private void buttonSAP_Click(object sender, EventArgs e)
         {
@@ -138,20 +146,35 @@ namespace TechnolToolkit
         private void buttonAdminTools_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_Crown_96_white, 50, 50), 10, 2);
+            g.DrawImage(ResizeImage(Properties.Resources.icons8_Moderator_96_color, 50, 50), 10, 2);;
+            if (aktivniPanel == "ucA")
+            {
+                Pen pen = new Pen(Color.Blue, 3);
+                Rectangle rect = new Rectangle(0, 0, 5, buttonAdminTools.Height);
+                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
+                g.FillRectangle(br, rect);
+            }
+
 
         }
         //Menu button (skryvani menu)
         private void buttonMenu_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.Menu_96px, 35, 35), 21, 7);
+            g.DrawImage(ResizeImage(Properties.Resources.icons8_Menu_96_color, 35, 35), 21, 9);
         }
         //SAP button
         private void buttonSAP_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_SAP_96_white, 50, 50), 14, 2);
+            g.DrawImage(ResizeImage(Properties.Resources.icons8_SAP_96_color, 50, 50), 14, 2);
+            if (aktivniPanel == "ucS")
+            {
+                Pen pen = new Pen(Color.Blue, 3);
+                Rectangle rect = new Rectangle(0, 0, 5, buttonSAP.Height);
+                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
+                g.FillRectangle(br, rect);
+            }
         }
         #endregion
 
@@ -233,5 +256,11 @@ namespace TechnolToolkit
             }
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+            Pen pen = new Pen(Color.FromArgb(220, 220, 220), 1);
+            e.Graphics.DrawLine(pen,panel1.Width-1,0,panel1.Width-1,panel1.Height-1);
+        }
     }
 }

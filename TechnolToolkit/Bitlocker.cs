@@ -116,8 +116,15 @@ namespace TechnolToolkit
         private void textBoxDevice_TextChanged(object sender, EventArgs e)
         {
             if (textBoxDevice.Text == "")
+            {
                 buttonSearch.Enabled = false;
-            else buttonSearch.Enabled = true;
+                buttonSearch.ForeColor = Color.DimGray;
+            }
+            else
+            {
+                buttonSearch.Enabled = true;
+                buttonSearch.ForeColor = Color.White;
+            }
         }
 
         private void textBoxDevice_KeyDown(object sender, KeyEventArgs e)
@@ -151,16 +158,23 @@ namespace TechnolToolkit
         {
             if (e.Button == MouseButtons.Right)
             {
-                ListView.SelectedListViewItemCollection selectedItems =
-                listView1.SelectedItems;
-                String text = "";
-                foreach (ListViewItem item in selectedItems)
+                if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
                 {
-                    text += item.SubItems[0].Text + "\n";
+                    contextMenuStrip1.Show(Cursor.Position);
                 }
-                Clipboard.SetText(text);
-                listView1.SelectedItems.Clear();
             }
+        }
+
+        private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            String text = "";
+            foreach (ListViewItem item in selectedItems)
+            {
+                text += item.SubItems[0].Text + "\n";
+            }
+            Clipboard.SetText(text);
+            listView1.SelectedItems.Clear();
         }
     }
 }

@@ -56,14 +56,7 @@ namespace TechnolToolkit
             obnovListView();
             //this.Icon = new Icon(Properties.Resources.)
             menuStrip1.Renderer = new MyRenderer();
-            if (textBox1.Text == "")
-            {
-                buttonVyhledat.Visible = false;
-            }
-            else
-            {
-                buttonVyhledat.Visible = true;
-            }
+            
         }
         public static string getBetween(string strSource, string strStart, string strEnd)
         {
@@ -114,7 +107,6 @@ namespace TechnolToolkit
             {
                 textBox1.Enabled = false;
                 buttonVyhledat.Enabled = true;
-                textBox1.Text = "Lokální PC";
             }
             //Nechceme
             else
@@ -252,13 +244,20 @@ namespace TechnolToolkit
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox1.Text == "Lokální PC")
+            if (textBox1.Text == "")
                 if (!checkBoxLocalPC.Checked)
+                {
                     buttonVyhledat.Enabled = false;
+                }
                 else
+                {
                     buttonVyhledat.Enabled = true;
+                }
             else
+            {
                 buttonVyhledat.Enabled = true;
+            }
+
         }
         private void otevrenoToolStripMenuItem_TextChanged(object sender, EventArgs e)
         {
@@ -276,14 +275,10 @@ namespace TechnolToolkit
         {
             if (e.Button == MouseButtons.Right)
             {
-                ListView.SelectedListViewItemCollection selectedItems =
-                listView1.SelectedItems;
-                    String text = "";
-                    foreach (ListViewItem item in selectedItems)
-                    {
-                        text += item.SubItems[1].Text+"\n";
-                    }
-                    Clipboard.SetText(text);
+                if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
             }
         }
 
@@ -309,6 +304,21 @@ namespace TechnolToolkit
                 {
                     item.Selected = true;
                 }
+        }
+
+        private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            String text = "";
+            foreach (ListViewItem item in selectedItems)
+            {
+                if (checkBoxKopirujVerze.Checked)
+                    text += item.SubItems[1].Text + " - " + item.SubItems[2].Text + "\n";
+                else
+                    text += item.SubItems[1].Text + "\n";
+            }
+            Clipboard.SetText(text);
+            listView1.SelectedItems.Clear();
         }
     }
 }

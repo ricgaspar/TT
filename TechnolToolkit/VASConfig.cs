@@ -56,10 +56,10 @@ namespace TechnolToolkit
                 *************************
                 *   RADIO BUTTON LABEL  *
                 *************************/
-                labelHZ.ForeColor = Color.DarkGray;
-                labelKV.ForeColor = Color.DarkGray;
-                labelTV.ForeColor = Color.DarkGray;
-                labelVR.ForeColor = Color.DarkGray;
+                labelHZ.ForeColor = Color.Gray;
+                labelKV.ForeColor = Color.Gray;
+                labelTV.ForeColor = Color.Gray;
+                labelVR.ForeColor = Color.Gray;
                 /*
                 ***********************
                 *       TEXT BOX      *
@@ -158,10 +158,10 @@ namespace TechnolToolkit
                 *************************
                 *   RADIO BUTTON LABEL  *
                 *************************/
-                labelHZ.ForeColor = Color.White;
-                labelKV.ForeColor = Color.White;
-                labelTV.ForeColor = Color.White;
-                labelVR.ForeColor = Color.White;
+                labelHZ.ForeColor = Color.Black;
+                labelKV.ForeColor = Color.Black;
+                labelTV.ForeColor = Color.Black;
+                labelVR.ForeColor = Color.Black;
                 /*
                 *************************
                 *        TEXT BOX       *
@@ -349,7 +349,7 @@ namespace TechnolToolkit
         {
             if (textBoxTab.Text == "")
                 labelTab.ForeColor = Color.Red;
-            else labelTab.ForeColor = Color.White;
+            else labelTab.ForeColor = Color.Black;
             if (canSave() == true)
             {
                 buttonSaveConfig.Enabled = true;
@@ -366,7 +366,7 @@ namespace TechnolToolkit
         {
             if (textBoxConf.Text == "")
                 labelConf.ForeColor = Color.Red;
-            else labelConf.ForeColor = Color.White;
+            else labelConf.ForeColor = Color.Black;
             if (canSave() == true)
             {
                 buttonSaveConfig.Enabled = true;
@@ -383,7 +383,7 @@ namespace TechnolToolkit
         {
             if (textBoxFirm.Text == "")
                 labelFirm.ForeColor = Color.Red;
-            else labelFirm.ForeColor = Color.White;
+            else labelFirm.ForeColor = Color.Black;
             if (canSave() == true)
             {
                 buttonSaveConfig.Enabled = true;
@@ -399,7 +399,7 @@ namespace TechnolToolkit
         {
             if (textBoxCert.Text == "")
                 labelCer.ForeColor = Color.Red;
-            else labelCer.ForeColor = Color.White;
+            else labelCer.ForeColor = Color.Black;
             if (canSave() == true)
             {
                 buttonSaveConfig.Enabled = true;
@@ -416,7 +416,7 @@ namespace TechnolToolkit
         {
             if (textBoxFirmwareVersion.Text == "")
                 labelFirmVer.ForeColor = Color.Red;
-            else labelFirmVer.ForeColor = Color.White;
+            else labelFirmVer.ForeColor = Color.Black;
             if (canSave() == true)
             {
                 buttonSaveConfig.Enabled = true;
@@ -469,12 +469,7 @@ namespace TechnolToolkit
                 return;
             else radioButtonVR.Checked = true;
         }
-        VASconfigHelp vch = new VASconfigHelp();
-        private void buttonHelp_Click(object sender, EventArgs e)
-        {
-            vch.ShowDialog();
-        }
-
+        
         private void buttonRun_Click(object sender, EventArgs e)
         {
             buttonRun.Enabled = false;
@@ -551,13 +546,6 @@ namespace TechnolToolkit
                 MessageBox.Show("Konfigurace uložena!", "Uloženo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else MessageBox.Show("Nebylo možné uložit konfiguraci.\nMáte vyplněné všechny kolonky v sekci Ruční nastavení?", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-        }
-
-        private void buttonRun_EnabledChanged(object sender, EventArgs e)
-        {
-            if (buttonRun.Enabled)
-                buttonRun.ForeColor = Color.FromArgb(0, 192, 0);
-            else buttonRun.ForeColor = Color.DimGray;
         }
 
         private void buttonClearDatabase_EnabledChanged(object sender, EventArgs e)

@@ -99,5 +99,6 @@ namespace TechnolToolkit
                     kliknutiNeboEnter();
                 }
         }
+
     }
 }

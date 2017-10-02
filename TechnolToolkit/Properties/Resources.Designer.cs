@@ -63,9 +63,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Car_Service_96 {
+        internal static System.Drawing.Bitmap icons8_Car_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Car_Service_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Car_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Crown_96_white {
+        internal static System.Drawing.Bitmap icons8_Close_Window_96 {
             get {
-                object obj = ResourceManager.GetObject("icons8_Crown_96_white", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Close_Window_96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Electrical_96 {
+        internal static System.Drawing.Bitmap icons8_Copy_to_Clipboard_96 {
             get {
-                object obj = ResourceManager.GetObject("icons8_Electrical_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Copy_to_Clipboard_96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Encrypt_96 {
+        internal static System.Drawing.Bitmap icons8_Copy_to_Clipboard_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Encrypt_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Copy_to_Clipboard_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Heart_Monitor_96 {
+        internal static System.Drawing.Bitmap icons8_Electrical_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Heart_Monitor_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Electrical_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Heart_MonitorWarning_96 {
+        internal static System.Drawing.Bitmap icons8_Encrypt_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Heart_MonitorWarning_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Encrypt_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Key_96 {
+        internal static System.Drawing.Bitmap icons8_F1_Car_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Key_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_F1_Car_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Key_96_white {
+        internal static System.Drawing.Bitmap icons8_Heart_Monitor_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Key_96_white", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Heart_Monitor_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Laptop_96 {
+        internal static System.Drawing.Bitmap icons8_Heart_MonitorAll_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Laptop_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Heart_MonitorAll_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_LaptopInfo_96 {
+        internal static System.Drawing.Bitmap icons8_Key_2_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_LaptopInfo_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Key_2_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Message_96 {
+        internal static System.Drawing.Bitmap icons8_Laptop_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Message_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Laptop_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Name_96 {
+        internal static System.Drawing.Bitmap icons8_LaptopSearch_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Name_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_LaptopSearch_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Name_96_white {
+        internal static System.Drawing.Bitmap icons8_Lock_2_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Name_96_white", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Lock_2_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Network_Card_96 {
+        internal static System.Drawing.Bitmap icons8_Menu_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Network_Card_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Menu_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Processor_96 {
+        internal static System.Drawing.Bitmap icons8_Moderator_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Processor_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Moderator_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Registry_Editor_96 {
+        internal static System.Drawing.Bitmap icons8_Name_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Registry_Editor_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Name_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Remote_Working_96 {
+        internal static System.Drawing.Bitmap icons8_Network_Card_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Remote_Working_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Network_Card_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_SAP_96_white {
+        internal static System.Drawing.Bitmap icons8_Post_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_SAP_96_white", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Post_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Software_96 {
+        internal static System.Drawing.Bitmap icons8_Processor_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Software_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Processor_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +253,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Software_Installer_96 {
+        internal static System.Drawing.Bitmap icons8_Registry_Editor_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Software_Installer_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Registry_Editor_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Text_Color_96 {
+        internal static System.Drawing.Bitmap icons8_Remote_Working_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Text_Color_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Remote_Working_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Under_Computer_96 {
+        internal static System.Drawing.Bitmap icons8_SAP_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_Under_Computer_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_SAP_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +283,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_User_96 {
+        internal static System.Drawing.Bitmap icons8_Software_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_User_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Software_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +293,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_User_Group_Man_Man_96 {
+        internal static System.Drawing.Bitmap icons8_SoftwareUninstall_96_color {
             get {
-                object obj = ResourceManager.GetObject("icons8_User_Group_Man_Man_96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_SoftwareUninstall_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,9 +303,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Menu_96px {
+        internal static System.Drawing.Bitmap icons8_Sublime_Text_96_color {
             get {
-                object obj = ResourceManager.GetObject("Menu_96px", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Sublime_Text_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,9 +313,39 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap vasConfigHelp {
+        internal static System.Drawing.Bitmap icons8_Under_Computer_96_color {
             get {
-                object obj = ResourceManager.GetObject("vasConfigHelp", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Under_Computer_96_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_User_96_color {
+            get {
+                object obj = ResourceManager.GetObject("icons8_User_96_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_User_Groups_96_color {
+            get {
+                object obj = ResourceManager.GetObject("icons8_User_Groups_96_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_UserSearcg_96_color {
+            get {
+                object obj = ResourceManager.GetObject("icons8_UserSearcg_96_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

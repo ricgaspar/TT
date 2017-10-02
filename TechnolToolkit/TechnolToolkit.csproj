@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -74,6 +75,18 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoPC.Designer.cs">
+      <DependentUpon>InfoPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Napajeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Napajeni.Designer.cs">
+      <DependentUpon>Napajeni.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -136,17 +149,17 @@
     <Compile Include="UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </Compile>
-    <Compile Include="VASconfigHelp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VASconfigHelp.Designer.cs">
-      <DependentUpon>VASconfigHelp.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Bitlocker.resx">
       <DependentUpon>Bitlocker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoPC.resx">
+      <DependentUpon>InfoPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Napajeni.resx">
+      <DependentUpon>Napajeni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VASConfig.resx">
       <DependentUpon>VASConfig.cs</DependentUpon>
@@ -180,9 +193,6 @@
     <EmbeddedResource Include="UserControlSAP.resx">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VASconfigHelp.resx">
-      <DependentUpon>VASconfigHelp.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -205,9 +215,6 @@
     <EmbeddedResource Include="Resources\RemoteDialog.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Menu_icons\Menu_96px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\NajdiDZC.vbs" />
   </ItemGroup>
   <ItemGroup>
@@ -226,16 +233,10 @@
     <EmbeddedResource Include="Resources\PsExec.exe" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Login_icons\icons8-Key-96.png" />
-    <None Include="Resources\Login_icons\icons8-Name-96.png" />
-    <None Include="Resources\Login_icons\icons8-Key-96_white.png" />
-    <None Include="Resources\Login_icons\icons8-Name-96_white.png" />
-    <None Include="Resources\Menu_icons\icons8-SAP-96_white.png" />
     <EmbeddedResource Include="Resources\RegSearch.exe" />
     <EmbeddedResource Include="Resources\Zjistit_IPconfig.vbs" />
     <EmbeddedResource Include="Resources\bitlocker.vbs" />
     <Content Include="logo.ico" />
-    <None Include="Resources\Menu_icons\icons8-Crown-96_white.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Under Computer-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-User Group Man Man-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-User-96.png" />
@@ -254,7 +255,36 @@
     <None Include="Resources\UserControl_Admin_icons\icons8-Text Color-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Heart MonitorWarning-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Encrypt-96.png" />
-    <None Include="Resources\vasConfigHelp.png" />
+    <Content Include="Resources\Context_Menu\icons8-Close Window-96.png" />
+    <Content Include="Resources\Context_Menu\icons8-Copy to Clipboard-96.png" />
+    <None Include="Resources\icons8-Car-96_color.png" />
+    <None Include="Resources\icons8-Encrypt-96_color.png" />
+    <None Include="Resources\icons8-F1 Car-96_color.png" />
+    <None Include="Resources\icons8-Heart Monitor-96_color.png" />
+    <None Include="Resources\icons8-Heart MonitorAll-96_color.png" />
+    <None Include="Resources\Login_icons\icons8-Key 2-96_color.png" />
+    <None Include="Resources\icons8-Laptop-96_color.png" />
+    <None Include="Resources\icons8-LaptopSearch-96_color.png" />
+    <None Include="Resources\icons8-Lock 2-96_color.png" />
+    <None Include="Resources\Menu_icons\icons8-Menu-96_color.png" />
+    <None Include="Resources\Menu_icons\icons8-Moderator-96_color.png" />
+    <None Include="Resources\Login_icons\icons8-Name-96_color.png" />
+    <None Include="Resources\icons8-Network Card-96_color.png" />
+    <None Include="Resources\icons8-Post-96_color.png" />
+    <None Include="Resources\icons8-Processor-96_color.png" />
+    <None Include="Resources\icons8-Registry Editor-96_color.png" />
+    <None Include="Resources\icons8-Remote Working-96_color.png" />
+    <None Include="Resources\Menu_icons\icons8-SAP-96_color.png" />
+    <None Include="Resources\icons8-Software-96_color.png" />
+    <None Include="Resources\icons8-SoftwareUninstall-96_color.png" />
+    <None Include="Resources\icons8-Sublime Text-96_color.png" />
+    <None Include="Resources\icons8-Under Computer-96_color.png" />
+    <None Include="Resources\icons8-User Groups-96_color.png" />
+    <None Include="Resources\icons8-User-96_color.png" />
+    <None Include="Resources\icons8-UserSearcg-96_color.png" />
+    <None Include="Resources\Context_Menu\icons8-Copy to Clipboard-96_color.png" />
+    <None Include="Resources\icons8-Electrical-96_color.png" />
+    <Content Include="Resources\Menu_icons\icons8-Menu-96.png" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\polymer-micro.html" />
     <Content Include="Scripts\polymer-mini.html" />

@@ -110,18 +110,10 @@ namespace TechnolToolkit
                 
             if (e.Button == MouseButtons.Right)
             {
-                List<string> vyber = new List<string>();
-                //Zkopiruje item do Listu vyber
-                //TODO: Zkopirovat do schranky
-                //TODO: Udelat kontext menu strip pri pravem kliknuti mysi, aby se dalo zvolit kopirovat
-                vyber = listView1.SelectedItems.Cast<ListViewItem>().Select(item => item.Text).ToList();
-                vyber = listView1.SelectedItems.Cast<ListViewItem>().Select(item => item.Text).ToList();
-                /*
-                foreach (var a in vyber)
-                    Console.WriteLine(a);
-                */
-                
-
+                if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
             }
         }
 
@@ -168,6 +160,21 @@ namespace TechnolToolkit
                 listView1.Columns[1].Width = listView1.Columns[1].Width < 100 ? 100 : listView1.Columns[1].Width;
                 listView1.Columns[2].Width = listView1.Columns[2].Width < 100 ? 100 : listView1.Columns[2].Width;
             }
+        }
+
+        private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            String text = "";
+            foreach (ListViewItem item in selectedItems)
+            {
+                if (checkBoxZarizeni.Checked)
+                    text += item.SubItems[1].Text + " - " + item.SubItems[0].Text + "\n";
+                else
+                    text += item.SubItems[0].Text + "\n";
+            }
+            Clipboard.SetText(text);
+            listView1.SelectedItems.Clear();
         }
     }
 }

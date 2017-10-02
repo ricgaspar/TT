@@ -67,8 +67,8 @@
             this.buttonRestore = new System.Windows.Forms.Button();
             this.checkBoxRestore = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBoxPinRemove = new System.Windows.Forms.CheckBox();
             this.buttonClearDatabase = new System.Windows.Forms.Button();
+            this.checkBoxPinRemove = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -86,9 +86,8 @@
             // 
             this.buttonRun.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonRun.Enabled = false;
-            this.buttonRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRun.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonRun.ForeColor = System.Drawing.Color.DimGray;
+            this.buttonRun.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonRun.ForeColor = System.Drawing.Color.Black;
             this.buttonRun.Location = new System.Drawing.Point(188, 35);
             this.buttonRun.Margin = new System.Windows.Forms.Padding(0);
             this.buttonRun.Name = "buttonRun";
@@ -96,18 +95,17 @@
             this.buttonRun.TabIndex = 0;
             this.buttonRun.Text = "Spustit";
             this.buttonRun.UseVisualStyleBackColor = true;
-            this.buttonRun.EnabledChanged += new System.EventHandler(this.buttonRun_EnabledChanged);
             this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(138, 5);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(135, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 25);
+            this.label1.Size = new System.Drawing.Size(294, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Spuštění konfigurace VAS6154";
             // 
@@ -116,7 +114,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(3, 383);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(327, 21);
@@ -170,7 +168,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(3, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 21);
@@ -220,7 +218,7 @@
             this.labelTV.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelTV.AutoSize = true;
             this.labelTV.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTV.ForeColor = System.Drawing.Color.White;
+            this.labelTV.ForeColor = System.Drawing.Color.Black;
             this.labelTV.Location = new System.Drawing.Point(20, 8);
             this.labelTV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.labelTV.Name = "labelTV";
@@ -260,7 +258,7 @@
             this.labelVR.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelVR.AutoSize = true;
             this.labelVR.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelVR.ForeColor = System.Drawing.Color.White;
+            this.labelVR.ForeColor = System.Drawing.Color.Black;
             this.labelVR.Location = new System.Drawing.Point(303, 8);
             this.labelVR.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.labelVR.Name = "labelVR";
@@ -301,7 +299,7 @@
             this.labelKV.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelKV.AutoSize = true;
             this.labelKV.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelKV.ForeColor = System.Drawing.Color.White;
+            this.labelKV.ForeColor = System.Drawing.Color.Black;
             this.labelKV.Location = new System.Drawing.Point(229, 8);
             this.labelKV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.labelKV.Name = "labelKV";
@@ -315,7 +313,7 @@
             this.labelHZ.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelHZ.AutoSize = true;
             this.labelHZ.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelHZ.ForeColor = System.Drawing.Color.White;
+            this.labelHZ.ForeColor = System.Drawing.Color.Black;
             this.labelHZ.Location = new System.Drawing.Point(129, 8);
             this.labelHZ.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.labelHZ.Name = "labelHZ";
@@ -347,7 +345,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(3, 7);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label4.Name = "label4";
@@ -379,7 +377,6 @@
             this.buttonHelp.Text = "Nápověda";
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Visible = false;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -413,10 +410,10 @@
             // 
             // textBoxConf
             // 
-            this.textBoxConf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxConf.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxConf.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxConf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxConf.ForeColor = System.Drawing.Color.White;
+            this.textBoxConf.ForeColor = System.Drawing.Color.Black;
             this.textBoxConf.Location = new System.Drawing.Point(3, 123);
             this.textBoxConf.Name = "textBoxConf";
             this.textBoxConf.Size = new System.Drawing.Size(276, 25);
@@ -429,7 +426,7 @@
             this.labelCer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelCer.AutoSize = true;
             this.labelCer.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelCer.ForeColor = System.Drawing.Color.White;
+            this.labelCer.ForeColor = System.Drawing.Color.Black;
             this.labelCer.Location = new System.Drawing.Point(3, 7);
             this.labelCer.Name = "labelCer";
             this.labelCer.Size = new System.Drawing.Size(88, 13);
@@ -442,7 +439,7 @@
             this.labelTab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelTab.AutoSize = true;
             this.labelTab.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTab.ForeColor = System.Drawing.Color.White;
+            this.labelTab.ForeColor = System.Drawing.Color.Black;
             this.labelTab.Location = new System.Drawing.Point(3, 57);
             this.labelTab.Name = "labelTab";
             this.labelTab.Size = new System.Drawing.Size(74, 13);
@@ -455,7 +452,7 @@
             this.labelConf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelConf.AutoSize = true;
             this.labelConf.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConf.ForeColor = System.Drawing.Color.White;
+            this.labelConf.ForeColor = System.Drawing.Color.Black;
             this.labelConf.Location = new System.Drawing.Point(3, 107);
             this.labelConf.Name = "labelConf";
             this.labelConf.Size = new System.Drawing.Size(98, 13);
@@ -468,7 +465,7 @@
             this.labelFirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelFirm.AutoSize = true;
             this.labelFirm.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelFirm.ForeColor = System.Drawing.Color.White;
+            this.labelFirm.ForeColor = System.Drawing.Color.Black;
             this.labelFirm.Location = new System.Drawing.Point(285, 7);
             this.labelFirm.Name = "labelFirm";
             this.labelFirm.Size = new System.Drawing.Size(83, 13);
@@ -481,7 +478,7 @@
             this.labelFirmVer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelFirmVer.AutoSize = true;
             this.labelFirmVer.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelFirmVer.ForeColor = System.Drawing.Color.White;
+            this.labelFirmVer.ForeColor = System.Drawing.Color.Black;
             this.labelFirmVer.Location = new System.Drawing.Point(285, 57);
             this.labelFirmVer.Name = "labelFirmVer";
             this.labelFirmVer.Size = new System.Drawing.Size(83, 13);
@@ -491,10 +488,10 @@
             // 
             // textBoxFirmwareVersion
             // 
-            this.textBoxFirmwareVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxFirmwareVersion.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxFirmwareVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxFirmwareVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxFirmwareVersion.ForeColor = System.Drawing.Color.White;
+            this.textBoxFirmwareVersion.ForeColor = System.Drawing.Color.Black;
             this.textBoxFirmwareVersion.Location = new System.Drawing.Point(285, 73);
             this.textBoxFirmwareVersion.Name = "textBoxFirmwareVersion";
             this.textBoxFirmwareVersion.Size = new System.Drawing.Size(276, 25);
@@ -504,13 +501,11 @@
             // 
             // buttonSaveConfig
             // 
-            this.buttonSaveConfig.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSaveConfig.Enabled = false;
-            this.buttonSaveConfig.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSaveConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSaveConfig.Location = new System.Drawing.Point(285, 123);
             this.buttonSaveConfig.Name = "buttonSaveConfig";
-            this.buttonSaveConfig.Size = new System.Drawing.Size(276, 34);
+            this.buttonSaveConfig.Size = new System.Drawing.Size(185, 25);
             this.buttonSaveConfig.TabIndex = 12;
             this.buttonSaveConfig.Text = "Trvale uložit";
             this.buttonSaveConfig.UseVisualStyleBackColor = true;
@@ -519,10 +514,10 @@
             // 
             // textBoxCert
             // 
-            this.textBoxCert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxCert.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxCert.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxCert.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxCert.ForeColor = System.Drawing.Color.White;
+            this.textBoxCert.ForeColor = System.Drawing.Color.Black;
             this.textBoxCert.Location = new System.Drawing.Point(3, 23);
             this.textBoxCert.Name = "textBoxCert";
             this.textBoxCert.Size = new System.Drawing.Size(276, 25);
@@ -532,10 +527,10 @@
             // 
             // textBoxFirm
             // 
-            this.textBoxFirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxFirm.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxFirm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxFirm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxFirm.ForeColor = System.Drawing.Color.White;
+            this.textBoxFirm.ForeColor = System.Drawing.Color.Black;
             this.textBoxFirm.Location = new System.Drawing.Point(285, 23);
             this.textBoxFirm.Name = "textBoxFirm";
             this.textBoxFirm.Size = new System.Drawing.Size(276, 25);
@@ -545,10 +540,10 @@
             // 
             // textBoxTab
             // 
-            this.textBoxTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(83)))));
+            this.textBoxTab.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTab.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxTab.ForeColor = System.Drawing.Color.White;
+            this.textBoxTab.ForeColor = System.Drawing.Color.Black;
             this.textBoxTab.Location = new System.Drawing.Point(3, 73);
             this.textBoxTab.Name = "textBoxTab";
             this.textBoxTab.Size = new System.Drawing.Size(276, 25);
@@ -581,7 +576,7 @@
             this.labelRestore.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelRestore.AutoSize = true;
             this.labelRestore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelRestore.ForeColor = System.Drawing.Color.White;
+            this.labelRestore.ForeColor = System.Drawing.Color.Black;
             this.labelRestore.Location = new System.Drawing.Point(3, 460);
             this.labelRestore.Name = "labelRestore";
             this.labelRestore.Size = new System.Drawing.Size(152, 21);
@@ -594,7 +589,7 @@
             this.labelRestore2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelRestore2.AutoSize = true;
             this.labelRestore2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelRestore2.ForeColor = System.Drawing.Color.White;
+            this.labelRestore2.ForeColor = System.Drawing.Color.Black;
             this.labelRestore2.Location = new System.Drawing.Point(3, 495);
             this.labelRestore2.Name = "labelRestore2";
             this.labelRestore2.Size = new System.Drawing.Size(545, 26);
@@ -620,28 +615,23 @@
             // 
             // buttonRestore
             // 
-            this.buttonRestore.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.buttonRestore.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRestore.Enabled = false;
-            this.buttonRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRestore.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonRestore.ForeColor = System.Drawing.Color.DimGray;
-            this.buttonRestore.Location = new System.Drawing.Point(36, 2);
-            this.buttonRestore.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonRestore.Location = new System.Drawing.Point(3, 3);
             this.buttonRestore.Name = "buttonRestore";
-            this.buttonRestore.Size = new System.Drawing.Size(130, 30);
+            this.buttonRestore.Size = new System.Drawing.Size(160, 29);
             this.buttonRestore.TabIndex = 16;
             this.buttonRestore.Text = "Obnovit";
-            this.buttonRestore.UseVisualStyleBackColor = false;
+            this.buttonRestore.UseVisualStyleBackColor = true;
             this.buttonRestore.Visible = false;
-            this.buttonRestore.EnabledChanged += new System.EventHandler(this.buttonRestore_EnabledChanged);
             this.buttonRestore.Click += new System.EventHandler(this.buttonRestore_Click);
             // 
             // checkBoxRestore
             // 
             this.checkBoxRestore.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxRestore.AutoSize = true;
-            this.checkBoxRestore.ForeColor = System.Drawing.Color.White;
+            this.checkBoxRestore.ForeColor = System.Drawing.Color.Black;
             this.checkBoxRestore.Location = new System.Drawing.Point(169, 9);
             this.checkBoxRestore.Name = "checkBoxRestore";
             this.checkBoxRestore.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -657,8 +647,8 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.checkBoxPinRemove, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonClearDatabase, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.checkBoxPinRemove, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 411);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -667,11 +657,25 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(564, 30);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
+            // buttonClearDatabase
+            // 
+            this.buttonClearDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClearDatabase.Enabled = false;
+            this.buttonClearDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonClearDatabase.Location = new System.Drawing.Point(3, 3);
+            this.buttonClearDatabase.Name = "buttonClearDatabase";
+            this.buttonClearDatabase.Size = new System.Drawing.Size(160, 24);
+            this.buttonClearDatabase.TabIndex = 14;
+            this.buttonClearDatabase.Text = "Vymazat";
+            this.buttonClearDatabase.UseVisualStyleBackColor = true;
+            this.buttonClearDatabase.Click += new System.EventHandler(this.buttonClearDatabase_Click);
+            // 
             // checkBoxPinRemove
             // 
             this.checkBoxPinRemove.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxPinRemove.AutoSize = true;
-            this.checkBoxPinRemove.ForeColor = System.Drawing.Color.White;
+            this.checkBoxPinRemove.ForeColor = System.Drawing.Color.Black;
             this.checkBoxPinRemove.Location = new System.Drawing.Point(169, 6);
             this.checkBoxPinRemove.Name = "checkBoxPinRemove";
             this.checkBoxPinRemove.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -680,24 +684,6 @@
             this.checkBoxPinRemove.Text = "Opravdu chci smazat";
             this.checkBoxPinRemove.UseVisualStyleBackColor = true;
             this.checkBoxPinRemove.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // buttonClearDatabase
-            // 
-            this.buttonClearDatabase.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonClearDatabase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
-            this.buttonClearDatabase.Enabled = false;
-            this.buttonClearDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClearDatabase.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.buttonClearDatabase.ForeColor = System.Drawing.Color.DimGray;
-            this.buttonClearDatabase.Location = new System.Drawing.Point(37, 0);
-            this.buttonClearDatabase.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.buttonClearDatabase.Name = "buttonClearDatabase";
-            this.buttonClearDatabase.Size = new System.Drawing.Size(129, 30);
-            this.buttonClearDatabase.TabIndex = 14;
-            this.buttonClearDatabase.Text = "Vymaž";
-            this.buttonClearDatabase.UseVisualStyleBackColor = false;
-            this.buttonClearDatabase.EnabledChanged += new System.EventHandler(this.buttonClearDatabase_EnabledChanged);
-            this.buttonClearDatabase.Click += new System.EventHandler(this.buttonClearDatabase_Click);
             // 
             // pictureBox2
             // 
@@ -713,7 +699,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(564, 570);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -765,11 +751,9 @@
         private System.Windows.Forms.Label labelRestore;
         private System.Windows.Forms.Label labelRestore2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button buttonRestore;
         private System.Windows.Forms.CheckBox checkBoxRestore;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.CheckBox checkBoxPinRemove;
-        private System.Windows.Forms.Button buttonClearDatabase;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox textBoxFirm;
         private System.Windows.Forms.TextBox textBoxTab;
@@ -787,5 +771,7 @@
         private System.Windows.Forms.RadioButton radioButtonKV;
         private System.Windows.Forms.Label labelKV;
         private System.Windows.Forms.Label labelHZ;
+        private System.Windows.Forms.Button buttonClearDatabase;
+        private System.Windows.Forms.Button buttonRestore;
     }
 }
