@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoPC));
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelHorni = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,6 +38,8 @@
             this.textBoxPCName = new System.Windows.Forms.TextBox();
             this.buttonVyhledat = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelHorni.SuspendLayout();
             this.tableLayoutPanelHorniVnoreny.SuspendLayout();
@@ -101,6 +105,7 @@
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.checkBoxLocalPC, 0, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.textBoxPCName, 1, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.buttonVyhledat, 2, 1);
+            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.comboBox1, 3, 1);
             this.tableLayoutPanelHorniVnoreny.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelHorniVnoreny.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanelHorniVnoreny.Margin = new System.Windows.Forms.Padding(0);
@@ -167,6 +172,27 @@
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "logo.png");
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Details",
+            "LargeIcon",
+            "SmallIcon",
+            "List",
+            "Title"});
+            this.comboBox1.Location = new System.Drawing.Point(423, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 4;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // InfoPC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,6 +203,7 @@
             this.Name = "InfoPC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InfoPC";
+            this.Load += new System.EventHandler(this.InfoPC_Load);
             this.tableLayoutPanelVnejsi.ResumeLayout(false);
             this.tableLayoutPanelHorni.ResumeLayout(false);
             this.tableLayoutPanelHorni.PerformLayout();
@@ -196,5 +223,7 @@
         private System.Windows.Forms.TextBox textBoxPCName;
         private System.Windows.Forms.Button buttonVyhledat;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
