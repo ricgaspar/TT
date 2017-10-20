@@ -35,6 +35,7 @@
             this.buttonSAP = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonAdminTools = new System.Windows.Forms.Button();
+            this.buttonDZC = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +72,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(233)))), ((int)(((byte)(241)))));
+            this.panel1.Controls.Add(this.buttonDZC);
             this.panel1.Controls.Add(this.buttonSAP);
             this.panel1.Controls.Add(this.buttonMenu);
             this.panel1.Controls.Add(this.buttonAdminTools);
@@ -138,6 +140,25 @@
             this.buttonAdminTools.Click += new System.EventHandler(this.buttonAdminTools_Click);
             this.buttonAdminTools.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAdminTools_Paint);
             // 
+            // buttonDZC
+            // 
+            this.buttonDZC.FlatAppearance.BorderSize = 0;
+            this.buttonDZC.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(184)))), ((int)(((byte)(216)))));
+            this.buttonDZC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(233)))), ((int)(((byte)(241)))));
+            this.buttonDZC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDZC.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDZC.ForeColor = System.Drawing.Color.Black;
+            this.buttonDZC.Location = new System.Drawing.Point(0, 168);
+            this.buttonDZC.Name = "buttonDZC";
+            this.buttonDZC.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
+            this.buttonDZC.Size = new System.Drawing.Size(249, 50);
+            this.buttonDZC.TabIndex = 8;
+            this.buttonDZC.Text = "DZC vyhledání";
+            this.buttonDZC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDZC.UseVisualStyleBackColor = true;
+            this.buttonDZC.Click += new System.EventHandler(this.buttonDZC_Click);
+            this.buttonDZC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonDZC_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +188,7 @@
         private System.Windows.Forms.Button buttonAdminTools;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonSAP;
+        private System.Windows.Forms.Button buttonDZC;
     }
 }
 

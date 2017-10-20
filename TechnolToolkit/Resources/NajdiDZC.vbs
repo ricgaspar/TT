@@ -22,9 +22,9 @@ on error resume next
   Do Until objRecordSet.EOF
      FullName=objRecordSet.Fields("name").Value
      
-     DZC = objRecordSet.Fields("samAccountName").Value  
+     DZC = objRecordSet.Fields("samAccountName").Value
      if DZC<>"" then
-     'dzc= "->" & ucase(DZC) & "<-"
+		'dzc= "->" & ucase(DZC) & "<-"
      end if
        odpoved=odpoved &  dzc & " = " & FullName & chr(13) & chr(10)    
        objRecordSet.MoveNext

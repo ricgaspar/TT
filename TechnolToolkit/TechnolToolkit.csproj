@@ -64,10 +64,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bitlocker.cs">
+    <Compile Include="UserControls\Admin\Forms\Bitlocker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bitlocker.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\Bitlocker.Designer.cs">
       <DependentUpon>Bitlocker.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -76,16 +76,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="InfoPC.cs">
+    <Compile Include="UserControls\Admin\Forms\InfoPC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InfoPC.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\InfoPC.Designer.cs">
       <DependentUpon>InfoPC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Napajeni.cs">
+    <Compile Include="UserControls\Admin\Forms\Napajeni.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Napajeni.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\Napajeni.Designer.cs">
       <DependentUpon>Napajeni.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -93,16 +93,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VASConfig.cs">
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCAll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCAll.Designer.cs">
+      <DependentUpon>UserControl_InfoPCAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCDrives.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCDrives.Designer.cs">
+      <DependentUpon>UserControl_InfoPCDrives.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGeneral.Designer.cs">
+      <DependentUpon>UserControl_InfoPCGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGPUCPU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGPUCPU.Designer.cs">
+      <DependentUpon>UserControl_InfoPCGPUCPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCNetwork.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCNetwork.Designer.cs">
+      <DependentUpon>UserControl_InfoPCNetwork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InfoPC\UserControl_InfoPCSystem.Designer.cs">
+      <DependentUpon>UserControl_InfoPCSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Admin\Forms\VASConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VASConfig.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\VASConfig.Designer.cs">
       <DependentUpon>VASConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstalledPrograms.cs">
+    <Compile Include="UserControls\Admin\Forms\InstalledPrograms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstalledPrograms.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\InstalledPrograms.Designer.cs">
       <DependentUpon>InstalledPrograms.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -111,22 +147,22 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="MSIUninstall.cs">
+    <Compile Include="UserControls\Admin\Forms\MSIUninstall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MSIUninstall.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\MSIUninstall.Designer.cs">
       <DependentUpon>MSIUninstall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Procesy.cs">
+    <Compile Include="UserControls\Admin\Forms\Procesy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Procesy.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\Procesy.Designer.cs">
       <DependentUpon>Procesy.cs</DependentUpon>
     </Compile>
-    <Compile Include="RemoteControl.cs">
+    <Compile Include="UserControls\Admin\Forms\RemoteControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RemoteControl.Designer.cs">
+    <Compile Include="UserControls\Admin\Forms\RemoteControl.Designer.cs">
       <DependentUpon>RemoteControl.cs</DependentUpon>
     </Compile>
     <Compile Include="statusBox.cs">
@@ -137,43 +173,43 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControlAdmin.cs">
+    <Compile Include="UserControls\Admin\UserControlAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAdmin.Designer.cs">
+    <Compile Include="UserControls\Admin\UserControlAdmin.Designer.cs">
       <DependentUpon>UserControlAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlSAP.cs">
+    <Compile Include="UserControls\SAP\UserControlSAP.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlSAP.Designer.cs">
+    <Compile Include="UserControls\SAP\UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Bitlocker.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\Bitlocker.resx">
       <DependentUpon>Bitlocker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InfoPC.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\InfoPC.resx">
       <DependentUpon>InfoPC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Napajeni.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\Napajeni.resx">
       <DependentUpon>Napajeni.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VASConfig.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\VASConfig.resx">
       <DependentUpon>VASConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstalledPrograms.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\InstalledPrograms.resx">
       <DependentUpon>InstalledPrograms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MSIUninstall.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\MSIUninstall.resx">
       <DependentUpon>MSIUninstall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Procesy.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\Procesy.resx">
       <DependentUpon>Procesy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -181,16 +217,34 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RemoteControl.resx">
+    <EmbeddedResource Include="UserControls\Admin\Forms\RemoteControl.resx">
       <DependentUpon>RemoteControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="statusBox.resx">
       <DependentUpon>statusBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin.resx">
+    <EmbeddedResource Include="UserControls\Admin\UserControlAdmin.resx">
       <DependentUpon>UserControlAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlSAP.resx">
+    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCAll.resx">
+      <DependentUpon>UserControl_InfoPCAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCDrives.resx">
+      <DependentUpon>UserControl_InfoPCDrives.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCGeneral.resx">
+      <DependentUpon>UserControl_InfoPCGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCGPUCPU.resx">
+      <DependentUpon>UserControl_InfoPCGPUCPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCNetwork.resx">
+      <DependentUpon>UserControl_InfoPCNetwork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCSystem.resx">
+      <DependentUpon>UserControl_InfoPCSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SAP\UserControlSAP.resx">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -284,6 +338,15 @@
     <None Include="Resources\icons8-UserSearcg-96_color.png" />
     <None Include="Resources\Context_Menu\icons8-Copy to Clipboard-96_color.png" />
     <None Include="Resources\icons8-Electrical-96_color.png" />
+    <None Include="Resources\icons8-Computer-Repair96.png" />
+    <None Include="Resources\icons8-Windows8-96.png" />
+    <None Include="Resources\icons8-System Information-96.png" />
+    <None Include="Resources\icons8-SSD-96.png" />
+    <None Include="Resources\icons8-Network Cable-96.png" />
+    <None Include="Resources\icons8-HDMI Cable-96.png" />
+    <None Include="Resources\icons8-List-96.png" />
+    <None Include="Resources\icons8-Workstation-96.png" />
+    <None Include="Resources\icons8-Software Installer-96.png" />
     <Content Include="Resources\Menu_icons\icons8-Menu-96.png" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\polymer-micro.html" />

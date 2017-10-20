@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -73,7 +74,7 @@ namespace TechnolToolkit
                     ucS.Size = flowLayoutPanel1.Size;
                     break;
                 default:
-                    MessageBox.Show("Chyba při pokusu o resize! Není definovaný aktivní panel!\nKontaktujte prosím vyvojáře softwaru!", "RESIZE ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Chyba při pokusu o resize! Není definovaný aktivní panel!", "RESIZE ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
             
@@ -146,7 +147,7 @@ namespace TechnolToolkit
         private void buttonAdminTools_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_Moderator_96_color, 50, 50), 10, 2);;
+            g.DrawImage(ResizeImage(Properties.Resources.icons8_Moderator_96_color, 50, 50), 10, 2);
             if (aktivniPanel == "ucA")
             {
                 Pen pen = new Pen(Color.Blue, 3);
@@ -192,15 +193,7 @@ namespace TechnolToolkit
                     else
                     {
                         //Klikli jsme na Admin nastroje. Admin nastroje nejsou zobrazovany(je zobrazovana jina sekce). Smazeme soucasny user control a nahradime ho ucA
-                        switch (activePanel)
-                        {
-                            case "ucA":
-                                flowLayoutPanel1.Controls.Remove(ucA);
-                                break;
-                            case "ucS":
-                                flowLayoutPanel1.Controls.Remove(ucS);
-                                break;
-                        }
+                        flowLayoutPanel1.Controls.Clear();
                         flowLayoutPanel1.Controls.Add(ucA);
                         ucA.Size = flowLayoutPanel1.Size;
                         aktivniPanel = "ucA";
@@ -215,16 +208,7 @@ namespace TechnolToolkit
                     //Neni zobrazovany!
                     else
                     {
-                        //Klikli jsme na Nahled do SAPu. Nahled do SAPu neni zobrazovany(je zobrazovana jina sekce). Smazeme soucasny user control a nahradime ho ucS
-                        switch (activePanel)
-                        {
-                            case "ucA":
-                                flowLayoutPanel1.Controls.Remove(ucA);
-                                break;
-                            case "ucS":
-                                flowLayoutPanel1.Controls.Remove(ucS);
-                                break;
-                        }
+                        flowLayoutPanel1.Controls.Clear();
                         flowLayoutPanel1.Controls.Add(ucS);
                         ucS.Size = flowLayoutPanel1.Size;
                         aktivniPanel = "ucS";
@@ -261,6 +245,19 @@ namespace TechnolToolkit
             
             Pen pen = new Pen(Color.FromArgb(220, 220, 220), 1);
             e.Graphics.DrawLine(pen,panel1.Width-1,0,panel1.Width-1,panel1.Height-1);
+        }
+
+        private void buttonDZC_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\NajdiDZC.vbs";
+            p.Start();
+        }
+
+        private void buttonDZC_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
         }
     }
 }
