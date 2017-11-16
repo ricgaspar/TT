@@ -17,8 +17,11 @@ namespace TechnolToolkit
         UserControl ucA = new UserControlAdmin();
         //Nahled do SAPu
         UserControl ucS = new UserControlSAP();
+        //Pridani do skupin
+        UserControlAddToGroup ucAG = new UserControlAddToGroup();
         //Login
         Login loginScreen = new Login();
+
 
         public Form1()
         {
@@ -28,11 +31,12 @@ namespace TechnolToolkit
             flowLayoutPanel1.Controls.Add(ucA);
             ucA.Size = flowLayoutPanel1.Size;
             ucS.Size = flowLayoutPanel1.Size;
+            ucAG.Size = flowLayoutPanel1.Size;
             pozadiAktivnihoButtonu(aktivniPanel);
 
         }
 
-        //Funkce, která se stará o vysoko kvalitní resize obrázků
+        //Funkce, která se stará o vysoce kvalitní resize obrázků
         public static Bitmap ResizeImage(Image image, int width, int height)
         {
             //Graphics g = e.Graphics;
@@ -73,6 +77,9 @@ namespace TechnolToolkit
                 case "ucS":
                     ucS.Size = flowLayoutPanel1.Size;
                     break;
+                case "ucAG":
+                    ucAG.Size = flowLayoutPanel1.Size;
+                    break;
                 default:
                     MessageBox.Show("Chyba při pokusu o resize! Není definovaný aktivní panel!", "RESIZE ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
@@ -94,6 +101,8 @@ namespace TechnolToolkit
                 //neaktivni
                 buttonSAP.BackColor = Color.Transparent;
                 buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                buttonAddToGroup.BackColor = Color.Transparent;
+                buttonAddToGroup.FlatAppearance.MouseOverBackColor = Color.Transparent;
             }
             if (activePanel == "ucS")
             {
@@ -103,6 +112,19 @@ namespace TechnolToolkit
                 //neaktivni
                 buttonAdminTools.BackColor = Color.Transparent;
                 buttonAdminTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                buttonAddToGroup.BackColor = Color.Transparent;
+                buttonAddToGroup.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            }
+            if(activePanel == "ucAG")
+            {
+                //aktivni
+                buttonAddToGroup.BackColor = barvaButtonu;
+                buttonAddToGroup.FlatAppearance.MouseOverBackColor = barvaButtonu;
+                //neaktivni
+                buttonAdminTools.BackColor = Color.Transparent;
+                buttonAdminTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                buttonSAP.BackColor = Color.Transparent;
+                buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
             }
         }
         
@@ -112,15 +134,22 @@ namespace TechnolToolkit
             activePanelFuntion(aktivniPanel, "ucA");
             /*if (aktivniPanel == "ucA")
             {
-              */  Graphics dc = this.CreateGraphics();
+              */
+              /*
+                Graphics dc = this.CreateGraphics();
                 Pen pen = new Pen(Color.Blue, 3);
                 dc.DrawRectangle(pen, 0, 0, 50, 50);
                 Refresh();
+                */
             //}
         }
         private void buttonSAP_Click(object sender, EventArgs e)
         {
             activePanelFuntion(aktivniPanel, "ucS");
+        }
+        private void buttonAddToGroup_Click(object sender, EventArgs e)
+        {
+            activePanelFuntion(aktivniPanel, "ucAG");
         }
         private void buttonMenu_Click(object sender, EventArgs e)
         {          
@@ -215,6 +244,24 @@ namespace TechnolToolkit
                     }
                     #endregion
                     break;
+                case "ucAG":
+                    #region ucAG code...
+                    if (activePanel == "ucAG")
+                        return;
+                    else
+                    {
+                        //Vycisteni predeslych user controlu
+                        flowLayoutPanel1.Controls.Clear();
+                        //pridani noveho user controlu
+                        flowLayoutPanel1.Controls.Add(ucAG);
+                        //nastaveni velikosti user controlu na velikost flowlayoutpanel1
+                        ucAG.Size = flowLayoutPanel1.Size;
+                        //nastaveni aktivniho panelu
+                        aktivniPanel = "ucAG";
+                    }
+                    #endregion
+                    break;
+                    
             }
             pozadiAktivnihoButtonu(buttonClicked);
         }
@@ -259,5 +306,20 @@ namespace TechnolToolkit
             Graphics g = e.Graphics;
             g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
         }
+
+        private void buttonAddToGroup_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_add_user_group_man_man_96, 100, 100), 8, 0);
+            if (aktivniPanel == "ucAG")
+            {
+                Pen pen = new Pen(Color.Blue, 3);
+                Rectangle rect = new Rectangle(0, 0, 5, buttonAddToGroup.Height);
+                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
+                g.FillRectangle(br, rect);
+            }
+        }
+
+        
     }
 }

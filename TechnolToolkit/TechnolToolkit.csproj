@@ -64,6 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserControlAddToGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAddToGroup.Designer.cs">
+      <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Admin\Forms\Bitlocker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     <Compile Include="UserControls\SAP\UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlAddToGroup.resx">
+      <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\Bitlocker.resx">
       <DependentUpon>Bitlocker.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +356,7 @@
     <None Include="Resources\icons8-List-96.png" />
     <None Include="Resources\icons8-Workstation-96.png" />
     <None Include="Resources\icons8-Software Installer-96.png" />
+    <None Include="Resources\Menu_icons\icons8-add-user-group-man-man-96.png" />
     <Content Include="Resources\Menu_icons\icons8-Menu-96.png" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\polymer-micro.html" />
