@@ -32,7 +32,6 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonZasadyPC = new System.Windows.Forms.Button();
             this.buttonAkceVsechny = new System.Windows.Forms.Button();
-            this.buttonOpravaKlienta = new System.Windows.Forms.Button();
             this.buttonRemoteControl = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonZprava = new System.Windows.Forms.Button();
@@ -56,6 +55,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonOpravaKlienta = new System.Windows.Forms.Button();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -126,25 +126,6 @@
             this.buttonAkceVsechny.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonAkceVsechny.UseVisualStyleBackColor = false;
             this.buttonAkceVsechny.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAkceVsechny_Paint);
-            // 
-            // buttonOpravaKlienta
-            // 
-            this.buttonOpravaKlienta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
-            this.buttonOpravaKlienta.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.buttonOpravaKlienta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.buttonOpravaKlienta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpravaKlienta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonOpravaKlienta.ForeColor = System.Drawing.Color.Black;
-            this.buttonOpravaKlienta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonOpravaKlienta.Location = new System.Drawing.Point(640, 6);
-            this.buttonOpravaKlienta.Margin = new System.Windows.Forms.Padding(6);
-            this.buttonOpravaKlienta.Name = "buttonOpravaKlienta";
-            this.buttonOpravaKlienta.Size = new System.Drawing.Size(146, 121);
-            this.buttonOpravaKlienta.TabIndex = 19;
-            this.buttonOpravaKlienta.Text = "Oprava klienta";
-            this.buttonOpravaKlienta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonOpravaKlienta.UseVisualStyleBackColor = false;
-            this.buttonOpravaKlienta.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonOpravaKlienta_Paint);
             // 
             // buttonRemoteControl
             // 
@@ -566,6 +547,25 @@
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(967, 174);
             this.flowLayoutPanel3.TabIndex = 9;
+            // 
+            // buttonOpravaKlienta
+            // 
+            this.buttonOpravaKlienta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonOpravaKlienta.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonOpravaKlienta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
+            this.buttonOpravaKlienta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpravaKlienta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonOpravaKlienta.ForeColor = System.Drawing.Color.Black;
+            this.buttonOpravaKlienta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonOpravaKlienta.Location = new System.Drawing.Point(640, 6);
+            this.buttonOpravaKlienta.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonOpravaKlienta.Name = "buttonOpravaKlienta";
+            this.buttonOpravaKlienta.Size = new System.Drawing.Size(305, 121);
+            this.buttonOpravaKlienta.TabIndex = 19;
+            this.buttonOpravaKlienta.Text = "Oprava / (Re)instalace klienta";
+            this.buttonOpravaKlienta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonOpravaKlienta.UseVisualStyleBackColor = false;
+            this.buttonOpravaKlienta.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonOpravaKlienta_Paint);
             // 
             // UserControlAdmin
             // 

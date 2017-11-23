@@ -50,9 +50,14 @@ namespace TechnolToolkit
             }
 
         }
+        private ListViewColumnSorter lvwColumnSorter;
         public InstalledPrograms()
         {
             InitializeComponent();
+            // Create an instance of a ListView column sorter and assign it 
+            // to the ListView control.
+            lvwColumnSorter = new ListViewColumnSorter();
+            listView1.ListViewItemSorter = lvwColumnSorter;
             obnovListView();
             //this.Icon = new Icon(Properties.Resources.)
             menuStrip1.Renderer = new MyRenderer();
@@ -165,8 +170,12 @@ namespace TechnolToolkit
             if (checkBoxLocalPC.Checked)
                 otevrenoToolStripMenuItem.Text = "Otevřeno: " + Environment.MachineName;
             else otevrenoToolStripMenuItem.Text = "Otevřeno: " + textBox1.Text;
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in this.listView1.Columns)
+            {
+                ch.Width = -2;
+            }
         }
-        
         private void buttonOK_Click(object sender, EventArgs e)
         {
             obnovListView();
@@ -319,6 +328,32 @@ namespace TechnolToolkit
             }
             Clipboard.SetText(text);
             listView1.SelectedItems.Clear();
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listView1.Sort();
         }
     }
 }

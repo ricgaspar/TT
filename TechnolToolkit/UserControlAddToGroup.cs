@@ -12,9 +12,13 @@ namespace TechnolToolkit
 {
     public partial class UserControlAddToGroup : UserControl
     {
+        UserControlAddToGroupChild_Add ucAdd = new UserControlAddToGroupChild_Add();
+        UserControlAddToGroupChild_Remove ucRem = new UserControlAddToGroupChild_Remove();
         public UserControlAddToGroup()
         {
             InitializeComponent();
+            panel1.Controls.Add(ucAdd);
+            ucAdd.Size = panel1.Size;
         }
     }
 }
