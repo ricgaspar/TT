@@ -47,6 +47,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
@@ -376,6 +378,7 @@
     <None Include="Resources\icons8-Workstation-96.png" />
     <None Include="Resources\icons8-Software Installer-96.png" />
     <None Include="Resources\Menu_icons\icons8-add-user-group-man-man-96.png" />
+    <None Include="Resources\icons8-calendar-96.png" />
     <Content Include="Resources\Menu_icons\icons8-Menu-96.png" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\polymer-micro.html" />
