@@ -72,18 +72,6 @@
     <Compile Include="UserControlAddToGroup.Designer.cs">
       <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAddToGroupChild_Add.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlAddToGroupChild_Add.Designer.cs">
-      <DependentUpon>UserControlAddToGroupChild_Add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlAddToGroupChild_Remove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlAddToGroupChild_Remove.Designer.cs">
-      <DependentUpon>UserControlAddToGroupChild_Remove.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Admin\Forms\Bitlocker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,12 +196,6 @@
     </Compile>
     <EmbeddedResource Include="UserControlAddToGroup.resx">
       <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAddToGroupChild_Add.resx">
-      <DependentUpon>UserControlAddToGroupChild_Add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAddToGroupChild_Remove.resx">
-      <DependentUpon>UserControlAddToGroupChild_Remove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\Bitlocker.resx">
       <DependentUpon>Bitlocker.cs</DependentUpon>
