@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.DirectoryServices;
 using System.Collections;
 using System.Net.NetworkInformation;
+using System.DirectoryServices.AccountManagement;
 
 namespace TechnolToolkit
 {
@@ -19,37 +20,64 @@ namespace TechnolToolkit
         {
             InitializeComponent();
         }
-        private void vyhledaniSkupin_a_Uzivatelu(string computername)
+        private void enableUIElements()
         {
-            int i = 0;
+            textBoxUsername.Enabled = true;
+            treeViewGroups.Enabled = true;
+            radioButtonOdebraniLokalni.Enabled = true;
+            radioButtonOdebraniSitove.Enabled = true;
+            checkBoxNeomezene.Enabled = true;
+            dateTimePicker1.Enabled = true;
+            comboBox1.Enabled = true;
+            labelConnectedTo.Text = "Připojeno k: " + textBoxComputername.Text;
+            labelDateTimeConnected.Text = "Čas připojení: " + DateTime.Now.ToString();
+        }
+        private void searchGroupsAndMembers(string computername)
+        {
             treeViewGroups.Nodes.Clear();
-            DirectoryEntry machine = new DirectoryEntry("WinNT://" + computername + ",Computer");
-            
             Ping ping = new Ping();
-            PingReply pingReply = ping.Send(computername);
-            if (pingReply.Status == IPStatus.Success)
+            try
             {
-                foreach (DirectoryEntry child in machine.Children)
+                //try if machine is online
+                PingReply pingReply = ping.Send(computername);
+
+                if (pingReply.Status == IPStatus.Success)
                 {
-                    if (child.SchemaClassName == "Group")
+                    int i = 0;
+
+                    DirectoryEntry machine = new DirectoryEntry("WinNT://" + computername + ",Computer");
+
+                    foreach (DirectoryEntry child in machine.Children)
                     {
-                        
-                        treeViewGroups.Nodes.Add(child.Name);
-                        using (DirectoryEntry groupEntry = new DirectoryEntry("WinNT://" + computername + "/"+child.Name+",group"))
+                        if (child.SchemaClassName == "Group")
                         {
-                            foreach (object member in (IEnumerable)groupEntry.Invoke("Members"))
+                            //adding groups to treeView
+                            treeViewGroups.Nodes.Add(child.Name);
+                            comboBox1.Items.Add(child.Name);
+                            //Starting of code that adds members of groups above.
+                            using (DirectoryEntry groupEntry = new DirectoryEntry("WinNT://" + computername + "/" + child.Name + ",group"))
                             {
-                                using (DirectoryEntry memberEntry = new DirectoryEntry(member))
+                                foreach (object member in (IEnumerable)groupEntry.Invoke("Members"))
                                 {
-                                    Console.WriteLine(child.Name +"["+i+"]: " + memberEntry.Name);
-                                    treeViewGroups.Nodes[i].Nodes.Add(memberEntry.Name);
+                                    using (DirectoryEntry memberEntry = new DirectoryEntry(member))
+                                    {
+                                        //Adding members of current group
+                                        treeViewGroups.Nodes[i].Nodes.Add(memberEntry.Name);
+                                    }
                                 }
                             }
+                            i++;
                         }
-                        i++;
                     }
+                    enableUIElements();
                 }
-            }     
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //throw;
+            }
+
         }
         private void checkBoxNeomezene_CheckedChanged(object sender, EventArgs e)
         {
@@ -71,17 +99,17 @@ namespace TechnolToolkit
 
         private void textBoxComputername_Click(object sender, EventArgs e)
         {
-            if (textBoxComputername.Text == "NÁZEV PC")
+            if (textBoxComputername.Text == "Název PC")
             {
                 textBoxComputername.Text = "";
                 textBoxComputername.ForeColor = Color.Black;
             }
-
+            
         }
 
         private void textBoxUsername_Click(object sender, EventArgs e)
         {
-            if (textBoxUsername.Text == "UŽIVATELSKÉ JMÉNO")
+            if (textBoxUsername.Text == "Uživatel (DZC)")
             {
                 textBoxUsername.Text = "";
                 textBoxUsername.ForeColor = Color.Black;
@@ -92,7 +120,7 @@ namespace TechnolToolkit
         {
             if (textBoxComputername.Text == "")
             {
-                textBoxComputername.Text = "NÁZEV PC";
+                textBoxComputername.Text = "Název PC";
                 textBoxComputername.ForeColor = Color.Gray;
             }
         }
@@ -101,23 +129,83 @@ namespace TechnolToolkit
         {
             if (textBoxUsername.Text == "")
             {
-                textBoxUsername.Text = "UŽIVATELSKÉ JMÉNO";
+                textBoxUsername.Text = "Uživatel (DZC)";
                 textBoxUsername.ForeColor = Color.Gray;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(textBoxComputername.Text != "" && textBoxComputername.Text != "NÁZEV PC")
+            if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
             {
-                vyhledaniSkupin_a_Uzivatelu(textBoxComputername.Text.ToString());
-                textBoxUsername.Enabled = true;
-                treeViewGroups.Enabled = true;
-                radioButtonOdebraniLokalni.Enabled = true;
-                radioButtonOdebraniSitove.Enabled = true;
-                checkBoxNeomezene.Enabled = true;
-                dateTimePicker1.Enabled = true;
+                searchGroupsAndMembers(textBoxComputername.Text.ToString());
             }
+        }
+
+        private void textBoxComputername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
+                {
+                    searchGroupsAndMembers(textBoxComputername.Text.ToString());
+                }
+            }
+        }
+        private bool activateLastButton()
+        {
+            if (textBoxComputername.Text != ""  && textBoxUsername.Text != "" && textBoxComputername.Text != "Název PC" && 
+                textBoxUsername.Text != "Uživatel (DZC)" && comboBox1.Text != "Výběr skupiny")
+                if (checkBoxNeomezene.Checked)
+                    return true;
+                else
+                    if (radioButtonOdebraniLokalni.Checked == true || radioButtonOdebraniSitove.Checked == true)
+                        return true;
+                    else
+                        return false;
+            else
+                return false;
+        }
+        private void addMemberToGroup(string user, string computername, string group)
+        {
+            try {
+                using (var pcLocal = new PrincipalContext(ContextType.Machine, computername))
+                {
+                    var grp = GroupPrincipal.FindByIdentity(pcLocal, group);
+
+                    using (var pcDomain = new PrincipalContext(ContextType.Domain, Environment.UserDomainName))
+                    {
+                        grp.Members.Add(pcDomain, IdentityType.SamAccountName, user);
+                        grp.Save();
+                        searchGroupsAndMembers(textBoxComputername.Text);
+                    }
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (activateLastButton() == true)
+            {
+                addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
+                System.Media.SystemSounds.Beep.Play();
+
+            } 
+            else
+            {
+                MessageBox.Show("Něco jsi zapomněl vyplnit. :(");
+            }
+            
+        }
+
+        private void textBoxComputername_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
+                buttonConnectToDevice.Enabled = true;
+            else buttonConnectToDevice.Enabled = false;
         }
     }
 }
