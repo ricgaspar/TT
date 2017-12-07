@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Tady bude seznam nastavenych admin opravneni. 
------------------------------------------------------
-Bude zobrazovat,jestli prava vypršely a zda-li byly odebrány (zabudovana kontrola). Případně zobrazí ty, které nebylo možno dlouho zkontrolovat a může je řadit do různých kategorií.
-zelený - oprávnění platný, aktivní
-žlutý - brzy vyprší
-oranžový - neplatné, ale zatím se nebylo možno připojit (do 2 dnů např - bude se moct nastavit)
-červené- neplatné a nebylo se možno připojit a zkontrolovat odebrání dobu delší než oranžový. </value>
-  </data>
 </root>

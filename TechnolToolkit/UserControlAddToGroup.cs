@@ -11,6 +11,7 @@ using System.DirectoryServices;
 using System.Collections;
 using System.Net.NetworkInformation;
 using System.DirectoryServices.AccountManagement;
+using System.IO;
 
 namespace TechnolToolkit
 {
@@ -180,6 +181,7 @@ namespace TechnolToolkit
                         searchGroupsAndMembers(textBoxComputername.Text);
                     }
                 }
+
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
@@ -207,5 +209,6 @@ namespace TechnolToolkit
                 buttonConnectToDevice.Enabled = true;
             else buttonConnectToDevice.Enabled = false;
         }
+
     }
 }
