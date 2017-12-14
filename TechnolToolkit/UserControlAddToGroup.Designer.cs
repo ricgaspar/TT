@@ -389,9 +389,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(3, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 17);
+            this.label1.Size = new System.Drawing.Size(202, 17);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Hierarchie lokálních skupin";
+            this.label1.Text = "Hierarchie lokálních skupin na PC:";
             // 
             // groupBox1
             // 

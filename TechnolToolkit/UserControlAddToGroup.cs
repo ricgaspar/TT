@@ -32,10 +32,12 @@ namespace TechnolToolkit
             comboBox1.Enabled = true;
             labelConnectedTo.Text = "Připojeno k: " + textBoxComputername.Text;
             labelDateTimeConnected.Text = "Čas připojení: " + DateTime.Now.ToString();
+            label1.Text = "Hierarchie lokálních skupin na PC: " + textBoxComputername.Text;
         }
         private void searchGroupsAndMembers(string computername)
         {
             treeViewGroups.Nodes.Clear();
+            comboBox1.Items.Clear();
             Ping ping = new Ping();
             try
             {
@@ -166,6 +168,10 @@ namespace TechnolToolkit
                         return false;
             else
                 return false;
+        }
+        private void logData(string user, string computername, string group, DateTime dateTime)
+        {
+
         }
         private void addMemberToGroup(string user, string computername, string group)
         {

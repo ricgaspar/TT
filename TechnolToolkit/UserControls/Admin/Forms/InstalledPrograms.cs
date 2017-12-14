@@ -225,8 +225,10 @@ namespace TechnolToolkit
                         PingReply pingReply = ping.Send(textBox1.Text);
                         if (pingReply.Status == IPStatus.Success)
                         {
+                         
                             //Machine is alive
                             p.Start();
+                            
                             string output = p.StandardOutput.ReadToEnd();
                             p.WaitForExit();
 
