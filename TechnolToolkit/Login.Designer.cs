@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUSER = new System.Windows.Forms.TextBox();
             this.textBoxMD5 = new System.Windows.Forms.TextBox();
@@ -44,49 +40,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape2,
-            this.rectangleShape3,
-            this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(417, 344);
-            this.shapeContainer1.TabIndex = 0;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape2
-            // 
-            this.rectangleShape2.BackColor = System.Drawing.Color.White;
-            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape2.BorderColor = System.Drawing.Color.White;
-            this.rectangleShape2.CornerRadius = 3;
-            this.rectangleShape2.Location = new System.Drawing.Point(70, 145);
-            this.rectangleShape2.Name = "rectangleShape2";
-            this.rectangleShape2.Size = new System.Drawing.Size(270, 60);
-            // 
-            // rectangleShape3
-            // 
-            this.rectangleShape3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(152)))), ((int)(((byte)(220)))));
-            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape3.BorderColor = System.Drawing.Color.White;
-            this.rectangleShape3.CornerRadius = 5;
-            this.rectangleShape3.Location = new System.Drawing.Point(70, 220);
-            this.rectangleShape3.Name = "rectangleShape3";
-            this.rectangleShape3.Size = new System.Drawing.Size(270, 60);
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.Color.White;
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.Color.White;
-            this.rectangleShape1.CornerRadius = 3;
-            this.rectangleShape1.Location = new System.Drawing.Point(70, 75);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(270, 60);
+           
             // 
             // label1
             // 
@@ -204,7 +158,7 @@
             this.Controls.Add(this.textBoxMD5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxUSER);
-            this.Controls.Add(this.shapeContainer1);
+            //this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -220,12 +174,12 @@
 
         #endregion
 
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
+        //private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        //private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
+        //private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxUSER;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
+        //private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
         private System.Windows.Forms.TextBox textBoxMD5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

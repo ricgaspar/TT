@@ -28,7 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("test");
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelConnectedTo = new System.Windows.Forms.Label();
+            this.labelDateTimeConnected = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeViewGroups = new System.Windows.Forms.TreeView();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioButtonHierarchy = new System.Windows.Forms.RadioButton();
+            this.radioButtonDatabase = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.buttonAddMemberToGroup = new System.Windows.Forms.Button();
@@ -45,27 +58,27 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.richTextBoxLog = new System.Windows.Forms.RichTextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelConnectedTo = new System.Windows.Forms.Label();
-            this.labelDateTimeConnected = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeViewGroups = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanelHlavniVnejsi = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonExportToCSV = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonGraphicalVisualization = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tableLayoutPanelHlavniVnejsi.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVnejsi
@@ -73,18 +86,177 @@
             this.tableLayoutPanelVnejsi.ColumnCount = 2;
             this.tableLayoutPanelVnejsi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 465F));
             this.tableLayoutPanelVnejsi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanel4, 1, 0);
+            this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanel4, 1, 1);
+            this.tableLayoutPanelVnejsi.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanelVnejsi.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanelVnejsi.Controls.Add(this.flowLayoutPanel1, 1, 2);
             this.tableLayoutPanelVnejsi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelVnejsi.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelVnejsi.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelVnejsi.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelVnejsi.Name = "tableLayoutPanelVnejsi";
-            this.tableLayoutPanelVnejsi.RowCount = 2;
+            this.tableLayoutPanelVnejsi.RowCount = 3;
+            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanelVnejsi.Size = new System.Drawing.Size(977, 713);
+            this.tableLayoutPanelVnejsi.Size = new System.Drawing.Size(971, 660);
             this.tableLayoutPanelVnejsi.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.labelConnectedTo, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelDateTimeConnected, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 635);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(465, 25);
+            this.tableLayoutPanel2.TabIndex = 5;
+            // 
+            // labelConnectedTo
+            // 
+            this.labelConnectedTo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelConnectedTo.AutoSize = true;
+            this.labelConnectedTo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelConnectedTo.Location = new System.Drawing.Point(3, 6);
+            this.labelConnectedTo.Name = "labelConnectedTo";
+            this.labelConnectedTo.Size = new System.Drawing.Size(69, 13);
+            this.labelConnectedTo.TabIndex = 0;
+            this.labelConnectedTo.Text = "Připojeno k:";
+            // 
+            // labelDateTimeConnected
+            // 
+            this.labelDateTimeConnected.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelDateTimeConnected.AutoSize = true;
+            this.labelDateTimeConnected.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDateTimeConnected.Location = new System.Drawing.Point(235, 6);
+            this.labelDateTimeConnected.Name = "labelDateTimeConnected";
+            this.labelDateTimeConnected.Size = new System.Drawing.Size(78, 13);
+            this.labelDateTimeConnected.TabIndex = 1;
+            this.labelDateTimeConnected.Text = "Čas připojení:";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.splitContainer1, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(468, 33);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(500, 599);
+            this.tableLayoutPanel4.TabIndex = 6;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 30);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeViewGroups);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.listView1);
+            this.splitContainer1.Size = new System.Drawing.Size(500, 569);
+            this.splitContainer1.SplitterDistance = 276;
+            this.splitContainer1.TabIndex = 13;
+            // 
+            // treeViewGroups
+            // 
+            this.treeViewGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewGroups.Enabled = false;
+            this.treeViewGroups.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.treeViewGroups.Location = new System.Drawing.Point(0, 0);
+            this.treeViewGroups.Name = "treeViewGroups";
+            this.treeViewGroups.Size = new System.Drawing.Size(500, 276);
+            this.treeViewGroups.TabIndex = 10;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem3});
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Margin = new System.Windows.Forms.Padding(0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(500, 289);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 141;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.radioButtonHierarchy, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.radioButtonDatabase, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(500, 30);
+            this.tableLayoutPanel5.TabIndex = 14;
+            // 
+            // radioButtonHierarchy
+            // 
+            this.radioButtonHierarchy.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButtonHierarchy.AutoSize = true;
+            this.radioButtonHierarchy.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButtonHierarchy.Location = new System.Drawing.Point(42, 6);
+            this.radioButtonHierarchy.Name = "radioButtonHierarchy";
+            this.radioButtonHierarchy.Size = new System.Drawing.Size(165, 17);
+            this.radioButtonHierarchy.TabIndex = 0;
+            this.radioButtonHierarchy.Text = "Hierarchie lokálních skupin";
+            this.radioButtonHierarchy.UseVisualStyleBackColor = true;
+            this.radioButtonHierarchy.CheckedChanged += new System.EventHandler(this.radioButtonHierarchy_CheckedChanged);
+            // 
+            // radioButtonDatabase
+            // 
+            this.radioButtonDatabase.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButtonDatabase.AutoSize = true;
+            this.radioButtonDatabase.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButtonDatabase.Location = new System.Drawing.Point(278, 6);
+            this.radioButtonDatabase.Name = "radioButtonDatabase";
+            this.radioButtonDatabase.Size = new System.Drawing.Size(194, 17);
+            this.radioButtonDatabase.TabIndex = 1;
+            this.radioButtonDatabase.Text = "Databáze nastavených oprávnění";
+            this.radioButtonDatabase.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(468, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 30);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Přehled dat";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel3
             // 
@@ -105,7 +277,7 @@
             this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.richTextBoxLog, 1, 8);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 9;
@@ -118,7 +290,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(465, 688);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(465, 605);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // dateTimePicker1
@@ -312,121 +485,21 @@
             this.richTextBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxLog.Location = new System.Drawing.Point(33, 253);
             this.richTextBoxLog.Name = "richTextBoxLog";
-            this.richTextBoxLog.Size = new System.Drawing.Size(429, 432);
+            this.richTextBoxLog.Size = new System.Drawing.Size(429, 349);
             this.richTextBoxLog.TabIndex = 13;
             this.richTextBoxLog.Text = "";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.labelConnectedTo, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.labelDateTimeConnected, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 688);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(465, 25);
-            this.tableLayoutPanel2.TabIndex = 5;
-            // 
-            // labelConnectedTo
-            // 
-            this.labelConnectedTo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelConnectedTo.AutoSize = true;
-            this.labelConnectedTo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConnectedTo.Location = new System.Drawing.Point(3, 6);
-            this.labelConnectedTo.Name = "labelConnectedTo";
-            this.labelConnectedTo.Size = new System.Drawing.Size(69, 13);
-            this.labelConnectedTo.TabIndex = 0;
-            this.labelConnectedTo.Text = "Připojeno k:";
-            // 
-            // labelDateTimeConnected
-            // 
-            this.labelDateTimeConnected.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelDateTimeConnected.AutoSize = true;
-            this.labelDateTimeConnected.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelDateTimeConnected.Location = new System.Drawing.Point(235, 6);
-            this.labelDateTimeConnected.Name = "labelDateTimeConnected";
-            this.labelDateTimeConnected.Size = new System.Drawing.Size(78, 13);
-            this.labelDateTimeConnected.TabIndex = 1;
-            this.labelDateTimeConnected.Text = "Čas připojení:";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.treeViewGroups, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(468, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(506, 682);
-            this.tableLayoutPanel4.TabIndex = 6;
-            // 
-            // treeViewGroups
-            // 
-            this.treeViewGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewGroups.Enabled = false;
-            this.treeViewGroups.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.treeViewGroups.Location = new System.Drawing.Point(3, 103);
-            this.treeViewGroups.Name = "treeViewGroups";
-            this.treeViewGroups.Size = new System.Drawing.Size(500, 576);
-            this.treeViewGroups.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(3, 76);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 17);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Hierarchie lokálních skupin na PC:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 64);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Přehled nastavených admin oprávnění";
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(339, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 40);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Vytvoření kopie tabulky";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(3, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Otevření tabulky";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label1.Size = new System.Drawing.Size(230, 30);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Přidání účtu do skupiny";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanelHlavniVnejsi
             // 
@@ -439,8 +512,44 @@
             this.tableLayoutPanelHlavniVnejsi.RowCount = 1;
             this.tableLayoutPanelHlavniVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHlavniVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 658F));
-            this.tableLayoutPanelHlavniVnejsi.Size = new System.Drawing.Size(977, 713);
+            this.tableLayoutPanelHlavniVnejsi.Size = new System.Drawing.Size(977, 666);
             this.tableLayoutPanelHlavniVnejsi.TabIndex = 1;
+            // 
+            // buttonExportToCSV
+            // 
+            this.buttonExportToCSV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonExportToCSV.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonExportToCSV.Location = new System.Drawing.Point(5, 0);
+            this.buttonExportToCSV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 3);
+            this.buttonExportToCSV.Name = "buttonExportToCSV";
+            this.buttonExportToCSV.Size = new System.Drawing.Size(96, 22);
+            this.buttonExportToCSV.TabIndex = 15;
+            this.buttonExportToCSV.Text = "Export do CSV";
+            this.buttonExportToCSV.UseVisualStyleBackColor = true;
+            this.buttonExportToCSV.Visible = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.buttonExportToCSV);
+            this.flowLayoutPanel1.Controls.Add(this.buttonGraphicalVisualization);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(465, 635);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 25);
+            this.flowLayoutPanel1.TabIndex = 15;
+            // 
+            // buttonGraphicalVisualization
+            // 
+            this.buttonGraphicalVisualization.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonGraphicalVisualization.Location = new System.Drawing.Point(111, 0);
+            this.buttonGraphicalVisualization.Margin = new System.Windows.Forms.Padding(5, 0, 5, 3);
+            this.buttonGraphicalVisualization.Name = "buttonGraphicalVisualization";
+            this.buttonGraphicalVisualization.Size = new System.Drawing.Size(129, 22);
+            this.buttonGraphicalVisualization.TabIndex = 16;
+            this.buttonGraphicalVisualization.Text = "Grafická vizualizace";
+            this.buttonGraphicalVisualization.UseVisualStyleBackColor = true;
+            this.buttonGraphicalVisualization.Visible = false;
             // 
             // UserControlAddToGroup
             // 
@@ -449,8 +558,18 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.tableLayoutPanelHlavniVnejsi);
             this.Name = "UserControlAddToGroup";
-            this.Size = new System.Drawing.Size(977, 713);
+            this.Size = new System.Drawing.Size(977, 666);
             this.tableLayoutPanelVnejsi.ResumeLayout(false);
+            this.tableLayoutPanelVnejsi.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -459,12 +578,8 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanelHlavniVnejsi.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -477,11 +592,9 @@
         private System.Windows.Forms.Button buttonAddMemberToGroup;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.CheckBox checkBoxNeomezene;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.TextBox textBoxComputername;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.RadioButton radioButtonOdebraniLokalni;
         private System.Windows.Forms.RadioButton radioButtonOdebraniSitove;
@@ -494,9 +607,18 @@
         private System.Windows.Forms.RichTextBox richTextBoxLog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TreeView treeViewGroups;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.RadioButton radioButtonHierarchy;
+        private System.Windows.Forms.RadioButton radioButtonDatabase;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox textBoxComputername;
+        private System.Windows.Forms.Button buttonExportToCSV;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button buttonGraphicalVisualization;
     }
 }

@@ -143,7 +143,7 @@ namespace TechnolToolkit
                 */
             //}
         }
-        private void buttonSAP_Click(object sender, EventArgs e)
+        private void ButtonSAP_Click(object sender, EventArgs e)
         {
             activePanelFuntion(aktivniPanel, "ucS");
         }

@@ -175,6 +175,7 @@ namespace TechnolToolkit
             {
                 ch.Width = -2;
             }
+            pocetToolStripMenuItem.Text = "Počet: " + listView1.Items.Count;
         }
         private void buttonOK_Click(object sender, EventArgs e)
         {
@@ -192,7 +193,8 @@ namespace TechnolToolkit
             else
             {
                 p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\PsExec.exe";
-                p.StartInfo.Arguments =  @"\\" + textBox1.Text + @" reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall /s /f Display";
+                p.StartInfo.Arguments = @"\\" + textBox1.Text + @" reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall /s /f Display";
+                
             }
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
@@ -272,14 +274,14 @@ namespace TechnolToolkit
         }
         private void otevrenoToolStripMenuItem_TextChanged(object sender, EventArgs e)
         {
-            Size size = TextRenderer.MeasureText(otevrenoToolStripMenuItem.Text, otevrenoToolStripMenuItem.Font);
-            otevrenoToolStripMenuItem.Width = size.Width;
+            Size size = TextRenderer.MeasureText(pocetToolStripMenuItem.Text, pocetToolStripMenuItem.Font);
+            pocetToolStripMenuItem.Width = size.Width;
         }
 
         private void InstalledPrograms_FormClosing(object sender, FormClosingEventArgs e)
         {
             obnovListView();
-            otevrenoToolStripMenuItem.Text = "";
+            pocetToolStripMenuItem.Text = "";
         }
 
         private void listView1_MouseClick(object sender, MouseEventArgs e)

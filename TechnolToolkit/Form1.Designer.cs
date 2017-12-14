@@ -139,7 +139,7 @@
             this.buttonSAP.Text = "Náhled do SAPu";
             this.buttonSAP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSAP.UseVisualStyleBackColor = true;
-            this.buttonSAP.Click += new System.EventHandler(this.buttonSAP_Click);
+            this.buttonSAP.Click += new System.EventHandler(this.ButtonSAP_Click);
             this.buttonSAP.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonSAP_Paint);
             // 
             // buttonMenu

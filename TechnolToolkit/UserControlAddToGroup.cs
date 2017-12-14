@@ -20,6 +20,7 @@ namespace TechnolToolkit
         public UserControlAddToGroup()
         {
             InitializeComponent();
+            radioButtonHierarchy.Checked = true;
         }
         private void enableUIElements()
         {
@@ -32,7 +33,6 @@ namespace TechnolToolkit
             comboBox1.Enabled = true;
             labelConnectedTo.Text = "Připojeno k: " + textBoxComputername.Text;
             labelDateTimeConnected.Text = "Čas připojení: " + DateTime.Now.ToString();
-            label1.Text = "Hierarchie lokálních skupin na PC: " + textBoxComputername.Text;
         }
         private void searchGroupsAndMembers(string computername)
         {
@@ -157,7 +157,7 @@ namespace TechnolToolkit
         }
         private bool activateLastButton()
         {
-            if (textBoxComputername.Text != ""  && textBoxUsername.Text != "" && textBoxComputername.Text != "Název PC" && 
+            if (textBoxComputername.Text != ""  && textBoxUsername.Text != "" && textBoxComputername.Text != "Název PC" && textBoxComputername.Text != "localhost" &&
                 textBoxUsername.Text != "Uživatel (DZC)" && comboBox1.Text != "Výběr skupiny")
                 if (checkBoxNeomezene.Checked)
                     return true;
@@ -211,10 +211,27 @@ namespace TechnolToolkit
 
         private void textBoxComputername_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
+            if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC" && textBoxComputername.Text != "localhost")
                 buttonConnectToDevice.Enabled = true;
             else buttonConnectToDevice.Enabled = false;
         }
 
+        private void radioButtonHierarchy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonHierarchy.Checked)
+            {
+                splitContainer1.Panel2Collapsed = true;
+                splitContainer1.Panel1Collapsed = false;
+                buttonExportToCSV.Visible = false;
+                buttonGraphicalVisualization.Visible = false;
+            }
+            else
+            {
+                splitContainer1.Panel1Collapsed = true;
+                splitContainer1.Panel2Collapsed = false;
+                buttonExportToCSV.Visible = true;
+                buttonGraphicalVisualization.Visible = true;
+            }
+        }
     }
 }

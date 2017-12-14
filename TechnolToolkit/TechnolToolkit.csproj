@@ -42,11 +42,7 @@
     <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus">
-      <HintPath>..\Libraries\EPPlus.4.1.1.VBA.fix\4.0\EPPlus.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
