@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("test");
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -36,6 +37,9 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeViewGroups = new System.Windows.Forms.TreeView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.zobrazitUživatelskéJménoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smazatClenaZeSkupinyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,10 +63,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.richTextBoxLog = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanelHlavniVnejsi = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonExportToCSV = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonGraphicalVisualization = new System.Windows.Forms.Button();
+            this.tableLayoutPanelHlavniVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -70,6 +73,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,8 +81,8 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.tableLayoutPanelHlavniVnejsi.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanelHlavniVnejsi.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVnejsi
@@ -178,6 +182,7 @@
             // 
             // treeViewGroups
             // 
+            this.treeViewGroups.ContextMenuStrip = this.contextMenuStrip1;
             this.treeViewGroups.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewGroups.Enabled = false;
             this.treeViewGroups.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -185,6 +190,29 @@
             this.treeViewGroups.Name = "treeViewGroups";
             this.treeViewGroups.Size = new System.Drawing.Size(500, 276);
             this.treeViewGroups.TabIndex = 10;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zobrazitUživatelskéJménoToolStripMenuItem,
+            this.smazatClenaZeSkupinyToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 48);
+            // 
+            // zobrazitUživatelskéJménoToolStripMenuItem
+            // 
+            this.zobrazitUživatelskéJménoToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_User_96_color;
+            this.zobrazitUživatelskéJménoToolStripMenuItem.Name = "zobrazitUživatelskéJménoToolStripMenuItem";
+            this.zobrazitUživatelskéJménoToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.zobrazitUživatelskéJménoToolStripMenuItem.Text = "Zobrazit uživatelské jméno";
+            // 
+            // smazatClenaZeSkupinyToolStripMenuItem
+            // 
+            this.smazatClenaZeSkupinyToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
+            this.smazatClenaZeSkupinyToolStripMenuItem.Name = "smazatClenaZeSkupinyToolStripMenuItem";
+            this.smazatClenaZeSkupinyToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.smazatClenaZeSkupinyToolStripMenuItem.Text = "Smazat člena ze skupiny";
+            this.smazatClenaZeSkupinyToolStripMenuItem.Click += new System.EventHandler(this.smazatClenaZeSkupinyToolStripMenuItem_Click);
             // 
             // listView1
             // 
@@ -314,7 +342,7 @@
             this.buttonAddMemberToGroup.TabIndex = 2;
             this.buttonAddMemberToGroup.Text = "Přidat účet do skupiny";
             this.buttonAddMemberToGroup.UseVisualStyleBackColor = true;
-            this.buttonAddMemberToGroup.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAddMemberToGroup.Click += new System.EventHandler(this.buttonAddMemberToGroup_Click);
             // 
             // checkBoxNeomezene
             // 
@@ -455,7 +483,7 @@
             this.buttonConnectToDevice.TabIndex = 11;
             this.buttonConnectToDevice.Text = "Připojit";
             this.buttonConnectToDevice.UseVisualStyleBackColor = true;
-            this.buttonConnectToDevice.Click += new System.EventHandler(this.button2_Click);
+            this.buttonConnectToDevice.Click += new System.EventHandler(this.buttonConnectToDevice_Click);
             // 
             // pictureBox3
             // 
@@ -501,36 +529,8 @@
             this.label1.Text = "Přidání účtu do skupiny";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanelHlavniVnejsi
-            // 
-            this.tableLayoutPanelHlavniVnejsi.ColumnCount = 1;
-            this.tableLayoutPanelHlavniVnejsi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelHlavniVnejsi.Controls.Add(this.tableLayoutPanelVnejsi, 0, 0);
-            this.tableLayoutPanelHlavniVnejsi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelHlavniVnejsi.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelHlavniVnejsi.Name = "tableLayoutPanelHlavniVnejsi";
-            this.tableLayoutPanelHlavniVnejsi.RowCount = 1;
-            this.tableLayoutPanelHlavniVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelHlavniVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 658F));
-            this.tableLayoutPanelHlavniVnejsi.Size = new System.Drawing.Size(977, 666);
-            this.tableLayoutPanelHlavniVnejsi.TabIndex = 1;
-            // 
-            // buttonExportToCSV
-            // 
-            this.buttonExportToCSV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonExportToCSV.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonExportToCSV.Location = new System.Drawing.Point(5, 0);
-            this.buttonExportToCSV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 3);
-            this.buttonExportToCSV.Name = "buttonExportToCSV";
-            this.buttonExportToCSV.Size = new System.Drawing.Size(96, 22);
-            this.buttonExportToCSV.TabIndex = 15;
-            this.buttonExportToCSV.Text = "Export do CSV";
-            this.buttonExportToCSV.UseVisualStyleBackColor = true;
-            this.buttonExportToCSV.Visible = false;
-            // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.buttonExportToCSV);
             this.flowLayoutPanel1.Controls.Add(this.buttonGraphicalVisualization);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(465, 635);
@@ -542,7 +542,7 @@
             // buttonGraphicalVisualization
             // 
             this.buttonGraphicalVisualization.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonGraphicalVisualization.Location = new System.Drawing.Point(111, 0);
+            this.buttonGraphicalVisualization.Location = new System.Drawing.Point(5, 0);
             this.buttonGraphicalVisualization.Margin = new System.Windows.Forms.Padding(5, 0, 5, 3);
             this.buttonGraphicalVisualization.Name = "buttonGraphicalVisualization";
             this.buttonGraphicalVisualization.Size = new System.Drawing.Size(129, 22);
@@ -550,6 +550,20 @@
             this.buttonGraphicalVisualization.Text = "Grafická vizualizace";
             this.buttonGraphicalVisualization.UseVisualStyleBackColor = true;
             this.buttonGraphicalVisualization.Visible = false;
+            // 
+            // tableLayoutPanelHlavniVnejsi
+            // 
+            this.tableLayoutPanelHlavniVnejsi.ColumnCount = 1;
+            this.tableLayoutPanelHlavniVnejsi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelHlavniVnejsi.Controls.Add(this.tableLayoutPanelVnejsi, 0, 0);
+            this.tableLayoutPanelHlavniVnejsi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelHlavniVnejsi.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelHlavniVnejsi.Name = "tableLayoutPanelHlavniVnejsi";
+            this.tableLayoutPanelHlavniVnejsi.RowCount = 1;
+            this.tableLayoutPanelHlavniVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelHlavniVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 666F));
+            this.tableLayoutPanelHlavniVnejsi.Size = new System.Drawing.Size(977, 666);
+            this.tableLayoutPanelHlavniVnejsi.TabIndex = 1;
             // 
             // UserControlAddToGroup
             // 
@@ -568,6 +582,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -578,8 +593,8 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.tableLayoutPanelHlavniVnejsi.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanelHlavniVnejsi.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -617,8 +632,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBoxComputername;
-        private System.Windows.Forms.Button buttonExportToCSV;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonGraphicalVisualization;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem zobrazitUživatelskéJménoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem smazatClenaZeSkupinyToolStripMenuItem;
     }
 }

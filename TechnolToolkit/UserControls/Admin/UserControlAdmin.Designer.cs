@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonZasadyPC = new System.Windows.Forms.Button();
             this.buttonAkceVsechny = new System.Windows.Forms.Button();
+            this.buttonOpravaKlienta = new System.Windows.Forms.Button();
             this.buttonRemoteControl = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonZprava = new System.Windows.Forms.Button();
             this.buttonZmenaSkupin = new System.Windows.Forms.Button();
             this.buttonInstalovanyProgramy = new System.Windows.Forms.Button();
@@ -48,46 +47,29 @@
             this.buttonUserPCname = new System.Windows.Forms.Button();
             this.buttonASCII = new System.Windows.Forms.Button();
             this.buttonVAS = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxLine = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonOpravaKlienta = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.buttonMultiping = new System.Windows.Forms.Button();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(3, 1);
+            this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 21);
+            this.label2.Size = new System.Drawing.Size(800, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Administrační nástroje";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Controls.Add(this.buttonZasadyPC);
-            this.flowLayoutPanel2.Controls.Add(this.buttonAkceVsechny);
-            this.flowLayoutPanel2.Controls.Add(this.buttonOpravaKlienta);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 315);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(967, 154);
-            this.flowLayoutPanel2.TabIndex = 3;
             // 
             // buttonZasadyPC
             // 
@@ -98,7 +80,7 @@
             this.buttonZasadyPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZasadyPC.ForeColor = System.Drawing.Color.Black;
             this.buttonZasadyPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonZasadyPC.Location = new System.Drawing.Point(6, 6);
+            this.buttonZasadyPC.Location = new System.Drawing.Point(6, 366);
             this.buttonZasadyPC.Margin = new System.Windows.Forms.Padding(6);
             this.buttonZasadyPC.Name = "buttonZasadyPC";
             this.buttonZasadyPC.Size = new System.Drawing.Size(305, 121);
@@ -117,7 +99,7 @@
             this.buttonAkceVsechny.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonAkceVsechny.ForeColor = System.Drawing.Color.Black;
             this.buttonAkceVsechny.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonAkceVsechny.Location = new System.Drawing.Point(323, 6);
+            this.buttonAkceVsechny.Location = new System.Drawing.Point(323, 366);
             this.buttonAkceVsechny.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAkceVsechny.Name = "buttonAkceVsechny";
             this.buttonAkceVsechny.Size = new System.Drawing.Size(305, 121);
@@ -126,6 +108,25 @@
             this.buttonAkceVsechny.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonAkceVsechny.UseVisualStyleBackColor = false;
             this.buttonAkceVsechny.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAkceVsechny_Paint);
+            // 
+            // buttonOpravaKlienta
+            // 
+            this.buttonOpravaKlienta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonOpravaKlienta.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonOpravaKlienta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
+            this.buttonOpravaKlienta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpravaKlienta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonOpravaKlienta.ForeColor = System.Drawing.Color.Black;
+            this.buttonOpravaKlienta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonOpravaKlienta.Location = new System.Drawing.Point(640, 366);
+            this.buttonOpravaKlienta.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonOpravaKlienta.Name = "buttonOpravaKlienta";
+            this.buttonOpravaKlienta.Size = new System.Drawing.Size(305, 121);
+            this.buttonOpravaKlienta.TabIndex = 19;
+            this.buttonOpravaKlienta.Text = "Oprava / (Re)instalace klienta";
+            this.buttonOpravaKlienta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonOpravaKlienta.UseVisualStyleBackColor = false;
+            this.buttonOpravaKlienta.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonOpravaKlienta_Paint);
             // 
             // buttonRemoteControl
             // 
@@ -136,7 +137,7 @@
             this.buttonRemoteControl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonRemoteControl.ForeColor = System.Drawing.Color.Black;
             this.buttonRemoteControl.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonRemoteControl.Location = new System.Drawing.Point(639, 139);
+            this.buttonRemoteControl.Location = new System.Drawing.Point(481, 176);
             this.buttonRemoteControl.Margin = new System.Windows.Forms.Padding(6);
             this.buttonRemoteControl.Name = "buttonRemoteControl";
             this.buttonRemoteControl.Size = new System.Drawing.Size(146, 121);
@@ -147,27 +148,6 @@
             this.buttonRemoteControl.Click += new System.EventHandler(this.buttonRemoteControl_Click);
             this.buttonRemoteControl.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonRemoteControl_Paint);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.Controls.Add(this.buttonZprava);
-            this.flowLayoutPanel1.Controls.Add(this.buttonZmenaSkupin);
-            this.flowLayoutPanel1.Controls.Add(this.buttonInstalovanyProgramy);
-            this.flowLayoutPanel1.Controls.Add(this.buttonNajdiPC);
-            this.flowLayoutPanel1.Controls.Add(this.buttonBitlocker);
-            this.flowLayoutPanel1.Controls.Add(this.buttonProcesy);
-            this.flowLayoutPanel1.Controls.Add(this.buttonNapajeniPC);
-            this.flowLayoutPanel1.Controls.Add(this.buttonInfoPC);
-            this.flowLayoutPanel1.Controls.Add(this.buttonMSI);
-            this.flowLayoutPanel1.Controls.Add(this.buttonRemoteControl);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 28);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(973, 256);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
             // buttonZprava
             // 
             this.buttonZprava.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
@@ -177,7 +157,7 @@
             this.buttonZprava.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZprava.ForeColor = System.Drawing.Color.Black;
             this.buttonZprava.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonZprava.Location = new System.Drawing.Point(6, 6);
+            this.buttonZprava.Location = new System.Drawing.Point(6, 43);
             this.buttonZprava.Margin = new System.Windows.Forms.Padding(6);
             this.buttonZprava.Name = "buttonZprava";
             this.buttonZprava.Size = new System.Drawing.Size(146, 121);
@@ -197,7 +177,7 @@
             this.buttonZmenaSkupin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZmenaSkupin.ForeColor = System.Drawing.Color.Black;
             this.buttonZmenaSkupin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonZmenaSkupin.Location = new System.Drawing.Point(164, 6);
+            this.buttonZmenaSkupin.Location = new System.Drawing.Point(164, 43);
             this.buttonZmenaSkupin.Margin = new System.Windows.Forms.Padding(6);
             this.buttonZmenaSkupin.Name = "buttonZmenaSkupin";
             this.buttonZmenaSkupin.Size = new System.Drawing.Size(146, 121);
@@ -218,7 +198,7 @@
             this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.Black;
             this.buttonInstalovanyProgramy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(322, 6);
+            this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(322, 43);
             this.buttonInstalovanyProgramy.Margin = new System.Windows.Forms.Padding(6);
             this.buttonInstalovanyProgramy.Name = "buttonInstalovanyProgramy";
             this.buttonInstalovanyProgramy.Size = new System.Drawing.Size(146, 121);
@@ -238,7 +218,7 @@
             this.buttonNajdiPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNajdiPC.ForeColor = System.Drawing.Color.Black;
             this.buttonNajdiPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNajdiPC.Location = new System.Drawing.Point(480, 6);
+            this.buttonNajdiPC.Location = new System.Drawing.Point(480, 43);
             this.buttonNajdiPC.Margin = new System.Windows.Forms.Padding(6);
             this.buttonNajdiPC.Name = "buttonNajdiPC";
             this.buttonNajdiPC.Size = new System.Drawing.Size(146, 121);
@@ -258,7 +238,7 @@
             this.buttonBitlocker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonBitlocker.ForeColor = System.Drawing.Color.Black;
             this.buttonBitlocker.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonBitlocker.Location = new System.Drawing.Point(638, 6);
+            this.buttonBitlocker.Location = new System.Drawing.Point(638, 43);
             this.buttonBitlocker.Margin = new System.Windows.Forms.Padding(6);
             this.buttonBitlocker.Name = "buttonBitlocker";
             this.buttonBitlocker.Size = new System.Drawing.Size(146, 121);
@@ -278,7 +258,7 @@
             this.buttonProcesy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonProcesy.ForeColor = System.Drawing.Color.Black;
             this.buttonProcesy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonProcesy.Location = new System.Drawing.Point(796, 6);
+            this.buttonProcesy.Location = new System.Drawing.Point(796, 43);
             this.buttonProcesy.Margin = new System.Windows.Forms.Padding(6);
             this.buttonProcesy.Name = "buttonProcesy";
             this.buttonProcesy.Size = new System.Drawing.Size(146, 121);
@@ -298,7 +278,7 @@
             this.buttonNapajeniPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNapajeniPC.ForeColor = System.Drawing.Color.Black;
             this.buttonNapajeniPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNapajeniPC.Location = new System.Drawing.Point(6, 139);
+            this.buttonNapajeniPC.Location = new System.Drawing.Point(954, 43);
             this.buttonNapajeniPC.Margin = new System.Windows.Forms.Padding(6);
             this.buttonNapajeniPC.Name = "buttonNapajeniPC";
             this.buttonNapajeniPC.Size = new System.Drawing.Size(146, 121);
@@ -318,7 +298,7 @@
             this.buttonInfoPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonInfoPC.ForeColor = System.Drawing.Color.Black;
             this.buttonInfoPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonInfoPC.Location = new System.Drawing.Point(164, 139);
+            this.buttonInfoPC.Location = new System.Drawing.Point(6, 176);
             this.buttonInfoPC.Margin = new System.Windows.Forms.Padding(6);
             this.buttonInfoPC.Name = "buttonInfoPC";
             this.buttonInfoPC.Size = new System.Drawing.Size(146, 121);
@@ -338,7 +318,7 @@
             this.buttonMSI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMSI.ForeColor = System.Drawing.Color.Black;
             this.buttonMSI.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonMSI.Location = new System.Drawing.Point(322, 139);
+            this.buttonMSI.Location = new System.Drawing.Point(164, 176);
             this.buttonMSI.Margin = new System.Windows.Forms.Padding(6);
             this.buttonMSI.Name = "buttonMSI";
             this.buttonMSI.Size = new System.Drawing.Size(305, 121);
@@ -359,7 +339,7 @@
             this.buttonRegSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonRegSearch.ForeColor = System.Drawing.Color.Black;
             this.buttonRegSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonRegSearch.Location = new System.Drawing.Point(322, 6);
+            this.buttonRegSearch.Location = new System.Drawing.Point(480, 556);
             this.buttonRegSearch.Margin = new System.Windows.Forms.Padding(6);
             this.buttonRegSearch.Name = "buttonRegSearch";
             this.buttonRegSearch.Size = new System.Drawing.Size(146, 121);
@@ -380,7 +360,7 @@
             this.buttonIPConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonIPConfig.ForeColor = System.Drawing.Color.Black;
             this.buttonIPConfig.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonIPConfig.Location = new System.Drawing.Point(796, 6);
+            this.buttonIPConfig.Location = new System.Drawing.Point(638, 556);
             this.buttonIPConfig.Margin = new System.Windows.Forms.Padding(6);
             this.buttonIPConfig.Name = "buttonIPConfig";
             this.buttonIPConfig.Size = new System.Drawing.Size(146, 121);
@@ -401,7 +381,7 @@
             this.buttonUserPCname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonUserPCname.ForeColor = System.Drawing.Color.Black;
             this.buttonUserPCname.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonUserPCname.Location = new System.Drawing.Point(6, 6);
+            this.buttonUserPCname.Location = new System.Drawing.Point(6, 556);
             this.buttonUserPCname.Margin = new System.Windows.Forms.Padding(6);
             this.buttonUserPCname.Name = "buttonUserPCname";
             this.buttonUserPCname.Size = new System.Drawing.Size(304, 121);
@@ -421,7 +401,7 @@
             this.buttonASCII.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonASCII.ForeColor = System.Drawing.Color.Black;
             this.buttonASCII.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonASCII.Location = new System.Drawing.Point(480, 6);
+            this.buttonASCII.Location = new System.Drawing.Point(322, 556);
             this.buttonASCII.Margin = new System.Windows.Forms.Padding(6);
             this.buttonASCII.Name = "buttonASCII";
             this.buttonASCII.Size = new System.Drawing.Size(146, 121);
@@ -441,7 +421,7 @@
             this.buttonVAS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonVAS.ForeColor = System.Drawing.Color.Black;
             this.buttonVAS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonVAS.Location = new System.Drawing.Point(638, 6);
+            this.buttonVAS.Location = new System.Drawing.Point(796, 556);
             this.buttonVAS.Margin = new System.Windows.Forms.Padding(6);
             this.buttonVAS.Name = "buttonVAS";
             this.buttonVAS.Size = new System.Drawing.Size(146, 121);
@@ -452,120 +432,108 @@
             this.buttonVAS.Click += new System.EventHandler(this.buttonVAS_Click);
             this.buttonVAS.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonVAS_Paint);
             // 
-            // tableLayoutPanel1
+            // label1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBoxLine, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 8);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(973, 680);
-            this.tableLayoutPanel1.TabIndex = 1;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(3, 303);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(835, 41);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "SCCM nástroje";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // pictureBoxLine
+            // label3
             // 
-            this.pictureBoxLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxLine.Location = new System.Drawing.Point(3, 310);
-            this.pictureBoxLine.Name = "pictureBoxLine";
-            this.pictureBoxLine.Size = new System.Drawing.Size(967, 1);
-            this.pictureBoxLine.TabIndex = 2;
-            this.pictureBoxLine.TabStop = false;
-            this.pictureBoxLine.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxLine_Paint);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 493);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(835, 41);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Ostatní nástroje";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // pictureBox1
+            // buttonMultiping
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 498);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(967, 1);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.buttonMultiping.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.buttonMultiping.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonMultiping.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
+            this.buttonMultiping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMultiping.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonMultiping.ForeColor = System.Drawing.Color.Black;
+            this.buttonMultiping.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonMultiping.Location = new System.Drawing.Point(639, 176);
+            this.buttonMultiping.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonMultiping.Name = "buttonMultiping";
+            this.buttonMultiping.Size = new System.Drawing.Size(146, 121);
+            this.buttonMultiping.TabIndex = 9;
+            this.buttonMultiping.Text = "Multiping";
+            this.buttonMultiping.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonMultiping.UseVisualStyleBackColor = false;
+            this.buttonMultiping.Click += new System.EventHandler(this.buttonRemoteControl_Click);
+            this.buttonMultiping.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonRemoteControl_Paint);
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.AutoScroll = true;
+            this.flowLayoutPanel4.Controls.Add(this.label2);
+            this.flowLayoutPanel4.Controls.Add(this.pictureBox2);
+            this.flowLayoutPanel4.Controls.Add(this.buttonZprava);
+            this.flowLayoutPanel4.Controls.Add(this.buttonZmenaSkupin);
+            this.flowLayoutPanel4.Controls.Add(this.buttonInstalovanyProgramy);
+            this.flowLayoutPanel4.Controls.Add(this.buttonNajdiPC);
+            this.flowLayoutPanel4.Controls.Add(this.buttonBitlocker);
+            this.flowLayoutPanel4.Controls.Add(this.buttonProcesy);
+            this.flowLayoutPanel4.Controls.Add(this.buttonNapajeniPC);
+            this.flowLayoutPanel4.Controls.Add(this.buttonInfoPC);
+            this.flowLayoutPanel4.Controls.Add(this.buttonMSI);
+            this.flowLayoutPanel4.Controls.Add(this.buttonRemoteControl);
+            this.flowLayoutPanel4.Controls.Add(this.buttonMultiping);
+            this.flowLayoutPanel4.Controls.Add(this.label1);
+            this.flowLayoutPanel4.Controls.Add(this.pictureBox3);
+            this.flowLayoutPanel4.Controls.Add(this.buttonZasadyPC);
+            this.flowLayoutPanel4.Controls.Add(this.buttonAkceVsechny);
+            this.flowLayoutPanel4.Controls.Add(this.buttonOpravaKlienta);
+            this.flowLayoutPanel4.Controls.Add(this.label3);
+            this.flowLayoutPanel4.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel4.Controls.Add(this.buttonUserPCname);
+            this.flowLayoutPanel4.Controls.Add(this.buttonASCII);
+            this.flowLayoutPanel4.Controls.Add(this.buttonRegSearch);
+            this.flowLayoutPanel4.Controls.Add(this.buttonIPConfig);
+            this.flowLayoutPanel4.Controls.Add(this.buttonVAS);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1108, 768);
+            this.flowLayoutPanel4.TabIndex = 2;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 26);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 24);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(967, 1);
+            this.pictureBox2.Size = new System.Drawing.Size(1000, 10);
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
             // 
-            // label1
+            // pictureBox3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(3, 284);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 21);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "SCCM nástroje";
+            this.pictureBox3.Location = new System.Drawing.Point(3, 347);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(1000, 10);
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
             // 
-            // label3
+            // pictureBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(3, 472);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(131, 21);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Ostatní nástroje";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.AutoScroll = true;
-            this.flowLayoutPanel3.Controls.Add(this.buttonUserPCname);
-            this.flowLayoutPanel3.Controls.Add(this.buttonRegSearch);
-            this.flowLayoutPanel3.Controls.Add(this.buttonASCII);
-            this.flowLayoutPanel3.Controls.Add(this.buttonVAS);
-            this.flowLayoutPanel3.Controls.Add(this.buttonIPConfig);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 503);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(967, 174);
-            this.flowLayoutPanel3.TabIndex = 9;
-            // 
-            // buttonOpravaKlienta
-            // 
-            this.buttonOpravaKlienta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
-            this.buttonOpravaKlienta.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.buttonOpravaKlienta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.buttonOpravaKlienta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpravaKlienta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonOpravaKlienta.ForeColor = System.Drawing.Color.Black;
-            this.buttonOpravaKlienta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonOpravaKlienta.Location = new System.Drawing.Point(640, 6);
-            this.buttonOpravaKlienta.Margin = new System.Windows.Forms.Padding(6);
-            this.buttonOpravaKlienta.Name = "buttonOpravaKlienta";
-            this.buttonOpravaKlienta.Size = new System.Drawing.Size(305, 121);
-            this.buttonOpravaKlienta.TabIndex = 19;
-            this.buttonOpravaKlienta.Text = "Oprava / (Re)instalace klienta";
-            this.buttonOpravaKlienta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonOpravaKlienta.UseVisualStyleBackColor = false;
-            this.buttonOpravaKlienta.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonOpravaKlienta_Paint);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 537);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1000, 10);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // UserControlAdmin
             // 
@@ -574,18 +542,15 @@
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(0, 680);
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.flowLayoutPanel4);
             this.Name = "UserControlAdmin";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.Size = new System.Drawing.Size(976, 683);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Size = new System.Drawing.Size(1111, 771);
+            this.SizeChanged += new System.EventHandler(this.UserControlAdmin_SizeChanged);
+            this.flowLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.flowLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -594,12 +559,8 @@
 
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button buttonZasadyPC;
         private System.Windows.Forms.Button buttonAkceVsechny;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBoxLine;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonZprava;
         private System.Windows.Forms.Button buttonZmenaSkupin;
         private System.Windows.Forms.Button buttonInstalovanyProgramy;
@@ -614,11 +575,13 @@
         private System.Windows.Forms.Button buttonUserPCname;
         private System.Windows.Forms.Button buttonVAS;
         private System.Windows.Forms.Button buttonASCII;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonBitlocker;
         private System.Windows.Forms.Button buttonOpravaKlienta;
+        private System.Windows.Forms.Button buttonMultiping;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

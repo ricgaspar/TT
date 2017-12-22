@@ -22,6 +22,7 @@ namespace TechnolToolkit
         public UserControlAdmin()
         {
             InitializeComponent();
+            resizePicBoxes();
         }
 
         private void buttonZprava_Paint(object sender, PaintEventArgs e)
@@ -39,7 +40,7 @@ namespace TechnolToolkit
         private void buttonInstalovanyProgramy_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_Installer_96, picSize,picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), 10);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_Installer_96, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), 10);
         }
 
         private void buttonNajdiPC_Paint(object sender, PaintEventArgs e)
@@ -169,25 +170,22 @@ namespace TechnolToolkit
         {
 
         }
-
-        private void pictureBoxLine_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics line = e.Graphics;
-            line.DrawLine(new Pen(Brushes.Gray, 3), 0, 0, pictureBoxLine.Width, 0);
-        }
-
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             Graphics line = e.Graphics;
-            line.DrawLine(new Pen(Brushes.Gray, 3), 0, 0, pictureBoxLine.Width, 0);
+            line.DrawLine(new Pen(Brushes.Gray, 2), 0, 0, pictureBox1.Width, 0);
         }
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
             Graphics line = e.Graphics;
-            line.DrawLine(new Pen(Brushes.Gray, 3), 0, 0, pictureBoxLine.Width, 0);
+            line.DrawLine(new Pen(Brushes.Gray, 2), 0, 0, pictureBox2.Width, 0);
         }
-
+        private void pictureBox3_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics line = e.Graphics;
+            line.DrawLine(new Pen(Brushes.Gray, 2), 0, 0, pictureBox3.Width, 0);
+        }
         private void buttonASCII_Click(object sender, EventArgs e)
         {
             Process p = new Process();
@@ -204,7 +202,7 @@ namespace TechnolToolkit
 
         private void buttonIPConfig_Click(object sender, EventArgs e)
         {
-            Process p = new Process();            
+            Process p = new Process();
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\Zjistit_IPconfig.vbs";
             p.Start();
         }
@@ -221,7 +219,7 @@ namespace TechnolToolkit
         VASConfig vc = new VASConfig();
         private void buttonVAS_Click(object sender, EventArgs e)
         {
-            if(!Directory.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154"))
+            if (!Directory.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154"))
                 extractVAS();
             vc.restore();
             vc.ShowDialog();
@@ -250,10 +248,24 @@ namespace TechnolToolkit
             Graphics g = e.Graphics;
             g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Computer_Repair96, picSize, picSize), (buttonOpravaKlienta.Width / 2) - (picSize / 2), 0);
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void resizePicBoxes()
         {
+            pictureBox1.Width = flowLayoutPanel4.Width;
+            pictureBox2.Width = flowLayoutPanel4.Width;
+            pictureBox3.Width = flowLayoutPanel4.Width;
+            label2.Width = flowLayoutPanel4.Width;
+            label1.Width = flowLayoutPanel4.Width;
+            label3.Width = flowLayoutPanel4.Width;
 
+        }
+
+        private void UserControlAdmin_SizeChanged(object sender, EventArgs e)
+        {
+            if(this.Width % 2 == 0)
+            {
+                System.Console.WriteLine(this.Width);
+                resizePicBoxes();
+            }
         }
     }
 }

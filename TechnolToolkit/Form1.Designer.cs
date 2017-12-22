@@ -99,7 +99,7 @@
             this.buttonAddToGroup.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.buttonAddToGroup.Size = new System.Drawing.Size(249, 50);
             this.buttonAddToGroup.TabIndex = 9;
-            this.buttonAddToGroup.Text = "Přidání do skupin";
+            this.buttonAddToGroup.Text = "Správa skupin";
             this.buttonAddToGroup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAddToGroup.UseVisualStyleBackColor = true;
             this.buttonAddToGroup.Click += new System.EventHandler(this.buttonAddToGroup_Click);
