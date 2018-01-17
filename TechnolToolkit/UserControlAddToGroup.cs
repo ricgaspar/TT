@@ -273,7 +273,7 @@ namespace TechnolToolkit
         }
         private void smazatClenaZeSkupinyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             //Check if any node is selected
             if (treeViewGroups.SelectedNode != null)
             {
@@ -282,46 +282,88 @@ namespace TechnolToolkit
                 for (int i = 0; i < comboBox1.Items.Count; i++)
                     skupiny.Add(comboBox1.GetItemText(comboBox1.Items[i]));
 
-                //If selected note is group, we do not do anything, because we do not want to delete group. We want to delete member
+                //If selected node is group, we do not do anything, because we do not want to delete group. We want to delete member
                 if (skupiny.Contains(treeViewGroups.SelectedNode.Text))
                     return;
-                //Selected note is member, so we delete him
+                //Selected node is member, so we delete him
                 else
                 {
                     try
                     {
-                        using (var pcLocal = new PrincipalContext(ContextType.Machine, textBoxComputername.Text))
+                        using (PrincipalContext pc = new PrincipalContext(ContextType.Machine,textBoxComputername.Text))
                         {
-                            var grp = GroupPrincipal.FindByIdentity(pcLocal, comboBox1.Text.ToString());
-
-                            using (var pcDomain = new PrincipalContext(ContextType.Domain, Environment.UserDomainName))
-                            {
-                                string username = treeViewGroups.SelectedNode.Text;
-                                DialogResult res = MessageBox.Show("Opravdu chcete smazat " + username + " ze skupiny " + treeViewGroups.SelectedNode.Parent.Text + "?", "Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                                if (res == DialogResult.Yes)
-                                {
-                                    //Zprovoznit odebirani clenu
-                                    //grp.Members.Remove(pcDomain, IdentityType.SamAccountName, username);
-                                    //grp.Members.Remove();
-                                    grp.Save();
-
-                                    searchGroupsAndMembers(textBoxComputername.Text);
-                                } else
-                                {
-                                    MessageBox.Show("Operace přerušena!");
-                                }
-                            }
+                            GroupPrincipal group = GroupPrincipal.FindByIdentity(pc, treeViewGroups.SelectedNode.Parent.Text);
+                            //group.Members.Remove(pc,IdentityType.Name,treeViewGroups.SelectedNode.Text);
+                            Principal grp
+                            group.Save();
+                            searchGroupsAndMembers(textBoxComputername.Text);
                         }
                     }
-                    catch (Exception ex)
+                    catch (System.DirectoryServices.DirectoryServicesCOMException E)
                     {
-                        MessageBox.Show(ex.Message.ToString());
+                        //doSomething with E.Message.ToString(); 
+
                     }
+
+                    #region moznost2
+                    /*using (var pcDomain = new PrincipalContext(ContextType.Domain, Environment.UserDomainName))
+                    {
+                        string username = treeViewGroups.SelectedNode.Text;
+                        DialogResult res = MessageBox.Show("Opravdu chcete smazat " + username + " ze skupiny " + treeViewGroups.SelectedNode.Parent.Text + "?", "Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                        if (res == DialogResult.Yes)
+                        {
+                            grp.Members.Remove(pcDomain, IdentityType.SamAccountName, username);
+                            grp.Save();
+                            searchGroupsAndMembers(textBoxComputername.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Operace přerušena!");
+                        }
+                    }
+                    */
+                    #endregion
+                    #region moznost3
+                    /*
+                    using (PrincipalContext computer = new PrincipalContext(ContextType.Machine, textBoxComputername.Text))
+                    {
+                        try
+                        {
+                            string group = treeViewGroups.SelectedNode.Parent.Text;
+                            string username = treeViewGroups.SelectedNode.Text;
+                            DialogResult res = MessageBox.Show("Opravdu chcete smazat " + username + " ze skupiny " + treeViewGroups.SelectedNode.Parent.Text + "?", "Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                            if (res == DialogResult.Yes)
+                            {
+                                using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(computer, IdentityType.Name, group))
+                                {
+                                    //foreach (Principal groupUser in localGroup.GetMembers().Where(groupUser => username.Equals(groupUser.Name)))
+                                    //{
+                                    localGroup.Members.Remove(computer, IdentityType.SamAccountName, username);
+                                    localGroup.Save();
+                                    searchGroupsAndMembers(textBoxComputername.Text);
+                                    Console.WriteLine("C: " + computer.ToString());
+                                    Console.WriteLine("U: " + username);
+                                    //}
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Operace přerušena!");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString());
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                    */
+                    #endregion
                 }
             }
-            else
-                return;
+            else return;
+        
         }
 
         private void buttonConnectToDevice_Click(object sender, EventArgs e)
