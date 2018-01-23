@@ -24,6 +24,11 @@ namespace TechnolToolkit
             InitializeComponent();
             radioButtonHierarchy.Checked = true;
         }
+
+        public string selectedUser;
+        public string selectedGroup;
+        public string connectedToComputername;
+
         private void enableUIElements()
         {
             textBoxUsername.Enabled = true;
@@ -74,7 +79,6 @@ namespace TechnolToolkit
                             i++;
                         }
                     }
-                    connectedToComputerName = textBoxComputername.Text;
                     enableUIElements();
                 }
             }
@@ -105,6 +109,7 @@ namespace TechnolToolkit
 
         private void textBoxComputername_Click(object sender, EventArgs e)
         {
+            
             if (textBoxComputername.Text == "Název PC")
             {
                 textBoxComputername.Text = "";
@@ -144,9 +149,10 @@ namespace TechnolToolkit
         {
             if (e.KeyCode == Keys.Enter)
             {
+                connectedToComputername = textBoxComputername.Text;
                 if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
                 {
-                    searchGroupsAndMembers(textBoxComputername.Text.ToString());
+                    searchGroupsAndMembers(connectedToComputername);
                 }
             }
         }
@@ -176,7 +182,7 @@ namespace TechnolToolkit
                     {
                         grp.Members.Add(pcDomain, IdentityType.SamAccountName, user);
                         grp.Save();
-                        searchGroupsAndMembers(textBoxComputername.Text);
+                        searchGroupsAndMembers(connectedToComputerName);
                     }
                 }
 
@@ -219,12 +225,11 @@ namespace TechnolToolkit
                     Zapisuje blbe skupiny z combobox
                 Udelat overovani toho, ze button na nastaveni bude enabled, misto toho, ze to bude vyhazovat hlasku... PRoste kdyz vse bude spravne vyplnene, tak to "enabluje" button
                 Dodelat funkcnost contextMenuStripu v hierarchii zobrazeni skupin
-                Predelat texboxy.. at to je uppercase a pripadne lowercase.. jak to bylo puvodne...
                 Pri kliknuti na pripojit, vyskoci okno s nacitanim jako je to u "installed programs"
                 Zlepsit GUI - lepe rozvrhnout prvky (status, jestli jsme pripojeni nejak zakomponovat do texboxu nebo to nejak hezky indikovat) pripadne zmenit celkove GUI
                 Pridat moznost nastavit do texboxUsername prihlaseneho uzivatele...
                 Kontrola, zda-li nebylo zadano minule datum, pri casove omezenem pridavani opravneni
-                Pridat moznost zobrazeni zpravy na remote pc, ze admin byl pridany a ze se maji odlasit a prihlasit.. (viz. message v ucA) Casove omezena zprava bych to dal... Zadna moznost permanentniho zobrazeni
+                Pridat moznost zobrazeni zpravy na remote pc, ze admin byl pridany a ze se maji odlasit a prihlasit.. (viz. message v ucA) Casove omezena zprava bych to dal... Zadna moznost permanentniho zobrazeni, max treba hodina..
                 Zmensit/premistit/zlepsit "Pripojit" button
                 Po kliknuti na button "nastavit opravneni" se prepne splitContainer na databazi nastavenych opravneni, misto hierarchie.
                 Po kliknuti na button "pripojit" nebo po pripojeni k pc se prepne splitContainer na hierarchii lokalnich skupin, misto databaze
@@ -273,7 +278,8 @@ namespace TechnolToolkit
         }
         private void smazatClenaZeSkupinyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            selectedGroup = treeViewGroups.SelectedNode.Parent.Text;
+            selectedUser = treeViewGroups.SelectedNode.Text;
             //Check if any node is selected
             if (treeViewGroups.SelectedNode != null)
             {
@@ -288,78 +294,24 @@ namespace TechnolToolkit
                 //Selected node is member, so we delete him
                 else
                 {
-                    try
-                    {
-                        using (PrincipalContext pc = new PrincipalContext(ContextType.Machine,textBoxComputername.Text))
-                        {
-                            GroupPrincipal group = GroupPrincipal.FindByIdentity(pc, treeViewGroups.SelectedNode.Parent.Text);
-                            //group.Members.Remove(pc,IdentityType.Name,treeViewGroups.SelectedNode.Text);
-                            Principal grp
-                            group.Save();
-                            searchGroupsAndMembers(textBoxComputername.Text);
-                        }
-                    }
-                    catch (System.DirectoryServices.DirectoryServicesCOMException E)
-                    {
-                        //doSomething with E.Message.ToString(); 
-
-                    }
-
-                    #region moznost2
-                    /*using (var pcDomain = new PrincipalContext(ContextType.Domain, Environment.UserDomainName))
-                    {
-                        string username = treeViewGroups.SelectedNode.Text;
-                        DialogResult res = MessageBox.Show("Opravdu chcete smazat " + username + " ze skupiny " + treeViewGroups.SelectedNode.Parent.Text + "?", "Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                        if (res == DialogResult.Yes)
-                        {
-                            grp.Members.Remove(pcDomain, IdentityType.SamAccountName, username);
-                            grp.Save();
-                            searchGroupsAndMembers(textBoxComputername.Text);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Operace přerušena!");
-                        }
-                    }
-                    */
-                    #endregion
-                    #region moznost3
-                    /*
-                    using (PrincipalContext computer = new PrincipalContext(ContextType.Machine, textBoxComputername.Text))
-                    {
+                    DialogResult confirmation = MessageBox.Show("Opravdu chcete odebrat " + selectedUser + " ze skupiny " + selectedGroup + "?","Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (confirmation == DialogResult.Yes)
                         try
                         {
-                            string group = treeViewGroups.SelectedNode.Parent.Text;
-                            string username = treeViewGroups.SelectedNode.Text;
-                            DialogResult res = MessageBox.Show("Opravdu chcete smazat " + username + " ze skupiny " + treeViewGroups.SelectedNode.Parent.Text + "?", "Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                            if (res == DialogResult.Yes)
-                            {
-                                using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(computer, IdentityType.Name, group))
-                                {
-                                    //foreach (Principal groupUser in localGroup.GetMembers().Where(groupUser => username.Equals(groupUser.Name)))
-                                    //{
-                                    localGroup.Members.Remove(computer, IdentityType.SamAccountName, username);
-                                    localGroup.Save();
-                                    searchGroupsAndMembers(textBoxComputername.Text);
-                                    Console.WriteLine("C: " + computer.ToString());
-                                    Console.WriteLine("U: " + username);
-                                    //}
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Operace přerušena!");
-                            }
+                            using (PrincipalContext pc = new PrincipalContext(ContextType.Machine, connectedToComputername))
+                                using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, selectedGroup))
+                                    foreach (Principal groupUser in localGroup.GetMembers())
+                                        if (groupUser.SamAccountName == selectedUser)
+                                        {
+                                            localGroup.Members.Remove(groupUser);
+                                            localGroup.Save();
+                                            searchGroupsAndMembers(connectedToComputername);
+                                        }
                         }
-                        catch (Exception ex)
+                        catch (System.DirectoryServices.DirectoryServicesCOMException E)
                         {
-                            MessageBox.Show(ex.Message.ToString());
-                            Console.WriteLine(ex.Message);
+                            MessageBox.Show(E.Message.ToString(),"Chyba!", MessageBoxButtons.OK,MessageBoxIcon.Error);
                         }
-                    }
-                    */
-                    #endregion
                 }
             }
             else return;
@@ -370,7 +322,8 @@ namespace TechnolToolkit
         {
             if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
             {
-                searchGroupsAndMembers(textBoxComputername.Text.ToString());
+                connectedToComputername = textBoxComputername.Text;
+                searchGroupsAndMembers(connectedToComputername);
             }
         }
 
@@ -378,7 +331,7 @@ namespace TechnolToolkit
         {
             if (activateLastButton() == true)
             {
-                addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
+                addMemberToGroup(textBoxUsername.Text, connectedToComputerName, comboBox1.Text);
                 System.Media.SystemSounds.Beep.Play();
 
             }
@@ -388,5 +341,7 @@ namespace TechnolToolkit
             }
             saveDataToFile();
         }
+
+
     }
 }
