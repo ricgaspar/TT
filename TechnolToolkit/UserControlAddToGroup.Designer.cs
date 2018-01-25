@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("test");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("test");
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelConnectedTo = new System.Windows.Forms.Label();
@@ -62,6 +62,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.richTextBoxLog = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonGraphicalVisualization = new System.Windows.Forms.Button();
@@ -190,6 +192,7 @@
             this.treeViewGroups.Name = "treeViewGroups";
             this.treeViewGroups.Size = new System.Drawing.Size(500, 276);
             this.treeViewGroups.TabIndex = 10;
+            this.treeViewGroups.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewGroups_NodeMouseClick);
             // 
             // contextMenuStrip1
             // 
@@ -220,7 +223,7 @@
             this.columnHeader1});
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem4});
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";
@@ -231,7 +234,7 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Width = 141;
+            this.columnHeader1.Width = 159;
             // 
             // tableLayoutPanel5
             // 
@@ -278,12 +281,12 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(468, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 30);
+            this.label2.Size = new System.Drawing.Size(438, 30);
             this.label2.TabIndex = 14;
-            this.label2.Text = "Přehled dat";
+            this.label2.Text = "Přehled dat, odebírání skupin a jejich členů";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel3
@@ -291,34 +294,37 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.dateTimePicker1, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.buttonAddMemberToGroup, 1, 7);
-            this.tableLayoutPanel3.Controls.Add(this.checkBoxNeomezene, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.dateTimePicker1, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.buttonAddMemberToGroup, 1, 9);
+            this.tableLayoutPanel3.Controls.Add(this.checkBoxNeomezene, 1, 5);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.pictureBox4, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox4, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.textBoxComputername, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 1, 8);
             this.tableLayoutPanel3.Controls.Add(this.textBoxUsername, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.buttonConnectToDevice, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox3, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.richTextBoxLog, 1, 8);
+            this.tableLayoutPanel3.Controls.Add(this.richTextBoxLog, 1, 10);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 1, 7);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 1, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 9;
+            this.tableLayoutPanel3.RowCount = 11;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(465, 605);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
@@ -327,7 +333,8 @@
             this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(33, 158);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(33, 183);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(429, 25);
             this.dateTimePicker1.TabIndex = 2;
@@ -336,11 +343,12 @@
             // 
             this.buttonAddMemberToGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonAddMemberToGroup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAddMemberToGroup.Location = new System.Drawing.Point(33, 218);
+            this.buttonAddMemberToGroup.Location = new System.Drawing.Point(130, 268);
+            this.buttonAddMemberToGroup.Margin = new System.Windows.Forms.Padding(100, 3, 100, 3);
             this.buttonAddMemberToGroup.Name = "buttonAddMemberToGroup";
-            this.buttonAddMemberToGroup.Size = new System.Drawing.Size(429, 29);
+            this.buttonAddMemberToGroup.Size = new System.Drawing.Size(235, 29);
             this.buttonAddMemberToGroup.TabIndex = 2;
-            this.buttonAddMemberToGroup.Text = "Přidat účet do skupiny";
+            this.buttonAddMemberToGroup.Text = "Přidat do skupiny";
             this.buttonAddMemberToGroup.UseVisualStyleBackColor = true;
             this.buttonAddMemberToGroup.Click += new System.EventHandler(this.buttonAddMemberToGroup_Click);
             // 
@@ -350,7 +358,7 @@
             this.checkBoxNeomezene.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxNeomezene.Enabled = false;
             this.checkBoxNeomezene.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxNeomezene.Location = new System.Drawing.Point(33, 128);
+            this.checkBoxNeomezene.Location = new System.Drawing.Point(33, 153);
             this.checkBoxNeomezene.Name = "checkBoxNeomezene";
             this.checkBoxNeomezene.Size = new System.Drawing.Size(429, 24);
             this.checkBoxNeomezene.TabIndex = 1;
@@ -375,7 +383,7 @@
             // 
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = global::TechnolToolkit.Properties.Resources.icons8_calendar_96;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 155);
+            this.pictureBox4.Location = new System.Drawing.Point(0, 180);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(30, 30);
@@ -408,7 +416,7 @@
             this.tableLayoutPanel1.Controls.Add(this.radioButtonOdebraniLokalni, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.radioButtonOdebraniSitove, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 185);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 235);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -429,6 +437,7 @@
             this.radioButtonOdebraniLokalni.TabStop = true;
             this.radioButtonOdebraniLokalni.Text = "Lokální (offline) odebrání";
             this.radioButtonOdebraniLokalni.UseVisualStyleBackColor = true;
+            this.radioButtonOdebraniLokalni.CheckedChanged += new System.EventHandler(this.radioButtonOdebraniLokalni_CheckedChanged);
             // 
             // radioButtonOdebraniSitove
             // 
@@ -443,6 +452,7 @@
             this.radioButtonOdebraniSitove.TabStop = true;
             this.radioButtonOdebraniSitove.Text = "Síťové odebrání";
             this.radioButtonOdebraniSitove.UseVisualStyleBackColor = true;
+            this.radioButtonOdebraniSitove.CheckedChanged += new System.EventHandler(this.radioButtonOdebraniSitove_CheckedChanged);
             // 
             // textBoxUsername
             // 
@@ -477,11 +487,12 @@
             this.buttonConnectToDevice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonConnectToDevice.Enabled = false;
             this.buttonConnectToDevice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonConnectToDevice.Location = new System.Drawing.Point(33, 33);
+            this.buttonConnectToDevice.Location = new System.Drawing.Point(130, 33);
+            this.buttonConnectToDevice.Margin = new System.Windows.Forms.Padding(100, 3, 100, 3);
             this.buttonConnectToDevice.Name = "buttonConnectToDevice";
-            this.buttonConnectToDevice.Size = new System.Drawing.Size(429, 29);
+            this.buttonConnectToDevice.Size = new System.Drawing.Size(235, 29);
             this.buttonConnectToDevice.TabIndex = 11;
-            this.buttonConnectToDevice.Text = "Připojit";
+            this.buttonConnectToDevice.Text = "Připojit / Načíst strukturu skupin";
             this.buttonConnectToDevice.UseVisualStyleBackColor = true;
             this.buttonConnectToDevice.Click += new System.EventHandler(this.buttonConnectToDevice_Click);
             // 
@@ -511,22 +522,46 @@
             // richTextBoxLog
             // 
             this.richTextBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxLog.Location = new System.Drawing.Point(33, 253);
+            this.richTextBoxLog.Location = new System.Drawing.Point(33, 303);
             this.richTextBoxLog.Name = "richTextBoxLog";
-            this.richTextBoxLog.Size = new System.Drawing.Size(429, 349);
+            this.richTextBoxLog.Size = new System.Drawing.Size(429, 299);
             this.richTextBoxLog.TabIndex = 13;
             this.richTextBoxLog.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(33, 214);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(179, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Způsob odebrání oprávnění";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(33, 129);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 17);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Platnost oprávnění";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 30);
+            this.label1.Size = new System.Drawing.Size(237, 30);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Přidání účtu do skupiny";
+            this.label1.Text = "Přidání účtů do skupin";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // flowLayoutPanel1
@@ -637,5 +672,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem zobrazitUživatelskéJménoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem smazatClenaZeSkupinyToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

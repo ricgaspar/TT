@@ -14,6 +14,7 @@ using System.DirectoryServices.AccountManagement;
 using System.IO;
 using System.Data.SqlClient;
 using System.Threading;
+using System.Globalization;
 
 namespace TechnolToolkit
 {
@@ -23,10 +24,13 @@ namespace TechnolToolkit
         {
             InitializeComponent();
             radioButtonHierarchy.Checked = true;
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd'.'MM.yyyy - HH':'mm";
         }
 
-        public string selectedUser;
-        public string selectedGroup;
+        GroupsAndMember groups_and_members = new GroupsAndMember();
+        public string selectedUserToRemove;
+        public string selectedGroupToRemove;
 
         private void enableUIElements()
         {
@@ -40,55 +44,7 @@ namespace TechnolToolkit
             labelConnectedTo.Text = "Připojeno k: " + textBoxComputername.Text;
             labelDateTimeConnected.Text = "Čas připojení: " + DateTime.Now.ToString();
         }
-        /*private void searchGroupsAndMembers(string computername)
-        {
-            treeViewGroups.Nodes.Clear();
-            comboBox1.Items.Clear();
-            Ping ping = new Ping();
-            try
-            {
-                //try if machine is online
-                PingReply pingReply = ping.Send(computername);
-                if (pingReply.Status == IPStatus.Success)
-                {
-                    int i = 0;
-
-                    DirectoryEntry machine = new DirectoryEntry("WinNT://" + computername + ",Computer");
-
-                    foreach (DirectoryEntry child in machine.Children)
-                    {
-                        if (child.SchemaClassName == "Group")
-                        {
-                            //adding groups to treeView
-                            treeViewGroups.Nodes.Add(child.Name);
-                            comboBox1.Items.Add(child.Name);
-                            //Starting of code that adds members of groups above.
-                            using (DirectoryEntry groupEntry = new DirectoryEntry("WinNT://" + computername + "/" + child.Name + ",group"))
-                            {
-                                foreach (object member in (IEnumerable)groupEntry.Invoke("Members"))
-                                {
-                                    using (DirectoryEntry memberEntry = new DirectoryEntry(member))
-                                    {
-                                        //Adding members of current group
-                                        treeViewGroups.Nodes[i].Nodes.Add(memberEntry.Name);
-                                    }
-                                }
-                            }
-                            i++;
-                        }
-                    }
-                    enableUIElements();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //throw;
-            }
-
-        }
-        */
-
+        
         private void updateGroupsAndMembers()
         {
             if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
@@ -99,63 +55,14 @@ namespace TechnolToolkit
                 new Thread(() =>
                 {
                     Thread.CurrentThread.IsBackground = true;
-                    var groupsAndMembers = getGroupsAndMembers(textBoxComputername.Text);
+                    var groupsAndMembersData = groups_and_members.getGroupsAndMembers(textBoxComputername.Text);
                     Invoke(new Action(() =>
                     {
-                        showGroupsAndMembers(groupsAndMembers);
+                        showGroupsAndMembers(groupsAndMembersData);
                         sb.Close();
                     }));
                 }).Start();
             }
-        }
-
-        private Dictionary<String,List<String>> getGroupsAndMembers(string computername)
-        {
-            Dictionary<String, List<String>> result = new Dictionary<string, List<string>>();
-
-            Ping ping = new Ping();
-            try
-            {
-                //try if machine is online
-                PingReply pingReply = ping.Send(computername);
-                if (pingReply.Status == IPStatus.Success)
-                {
-                    DirectoryEntry machine = new DirectoryEntry("WinNT://" + computername + ",Computer");
-
-                    foreach (DirectoryEntry child in machine.Children)
-                    {
-                        if (child.SchemaClassName == "Group")
-                        {
-                            String groupName = child.Name;
-                            List<String> groupMembers = new List<string>();
-                            
-                            //Starting of code that adds members of groups above.
-                            using (DirectoryEntry groupEntry = new DirectoryEntry("WinNT://" + computername + "/" + child.Name + ",group"))
-                            {
-                                foreach (object member in (IEnumerable)groupEntry.Invoke("Members"))
-                                {
-                                    using (DirectoryEntry memberEntry = new DirectoryEntry(member))
-                                    {
-                                        //Adding members of current group
-                                        groupMembers.Add(memberEntry.Name);
-                                    }
-                                }
-                            }
-
-                            result.Add(groupName, groupMembers);
-
-                        }
-                    }
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //throw;
-            }
-
-            return result;
         }
 
         private void showGroupsAndMembers(Dictionary<String, List<String>> data )
@@ -173,7 +80,6 @@ namespace TechnolToolkit
                     groupNode.Nodes.Add(member);
                 }
             }
-
             enableUIElements();
         }
 
@@ -196,14 +102,12 @@ namespace TechnolToolkit
         }
 
         private void textBoxComputername_Click(object sender, EventArgs e)
-        {
-            
+        {            
             if (textBoxComputername.Text == "Název PC")
             {
                 textBoxComputername.Text = "";
                 textBoxComputername.ForeColor = Color.Black;
-            }
-            
+            }            
         }
 
         private void textBoxUsername_Click(object sender, EventArgs e)
@@ -268,11 +172,13 @@ namespace TechnolToolkit
                         grp.Save();
                     }
                 }
-
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+            checkBoxNeomezene.Checked = false;
+            radioButtonOdebraniLokalni.Checked = false;
+            radioButtonOdebraniSitove.Checked = false;
         }      
 
         private void textBoxComputername_TextChanged(object sender, EventArgs e)
@@ -302,10 +208,7 @@ namespace TechnolToolkit
         {
             /*
                 TODO LIST:
-            
-                Lepsim zpusobem vyresit zapisovani do souboru...
-                    Ted to vzdy zapise pouze jeden zaznam a vse ostatni smaze
-                    Zapisuje blbe skupiny z combobox
+                Naplnovat databazi nastavenych opravneni obsahem z logu
                 Udelat overovani toho, ze button na nastaveni bude enabled, misto toho, ze to bude vyhazovat hlasku... PRoste kdyz vse bude spravne vyplnene, tak to "enabluje" button
                 Dodelat funkcnost contextMenuStripu v hierarchii zobrazeni skupin
                 Pri kliknuti na pripojit, vyskoci okno s nacitanim jako je to u "installed programs"
@@ -317,52 +220,44 @@ namespace TechnolToolkit
                 Po kliknuti na button "nastavit opravneni" se prepne splitContainer na databazi nastavenych opravneni, misto hierarchie.
                 Po kliknuti na button "pripojit" nebo po pripojeni k pc se prepne splitContainer na hierarchii lokalnich skupin, misto databaze
             */
-
-
-            string path = @"C:\ProgramData\TechnolToolkit\Data\Admins.txt";
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(@"C:\ProgramData\TechnolToolkit\Data");
-
-            try
+            string addToGroupLog = @"C:\ProgramData\TechnolToolkit\Logs\addToGroup.txt";
+            string logDir = @"C:\ProgramData\TechnolToolkit\Logs";
+            if (!Directory.Exists(logDir))
+                Directory.CreateDirectory(logDir);
+            else
+                if (!File.Exists(addToGroupLog))
+                    File.Create(addToGroupLog);
+            using (StreamWriter sw = new StreamWriter(addToGroupLog, true))
             {
-                using (FileStream adminsLogFile = new FileStream(path, FileMode.Append, FileAccess.Write))
-                using (StreamWriter sw = new StreamWriter(adminsLogFile))
+
+                if (checkBoxNeomezene.Checked)
                 {
-                    //cas neomezeny
-                    if (checkBoxNeomezene.Checked)
-                        //lokalni odebrani
-                        if (radioButtonOdebraniLokalni.Checked)
-                            sw.WriteLine(textBoxUsername.Text + ";" + textBoxComputername.Text + ";" + "neomezene;" + comboBox1.SelectedText.ToString() + ";neodebira se");
-                        //remote odebrani
-                        if (radioButtonOdebraniSitove.Checked)
-                            sw.WriteLine(textBoxUsername.Text + ";" + textBoxComputername.Text + ";" + "neomezene;" + comboBox1.SelectedText.ToString() + ";neodebira se");
-                    //cas omezeny
-                    else
-                        //lokalni odebrani
-                        if (radioButtonOdebraniLokalni.Checked)
-                            sw.WriteLine(textBoxUsername.Text + ";" + textBoxComputername.Text + ";" + dateTimePicker1.Value.ToString() + ";" + comboBox1.SelectedText.ToString() + ";local");
-                        //remote odebrani
-                        if (radioButtonOdebraniSitove.Checked)
-                            sw.WriteLine(textBoxUsername.Text + ";" + textBoxComputername.Text + ";" + dateTimePicker1.Value.ToString() + ";" + comboBox1.SelectedText.ToString() + ";remote");
+                    sw.WriteLine(DateTime.Now.ToString("dd.MM.yyyy - HH:mm") + ";" + textBoxUsername.Text.ToString() + ";" + textBoxComputername.Text.ToString() + ";neomezene;" + comboBox1.Text.ToString() + ";neodebira se");
                 }
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
-            // Open the stream and read it back.
-            using (StreamReader sr = File.OpenText(path))
-            {
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
+                else
                 {
-                    Console.WriteLine(s);
+                    if (radioButtonOdebraniLokalni.Checked)
+                    {
+                        sw.WriteLine(DateTime.Now.ToString("dd.MM.yyyy - HH:mm") + ";" + textBoxUsername.Text.ToString() + ";" + textBoxComputername.Text.ToString() + ";" + dateTimePicker1.Value.ToString() + ";" + comboBox1.Text.ToString() + ";lokalni");
+                    }
+                    else
+                    {
+                        if (radioButtonOdebraniSitove.Checked)
+                        {
+                            sw.WriteLine(DateTime.Now.ToString("dd.MM.yyyy - HH:mm") + ";" + textBoxUsername.Text.ToString() + ";" + textBoxComputername.Text.ToString() + ";" + dateTimePicker1.Value.ToString() + ";" + comboBox1.Text.ToString() + ";sitove");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Chyba v ukládaní dat do logu! Není vybrán ani jeden radio button a oprávnění není trvalé!");
+                        }
+                    }
                 }
             }
         }
         private void smazatClenaZeSkupinyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            selectedGroup = treeViewGroups.SelectedNode.Parent.Text;
-            selectedUser = treeViewGroups.SelectedNode.Text;
+            selectedGroupToRemove = treeViewGroups.SelectedNode.Parent.Text;
+            selectedUserToRemove = treeViewGroups.SelectedNode.Text;
             //Check if any node is selected
             if (treeViewGroups.SelectedNode != null)
             {
@@ -377,15 +272,15 @@ namespace TechnolToolkit
                 //Selected node is member, so we delete him
                 else
                 {
-                    DialogResult confirmation = MessageBox.Show("Opravdu chcete odebrat " + selectedUser + " ze skupiny " + selectedGroup + "?","Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    DialogResult confirmation = MessageBox.Show("Opravdu chcete odebrat " + selectedUserToRemove + " ze skupiny " + selectedGroupToRemove + "?","Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                     if (confirmation == DialogResult.Yes)
                         try
                         {
                             //Removing selected user from opened group
                             using (PrincipalContext pc = new PrincipalContext(ContextType.Machine, textBoxComputername.Text))
-                                using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, selectedGroup))
+                                using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, selectedGroupToRemove))
                                     foreach (Principal groupUser in localGroup.GetMembers())
-                                        if (groupUser.SamAccountName == selectedUser)
+                                        if (groupUser.SamAccountName == selectedUserToRemove)
                                         {
                                             localGroup.Members.Remove(groupUser);
                                             localGroup.Save();
@@ -415,6 +310,31 @@ namespace TechnolToolkit
                 MessageBox.Show("Něco jsi zapomněl vyplnit. :(");
             saveDataToFile();
             updateGroupsAndMembers();
+            
+        }
+
+        private void treeViewGroups_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                treeViewGroups.SelectedNode = e.Node;
+        }
+
+        private void radioButtonOdebraniSitove_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxNeomezene.Checked)
+            { 
+                radioButtonOdebraniLokalni.Checked = false;
+                radioButtonOdebraniSitove.Checked = false;
+            }
+        }
+
+        private void radioButtonOdebraniLokalni_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxNeomezene.Checked)
+            {
+                radioButtonOdebraniLokalni.Checked = false;
+                radioButtonOdebraniSitove.Checked = false;
+            }
         }
     }
 }

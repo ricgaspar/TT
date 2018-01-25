@@ -71,6 +71,7 @@
     <Compile Include="EasterEgg.Designer.cs">
       <DependentUpon>EasterEgg.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupsAndMember.cs" />
     <Compile Include="UserControlAddToGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
