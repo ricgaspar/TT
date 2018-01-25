@@ -249,9 +249,7 @@ namespace TechnolToolkit
                         }));
                         MessageBox.Show(textBox1.Text + " není na síti. Zadali jste správný HostName?\nZkuste zadat IP adresu místo HostName.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                
-                
+                }                
             }).Start();            
         }
 

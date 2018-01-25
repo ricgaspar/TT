@@ -13,12 +13,12 @@ using System.Net.NetworkInformation;
 using System.DirectoryServices.AccountManagement;
 using System.IO;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace TechnolToolkit
 {
     public partial class UserControlAddToGroup : UserControl
     {
-        string connectedToComputerName = "";
         public UserControlAddToGroup()
         {
             InitializeComponent();
@@ -27,7 +27,6 @@ namespace TechnolToolkit
 
         public string selectedUser;
         public string selectedGroup;
-        public string connectedToComputername;
 
         private void enableUIElements()
         {
@@ -38,10 +37,10 @@ namespace TechnolToolkit
             checkBoxNeomezene.Enabled = true;
             dateTimePicker1.Enabled = true;
             comboBox1.Enabled = true;
-            labelConnectedTo.Text = "Připojeno k: " + connectedToComputerName;
+            labelConnectedTo.Text = "Připojeno k: " + textBoxComputername.Text;
             labelDateTimeConnected.Text = "Čas připojení: " + DateTime.Now.ToString();
         }
-        private void searchGroupsAndMembers(string computername)
+        /*private void searchGroupsAndMembers(string computername)
         {
             treeViewGroups.Nodes.Clear();
             comboBox1.Items.Clear();
@@ -50,7 +49,6 @@ namespace TechnolToolkit
             {
                 //try if machine is online
                 PingReply pingReply = ping.Send(computername);
-
                 if (pingReply.Status == IPStatus.Success)
                 {
                     int i = 0;
@@ -89,6 +87,96 @@ namespace TechnolToolkit
             }
 
         }
+        */
+
+        private void updateGroupsAndMembers()
+        {
+            if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
+            {
+                statusBox sb = new statusBox();
+                sb.Show();
+
+                new Thread(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+                    var groupsAndMembers = getGroupsAndMembers(textBoxComputername.Text);
+                    Invoke(new Action(() =>
+                    {
+                        showGroupsAndMembers(groupsAndMembers);
+                        sb.Close();
+                    }));
+                }).Start();
+            }
+        }
+
+        private Dictionary<String,List<String>> getGroupsAndMembers(string computername)
+        {
+            Dictionary<String, List<String>> result = new Dictionary<string, List<string>>();
+
+            Ping ping = new Ping();
+            try
+            {
+                //try if machine is online
+                PingReply pingReply = ping.Send(computername);
+                if (pingReply.Status == IPStatus.Success)
+                {
+                    DirectoryEntry machine = new DirectoryEntry("WinNT://" + computername + ",Computer");
+
+                    foreach (DirectoryEntry child in machine.Children)
+                    {
+                        if (child.SchemaClassName == "Group")
+                        {
+                            String groupName = child.Name;
+                            List<String> groupMembers = new List<string>();
+                            
+                            //Starting of code that adds members of groups above.
+                            using (DirectoryEntry groupEntry = new DirectoryEntry("WinNT://" + computername + "/" + child.Name + ",group"))
+                            {
+                                foreach (object member in (IEnumerable)groupEntry.Invoke("Members"))
+                                {
+                                    using (DirectoryEntry memberEntry = new DirectoryEntry(member))
+                                    {
+                                        //Adding members of current group
+                                        groupMembers.Add(memberEntry.Name);
+                                    }
+                                }
+                            }
+
+                            result.Add(groupName, groupMembers);
+
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //throw;
+            }
+
+            return result;
+        }
+
+        private void showGroupsAndMembers(Dictionary<String, List<String>> data )
+        {
+            treeViewGroups.Nodes.Clear();
+            comboBox1.Items.Clear();
+
+            foreach (KeyValuePair<String, List<String>> entry in data)
+            {
+                            
+                comboBox1.Items.Add(entry.Key);
+                TreeNode groupNode = treeViewGroups.Nodes.Add(entry.Key);
+
+                foreach (String member in entry.Value) {
+                    groupNode.Nodes.Add(member);
+                }
+            }
+
+            enableUIElements();
+        }
+
         private void checkBoxNeomezene_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxNeomezene.Checked)
@@ -149,11 +237,7 @@ namespace TechnolToolkit
         {
             if (e.KeyCode == Keys.Enter)
             {
-                connectedToComputername = textBoxComputername.Text;
-                if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
-                {
-                    searchGroupsAndMembers(connectedToComputername);
-                }
+                updateGroupsAndMembers();
             }
         }
         private bool activateLastButton()
@@ -182,7 +266,6 @@ namespace TechnolToolkit
                     {
                         grp.Members.Add(pcDomain, IdentityType.SamAccountName, user);
                         grp.Save();
-                        searchGroupsAndMembers(connectedToComputerName);
                     }
                 }
 
@@ -298,14 +381,15 @@ namespace TechnolToolkit
                     if (confirmation == DialogResult.Yes)
                         try
                         {
-                            using (PrincipalContext pc = new PrincipalContext(ContextType.Machine, connectedToComputername))
+                            //Removing selected user from opened group
+                            using (PrincipalContext pc = new PrincipalContext(ContextType.Machine, textBoxComputername.Text))
                                 using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, selectedGroup))
                                     foreach (Principal groupUser in localGroup.GetMembers())
                                         if (groupUser.SamAccountName == selectedUser)
                                         {
                                             localGroup.Members.Remove(groupUser);
                                             localGroup.Save();
-                                            searchGroupsAndMembers(connectedToComputername);
+                                            updateGroupsAndMembers();
                                         }
                         }
                         catch (System.DirectoryServices.DirectoryServicesCOMException E)
@@ -320,28 +404,17 @@ namespace TechnolToolkit
 
         private void buttonConnectToDevice_Click(object sender, EventArgs e)
         {
-            if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC")
-            {
-                connectedToComputername = textBoxComputername.Text;
-                searchGroupsAndMembers(connectedToComputername);
-            }
+            updateGroupsAndMembers();
         }
 
         private void buttonAddMemberToGroup_Click(object sender, EventArgs e)
         {
             if (activateLastButton() == true)
-            {
-                addMemberToGroup(textBoxUsername.Text, connectedToComputerName, comboBox1.Text);
-                System.Media.SystemSounds.Beep.Play();
-
-            }
+                addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
             else
-            {
                 MessageBox.Show("Něco jsi zapomněl vyplnit. :(");
-            }
             saveDataToFile();
+            updateGroupsAndMembers();
         }
-
-
     }
 }

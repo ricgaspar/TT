@@ -39,11 +39,11 @@
             this.checkBoxKopirujVerze = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.otevrenoToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
             this.pocetToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kopírovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zrušitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.otevrenoToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
             this.tableLayoutPanelHorni.SuspendLayout();
             this.tableLayoutPanelHorniVnoreny.SuspendLayout();
             this.tableLayoutPanelVnejsi.SuspendLayout();
@@ -130,12 +130,12 @@
             this.checkBoxLocalPC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLocalPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxLocalPC.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxLocalPC.Location = new System.Drawing.Point(37, 13);
+            this.checkBoxLocalPC.Location = new System.Drawing.Point(30, 13);
             this.checkBoxLocalPC.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
             this.checkBoxLocalPC.Name = "checkBoxLocalPC";
-            this.checkBoxLocalPC.Size = new System.Drawing.Size(95, 25);
+            this.checkBoxLocalPC.Size = new System.Drawing.Size(102, 25);
             this.checkBoxLocalPC.TabIndex = 1;
-            this.checkBoxLocalPC.Text = "Localhost";
+            this.checkBoxLocalPC.Text = "Lokální PC";
             this.checkBoxLocalPC.UseVisualStyleBackColor = true;
             this.checkBoxLocalPC.CheckedChanged += new System.EventHandler(this.checkBoxLocalPC_CheckedChanged);
             // 
@@ -210,6 +210,18 @@
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // otevrenoToolStripMenuItem
+            // 
+            this.otevrenoToolStripMenuItem.AutoSize = false;
+            this.otevrenoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
+            this.otevrenoToolStripMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.otevrenoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.otevrenoToolStripMenuItem.Name = "otevrenoToolStripMenuItem";
+            this.otevrenoToolStripMenuItem.ReadOnly = true;
+            this.otevrenoToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.otevrenoToolStripMenuItem.Size = new System.Drawing.Size(250, 19);
+            this.otevrenoToolStripMenuItem.Text = "Otevřeno: NULL";
+            // 
             // pocetToolStripMenuItem
             // 
             this.pocetToolStripMenuItem.AutoSize = false;
@@ -245,18 +257,6 @@
             this.zrušitToolStripMenuItem.Name = "zrušitToolStripMenuItem";
             this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.zrušitToolStripMenuItem.Text = "Zrušit";
-            // 
-            // otevrenoToolStripMenuItem
-            // 
-            this.otevrenoToolStripMenuItem.AutoSize = false;
-            this.otevrenoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
-            this.otevrenoToolStripMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.otevrenoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.otevrenoToolStripMenuItem.Name = "otevrenoToolStripMenuItem";
-            this.otevrenoToolStripMenuItem.ReadOnly = true;
-            this.otevrenoToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.otevrenoToolStripMenuItem.Size = new System.Drawing.Size(250, 19);
-            this.otevrenoToolStripMenuItem.Text = "Otevřeno: NULL";
             // 
             // InstalledPrograms
             // 
