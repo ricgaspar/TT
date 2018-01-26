@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBoxLog.Text" xml:space="preserve">
+    <value>Dodelat:
+Funkci na sitove odebrani (viz kod na pridani do skupiny)
+Naplneni databaze (listView) dle .log souboru
+Nove zobrazeni (mozna dole to tlacitko), ktere ukaze graf (ne)odebranych opravneni
+Logovani, popis toho, co program provadi do tohoto RichTextBoxu s moznosti exportu do souboru
+Opravit Automatickou ulohu - smazani vlastnika ulohy, aby to nebylo videt, kdo to vytvoril
+Otestovat mazani automaticke ulohy - mela by se po 10s po probehnuti smazat
+Moznost odebrani/vytvoreni skupin
+Moznost vytvoreni useru
+</value>
+  </data>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>44</value>
+    <value>40</value>
   </metadata>
 </root>

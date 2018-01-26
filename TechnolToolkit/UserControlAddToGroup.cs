@@ -15,6 +15,8 @@ using System.IO;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Globalization;
+using Microsoft.Win32.TaskScheduler;
+
 
 namespace TechnolToolkit
 {
@@ -26,6 +28,7 @@ namespace TechnolToolkit
             radioButtonHierarchy.Checked = true;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd'.'MM.yyyy - HH':'mm";
+            textBoxComputername.BackColor = Color.FromArgb(255,102,102);
         }
 
         GroupsAndMember groups_and_members = new GroupsAndMember();
@@ -34,6 +37,7 @@ namespace TechnolToolkit
 
         private void enableUIElements()
         {
+            buttonSetCurrentUser.Enabled = true;
             textBoxUsername.Enabled = true;
             treeViewGroups.Enabled = true;
             radioButtonOdebraniLokalni.Enabled = true;
@@ -56,7 +60,7 @@ namespace TechnolToolkit
                 {
                     Thread.CurrentThread.IsBackground = true;
                     var groupsAndMembersData = groups_and_members.getGroupsAndMembers(textBoxComputername.Text);
-                    Invoke(new Action(() =>
+                    Invoke(new System.Action(() =>
                     {
                         showGroupsAndMembers(groupsAndMembersData);
                         sb.Close();
@@ -104,37 +108,25 @@ namespace TechnolToolkit
         private void textBoxComputername_Click(object sender, EventArgs e)
         {            
             if (textBoxComputername.Text == "Název PC")
-            {
                 textBoxComputername.Text = "";
-                textBoxComputername.ForeColor = Color.Black;
-            }            
         }
 
         private void textBoxUsername_Click(object sender, EventArgs e)
         {
             if (textBoxUsername.Text == "Uživatel (DZC)")
-            {
                 textBoxUsername.Text = "";
-                textBoxUsername.ForeColor = Color.Black;
-            }
         }
 
         private void textBoxComputername_Leave(object sender, EventArgs e)
         {
             if (textBoxComputername.Text == "")
-            {
                 textBoxComputername.Text = "Název PC";
-                textBoxComputername.ForeColor = Color.Gray;
-            }
         }
 
         private void textBoxUsername_Leave(object sender, EventArgs e)
         {
             if (textBoxUsername.Text == "")
-            {
                 textBoxUsername.Text = "Uživatel (DZC)";
-                textBoxUsername.ForeColor = Color.Gray;
-            }
         }
 
         private void textBoxComputername_KeyDown(object sender, KeyEventArgs e)
@@ -170,22 +162,49 @@ namespace TechnolToolkit
                     {
                         grp.Members.Add(pcDomain, IdentityType.SamAccountName, user);
                         grp.Save();
+
+                        //Automaticke lokalni/sitove odebrani
+                        if (radioButtonOdebraniLokalni.Checked)
+                            try {
+                                automatickaUloha(dateTimePicker1.Value, user, group, computername);
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show(e.Message.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            }
+                        else
+                            if(radioButtonOdebraniSitove.Checked)
+                                try
+                                {
+                                    //Funkce na automaticke sitove odebrani
+                                    //          - zapis do databaze, ktera se da otevrit (vymyslet na to tlacitko nebo neco)
+                                    //          - upozorneni na nemoznost odebrani
+                                    //          - automaticke odebrani, jakmile je pc na siti
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show(e.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                     }
                 }
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            checkBoxNeomezene.Checked = false;
-            radioButtonOdebraniLokalni.Checked = false;
-            radioButtonOdebraniSitove.Checked = false;
         }      
 
         private void textBoxComputername_TextChanged(object sender, EventArgs e)
         {
             if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC" && textBoxComputername.Text != "localhost")
+            {
                 buttonConnectToDevice.Enabled = true;
-            else buttonConnectToDevice.Enabled = false;
+                textBoxComputername.BackColor = Color.FromName("Window");
+            }
+            else
+            {
+                buttonConnectToDevice.Enabled = false;
+                textBoxComputername.BackColor = Color.FromArgb(255, 102, 102);
+            }
         }
 
         private void radioButtonHierarchy_CheckedChanged(object sender, EventArgs e)
@@ -305,12 +324,16 @@ namespace TechnolToolkit
         private void buttonAddMemberToGroup_Click(object sender, EventArgs e)
         {
             if (activateLastButton() == true)
+            {
                 addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
+                saveDataToFile();
+                updateGroupsAndMembers();
+                checkBoxNeomezene.Checked = false;
+                radioButtonOdebraniLokalni.Checked = false;
+                radioButtonOdebraniSitove.Checked = false;
+            }
             else
-                MessageBox.Show("Něco jsi zapomněl vyplnit. :(");
-            saveDataToFile();
-            updateGroupsAndMembers();
-            
+                MessageBox.Show("Je nutno vyplnit všechny položky!");
         }
 
         private void treeViewGroups_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -335,6 +358,44 @@ namespace TechnolToolkit
                 radioButtonOdebraniLokalni.Checked = false;
                 radioButtonOdebraniSitove.Checked = false;
             }
+        }
+        private void automatickaUloha(DateTime datum_a_cas, string username, string skupina, string jmeno_pocitace)
+        {
+            // JESTE DODELAT TO, ZE SE SMAZE ULOHA ("UKLIZENI") PO TOM, KDY PROBEHNE
+
+            // Get the service on the local machine
+            using (TaskService ts = new TaskService(jmeno_pocitace))
+            {
+                // Create a new task definition and assign properties
+                TaskDefinition td = ts.NewTask();
+                //td.RegistrationInfo.Description = "Automatické odebrání uživatele ze skupiny";
+
+                // Create a trigger that will fire the task at this time every other day
+                td.Triggers.Add(new TimeTrigger(datum_a_cas));
+                //spusteni co nejdriv po prekroceni casu, ktery jsme definovali, kdy bude task spusten.
+                td.Settings.StartWhenAvailable = true;
+                td.Settings.Hidden = true;
+                //nastaveni maximalni doby behu - 10 minut
+                td.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
+                td.Settings.DeleteExpiredTaskAfter = TimeSpan.FromSeconds(10);
+                td.Settings.DisallowStartIfOnBatteries = false;
+
+                // Create an action that will launch cmd.exe to remove user from group
+                string parametr = "/c net localgroup " + skupina + " /delete " + username;
+                td.Actions.Add(new ExecAction("cmd.exe",parametr, null));
+
+                // Register the task in the root folder
+                ts.RootFolder.RegisterTaskDefinition(@"Automatic Membership Validation", td,TaskCreation.CreateOrUpdate,"SYSTEM",null,TaskLogonType.ServiceAccount);
+
+                // Remove the task we just created
+                //ts.RootFolder.DeleteTask("Test");
+            }
+
+        }
+
+        private void buttonSetCurrentUser_Click(object sender, EventArgs e)
+        {
+            textBoxUsername.Text = Environment.UserName;
         }
     }
 }
