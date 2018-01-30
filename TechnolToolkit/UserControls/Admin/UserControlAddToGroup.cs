@@ -136,20 +136,6 @@ namespace TechnolToolkit
                 updateGroupsAndMembers();
             }
         }
-        private bool activateLastButton()
-        {
-            if (textBoxComputername.Text != ""  && textBoxUsername.Text != "" && textBoxComputername.Text != "Název PC" && textBoxComputername.Text != "localhost" &&
-                textBoxUsername.Text != "Uživatel (DZC)" && comboBox1.Text != "Výběr skupiny")
-                if (checkBoxNeomezene.Checked)
-                    return true;
-                else
-                    if (radioButtonOdebraniLokalni.Checked == true || radioButtonOdebraniSitove.Checked == true)
-                        return true;
-                    else
-                        return false;
-            else
-                return false;
-        }
 
         private void addMemberToGroup(string user, string computername, string group)
         {
@@ -229,8 +215,6 @@ namespace TechnolToolkit
                 TODO LIST:
                 Naplnovat databazi nastavenych opravneni obsahem z logu
                 Udelat overovani toho, ze button na nastaveni bude enabled, misto toho, ze to bude vyhazovat hlasku... PRoste kdyz vse bude spravne vyplnene, tak to "enabluje" button
-                Dodelat funkcnost contextMenuStripu v hierarchii zobrazeni skupin
-                Pri kliknuti na pripojit, vyskoci okno s nacitanim jako je to u "installed programs"
                 Zlepsit GUI - lepe rozvrhnout prvky (status, jestli jsme pripojeni nejak zakomponovat do texboxu nebo to nejak hezky indikovat) pripadne zmenit celkove GUI
                 Pridat moznost nastavit do texboxUsername prihlaseneho uzivatele...
                 Kontrola, zda-li nebylo zadano minule datum, pri casove omezenem pridavani opravneni
@@ -323,17 +307,12 @@ namespace TechnolToolkit
 
         private void buttonAddMemberToGroup_Click(object sender, EventArgs e)
         {
-            if (activateLastButton() == true)
-            {
-                addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
-                saveDataToFile();
-                updateGroupsAndMembers();
-                checkBoxNeomezene.Checked = false;
-                radioButtonOdebraniLokalni.Checked = false;
-                radioButtonOdebraniSitove.Checked = false;
-            }
-            else
-                MessageBox.Show("Je nutno vyplnit všechny položky!");
+            addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
+            saveDataToFile();
+            updateGroupsAndMembers();
+            checkBoxNeomezene.Checked = false;
+            radioButtonOdebraniLokalni.Checked = false;
+            radioButtonOdebraniSitove.Checked = false;
         }
 
         private void treeViewGroups_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -396,6 +375,22 @@ namespace TechnolToolkit
         private void buttonSetCurrentUser_Click(object sender, EventArgs e)
         {
             textBoxUsername.Text = Environment.UserName;
+        }
+        private void checkInputDataCompletion()
+        {
+            if (textBoxComputername.Text != "" && textBoxUsername.Text != "" && textBoxComputername.Text != "Název PC" && textBoxComputername.Text != "localhost" &&
+                textBoxUsername.Text != "Uživatel (DZC)" && comboBox1.Text != "Výběr skupiny")
+                if (checkBoxNeomezene.Checked)
+                    buttonAddMemberToGroup.Enabled = true;
+                else
+                    if (radioButtonOdebraniLokalni.Checked == true && dateTimePicker1.Value.Date >= DateTime.Today || 
+                    radioButtonOdebraniSitove.Checked == true && dateTimePicker1.Value.Date >= DateTime.Today)
+                        buttonAddMemberToGroup.Enabled = true;
+                    else
+                        buttonAddMemberToGroup.Enabled = false;
+            else
+                buttonAddMemberToGroup.Enabled = false;
+
         }
     }
 }

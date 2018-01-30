@@ -44,7 +44,6 @@
             this.buttonMSI = new System.Windows.Forms.Button();
             this.buttonRegSearch = new System.Windows.Forms.Button();
             this.buttonIPConfig = new System.Windows.Forms.Button();
-            this.buttonUserPCname = new System.Windows.Forms.Button();
             this.buttonASCII = new System.Windows.Forms.Button();
             this.buttonVAS = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,7 +66,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(800, 21);
+            this.label2.Size = new System.Drawing.Size(983, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Administrační nástroje";
             // 
@@ -137,7 +136,7 @@
             this.buttonRemoteControl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonRemoteControl.ForeColor = System.Drawing.Color.Black;
             this.buttonRemoteControl.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonRemoteControl.Location = new System.Drawing.Point(481, 176);
+            this.buttonRemoteControl.Location = new System.Drawing.Point(639, 176);
             this.buttonRemoteControl.Margin = new System.Windows.Forms.Padding(6);
             this.buttonRemoteControl.Name = "buttonRemoteControl";
             this.buttonRemoteControl.Size = new System.Drawing.Size(146, 121);
@@ -278,7 +277,7 @@
             this.buttonNapajeniPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNapajeniPC.ForeColor = System.Drawing.Color.Black;
             this.buttonNapajeniPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNapajeniPC.Location = new System.Drawing.Point(954, 43);
+            this.buttonNapajeniPC.Location = new System.Drawing.Point(6, 176);
             this.buttonNapajeniPC.Margin = new System.Windows.Forms.Padding(6);
             this.buttonNapajeniPC.Name = "buttonNapajeniPC";
             this.buttonNapajeniPC.Size = new System.Drawing.Size(146, 121);
@@ -298,7 +297,7 @@
             this.buttonInfoPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonInfoPC.ForeColor = System.Drawing.Color.Black;
             this.buttonInfoPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonInfoPC.Location = new System.Drawing.Point(6, 176);
+            this.buttonInfoPC.Location = new System.Drawing.Point(164, 176);
             this.buttonInfoPC.Margin = new System.Windows.Forms.Padding(6);
             this.buttonInfoPC.Name = "buttonInfoPC";
             this.buttonInfoPC.Size = new System.Drawing.Size(146, 121);
@@ -318,7 +317,7 @@
             this.buttonMSI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMSI.ForeColor = System.Drawing.Color.Black;
             this.buttonMSI.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonMSI.Location = new System.Drawing.Point(164, 176);
+            this.buttonMSI.Location = new System.Drawing.Point(322, 176);
             this.buttonMSI.Margin = new System.Windows.Forms.Padding(6);
             this.buttonMSI.Name = "buttonMSI";
             this.buttonMSI.Size = new System.Drawing.Size(305, 121);
@@ -339,7 +338,7 @@
             this.buttonRegSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonRegSearch.ForeColor = System.Drawing.Color.Black;
             this.buttonRegSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonRegSearch.Location = new System.Drawing.Point(480, 556);
+            this.buttonRegSearch.Location = new System.Drawing.Point(322, 556);
             this.buttonRegSearch.Margin = new System.Windows.Forms.Padding(6);
             this.buttonRegSearch.Name = "buttonRegSearch";
             this.buttonRegSearch.Size = new System.Drawing.Size(146, 121);
@@ -360,7 +359,7 @@
             this.buttonIPConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonIPConfig.ForeColor = System.Drawing.Color.Black;
             this.buttonIPConfig.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonIPConfig.Location = new System.Drawing.Point(638, 556);
+            this.buttonIPConfig.Location = new System.Drawing.Point(164, 556);
             this.buttonIPConfig.Margin = new System.Windows.Forms.Padding(6);
             this.buttonIPConfig.Name = "buttonIPConfig";
             this.buttonIPConfig.Size = new System.Drawing.Size(146, 121);
@@ -371,27 +370,6 @@
             this.buttonIPConfig.Click += new System.EventHandler(this.buttonIPConfig_Click);
             this.buttonIPConfig.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonIPConfig_Paint);
             // 
-            // buttonUserPCname
-            // 
-            this.buttonUserPCname.AccessibleDescription = "";
-            this.buttonUserPCname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
-            this.buttonUserPCname.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.buttonUserPCname.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.buttonUserPCname.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUserPCname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonUserPCname.ForeColor = System.Drawing.Color.Black;
-            this.buttonUserPCname.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonUserPCname.Location = new System.Drawing.Point(6, 556);
-            this.buttonUserPCname.Margin = new System.Windows.Forms.Padding(6);
-            this.buttonUserPCname.Name = "buttonUserPCname";
-            this.buttonUserPCname.Size = new System.Drawing.Size(304, 121);
-            this.buttonUserPCname.TabIndex = 12;
-            this.buttonUserPCname.Text = "Aktuální uživatel a PC Name";
-            this.buttonUserPCname.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonUserPCname.UseVisualStyleBackColor = false;
-            this.buttonUserPCname.Click += new System.EventHandler(this.buttonUserPCname_Click);
-            this.buttonUserPCname.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonUserPCname_Paint);
-            // 
             // buttonASCII
             // 
             this.buttonASCII.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
@@ -401,7 +379,7 @@
             this.buttonASCII.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonASCII.ForeColor = System.Drawing.Color.Black;
             this.buttonASCII.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonASCII.Location = new System.Drawing.Point(322, 556);
+            this.buttonASCII.Location = new System.Drawing.Point(480, 556);
             this.buttonASCII.Margin = new System.Windows.Forms.Padding(6);
             this.buttonASCII.Name = "buttonASCII";
             this.buttonASCII.Size = new System.Drawing.Size(146, 121);
@@ -421,7 +399,7 @@
             this.buttonVAS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonVAS.ForeColor = System.Drawing.Color.Black;
             this.buttonVAS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonVAS.Location = new System.Drawing.Point(796, 556);
+            this.buttonVAS.Location = new System.Drawing.Point(6, 556);
             this.buttonVAS.Margin = new System.Windows.Forms.Padding(6);
             this.buttonVAS.Name = "buttonVAS";
             this.buttonVAS.Size = new System.Drawing.Size(146, 121);
@@ -438,7 +416,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 303);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(835, 41);
+            this.label1.Size = new System.Drawing.Size(983, 41);
             this.label1.TabIndex = 7;
             this.label1.Text = "SCCM nástroje";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -449,7 +427,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(3, 493);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(835, 41);
+            this.label3.Size = new System.Drawing.Size(983, 41);
             this.label3.TabIndex = 8;
             this.label3.Text = "Ostatní nástroje";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -463,7 +441,7 @@
             this.buttonMultiping.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMultiping.ForeColor = System.Drawing.Color.Black;
             this.buttonMultiping.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonMultiping.Location = new System.Drawing.Point(639, 176);
+            this.buttonMultiping.Location = new System.Drawing.Point(797, 176);
             this.buttonMultiping.Margin = new System.Windows.Forms.Padding(6);
             this.buttonMultiping.Name = "buttonMultiping";
             this.buttonMultiping.Size = new System.Drawing.Size(146, 121);
@@ -477,6 +455,7 @@
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.AutoScroll = true;
+            this.flowLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel4.Controls.Add(this.label2);
             this.flowLayoutPanel4.Controls.Add(this.pictureBox2);
             this.flowLayoutPanel4.Controls.Add(this.buttonZprava);
@@ -497,22 +476,22 @@
             this.flowLayoutPanel4.Controls.Add(this.buttonOpravaKlienta);
             this.flowLayoutPanel4.Controls.Add(this.label3);
             this.flowLayoutPanel4.Controls.Add(this.pictureBox1);
-            this.flowLayoutPanel4.Controls.Add(this.buttonUserPCname);
-            this.flowLayoutPanel4.Controls.Add(this.buttonASCII);
-            this.flowLayoutPanel4.Controls.Add(this.buttonRegSearch);
-            this.flowLayoutPanel4.Controls.Add(this.buttonIPConfig);
             this.flowLayoutPanel4.Controls.Add(this.buttonVAS);
+            this.flowLayoutPanel4.Controls.Add(this.buttonIPConfig);
+            this.flowLayoutPanel4.Controls.Add(this.buttonRegSearch);
+            this.flowLayoutPanel4.Controls.Add(this.buttonASCII);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(1108, 768);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(989, 765);
             this.flowLayoutPanel4.TabIndex = 2;
+            this.flowLayoutPanel4.SizeChanged += new System.EventHandler(this.flowLayoutPanel4_SizeChanged);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(3, 24);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1000, 10);
+            this.pictureBox2.Size = new System.Drawing.Size(983, 10);
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
@@ -521,7 +500,7 @@
             // 
             this.pictureBox3.Location = new System.Drawing.Point(3, 347);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(1000, 10);
+            this.pictureBox3.Size = new System.Drawing.Size(983, 10);
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
@@ -530,7 +509,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(3, 537);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1000, 10);
+            this.pictureBox1.Size = new System.Drawing.Size(983, 10);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -543,10 +522,10 @@
             this.AutoScrollMinSize = new System.Drawing.Size(0, 680);
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.flowLayoutPanel4);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserControlAdmin";
-            this.Padding = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.Size = new System.Drawing.Size(1111, 771);
-            this.SizeChanged += new System.EventHandler(this.UserControlAdmin_SizeChanged);
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.Size = new System.Drawing.Size(995, 771);
             this.flowLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -572,7 +551,6 @@
         private System.Windows.Forms.Button buttonNapajeniPC;
         private System.Windows.Forms.Button buttonInfoPC;
         private System.Windows.Forms.Button buttonIPConfig;
-        private System.Windows.Forms.Button buttonUserPCname;
         private System.Windows.Forms.Button buttonVAS;
         private System.Windows.Forms.Button buttonASCII;
         private System.Windows.Forms.Label label1;

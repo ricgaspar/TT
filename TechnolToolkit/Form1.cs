@@ -320,6 +320,10 @@ namespace TechnolToolkit
             }
         }
 
-        
+        private void buttonEasterEgg_Click(object sender, EventArgs e)
+        {
+            EasterEgg ee = new EasterEgg();
+            ee.ShowDialog();
+        }
     }
 }

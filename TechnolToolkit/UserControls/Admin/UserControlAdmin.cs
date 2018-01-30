@@ -89,12 +89,6 @@ namespace TechnolToolkit
             g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Network_Card_96_color, picSize, picSize), (buttonIPConfig.Width / 2) - (picSize / 2), 5);
         }
 
-        private void buttonUserPCname_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Under_Computer_96_color, picSize, picSize), (buttonUserPCname.Width / 2) - (picSize / 2), 5);
-        }
-
         private void buttonVAS_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -256,16 +250,14 @@ namespace TechnolToolkit
             label2.Width = flowLayoutPanel4.Width;
             label1.Width = flowLayoutPanel4.Width;
             label3.Width = flowLayoutPanel4.Width;
-
         }
 
-        private void UserControlAdmin_SizeChanged(object sender, EventArgs e)
+        private void flowLayoutPanel4_SizeChanged(object sender, EventArgs e)
         {
-            if(this.Width % 2 == 0)
-            {
-                System.Console.WriteLine(this.Width);
-                resizePicBoxes();
-            }
+            resizePicBoxes();
+            System.Console.WriteLine(this.Width);
+
+            
         }
     }
 }

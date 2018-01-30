@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlAddToGroup));
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("test");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("test");
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelConnectedTo = new System.Windows.Forms.Label();
@@ -229,6 +229,7 @@
             // buttonAddMemberToGroup
             // 
             this.buttonAddMemberToGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddMemberToGroup.Enabled = false;
             this.buttonAddMemberToGroup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonAddMemberToGroup.Location = new System.Drawing.Point(130, 233);
             this.buttonAddMemberToGroup.Margin = new System.Windows.Forms.Padding(100, 3, 100, 3);
@@ -548,7 +549,7 @@
             this.columnHeader1});
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6});
+            listViewItem4});
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";

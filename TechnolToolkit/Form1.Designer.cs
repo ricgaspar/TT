@@ -37,6 +37,7 @@
             this.buttonSAP = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonAdminTools = new System.Windows.Forms.Button();
+            this.buttonEasterEgg = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,13 +67,13 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(250, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(977, 713);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(233)))), ((int)(((byte)(241)))));
+            this.panel1.Controls.Add(this.buttonEasterEgg);
             this.panel1.Controls.Add(this.buttonAddToGroup);
             this.panel1.Controls.Add(this.buttonDZC);
             this.panel1.Controls.Add(this.buttonSAP);
@@ -180,6 +181,18 @@
             this.buttonAdminTools.Click += new System.EventHandler(this.buttonAdminTools_Click);
             this.buttonAdminTools.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAdminTools_Paint);
             // 
+            // buttonEasterEgg
+            // 
+            this.buttonEasterEgg.BackColor = System.Drawing.Color.Transparent;
+            this.buttonEasterEgg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEasterEgg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(233)))), ((int)(((byte)(241)))));
+            this.buttonEasterEgg.Location = new System.Drawing.Point(3, 687);
+            this.buttonEasterEgg.Name = "buttonEasterEgg";
+            this.buttonEasterEgg.Size = new System.Drawing.Size(75, 23);
+            this.buttonEasterEgg.TabIndex = 10;
+            this.buttonEasterEgg.UseVisualStyleBackColor = false;
+            this.buttonEasterEgg.Click += new System.EventHandler(this.buttonEasterEgg_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,6 +224,7 @@
         private System.Windows.Forms.Button buttonSAP;
         private System.Windows.Forms.Button buttonDZC;
         private System.Windows.Forms.Button buttonAddToGroup;
+        private System.Windows.Forms.Button buttonEasterEgg;
     }
 }
 

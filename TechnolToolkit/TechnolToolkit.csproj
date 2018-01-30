@@ -77,10 +77,10 @@
       <DependentUpon>EasterEgg.cs</DependentUpon>
     </Compile>
     <Compile Include="GroupsAndMember.cs" />
-    <Compile Include="UserControlAddToGroup.cs">
+    <Compile Include="UserControls\Admin\UserControlAddToGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAddToGroup.Designer.cs">
+    <Compile Include="UserControls\Admin\UserControlAddToGroup.Designer.cs">
       <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Admin\Forms\Bitlocker.cs">
@@ -208,7 +208,7 @@
     <EmbeddedResource Include="EasterEgg.resx">
       <DependentUpon>EasterEgg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAddToGroup.resx">
+    <EmbeddedResource Include="UserControls\Admin\UserControlAddToGroup.resx">
       <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\Bitlocker.resx">
