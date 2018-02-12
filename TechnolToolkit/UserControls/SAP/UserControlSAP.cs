@@ -19,6 +19,7 @@ namespace TechnolToolkit
             InitializeComponent();
             obnovListView(listView1);
             listView1.FullRowSelect = true;
+            
         }
         string ReadTextFromUrl(string url)
         {

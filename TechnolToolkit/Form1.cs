@@ -13,6 +13,7 @@ namespace TechnolToolkit
     {
         bool menuVisible = true;
         string aktivniPanel = "ucA";
+        Color activeButtonLineColor = Color.FromArgb(174, 0, 0);
         //Admin Tools
         UserControl ucA = new UserControlAdmin();
         //Nahled do SAPu
@@ -29,10 +30,9 @@ namespace TechnolToolkit
             kopirujSoubory();
             //Vyhozi obrazovka
             flowLayoutPanel1.Controls.Add(ucA);
-            ucA.Size = flowLayoutPanel1.Size;
-            ucS.Size = flowLayoutPanel1.Size;
             ucAG.Size = flowLayoutPanel1.Size;
             pozadiAktivnihoButtonu(aktivniPanel);
+            this.MaximizeBox = false;
 
         }
 
@@ -90,7 +90,7 @@ namespace TechnolToolkit
         //Nastavuje pozadi pro aktivni buttony
         private void pozadiAktivnihoButtonu(string activePanel)
         {
-            Color barvaButtonu = Color.FromArgb(212, 223, 237); 
+            Color barvaButtonu = Color.FromArgb(48,48,48); 
             //Black - Color barvaButtonu = Color.FromArgb(37, 51, 79);
             if (activePanel == "ucA")
             {
@@ -181,7 +181,7 @@ namespace TechnolToolkit
             {
                 Pen pen = new Pen(Color.Blue, 3);
                 Rectangle rect = new Rectangle(0, 0, 5, buttonAdminTools.Height);
-                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
+                Brush br = new SolidBrush(activeButtonLineColor);
                 g.FillRectangle(br, rect);
             }
 
@@ -202,7 +202,7 @@ namespace TechnolToolkit
             {
                 Pen pen = new Pen(Color.Blue, 3);
                 Rectangle rect = new Rectangle(0, 0, 5, buttonSAP.Height);
-                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
+                Brush br = new SolidBrush(activeButtonLineColor);
                 g.FillRectangle(br, rect);
             }
         }
@@ -226,6 +226,8 @@ namespace TechnolToolkit
                         flowLayoutPanel1.Controls.Add(ucA);
                         ucA.Size = flowLayoutPanel1.Size;
                         aktivniPanel = "ucA";
+                        this.WindowState = FormWindowState.Normal;
+                        this.MaximizeBox = false;
                     }
                     #endregion
                     break;
@@ -241,6 +243,7 @@ namespace TechnolToolkit
                         flowLayoutPanel1.Controls.Add(ucS);
                         ucS.Size = flowLayoutPanel1.Size;
                         aktivniPanel = "ucS";
+                        this.MaximizeBox = true;
                     }
                     #endregion
                     break;
@@ -258,6 +261,7 @@ namespace TechnolToolkit
                         ucAG.Size = flowLayoutPanel1.Size;
                         //nastaveni aktivniho panelu
                         aktivniPanel = "ucAG";
+                        this.MaximizeBox = true;
                     }
                     #endregion
                     break;
@@ -289,8 +293,8 @@ namespace TechnolToolkit
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
-            Pen pen = new Pen(Color.FromArgb(220, 220, 220), 1);
+
+            Pen pen = new Pen(Color.FromArgb(48,48,48), 1);
             e.Graphics.DrawLine(pen,panel1.Width-1,0,panel1.Width-1,panel1.Height-1);
         }
 
@@ -315,7 +319,7 @@ namespace TechnolToolkit
             {
                 Pen pen = new Pen(Color.Blue, 3);
                 Rectangle rect = new Rectangle(0, 0, 5, buttonAddToGroup.Height);
-                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
+                Brush br = new SolidBrush(activeButtonLineColor);
                 g.FillRectangle(br, rect);
             }
         }
@@ -324,6 +328,19 @@ namespace TechnolToolkit
         {
             EasterEgg ee = new EasterEgg();
             ee.ShowDialog();
+        }
+
+        private void buttonSettings_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_services_528, 500, 500), 8, 0);
+            if (aktivniPanel == "ucSet")
+            {
+                Pen pen = new Pen(Color.Blue, 3);
+                Rectangle rect = new Rectangle(0, 0, 5, buttonSettings.Height);
+                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
+                g.FillRectangle(br, rect);
+            }
         }
     }
 }

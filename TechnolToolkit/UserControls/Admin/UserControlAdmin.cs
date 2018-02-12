@@ -18,105 +18,71 @@ namespace TechnolToolkit
 
     public partial class UserControlAdmin : UserControl
     {
-        int picSize = 90;
+        int picSize = 110;
+        int heightOffset = 10;
         public UserControlAdmin()
         {
             InitializeComponent();
-            resizePicBoxes();
         }
 
         private void buttonZprava_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Post_96_color, picSize, picSize), (buttonZprava.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Post_96_color, picSize, picSize), (buttonZprava.Width / 2) - (picSize / 2), (buttonZprava.Height / 2) - (picSize / 2 ) - heightOffset);
         }
 
         private void buttonZmenaSkupin_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_User_Groups_96_color, picSize, picSize), (buttonZmenaSkupin.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_User_Groups_96_color, picSize, picSize), (buttonZmenaSkupin.Width / 2) - (picSize / 2), (buttonZmenaSkupin.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonInstalovanyProgramy_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_Installer_96, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), 10);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_Installer_96, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), (buttonInstalovanyProgramy.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonNajdiPC_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_LaptopSearch_96_color, picSize, picSize), (buttonNajdiPC.Width / 2) - (picSize / 2), 5);
-        }
-
-        private void buttonProcesy_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Processor_96_color, picSize, picSize), (buttonProcesy.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_LaptopSearch_96_color, picSize, picSize), (buttonNajdiPC.Width / 2) - (picSize / 2), (buttonNajdiPC.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonMSI_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_SoftwareUninstall_96_color, picSize, picSize), (buttonMSI.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_SoftwareUninstall_96_color, picSize, picSize), (buttonMSI.Width / 2) - (picSize / 2), (buttonMSI.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonRemoteControl_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Remote_Working_96_color, picSize, picSize), (buttonRemoteControl.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Remote_Working_96_color, picSize, picSize), (buttonRemoteControl.Width / 2) - (picSize / 2), (buttonRemoteControl.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonNapajeniPC_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Electrical_96_color, picSize, picSize), (buttonNapajeniPC.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Electrical_96_color, picSize, picSize), (buttonNapajeniPC.Width / 2) - (picSize / 2), (buttonNapajeniPC.Height / 2) - (picSize / 2) - heightOffset);
         }
-        private void buttonRegSearch_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Registry_Editor_96_color, picSize, picSize), (buttonRegSearch.Width / 2) - (picSize / 2), 5);
-        }
+       
         private void buttonInfoPC_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Workstation_96, picSize, picSize), (buttonInfoPC.Width / 2) - (picSize / 2), 5);
-        }
-
-        private void buttonIPConfig_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Network_Card_96_color, picSize, picSize), (buttonIPConfig.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Workstation_96, picSize, picSize), (buttonInfoPC.Width / 2) - (picSize / 2), (buttonInfoPC.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonVAS_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Car_96_color, picSize, picSize), (buttonVAS.Width / 2) - (picSize / 2), 5);
-        }
-
-        private void buttonASCII_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Sublime_Text_96_color, picSize, picSize), (buttonASCII.Width / 2) - (picSize / 2), 5);
-        }
-
-        private void buttonZasadyPC_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Heart_Monitor_96_color, picSize, picSize), (buttonZasadyPC.Width / 2) - (picSize / 2), 0);
-        }
-
-        private void buttonAkceVsechny_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Heart_MonitorAll_96_color, picSize, picSize), (buttonAkceVsechny.Width / 2) - (picSize / 2), 0);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Car_96_color, picSize, picSize), (buttonVAS.Width / 2) - (picSize / 2), (buttonVAS.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonBitlocker_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Encrypt_96_color, picSize, picSize), (buttonBitlocker.Width / 2) - (picSize / 2), 5);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Encrypt_96_color, picSize, picSize), (buttonBitlocker.Width / 2) - (picSize / 2), (buttonBitlocker.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonZprava_Click(object sender, EventArgs e)
@@ -164,22 +130,7 @@ namespace TechnolToolkit
         {
 
         }
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics line = e.Graphics;
-            line.DrawLine(new Pen(Brushes.Gray, 2), 0, 0, pictureBox1.Width, 0);
-        }
 
-        private void pictureBox2_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics line = e.Graphics;
-            line.DrawLine(new Pen(Brushes.Gray, 2), 0, 0, pictureBox2.Width, 0);
-        }
-        private void pictureBox3_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics line = e.Graphics;
-            line.DrawLine(new Pen(Brushes.Gray, 2), 0, 0, pictureBox3.Width, 0);
-        }
         private void buttonASCII_Click(object sender, EventArgs e)
         {
             Process p = new Process();
@@ -235,29 +186,6 @@ namespace TechnolToolkit
         private void buttonInfoPC_Click(object sender, EventArgs e)
         {
             ipc.ShowDialog();
-        }
-
-        private void buttonOpravaKlienta_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Computer_Repair96, picSize, picSize), (buttonOpravaKlienta.Width / 2) - (picSize / 2), 0);
-        }
-        private void resizePicBoxes()
-        {
-            pictureBox1.Width = flowLayoutPanel4.Width;
-            pictureBox2.Width = flowLayoutPanel4.Width;
-            pictureBox3.Width = flowLayoutPanel4.Width;
-            label2.Width = flowLayoutPanel4.Width;
-            label1.Width = flowLayoutPanel4.Width;
-            label3.Width = flowLayoutPanel4.Width;
-        }
-
-        private void flowLayoutPanel4_SizeChanged(object sender, EventArgs e)
-        {
-            resizePicBoxes();
-            System.Console.WriteLine(this.Width);
-
-            
         }
     }
 }

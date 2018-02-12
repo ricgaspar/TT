@@ -36,65 +36,27 @@ namespace TechnolToolkit
             listView1.Columns[1].Width = 150;
             listView1.Columns[2].Width = 300;
         }
-
-        private void fillListView(string data)
+        private void fillListViewBetter(string data)
         {
-            resetListView();
-
-            //Rozdeli data do listu tmp vzdy, kdyz narazi na novy radek
-            List<string> tmp = data.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            try
+            Match bitlocker = Regex.Match(data, @"name: ([^{]*).*[\r\n]+msFVE-RecoveryGuid: \{(\S*)\}[\r\n]+msFVE-RecoveryPassword: (\S*)");
+            while (bitlocker.Success)
             {
-                //Ostraneni prvniho radku
-                tmp.RemoveAt(0);
-                //Ostraneni vsech prazdnych radku
-                tmp.RemoveAll(string.IsNullOrWhiteSpace);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Pravděpodobně nejste připojeni do sítě Škoda nebo jste nezadali správně název počítače" +
-                                "\n-------------------------------------------------------------------------------\n"+ex.ToString(),"Chyba");
-            }
-            //Deklarace promenych
-            List<string> threeLine = new List<string>();
-            string temp = string.Empty;
-            int i = 0;
-
-            foreach (var line in tmp)
-            {
-                if (i == 3)
-                {
-                    threeLine.Add(temp);
-                    temp = "";
-                    i = 0;
-                }
-                temp += line + "\n";
-                i++;
-            }    
-            foreach (var line in threeLine)
-            {
+                string datumCas = bitlocker.Groups[1].ToString().Trim();
+                string guID = bitlocker.Groups[2].ToString().Trim();
+                string bKey = bitlocker.Groups[3].ToString().Trim();
+                //bitlocker key
+                ListViewItem lvi = new ListViewItem(bKey);
                 //datum a cas
-                Match dc = Regex.Match(line, @"^name: ([^{]*)", RegexOptions.Singleline);
-                Match guid = Regex.Match(line, @"msFVE-RecoveryGuid: \{(.*)\}");
-                Match key = Regex.Match(line, "(?<=msFVE-RecoveryPassword: )(.*)(?=\n)", RegexOptions.Singleline);
-                if (dc.Success && guid.Success && key.Success)
-                {
-                    string datumCas = dc.Groups[1].ToString().Trim();
-                    string guID = guid.Groups[1].ToString().Trim();
-                    string bKey = key.Groups[1].ToString().Trim();
-                    //bitlocker key
-                    ListViewItem lvi = new ListViewItem(bKey);
-                    //datum a cas
-                    lvi.SubItems.Add(datumCas);
-                    //recovery guid
-                    lvi.SubItems.Add(guID);
-                    listView1.Items.Add(lvi);
-                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                }
-                
+                lvi.SubItems.Add(datumCas);
+                //recovery guid
+                lvi.SubItems.Add(guID);
+                listView1.Items.Add(lvi);
+                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+                bitlocker = bitlocker.NextMatch();
             }
         }
-        
+ 
         private void runIt()
         {
             Process p = new Process();
@@ -105,7 +67,10 @@ namespace TechnolToolkit
             p.Start();
             string output = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
-            fillListView(output);
+            //fillListView(output);
+            fillListViewBetter(output);
+
+            Console.WriteLine("Output:\n"+ output +"\nend of Output");
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
