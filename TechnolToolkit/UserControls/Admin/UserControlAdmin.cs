@@ -40,7 +40,7 @@ namespace TechnolToolkit
         private void buttonInstalovanyProgramy_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_Installer_96, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), (buttonInstalovanyProgramy.Height / 2) - (picSize / 2) - heightOffset);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_Installer_96, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), (buttonInstalovanyProgramy.Height / 2) - (picSize / 2) - heightOffset - 10);
         }
 
         private void buttonNajdiPC_Paint(object sender, PaintEventArgs e)
@@ -53,12 +53,6 @@ namespace TechnolToolkit
         {
             Graphics g = e.Graphics;
             g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_SoftwareUninstall_96_color, picSize, picSize), (buttonMSI.Width / 2) - (picSize / 2), (buttonMSI.Height / 2) - (picSize / 2) - heightOffset);
-        }
-
-        private void buttonRemoteControl_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Remote_Working_96_color, picSize, picSize), (buttonRemoteControl.Width / 2) - (picSize / 2), (buttonRemoteControl.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonNapajeniPC_Paint(object sender, PaintEventArgs e)
@@ -84,7 +78,7 @@ namespace TechnolToolkit
             Graphics g = e.Graphics;
             g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Encrypt_96_color, picSize, picSize), (buttonBitlocker.Width / 2) - (picSize / 2), (buttonBitlocker.Height / 2) - (picSize / 2) - heightOffset);
         }
-
+        
         private void buttonZprava_Click(object sender, EventArgs e)
         {
             Process p = new Process();
@@ -112,11 +106,7 @@ namespace TechnolToolkit
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\Change_Groups.hta";
             p.Start();
         }
-        RemoteControl rmc = new RemoteControl();
-        private void buttonRemoteControl_Click(object sender, EventArgs e)
-        {
-            rmc.ShowDialog();
-        }
+        
         InstalledPrograms instalP = new InstalledPrograms();
         private void buttonInstalovanyProgramy_Click(object sender, EventArgs e)
         {
@@ -186,6 +176,18 @@ namespace TechnolToolkit
         private void buttonInfoPC_Click(object sender, EventArgs e)
         {
             ipc.ShowDialog();
+        }
+
+        private void buttonSCCM_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_individual_server_96, 180, 180), (buttonSCCM.Width / 2) - (100 / 2), (buttonSCCM.Height / 2) - (picSize / 2) - heightOffset);
+        }
+
+        private void buttonMultiping_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_broadcasting_96, 180, 180), (buttonMultiping.Width / 2) - (picSize / 2), (buttonMultiping.Height / 2) - (picSize / 2) - heightOffset);
         }
     }
 }

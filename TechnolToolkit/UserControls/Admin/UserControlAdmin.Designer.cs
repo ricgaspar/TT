@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonRemoteControl = new System.Windows.Forms.Button();
             this.buttonZprava = new System.Windows.Forms.Button();
             this.buttonZmenaSkupin = new System.Windows.Forms.Button();
             this.buttonInstalovanyProgramy = new System.Windows.Forms.Button();
@@ -37,34 +36,12 @@
             this.buttonInfoPC = new System.Windows.Forms.Button();
             this.buttonVAS = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonNajdiPC = new System.Windows.Forms.Button();
             this.buttonMSI = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonNajdiPC = new System.Windows.Forms.Button();
+            this.buttonSCCM = new System.Windows.Forms.Button();
+            this.buttonMultiping = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonRemoteControl
-            // 
-            this.buttonRemoteControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.buttonRemoteControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonRemoteControl.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.buttonRemoteControl.FlatAppearance.BorderSize = 0;
-            this.buttonRemoteControl.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.buttonRemoteControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRemoteControl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonRemoteControl.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonRemoteControl.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonRemoteControl.Location = new System.Drawing.Point(519, 266);
-            this.buttonRemoteControl.Margin = new System.Windows.Forms.Padding(35);
-            this.buttonRemoteControl.Name = "buttonRemoteControl";
-            this.buttonRemoteControl.Size = new System.Drawing.Size(172, 161);
-            this.buttonRemoteControl.TabIndex = 9;
-            this.buttonRemoteControl.Text = "Remote Control";
-            this.buttonRemoteControl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonRemoteControl.UseVisualStyleBackColor = false;
-            this.buttonRemoteControl.Click += new System.EventHandler(this.buttonRemoteControl_Click);
-            this.buttonRemoteControl.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonRemoteControl_Paint);
             // 
             // buttonZprava
             // 
@@ -104,7 +81,7 @@
             this.buttonZmenaSkupin.Name = "buttonZmenaSkupin";
             this.buttonZmenaSkupin.Size = new System.Drawing.Size(172, 161);
             this.buttonZmenaSkupin.TabIndex = 3;
-            this.buttonZmenaSkupin.Text = "Změna skupin";
+            this.buttonZmenaSkupin.Text = "Změna skupin (Lálovina)";
             this.buttonZmenaSkupin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonZmenaSkupin.UseVisualStyleBackColor = false;
             this.buttonZmenaSkupin.Click += new System.EventHandler(this.buttonZmenaSkupin_Click);
@@ -127,7 +104,7 @@
             this.buttonInstalovanyProgramy.Name = "buttonInstalovanyProgramy";
             this.buttonInstalovanyProgramy.Size = new System.Drawing.Size(172, 161);
             this.buttonInstalovanyProgramy.TabIndex = 4;
-            this.buttonInstalovanyProgramy.Text = "Instalovaný SW";
+            this.buttonInstalovanyProgramy.Text = "Nainstalovaný software";
             this.buttonInstalovanyProgramy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonInstalovanyProgramy.UseVisualStyleBackColor = false;
             this.buttonInstalovanyProgramy.Click += new System.EventHandler(this.buttonInstalovanyProgramy_Click);
@@ -215,7 +192,7 @@
             this.buttonVAS.Name = "buttonVAS";
             this.buttonVAS.Size = new System.Drawing.Size(172, 161);
             this.buttonVAS.TabIndex = 15;
-            this.buttonVAS.Text = "VAS6154 config";
+            this.buttonVAS.Text = "VAS6154 nastavení";
             this.buttonVAS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonVAS.UseVisualStyleBackColor = false;
             this.buttonVAS.Click += new System.EventHandler(this.buttonVAS_Click);
@@ -229,18 +206,17 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonZmenaSkupin, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonZprava, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonMSI, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonInstalovanyProgramy, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonBitlocker, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonInfoPC, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonRemoteControl, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonVAS, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.buttonNajdiPC, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonNajdiPC, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonNapajeniPC, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.buttonSCCM, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonMultiping, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -251,48 +227,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(989, 765);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(761, 497);
-            this.button1.Margin = new System.Windows.Forms.Padding(35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 161);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "SCCM klient";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // buttonNajdiPC
-            // 
-            this.buttonNajdiPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.buttonNajdiPC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonNajdiPC.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.buttonNajdiPC.FlatAppearance.BorderSize = 0;
-            this.buttonNajdiPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.buttonNajdiPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNajdiPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonNajdiPC.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonNajdiPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNajdiPC.Location = new System.Drawing.Point(277, 266);
-            this.buttonNajdiPC.Margin = new System.Windows.Forms.Padding(35);
-            this.buttonNajdiPC.Name = "buttonNajdiPC";
-            this.buttonNajdiPC.Size = new System.Drawing.Size(172, 161);
-            this.buttonNajdiPC.TabIndex = 5;
-            this.buttonNajdiPC.Text = "Najdi PC";
-            this.buttonNajdiPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNajdiPC.UseVisualStyleBackColor = false;
-            this.buttonNajdiPC.Click += new System.EventHandler(this.buttonNajdiPC_Click);
-            this.buttonNajdiPC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonNajdiPC_Paint);
             // 
             // buttonMSI
             // 
@@ -316,25 +250,69 @@
             this.buttonMSI.Click += new System.EventHandler(this.buttonMSI_Click);
             this.buttonMSI.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMSI_Paint);
             // 
-            // button2
+            // buttonNajdiPC
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(277, 497);
-            this.button2.Margin = new System.Windows.Forms.Padding(35);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(172, 161);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Multiping";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonNajdiPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonNajdiPC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonNajdiPC.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
+            this.buttonNajdiPC.FlatAppearance.BorderSize = 0;
+            this.buttonNajdiPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonNajdiPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNajdiPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonNajdiPC.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonNajdiPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonNajdiPC.Location = new System.Drawing.Point(277, 497);
+            this.buttonNajdiPC.Margin = new System.Windows.Forms.Padding(35);
+            this.buttonNajdiPC.Name = "buttonNajdiPC";
+            this.buttonNajdiPC.Size = new System.Drawing.Size(172, 161);
+            this.buttonNajdiPC.TabIndex = 5;
+            this.buttonNajdiPC.Text = "Najdi PC (Lálovina)";
+            this.buttonNajdiPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNajdiPC.UseVisualStyleBackColor = false;
+            this.buttonNajdiPC.Click += new System.EventHandler(this.buttonNajdiPC_Click);
+            this.buttonNajdiPC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonNajdiPC_Paint);
+            // 
+            // buttonSCCM
+            // 
+            this.buttonSCCM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonSCCM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSCCM.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
+            this.buttonSCCM.FlatAppearance.BorderSize = 0;
+            this.buttonSCCM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonSCCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSCCM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSCCM.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonSCCM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonSCCM.Location = new System.Drawing.Point(277, 266);
+            this.buttonSCCM.Margin = new System.Windows.Forms.Padding(35);
+            this.buttonSCCM.Name = "buttonSCCM";
+            this.buttonSCCM.Size = new System.Drawing.Size(172, 161);
+            this.buttonSCCM.TabIndex = 10;
+            this.buttonSCCM.Text = "SCCM klient";
+            this.buttonSCCM.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonSCCM.UseVisualStyleBackColor = false;
+            this.buttonSCCM.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonSCCM_Paint);
+            // 
+            // buttonMultiping
+            // 
+            this.buttonMultiping.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonMultiping.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonMultiping.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
+            this.buttonMultiping.FlatAppearance.BorderSize = 0;
+            this.buttonMultiping.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonMultiping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMultiping.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonMultiping.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonMultiping.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonMultiping.Location = new System.Drawing.Point(519, 266);
+            this.buttonMultiping.Margin = new System.Windows.Forms.Padding(35);
+            this.buttonMultiping.Name = "buttonMultiping";
+            this.buttonMultiping.Size = new System.Drawing.Size(172, 161);
+            this.buttonMultiping.TabIndex = 10;
+            this.buttonMultiping.Text = "Multiping";
+            this.buttonMultiping.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonMultiping.UseVisualStyleBackColor = false;
+            this.buttonMultiping.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMultiping_Paint);
             // 
             // UserControlAdmin
             // 
@@ -357,15 +335,14 @@
         private System.Windows.Forms.Button buttonZprava;
         private System.Windows.Forms.Button buttonZmenaSkupin;
         private System.Windows.Forms.Button buttonInstalovanyProgramy;
-        private System.Windows.Forms.Button buttonRemoteControl;
         private System.Windows.Forms.Button buttonNapajeniPC;
         private System.Windows.Forms.Button buttonInfoPC;
         private System.Windows.Forms.Button buttonVAS;
         private System.Windows.Forms.Button buttonBitlocker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button buttonNajdiPC;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonMSI;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSCCM;
+        private System.Windows.Forms.Button buttonMultiping;
     }
 }

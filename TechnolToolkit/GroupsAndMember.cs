@@ -20,7 +20,7 @@ namespace TechnolToolkit
             try
             {
                 //try if machine is online
-                PingReply pingReply = ping.Send(computername);
+                PingReply pingReply = ping.Send(computername,2000);
                 if (pingReply.Status == IPStatus.Success)
                 {
                     DirectoryEntry machine = new DirectoryEntry("WinNT://" + computername + ",Computer");

@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.DirectoryServices.AccountManagement;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using System.DirectoryServices;
 
 namespace TechnolToolkit
 {
     public partial class Form1 : Form
     {
-        bool menuVisible = true;
         string aktivniPanel = "ucA";
         Color activeButtonLineColor = Color.FromArgb(174, 0, 0);
         //Admin Tools
@@ -22,6 +23,8 @@ namespace TechnolToolkit
         UserControlAddToGroup ucAG = new UserControlAddToGroup();
         //Login
         Login loginScreen = new Login();
+        //DZC Vyhledani        
+        Form dzcSearch = new DZCsearch();
 
 
         public Form1()
@@ -33,10 +36,8 @@ namespace TechnolToolkit
             ucAG.Size = flowLayoutPanel1.Size;
             pozadiAktivnihoButtonu(aktivniPanel);
             this.MaximizeBox = false;
-
         }
 
-        //Funkce, která se stará o vysoce kvalitní resize obrázků
         public static Bitmap ResizeImage(Image image, int width, int height)
         {
             //Graphics g = e.Graphics;
@@ -151,24 +152,6 @@ namespace TechnolToolkit
         {
             activePanelFuntion(aktivniPanel, "ucAG");
         }
-        private void buttonMenu_Click(object sender, EventArgs e)
-        {          
-            if (menuVisible == true)
-            {
-                tableLayoutPanelVnejsi.ColumnStyles[0].SizeType = SizeType.Absolute;
-                tableLayoutPanelVnejsi.ColumnStyles[0].Width = 70;
-                menuVisible = false;
-            }
-            else
-            {
-
-                tableLayoutPanelVnejsi.ColumnStyles[0].SizeType = SizeType.Absolute;
-                tableLayoutPanelVnejsi.ColumnStyles[0].Width = 250;
-                menuVisible = true;
-            }
-            ucA.Size = flowLayoutPanel1.Size;
-            ucS.Size = flowLayoutPanel1.Size;
-        }
         #endregion
 
         #region Button Paint funkce
@@ -197,7 +180,7 @@ namespace TechnolToolkit
         private void buttonSAP_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_SAP_96_color, 50, 50), 14, 2);
+            g.DrawImage(ResizeImage(Properties.Resources.icons8_SAP_96_color, 50, 50), 14, (buttonSAP.Height/2) - 25);
             if (aktivniPanel == "ucS")
             {
                 Pen pen = new Pen(Color.Blue, 3);
@@ -290,19 +273,27 @@ namespace TechnolToolkit
                 }   
             }
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private string displayNameToUserID(string userid)
         {
-
-            Pen pen = new Pen(Color.FromArgb(48,48,48), 1);
-            e.Graphics.DrawLine(pen,panel1.Width-1,0,panel1.Width-1,panel1.Height-1);
+            using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
+            {
+                UserPrincipal user = UserPrincipal.FindByIdentity(ctx, userid);
+                if (user != null)
+                    return user.SamAccountName;
+                else
+                    return string.Empty;
+            }
         }
 
         private void buttonDZC_Click(object sender, EventArgs e)
         {
-            Process p = new Process();
+            dzcSearch.Show();
+          /*Process p = new Process();
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\NajdiDZC.vbs";
             p.Start();
+            */
+            
+            
         }
 
         private void buttonDZC_Paint(object sender, PaintEventArgs e)
@@ -324,12 +315,6 @@ namespace TechnolToolkit
             }
         }
 
-        private void buttonEasterEgg_Click(object sender, EventArgs e)
-        {
-            EasterEgg ee = new EasterEgg();
-            ee.ShowDialog();
-        }
-
         private void buttonSettings_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -342,5 +327,19 @@ namespace TechnolToolkit
                 g.FillRectangle(br, rect);
             }
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(48, 48, 48), 1);
+            e.Graphics.DrawLine(pen, tableLayoutPanelMenu.Width - 1, 0, tableLayoutPanelMenu.Width - 1, tableLayoutPanelMenu.Height - 1);
+        }
+
+        private void tableLayoutPanelPocitac_Paint(object sender, PaintEventArgs e)
+        {
+            int offset = 1;
+            e.Graphics.DrawRectangle(new Pen(Color.FromArgb(48, 48, 48), 1), 0 ,tableLayoutPanelPocitac.Height - offset, tableLayoutPanelPocitac.Width - offset, tableLayoutPanelPocitac.Height - offset);
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(120,0,0), 1), 175,28,375,28);
+        }
+                
     }
 }

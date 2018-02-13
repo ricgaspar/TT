@@ -63,6 +63,10 @@
       <HintPath>..\packages\TaskSchedulerEditor.2.7.2\lib\net452\Microsoft.Win32.TaskSchedulerEditor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -90,13 +94,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EasterEgg.cs">
+    <Compile Include="DZCsearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EasterEgg.Designer.cs">
-      <DependentUpon>EasterEgg.cs</DependentUpon>
+    <Compile Include="DZCsearch.Designer.cs">
+      <DependentUpon>DZCsearch.cs</DependentUpon>
     </Compile>
     <Compile Include="GroupsAndMember.cs" />
+    <Compile Include="Resources\CustomControls\CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\SpravaSkupin\UserControlAddToGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,12 +206,6 @@
     <Compile Include="UserControls\Admin\Forms\Procesy.Designer.cs">
       <DependentUpon>Procesy.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Admin\Forms\RemoteControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\Admin\Forms\RemoteControl.Designer.cs">
-      <DependentUpon>RemoteControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="statusBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,8 +232,8 @@
     <Compile Include="UserControls\UserControlSettings.Designer.cs">
       <DependentUpon>UserControlSettings.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EasterEgg.resx">
-      <DependentUpon>EasterEgg.cs</DependentUpon>
+    <EmbeddedResource Include="DZCsearch.resx">
+      <DependentUpon>DZCsearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SpravaSkupin\UserControlAddToGroup.resx">
       <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
@@ -268,9 +269,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Admin\Forms\RemoteControl.resx">
-      <DependentUpon>RemoteControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="statusBox.resx">
       <DependentUpon>statusBox.cs</DependentUpon>
@@ -312,7 +310,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Resources\VAS6154.zip" />
     <None Include="Scripts\bower.json" />
     <None Include="Scripts\build.log" />
   </ItemGroup>
@@ -322,9 +319,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\runpwshell_parameter.bat" />
     <EmbeddedResource Include="Resources\RemoteDialog.ps1" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\NajdiDZC.vbs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PC_INFO.hta" />
@@ -406,6 +400,8 @@
     <None Include="Resources\icons8-calendar-96.png" />
     <None Include="Resources\icons8-services-528.png" />
     <None Include="Resources\icons8-Workstation-961.png" />
+    <None Include="Resources\icons8-broadcasting-96.png" />
+    <None Include="Resources\icons8-individual-server-96.png" />
     <Content Include="Resources\Menu_icons\icons8-Menu-96.png" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\polymer-micro.html" />
