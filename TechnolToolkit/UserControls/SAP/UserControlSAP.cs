@@ -60,7 +60,8 @@ namespace TechnolToolkit
         }
         private void naplnListView()
         {
-            string pc = textBoxPCname.Text;
+            string pc = textBoxPC.Text;
+            
             string url = "http://skdambsaimod01.mb.skoda.vwg/AISAPWEB/ai_sap.aspx?computername="+pc;
 
             WebClient client = new WebClient();
@@ -79,7 +80,6 @@ namespace TechnolToolkit
             
             //Vyberem si pouze cast, ktera zacina <Software> a konci </Software>
             string obsahWebuSoftware = getBetween(obsahWebu, "<Software>", "</Software>");
-            Console.WriteLine(obsahWebuSoftware);
             List<string> software = obsahWebuSoftware.Split(new string[] {"</Item>"}, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             foreach (string swRadek in software)
@@ -118,14 +118,6 @@ namespace TechnolToolkit
             }
         }
 
-        private void textBoxPCname_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxPCname.Text == "")
-                buttonVyhledat.Enabled = false;
-            else
-                buttonVyhledat.Enabled = true;
-        }
-
         private void listView1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
@@ -150,19 +142,6 @@ namespace TechnolToolkit
                 }
         }
 
-        private void textBoxPCname_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                obnovListView(listView1);
-                naplnListView();
-                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                listView1.Columns[0].Width = listView1.Columns[0].Width < 100 ? 100 : listView1.Columns[0].Width;
-                listView1.Columns[1].Width = listView1.Columns[1].Width < 100 ? 100 : listView1.Columns[1].Width;
-                listView1.Columns[2].Width = listView1.Columns[2].Width < 100 ? 100 : listView1.Columns[2].Width;
-            }
-        }
-
         private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
@@ -176,6 +155,31 @@ namespace TechnolToolkit
             }
             Clipboard.SetText(text);
             listView1.SelectedItems.Clear();
+        }
+
+        private void tableLayoutPanelHorniVnitrni_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(174,0,0), 1), 187, 28, 369, 28);
+        }
+
+        private void textBoxPC_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxPC.Text != "")
+                buttonVyhledat.Enabled = true;
+            else buttonVyhledat.Enabled = false;
+        }
+
+        private void textBoxPC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                obnovListView(listView1);
+                naplnListView();
+                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                listView1.Columns[0].Width = listView1.Columns[0].Width < 100 ? 100 : listView1.Columns[0].Width;
+                listView1.Columns[1].Width = listView1.Columns[1].Width < 100 ? 100 : listView1.Columns[1].Width;
+                listView1.Columns[2].Width = listView1.Columns[2].Width < 100 ? 100 : listView1.Columns[2].Width;
+            }
         }
     }
 }

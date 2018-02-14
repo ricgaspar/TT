@@ -41,6 +41,7 @@
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.buttonSetCurrentUser = new System.Windows.Forms.Button();
             this.tableLayoutPanelNazevPC = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonPing = new System.Windows.Forms.Button();
             this.textBoxComputername = new System.Windows.Forms.TextBox();
             this.buttonConnectToDevice = new System.Windows.Forms.Button();
             this.tableLayoutPanelClenstvi = new System.Windows.Forms.TableLayoutPanel();
@@ -52,6 +53,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonAddMemberToGroup = new System.Windows.Forms.Button();
             this.tableLayoutPanelStatusPripojeni = new System.Windows.Forms.TableLayoutPanel();
+            this.labelPingStatus = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.zobrazitUzivatelskeJmenoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smazatClenaZeSkupinyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -170,10 +172,11 @@
             // 
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Enabled = false;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.comboBox1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.comboBox1.ForeColor = System.Drawing.Color.White;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(33, 63);
             this.comboBox1.Name = "comboBox1";
@@ -182,6 +185,7 @@
             // 
             // tableLayoutPanelDZC
             // 
+            this.tableLayoutPanelDZC.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanelDZC.ColumnCount = 2;
             this.tableLayoutPanelDZC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelDZC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
@@ -195,18 +199,20 @@
             this.tableLayoutPanelDZC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelDZC.Size = new System.Drawing.Size(441, 30);
             this.tableLayoutPanelDZC.TabIndex = 15;
+            this.tableLayoutPanelDZC.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelDZC_Paint);
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUsername.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxUsername.Enabled = false;
-            this.textBoxUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.textBoxUsername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxUsername.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxUsername.Location = new System.Drawing.Point(3, 3);
+            this.textBoxUsername.Location = new System.Drawing.Point(3, 6);
+            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(215, 23);
+            this.textBoxUsername.Size = new System.Drawing.Size(215, 20);
             this.textBoxUsername.TabIndex = 0;
             this.textBoxUsername.Text = "Uživatel (DZC)";
             this.textBoxUsername.Click += new System.EventHandler(this.textBoxUsername_Click);
@@ -232,9 +238,11 @@
             // tableLayoutPanelNazevPC
             // 
             this.tableLayoutPanelNazevPC.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanelNazevPC.ColumnCount = 2;
+            this.tableLayoutPanelNazevPC.ColumnCount = 3;
             this.tableLayoutPanelNazevPC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelNazevPC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
+            this.tableLayoutPanelNazevPC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.tableLayoutPanelNazevPC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanelNazevPC.Controls.Add(this.buttonPing, 2, 0);
             this.tableLayoutPanelNazevPC.Controls.Add(this.textBoxComputername, 0, 0);
             this.tableLayoutPanelNazevPC.Controls.Add(this.buttonConnectToDevice, 1, 0);
             this.tableLayoutPanelNazevPC.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -245,21 +253,40 @@
             this.tableLayoutPanelNazevPC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelNazevPC.Size = new System.Drawing.Size(441, 30);
             this.tableLayoutPanelNazevPC.TabIndex = 16;
+            this.tableLayoutPanelNazevPC.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelNazevPC_Paint);
+            // 
+            // buttonPing
+            // 
+            this.buttonPing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonPing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonPing.Enabled = false;
+            this.buttonPing.FlatAppearance.BorderSize = 0;
+            this.buttonPing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPing.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonPing.ForeColor = System.Drawing.Color.White;
+            this.buttonPing.Location = new System.Drawing.Point(373, 3);
+            this.buttonPing.Name = "buttonPing";
+            this.buttonPing.Size = new System.Drawing.Size(65, 24);
+            this.buttonPing.TabIndex = 12;
+            this.buttonPing.Text = "Ping";
+            this.buttonPing.UseVisualStyleBackColor = false;
             // 
             // textBoxComputername
             // 
-            this.textBoxComputername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxComputername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxComputername.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxComputername.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.textBoxComputername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxComputername.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxComputername.Location = new System.Drawing.Point(3, 3);
+            this.textBoxComputername.Location = new System.Drawing.Point(3, 6);
+            this.textBoxComputername.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.textBoxComputername.Name = "textBoxComputername";
-            this.textBoxComputername.Size = new System.Drawing.Size(215, 23);
+            this.textBoxComputername.Size = new System.Drawing.Size(215, 20);
             this.textBoxComputername.TabIndex = 0;
             this.textBoxComputername.Text = "Název PC";
             this.textBoxComputername.Click += new System.EventHandler(this.textBoxComputername_Click);
             this.textBoxComputername.TextChanged += new System.EventHandler(this.textBoxComputername_TextChanged);
+            this.textBoxComputername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxComputername_KeyDown);
             this.textBoxComputername.Leave += new System.EventHandler(this.textBoxComputername_Leave);
             // 
             // buttonConnectToDevice
@@ -273,9 +300,9 @@
             this.buttonConnectToDevice.ForeColor = System.Drawing.Color.White;
             this.buttonConnectToDevice.Location = new System.Drawing.Point(224, 3);
             this.buttonConnectToDevice.Name = "buttonConnectToDevice";
-            this.buttonConnectToDevice.Size = new System.Drawing.Size(214, 24);
+            this.buttonConnectToDevice.Size = new System.Drawing.Size(143, 24);
             this.buttonConnectToDevice.TabIndex = 11;
-            this.buttonConnectToDevice.Text = "Připojit / Načíst skupiny";
+            this.buttonConnectToDevice.Text = "Připojit";
             this.buttonConnectToDevice.UseVisualStyleBackColor = false;
             this.buttonConnectToDevice.Click += new System.EventHandler(this.buttonConnectToDevice_Click);
             // 
@@ -401,6 +428,7 @@
             this.tableLayoutPanelStatusPripojeni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelStatusPripojeni.Controls.Add(this.labelConnectedTo, 0, 0);
             this.tableLayoutPanelStatusPripojeni.Controls.Add(this.labelDateTimeConnected, 1, 0);
+            this.tableLayoutPanelStatusPripojeni.Controls.Add(this.labelPingStatus, 2, 0);
             this.tableLayoutPanelStatusPripojeni.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelStatusPripojeni.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanelStatusPripojeni.Name = "tableLayoutPanelStatusPripojeni";
@@ -408,6 +436,17 @@
             this.tableLayoutPanelStatusPripojeni.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelStatusPripojeni.Size = new System.Drawing.Size(936, 17);
             this.tableLayoutPanelStatusPripojeni.TabIndex = 17;
+            // 
+            // labelPingStatus
+            // 
+            this.labelPingStatus.AutoSize = true;
+            this.labelPingStatus.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPingStatus.ForeColor = System.Drawing.Color.White;
+            this.labelPingStatus.Location = new System.Drawing.Point(383, 0);
+            this.labelPingStatus.Name = "labelPingStatus";
+            this.labelPingStatus.Size = new System.Drawing.Size(68, 16);
+            this.labelPingStatus.TabIndex = 2;
+            this.labelPingStatus.Text = "Ping status:";
             // 
             // contextMenuStrip1
             // 
@@ -716,5 +755,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button buttonPing;
+        private System.Windows.Forms.Label labelPingStatus;
     }
 }

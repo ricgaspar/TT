@@ -100,7 +100,7 @@
     <Compile Include="DZCsearch.Designer.cs">
       <DependentUpon>DZCsearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="GroupsAndMember.cs" />
+    <Compile Include="UserControls\SpravaSkupin\GroupsAndMember.cs" />
     <Compile Include="Resources\CustomControls\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>

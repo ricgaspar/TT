@@ -13,6 +13,7 @@ namespace TechnolToolkit
 {
     public partial class Form1 : Form
     {
+        public Color themeColor = Color.FromArgb(174, 0, 0);
         string aktivniPanel = "ucA";
         Color activeButtonLineColor = Color.FromArgb(174, 0, 0);
         //Admin Tools
@@ -23,8 +24,7 @@ namespace TechnolToolkit
         UserControlAddToGroup ucAG = new UserControlAddToGroup();
         //Login
         Login loginScreen = new Login();
-        //DZC Vyhledani        
-        Form dzcSearch = new DZCsearch();
+
 
 
         public Form1()
@@ -287,13 +287,10 @@ namespace TechnolToolkit
 
         private void buttonDZC_Click(object sender, EventArgs e)
         {
-            dzcSearch.Show();
-          /*Process p = new Process();
-            p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\NajdiDZC.vbs";
-            p.Start();
-            */
-            
-            
+            //DZC Vyhledani
+            //Presunuto sem, protoze nenemuzeme opakovane zobrazovat stejnou jednu instanci formu DZCsearch, ktera byla už jednou "zavřena"
+            Form dzcSearch = new DZCsearch();
+            dzcSearch.ShowDialog();
         }
 
         private void buttonDZC_Paint(object sender, PaintEventArgs e)
@@ -332,14 +329,6 @@ namespace TechnolToolkit
         {
             Pen pen = new Pen(Color.FromArgb(48, 48, 48), 1);
             e.Graphics.DrawLine(pen, tableLayoutPanelMenu.Width - 1, 0, tableLayoutPanelMenu.Width - 1, tableLayoutPanelMenu.Height - 1);
-        }
-
-        private void tableLayoutPanelPocitac_Paint(object sender, PaintEventArgs e)
-        {
-            int offset = 1;
-            e.Graphics.DrawRectangle(new Pen(Color.FromArgb(48, 48, 48), 1), 0 ,tableLayoutPanelPocitac.Height - offset, tableLayoutPanelPocitac.Width - offset, tableLayoutPanelPocitac.Height - offset);
-            e.Graphics.DrawLine(new Pen(Color.FromArgb(120,0,0), 1), 175,28,375,28);
-        }
-                
+        }        
     }
 }

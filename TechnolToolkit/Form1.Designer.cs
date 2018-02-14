@@ -39,15 +39,9 @@
             this.buttonDZC = new System.Windows.Forms.Button();
             this.tableLayoutPanelPocitacAFlowlayout = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanelPocitac = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelMenu.SuspendLayout();
             this.tableLayoutPanelPocitacAFlowlayout.SuspendLayout();
-            this.tableLayoutPanelPocitac.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVnejsi
@@ -221,15 +215,14 @@
             // 
             this.tableLayoutPanelPocitacAFlowlayout.ColumnCount = 1;
             this.tableLayoutPanelPocitacAFlowlayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPocitacAFlowlayout.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutPanelPocitacAFlowlayout.Controls.Add(this.tableLayoutPanelPocitac, 0, 0);
+            this.tableLayoutPanelPocitacAFlowlayout.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanelPocitacAFlowlayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPocitacAFlowlayout.Location = new System.Drawing.Point(250, 0);
             this.tableLayoutPanelPocitacAFlowlayout.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPocitacAFlowlayout.Name = "tableLayoutPanelPocitacAFlowlayout";
-            this.tableLayoutPanelPocitacAFlowlayout.RowCount = 2;
-            this.tableLayoutPanelPocitacAFlowlayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanelPocitacAFlowlayout.RowCount = 1;
             this.tableLayoutPanelPocitacAFlowlayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPocitacAFlowlayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPocitacAFlowlayout.Size = new System.Drawing.Size(984, 711);
             this.tableLayoutPanelPocitacAFlowlayout.TabIndex = 11;
             // 
@@ -237,72 +230,11 @@
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 36);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(984, 675);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(984, 711);
             this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // tableLayoutPanelPocitac
-            // 
-            this.tableLayoutPanelPocitac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.tableLayoutPanelPocitac.ColumnCount = 5;
-            this.tableLayoutPanelPocitac.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanelPocitac.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
-            this.tableLayoutPanelPocitac.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanelPocitac.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
-            this.tableLayoutPanelPocitac.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPocitac.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanelPocitac.Controls.Add(this.label1, 1, 0);
-            this.tableLayoutPanelPocitac.Controls.Add(this.textBox1, 2, 0);
-            this.tableLayoutPanelPocitac.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelPocitac.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelPocitac.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelPocitac.Name = "tableLayoutPanelPocitac";
-            this.tableLayoutPanelPocitac.RowCount = 1;
-            this.tableLayoutPanelPocitac.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPocitac.Size = new System.Drawing.Size(984, 36);
-            this.tableLayoutPanelPocitac.TabIndex = 3;
-            this.tableLayoutPanelPocitac.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelPocitac_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 36);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(36, 3);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Název počítače";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(175, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -323,9 +255,6 @@
             this.tableLayoutPanelVnejsi.ResumeLayout(false);
             this.tableLayoutPanelMenu.ResumeLayout(false);
             this.tableLayoutPanelPocitacAFlowlayout.ResumeLayout(false);
-            this.tableLayoutPanelPocitac.ResumeLayout(false);
-            this.tableLayoutPanelPocitac.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -342,10 +271,6 @@
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMenu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPocitacAFlowlayout;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPocitac;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

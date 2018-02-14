@@ -315,7 +315,7 @@ namespace TechnolToolkit
         private void checkInputDataCompletion()
         {
             if (textBoxComputername.Text != "" && textBoxUsername.Text != "" && textBoxComputername.Text != "Název PC" && textBoxComputername.Text != "localhost" &&
-                textBoxUsername.Text != "Uživatel (DZC)" && comboBox1.Text != "Výběr skupiny")
+                textBoxUsername.Text != "Uživatel (DZC)" && comboBox1.SelectedText != null)
                 if (radioButtonNeomezenaPlatnost.Checked)
                     buttonAddMemberToGroup.Enabled = true;
                 else
@@ -405,6 +405,18 @@ namespace TechnolToolkit
             listView1.Columns.Add("Platnost do");
             listView1.Columns.Add("Automatické odebrání",120);
             listView1.FullRowSelect = true;
+        }
+        
+        private void tableLayoutPanelNazevPC_Paint(object sender, PaintEventArgs e)
+        {
+            Form1 form1 = new Form1();
+            e.Graphics.DrawLine(new Pen(form1.themeColor, 1), 3, 28, 235, 28);
+        }
+
+        private void tableLayoutPanelDZC_Paint(object sender, PaintEventArgs e)
+        {
+            Form1 form1 = new Form1();
+            e.Graphics.DrawLine(new Pen(form1.themeColor, 1), 3, 28, 235, 28);
         }
     }
 }

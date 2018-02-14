@@ -12,7 +12,7 @@ namespace TechnolToolkit
 {
     public partial class statusBox : Form
     {
-        int remaningTime = 40;
+        int remaningTime = 20;
         public statusBox()
         {
             InitializeComponent();
