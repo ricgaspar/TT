@@ -12,6 +12,22 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,49 +50,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>logo2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ActiveDirectoryObjectPicker, Version=2.2.128.0, Culture=neutral, PublicKeyToken=515ab092c8839750, processorArchitecture=MSIL">
-      <HintPath>..\packages\Tulpep.ActiveDirectoryObjectPicker.2.2.128\lib\net452\ActiveDirectoryObjectPicker.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="AeroWizard, Version=2.1.10.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
-      <HintPath>..\packages\AeroWizard.2.1.10\lib\net452\AeroWizard.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="AltoControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AltoControls.1.0.1\lib\AltoControls.dll</HintPath>
-    </Reference>
-    <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
     </Reference>
     <Reference Include="GroupControls, Version=1.5.3.0, Culture=neutral, PublicKeyToken=3726d9da21b6ac8f, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupControls.1.5.3\lib\net452\GroupControls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.7.2.0, Culture=neutral, PublicKeyToken=c416bc1b32d97233, processorArchitecture=MSIL">
-      <HintPath>..\packages\TaskScheduler.2.7.2\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Win32.TaskSchedulerEditor, Version=2.7.2.0, Culture=neutral, PublicKeyToken=7be0d908c369d1a5, processorArchitecture=MSIL">
-      <HintPath>..\packages\TaskSchedulerEditor.2.7.2\lib\net452\Microsoft.Win32.TaskSchedulerEditor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
+    <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.7.3.0, Culture=neutral, PublicKeyToken=c416bc1b32d97233, processorArchitecture=MSIL">
+      <HintPath>..\packages\TaskScheduler.2.7.3\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
-    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -226,12 +247,6 @@
     <Compile Include="UserControls\SAP\UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlSettings.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UserControlSettings.Designer.cs">
-      <DependentUpon>UserControlSettings.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="DZCsearch.resx">
       <DependentUpon>DZCsearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,9 +312,6 @@
     <EmbeddedResource Include="UserControls\SAP\UserControlSAP.resx">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlSettings.resx">
-      <DependentUpon>UserControlSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -310,8 +322,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Scripts\bower.json" />
-    <None Include="Scripts\build.log" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -333,13 +343,9 @@
     <EmbeddedResource Include="Resources\Change_Groups.hta" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\PsExec.exe" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\RegSearch.exe" />
     <EmbeddedResource Include="Resources\Zjistit_IPconfig.vbs" />
     <EmbeddedResource Include="Resources\bitlocker.vbs" />
-    <Content Include="logo.ico" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Under Computer-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-User Group Man Man-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-User-96.png" />
@@ -358,6 +364,7 @@
     <None Include="Resources\UserControl_Admin_icons\icons8-Text Color-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Heart MonitorWarning-96.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Encrypt-96.png" />
+    <Content Include="logo2.ico" />
     <Content Include="Resources\Context_Menu\icons8-Close Window-96.png" />
     <Content Include="Resources\Context_Menu\icons8-Copy to Clipboard-96.png" />
     <None Include="Resources\icons8-Car-96_color.png" />
@@ -403,12 +410,19 @@
     <None Include="Resources\icons8-broadcasting-96.png" />
     <None Include="Resources\icons8-individual-server-96.png" />
     <Content Include="Resources\Menu_icons\icons8-Menu-96.png" />
-    <Content Include="Scripts\LICENSE.txt" />
-    <Content Include="Scripts\polymer-micro.html" />
-    <Content Include="Scripts\polymer-mini.html" />
-    <Content Include="Scripts\polymer.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

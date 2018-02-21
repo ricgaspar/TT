@@ -24,7 +24,6 @@ namespace TechnolToolkit
                 if (pingReply.Status == IPStatus.Success)
                 {
                     DirectoryEntry machine = new DirectoryEntry("WinNT://" + computername + ",Computer");
-
                     foreach (DirectoryEntry child in machine.Children)
                         if (child.SchemaClassName == "Group")
                         {
@@ -45,7 +44,7 @@ namespace TechnolToolkit
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message.ToString(), "Chyba načítání skupin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
         }

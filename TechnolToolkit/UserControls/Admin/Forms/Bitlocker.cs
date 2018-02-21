@@ -67,10 +67,7 @@ namespace TechnolToolkit
             p.Start();
             string output = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
-            //fillListView(output);
             fillListViewBetter(output);
-
-            Console.WriteLine("Output:\n"+ output +"\nend of Output");
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)

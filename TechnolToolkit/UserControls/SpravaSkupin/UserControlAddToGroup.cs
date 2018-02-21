@@ -16,11 +16,20 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Globalization;
 using Microsoft.Win32.TaskScheduler;
+using System.Diagnostics;
+using Microsoft.Win32;
+using System.Management;
+using System.ServiceProcess;
 
 namespace TechnolToolkit
 {
     public partial class UserControlAddToGroup : UserControl
     {
+        public enum serviceAction
+        {
+            run,
+            stop,
+        }
         public UserControlAddToGroup()
         {
             InitializeComponent();
@@ -32,6 +41,7 @@ namespace TechnolToolkit
         GroupsAndMember groups_and_members = new GroupsAndMember();
         public string selectedUserToRemove;
         public string selectedGroupToRemove;
+        public Color themeColor = Color.FromArgb(174, 0, 0);
 
         private void enableUIElements()
         {
@@ -118,10 +128,12 @@ namespace TechnolToolkit
 
         private void addMemberToGroup(string user, string computername, string group)
         {
-            try {
-                using (var pcLocal = new PrincipalContext(ContextType.Machine, computername))
+
+            try
+            {
+                using (var pcRemote = new PrincipalContext(ContextType.Machine, computername))
                 {
-                    var grp = GroupPrincipal.FindByIdentity(pcLocal, group);
+                    var grp = GroupPrincipal.FindByIdentity(pcRemote, group);
 
                     using (var pcDomain = new PrincipalContext(ContextType.Domain, Environment.UserDomainName))
                     {
@@ -149,9 +161,10 @@ namespace TechnolToolkit
                         }
                     }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }      
 
@@ -160,10 +173,13 @@ namespace TechnolToolkit
             if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název PC" && textBoxComputername.Text != "localhost")
             {
                 buttonConnectToDevice.Enabled = true;
+                buttonPing.Enabled = true;
+                checkInputDataCompletion();
             }
             else
             {
                 buttonConnectToDevice.Enabled = false;
+                buttonPing.Enabled = false;
             }
         }
 
@@ -216,10 +232,13 @@ namespace TechnolToolkit
         }
         private void smazatClenaZeSkupinyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+            registryFix(textBoxComputername.Text);
+
             //Check if any node is selected
             if (treeViewGroups.SelectedNode != null)
             {
-                
+
                 //Fill List skupiny with all groups on remote machine for later use
                 List<string> skupiny = new List<string>();
                 for (int i = 0; i < comboBox1.Items.Count; i++)
@@ -233,29 +252,30 @@ namespace TechnolToolkit
                 {
                     selectedGroupToRemove = treeViewGroups.SelectedNode.Parent.Text;
                     selectedUserToRemove = treeViewGroups.SelectedNode.Text;
-                    DialogResult confirmation = MessageBox.Show("Opravdu chcete odebrat " + selectedUserToRemove + " ze skupiny " + selectedGroupToRemove + "?","Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    DialogResult confirmation = MessageBox.Show("Opravdu chcete odebrat " + selectedUserToRemove + " ze skupiny " + selectedGroupToRemove + "?", "Potvrzení", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                     if (confirmation == DialogResult.Yes)
                         try
                         {
                             //Removing selected user from opened group
                             using (PrincipalContext pc = new PrincipalContext(ContextType.Machine, textBoxComputername.Text))
-                                using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, selectedGroupToRemove))
-                                    foreach (Principal groupUser in localGroup.GetMembers())
-                                        if (groupUser.SamAccountName == selectedUserToRemove)
-                                        {
-                                            localGroup.Members.Remove(groupUser);
-                                            localGroup.Save();
-                                            updateGroupsAndMembers();
-                                        }
+                            using (GroupPrincipal localGroup = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, selectedGroupToRemove))
+                                foreach (Principal groupUser in localGroup.GetMembers())
+                                    if (groupUser.SamAccountName == selectedUserToRemove)
+                                    {
+                                        localGroup.Members.Remove(groupUser);
+                                        localGroup.Save();
+                                        updateGroupsAndMembers();
+                                    }
                         }
                         catch (System.DirectoryServices.DirectoryServicesCOMException E)
                         {
-                            MessageBox.Show(E.Message.ToString(),"Chyba!", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            MessageBox.Show(E.Message.ToString(), "Chyba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                 }
             }
             else return;
-        
+
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
         }
 
         private void buttonConnectToDevice_Click(object sender, EventArgs e)
@@ -265,7 +285,10 @@ namespace TechnolToolkit
 
         private void buttonAddMemberToGroup_Click(object sender, EventArgs e)
         {
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+            registryFix(textBoxComputername.Text);
             addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
             radioButtonAutomatickeOdebrani.Checked = false;
             radioButtonNeomezenaPlatnost.Checked = false;
         }
@@ -340,6 +363,9 @@ namespace TechnolToolkit
 
         private void zobrazitUzivatelskeJmenoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+            registryFix(textBoxComputername.Text);
+
             if (treeViewGroups.SelectedNode.Parent != null)
             {
                 string selectedUser = treeViewGroups.SelectedNode.Text;
@@ -357,9 +383,11 @@ namespace TechnolToolkit
                 }
                 catch (System.DirectoryServices.DirectoryServicesCOMException E)
                 {
-                    MessageBox.Show(E.Message.ToString(), "Chyba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(E.Message.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
         }
         private void fillLoggedDatatoListView()
         {
@@ -408,15 +436,119 @@ namespace TechnolToolkit
         }
         
         private void tableLayoutPanelNazevPC_Paint(object sender, PaintEventArgs e)
-        {
-            Form1 form1 = new Form1();
-            e.Graphics.DrawLine(new Pen(form1.themeColor, 1), 3, 28, 235, 28);
+        {            
+            e.Graphics.DrawLine(new Pen(themeColor, 1), 3, 28, 235, 28);
         }
 
         private void tableLayoutPanelDZC_Paint(object sender, PaintEventArgs e)
+        { 
+            e.Graphics.DrawLine(new Pen(themeColor, 1), 3, 28, 235, 28);
+        }
+
+        private void buttonPing_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            e.Graphics.DrawLine(new Pen(form1.themeColor, 1), 3, 28, 235, 28);
+            labelPingStatus.Text = "Ping na " + textBoxComputername.Text + " status: navazuji komunikaci";
+            buttonPing.BackColor = Color.Orange;
+            labelPingStatus.ForeColor = Color.Orange;
+            using (Ping ping = new Ping())
+            {
+                try
+                {
+                    PingReply pingReply = ping.Send(textBoxComputername.Text, 2000);
+                    if (pingReply.Status == IPStatus.Success)
+                    {
+                        labelPingStatus.Text = "Ping na "+ textBoxComputername.Text + " status: úspěch";
+                        labelPingStatus.ForeColor = Color.ForestGreen;
+                        buttonPing.BackColor = Color.ForestGreen;
+                    } else
+                    {
+                        labelPingStatus.Text = "Ping na " + textBoxComputername.Text + " status: " + pingReply.Status.ToString();
+                        buttonPing.BackColor = Color.Firebrick;
+                        labelPingStatus.ForeColor = Color.Firebrick;
+                    }
+                } catch(Exception x)
+                {
+                    labelPingStatus.Text = "Ping na " + textBoxComputername.Text + " status: " + x.Message;
+                    buttonPing.BackColor = Color.Firebrick;
+                    labelPingStatus.ForeColor = Color.Firebrick;
+                    return;
+                }
+            }
+        }
+
+        private void textBoxUsername_TextChanged(object sender, EventArgs e)
+        {
+            checkInputDataCompletion();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkInputDataCompletion();
+        }
+        private void registryFix(string computer)
+        {
+            //RegisteredOwner
+            var regOwn = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion").GetValue("RegisteredOwner");
+            if (regOwn != null)
+            {
+                if (regOwn.ToString() != "SKODA AUTO a.s.")
+                    RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOwner", "SKODA AUTO a.s.", RegistryValueKind.String);
+            }
+            else
+            {
+                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).CreateSubKey("RegisteredOwner");
+                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOwner", "SKODA AUTO a.s.", RegistryValueKind.String);
+            }
+
+            //RegisteredOrganization
+            var regOrg = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion").GetValue("RegisteredOrganization");
+            if (regOrg != null)
+            {
+                if (regOrg.ToString() != "SKODA AUTO a.s.")
+                    RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOrganization", "SKODA AUTO a.s.", RegistryValueKind.String);
+            }
+            else
+            {
+                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).CreateSubKey("RegisteredOrganization");
+                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOrganization", "SKODA AUTO a.s.", RegistryValueKind.String);
+            }
+        }
+        private void runOrStopService(string serviceName, string computer, serviceAction action)
+        {
+            
+            switch(action)
+            {
+                case serviceAction.run:
+                    using (ServiceController sc = new ServiceController(serviceName, computer))
+                    {
+                        if (sc.Status != ServiceControllerStatus.Running)
+                        {
+                            sc.Start();
+                            sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(60));
+                            if (sc.Status != ServiceControllerStatus.Running)
+                            {
+                                MessageBox.Show("Sluzbu " + serviceName + " se nepodarilo spustit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                break;
+                case serviceAction.stop:
+                    using (ServiceController sc = new ServiceController(serviceName, computer))
+                    {
+                        if (sc.Status != ServiceControllerStatus.Stopped)
+                        {
+                            sc.Stop();
+                            sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(60));
+                            if (sc.Status != ServiceControllerStatus.Stopped)
+                            {
+                                MessageBox.Show("Sluzbu " + serviceName + " se nepodarilo zastavit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
+            }
         }
     }
 }

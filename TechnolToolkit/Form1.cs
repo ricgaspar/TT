@@ -25,8 +25,6 @@ namespace TechnolToolkit
         //Login
         Login loginScreen = new Login();
 
-
-
         public Form1()
         {
             InitializeComponent();
@@ -152,6 +150,12 @@ namespace TechnolToolkit
         {
             activePanelFuntion(aktivniPanel, "ucAG");
         }
+        private void buttonDZC_Click(object sender, EventArgs e)
+        {
+            Form dzcSearch = new DZCsearch();
+            dzcSearch.ShowDialog();
+        }
+
         #endregion
 
         #region Button Paint funkce
@@ -189,6 +193,26 @@ namespace TechnolToolkit
                 g.FillRectangle(br, rect);
             }
         }
+
+        private void buttonAddToGroup_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_add_user_group_man_man_96, 100, 100), 8, 0);
+            if (aktivniPanel == "ucAG")
+            {
+                Pen pen = new Pen(Color.Blue, 3);
+                Rectangle rect = new Rectangle(0, 0, 5, buttonAddToGroup.Height);
+                Brush br = new SolidBrush(activeButtonLineColor);
+                g.FillRectangle(br, rect);
+            }
+        }
+
+        private void buttonDZC_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
+        }
+
         #endregion
 
         //Funkce která se stará o změnu zobrazovaného UserControl a volá funkci na změnu pozadí buttonu
@@ -248,7 +272,6 @@ namespace TechnolToolkit
                     }
                     #endregion
                     break;
-                    
             }
             pozadiAktivnihoButtonu(buttonClicked);
         }
@@ -272,63 +295,14 @@ namespace TechnolToolkit
                     }
                 }   
             }
-        }
-        private string displayNameToUserID(string userid)
-        {
-            using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
-            {
-                UserPrincipal user = UserPrincipal.FindByIdentity(ctx, userid);
-                if (user != null)
-                    return user.SamAccountName;
-                else
-                    return string.Empty;
-            }
-        }
-
-        private void buttonDZC_Click(object sender, EventArgs e)
-        {
-            //DZC Vyhledani
-            //Presunuto sem, protoze nenemuzeme opakovane zobrazovat stejnou jednu instanci formu DZCsearch, ktera byla už jednou "zavřena"
-            Form dzcSearch = new DZCsearch();
-            dzcSearch.ShowDialog();
-        }
-
-        private void buttonDZC_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
-        }
-
-        private void buttonAddToGroup_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_add_user_group_man_man_96, 100, 100), 8, 0);
-            if (aktivniPanel == "ucAG")
-            {
-                Pen pen = new Pen(Color.Blue, 3);
-                Rectangle rect = new Rectangle(0, 0, 5, buttonAddToGroup.Height);
-                Brush br = new SolidBrush(activeButtonLineColor);
-                g.FillRectangle(br, rect);
-            }
-        }
-
-        private void buttonSettings_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_services_528, 500, 500), 8, 0);
-            if (aktivniPanel == "ucSet")
-            {
-                Pen pen = new Pen(Color.Blue, 3);
-                Rectangle rect = new Rectangle(0, 0, 5, buttonSettings.Height);
-                Brush br = new SolidBrush(Color.FromArgb(140, 164, 196));
-                g.FillRectangle(br, rect);
-            }
-        }
+        }  
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.FromArgb(48, 48, 48), 1);
             e.Graphics.DrawLine(pen, tableLayoutPanelMenu.Width - 1, 0, tableLayoutPanelMenu.Width - 1, tableLayoutPanelMenu.Height - 1);
-        }        
+        }
+
+
     }
 }

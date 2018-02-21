@@ -13,6 +13,7 @@ namespace TechnolToolkit
 {
     public partial class MSIUninstall : Form
     {
+        public Color themeColor = Color.FromArgb(174, 0, 0);
         public MSIUninstall()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace TechnolToolkit
         {
             textBoxMSIstring.Text = "";
             textBoxComputerName.Text = "";
-            buttonOK.Enabled = false;
+            buttonSearch.Enabled = false;
             checkBoxTentoPC.Checked = false;
         }
         private void kliknutiNeboEnter()
@@ -53,7 +54,7 @@ namespace TechnolToolkit
             checkBoxTentoPC.Checked = true;
             textBoxComputerName.Enabled = false;
         }
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
             kliknutiNeboEnter();
         }
@@ -62,11 +63,11 @@ namespace TechnolToolkit
         {
             if (textBoxComputerName.Text == "" && checkBoxTentoPC.Checked == false)
             {
-                buttonOK.Enabled = false;
+                buttonSearch.Enabled = false;
             }
             else
             {
-                buttonOK.Enabled = true;
+                buttonSearch.Enabled = true;
             }
         }
 
@@ -74,11 +75,11 @@ namespace TechnolToolkit
         {
             if(textBoxMSIstring.Text == "")
             {
-                buttonOK.Enabled = false;
+                buttonSearch.Enabled = false;
             }
             else
             {
-                buttonOK.Enabled = true;
+                buttonSearch.Enabled = true;
             }
         }
 
@@ -100,10 +101,16 @@ namespace TechnolToolkit
                 }
         }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        private void MSIUninstall_Paint(object sender, PaintEventArgs e)
         {
-            Graphics line = e.Graphics;
-            line.DrawLine(new Pen(Brushes.Gray),0,0,pictureBox1.Width,0);
+            PointF computerTxt = new PointF(textBoxComputerName.FindForm().PointToClient(textBoxComputerName.Parent.PointToScreen(textBoxComputerName.Location)).X,
+                textBoxComputerName.FindForm().PointToClient(textBoxComputerName.Parent.PointToScreen(textBoxComputerName.Location)).Y);
+            e.Graphics.DrawLine(new Pen(themeColor, 1), computerTxt.X, computerTxt.Y + textBoxComputerName.Height + 2, computerTxt.X + textBoxComputerName.Width, computerTxt.Y + textBoxComputerName.Height + 2);
+
+            PointF msiTxt = new PointF(textBoxMSIstring.FindForm().PointToClient(textBoxMSIstring.Parent.PointToScreen(textBoxMSIstring.Location)).X,
+                textBoxMSIstring.FindForm().PointToClient(textBoxMSIstring.Parent.PointToScreen(textBoxMSIstring.Location)).Y);
+            
+            e.Graphics.DrawLine(new Pen(themeColor, 1),msiTxt.X,msiTxt.Y + textBoxMSIstring.Height + 2, msiTxt.X + textBoxMSIstring.Width, msiTxt.Y + textBoxMSIstring.Height + 2);
         }
     }
 }

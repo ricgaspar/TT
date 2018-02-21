@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlAddToGroup));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("test");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("test");
             this.labelConnectedTo = new System.Windows.Forms.Label();
             this.labelDateTimeConnected = new System.Windows.Forms.Label();
             this.tableLayoutPanelPridaniDoSkup = new System.Windows.Forms.TableLayoutPanel();
@@ -95,11 +95,11 @@
             // 
             this.labelConnectedTo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelConnectedTo.AutoSize = true;
-            this.labelConnectedTo.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            this.labelConnectedTo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelConnectedTo.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelConnectedTo.Location = new System.Drawing.Point(3, 0);
+            this.labelConnectedTo.Location = new System.Drawing.Point(3, 1);
             this.labelConnectedTo.Name = "labelConnectedTo";
-            this.labelConnectedTo.Size = new System.Drawing.Size(69, 16);
+            this.labelConnectedTo.Size = new System.Drawing.Size(71, 15);
             this.labelConnectedTo.TabIndex = 0;
             this.labelConnectedTo.Text = "Připojeno k:";
             // 
@@ -107,11 +107,11 @@
             // 
             this.labelDateTimeConnected.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelDateTimeConnected.AutoSize = true;
-            this.labelDateTimeConnected.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            this.labelDateTimeConnected.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelDateTimeConnected.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelDateTimeConnected.Location = new System.Drawing.Point(183, 0);
+            this.labelDateTimeConnected.Location = new System.Drawing.Point(183, 1);
             this.labelDateTimeConnected.Name = "labelDateTimeConnected";
-            this.labelDateTimeConnected.Size = new System.Drawing.Size(81, 16);
+            this.labelDateTimeConnected.Size = new System.Drawing.Size(81, 15);
             this.labelDateTimeConnected.TabIndex = 1;
             this.labelDateTimeConnected.Text = "Čas připojení:";
             // 
@@ -182,6 +182,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(435, 25);
             this.comboBox1.TabIndex = 12;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // tableLayoutPanelDZC
             // 
@@ -216,6 +217,7 @@
             this.textBoxUsername.TabIndex = 0;
             this.textBoxUsername.Text = "Uživatel (DZC)";
             this.textBoxUsername.Click += new System.EventHandler(this.textBoxUsername_Click);
+            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
             this.textBoxUsername.Leave += new System.EventHandler(this.textBoxUsername_Leave);
             // 
             // buttonSetCurrentUser
@@ -270,6 +272,7 @@
             this.buttonPing.TabIndex = 12;
             this.buttonPing.Text = "Ping";
             this.buttonPing.UseVisualStyleBackColor = false;
+            this.buttonPing.Click += new System.EventHandler(this.buttonPing_Click);
             // 
             // textBoxComputername
             // 
@@ -440,11 +443,11 @@
             // labelPingStatus
             // 
             this.labelPingStatus.AutoSize = true;
-            this.labelPingStatus.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPingStatus.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelPingStatus.ForeColor = System.Drawing.Color.White;
             this.labelPingStatus.Location = new System.Drawing.Point(383, 0);
             this.labelPingStatus.Name = "labelPingStatus";
-            this.labelPingStatus.Size = new System.Drawing.Size(68, 16);
+            this.labelPingStatus.Size = new System.Drawing.Size(67, 15);
             this.labelPingStatus.TabIndex = 2;
             this.labelPingStatus.Text = "Ping status:";
             // 
@@ -589,7 +592,7 @@
             this.listView1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.listView1.ForeColor = System.Drawing.Color.Gainsboro;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem6});
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";

@@ -32,7 +32,6 @@
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelMenu = new System.Windows.Forms.TableLayoutPanel();
             this.buttonMenu = new System.Windows.Forms.Button();
-            this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonAdminTools = new System.Windows.Forms.Button();
             this.buttonAddToGroup = new System.Windows.Forms.Button();
             this.buttonSAP = new System.Windows.Forms.Button();
@@ -67,7 +66,6 @@
             this.tableLayoutPanelMenu.ColumnCount = 1;
             this.tableLayoutPanelMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMenu.Controls.Add(this.buttonMenu, 0, 0);
-            this.tableLayoutPanelMenu.Controls.Add(this.buttonSettings, 0, 5);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonAdminTools, 0, 1);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonAddToGroup, 0, 4);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonSAP, 0, 2);
@@ -106,26 +104,6 @@
             this.buttonMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMenu.UseVisualStyleBackColor = false;
             this.buttonMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMenu_Paint);
-            // 
-            // buttonSettings
-            // 
-            this.buttonSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSettings.FlatAppearance.BorderSize = 0;
-            this.buttonSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettings.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSettings.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSettings.Location = new System.Drawing.Point(0, 320);
-            this.buttonSettings.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.buttonSettings.Size = new System.Drawing.Size(249, 60);
-            this.buttonSettings.TabIndex = 9;
-            this.buttonSettings.Text = "Nastavení";
-            this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonSettings_Paint);
             // 
             // buttonAdminTools
             // 
@@ -268,7 +246,6 @@
         private System.Windows.Forms.Button buttonSAP;
         private System.Windows.Forms.Button buttonDZC;
         private System.Windows.Forms.Button buttonAddToGroup;
-        private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMenu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPocitacAFlowlayout;
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,8 +49,10 @@ namespace TechnolToolkit
             {
                 get { return Color.FromArgb(75, 74, 77); }
             }
-
         }
+
+        public Color themeColor = Color.FromArgb(174, 0, 0);
+
         private ListViewColumnSorter lvwColumnSorter;
         public InstalledPrograms()
         {
@@ -59,6 +62,7 @@ namespace TechnolToolkit
             lvwColumnSorter = new ListViewColumnSorter();
             listView1.ListViewItemSorter = lvwColumnSorter;
             obnovListView();
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             //this.Icon = new Icon(Properties.Resources.)
             menuStrip1.Renderer = new MyRenderer();
             
@@ -110,22 +114,22 @@ namespace TechnolToolkit
             //Chceme lokalni pc?
             if (checkBoxLocalPC.Checked == true)
             {
-                textBox1.Enabled = false;
+                textBoxComputername.Enabled = false;
                 buttonVyhledat.Enabled = true;
             }
             //Nechceme
             else
             {
-                textBox1.Enabled = true;
-                textBox1.Text = "";
+                textBoxComputername.Enabled = true;
+                textBoxComputername.Text = "";
                 buttonVyhledat.Enabled = false;
             }
         }
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Lokální PC")
-                textBox1.Text = "";
+            if (textBoxComputername.Text == "Lokální PC")
+                textBoxComputername.Text = "";
             else
                 return;
         }
@@ -136,16 +140,30 @@ namespace TechnolToolkit
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
 
-            listView1.Columns.Add("PC/IP", (sirkaListView1 / 100) * 15);
-            listView1.Columns.Add("Instalovaný Software", (sirkaListView1 / 100) * 65);
-            listView1.Columns.Add("Verze", (sirkaListView1 / 100) * 20);
+            listView1.Columns.Add("Software", 50);
+            listView1.Columns.Add("Verze", 50);
+            listView1.Columns.Add("Datum instalace", 50);
+            listView1.Columns.Add("Vydavatel", 50);
+            listView1.Columns.Add("Umístění softwaru", 50);
+            listView1.Columns.Add("Instalováno z", 50);
+            listView1.Columns.Add("Odinstalační string", 50);
         }
-        private void naplnListView(string pcName, string program, string verze)
+        private void fillListView(string software, string verze, string datumInstalace, string vydavatel, string umisteniSoftwaru, string instalovanoZ, string odinstalacniString)
         {
-            
+            /*
             ListViewItem lvi = new ListViewItem(pcName);
             lvi.SubItems.Add(program);
             lvi.SubItems.Add(verze);
+            listView1.Items.Add(lvi);
+            */
+            ListViewItem lvi = new ListViewItem(software);
+            lvi.SubItems.Add(verze);
+            lvi.SubItems.Add(datumInstalace);
+            lvi.SubItems.Add(vydavatel);
+            lvi.SubItems.Add(umisteniSoftwaru);
+            lvi.SubItems.Add(instalovanoZ);
+            lvi.SubItems.Add(odinstalacniString);
+
             listView1.Items.Add(lvi);
         }
 
@@ -162,14 +180,15 @@ namespace TechnolToolkit
                     string name = m1.Groups[1].ToString().Trim();
                     string version = m2.Groups[1].ToString().Trim();
 
-                    if (checkBoxLocalPC.Checked)
-                        naplnListView(Environment.MachineName, name, version);
-                    else naplnListView(textBox1.Text, name, version);
+                    /*if (checkBoxLocalPC.Checked)
+                        fillListView(Environment.MachineName, name, version);
+                    else fillListView(textBoxComputername.Text, name, version);
+                    */
                 }
             }
             if (checkBoxLocalPC.Checked)
                 otevrenoToolStripMenuItem.Text = "Otevřeno: " + Environment.MachineName;
-            else otevrenoToolStripMenuItem.Text = "Otevřeno: " + textBox1.Text;
+            else otevrenoToolStripMenuItem.Text = "Otevřeno: " + textBoxComputername.Text;
             // Loop through and size each column header to fit the column header text.
             foreach (ColumnHeader ch in this.listView1.Columns)
             {
@@ -180,6 +199,13 @@ namespace TechnolToolkit
         private void buttonOK_Click(object sender, EventArgs e)
         {
             obnovListView();
+            searchInstalledSoftware(textBoxComputername.Text);
+            //CurrentUser
+            
+
+            #region oldCode
+            /*
+            
             Process p = new Process();
             string format = DateTime.Now.ToString("yyy_mm_dd_hh_mm_ss");
             string pcName = Environment.MachineName;
@@ -250,12 +276,90 @@ namespace TechnolToolkit
                         MessageBox.Show(textBox1.Text + " není na síti. Zadali jste správný HostName?\nZkuste zadat IP adresu místo HostName.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }                
-            }).Start();            
+            }).Start(); 
+            
+            */
+            #endregion
         }
+        private void searchInstalledSoftware(string computername)
+        {
+            #warning Dodelat - nezobrazuje do listView
+            //
+            //Dictionary<String, List<List<>>> data = new
+            List<string> displayNames = new List<string>();
+            List<string> displayVersions = new List<string>();
+            List<string> uninstallStrings = new List<string>();
+            List<string> publishers = new List<string>();
+            List<string> installSource = new List<string>();
+            List<string> installDate = new List<string>();
+            List<string> installLocation = new List<string>();
+            RegistryKey key;
+            
+            //CurrentUser
+            key = RegistryKey.OpenRemoteBaseKey(RegistryHive.CurrentUser, computername).OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+            foreach (String keyName in key.GetSubKeyNames())
+            {
+                //Otevri prave prochazeny klic
+                RegistryKey subkey = key.OpenSubKey(keyName);
+                //Do listu uloz jmeno softwaru
+                if (keyName != null && keyName != "")
+                { 
+                    
+                    displayNames.Add(subkey.GetValue("DisplayName") as string);
+                    displayVersions.Add(subkey.GetValue("DisplayVersion") as string);
+                    uninstallStrings.Add(subkey.GetValue("UninstallString") as string);
+                    publishers.Add(subkey.GetValue("Publisher") as string);
+                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                }
+            }
+            
+            //Localmachine (on remote pc) 32-bit
+            key = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computername).OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+            foreach (String keyName in key.GetSubKeyNames())
+            {
+                //Otevri prave prochazeny klic
+                RegistryKey subkey = key.OpenSubKey(keyName);
+                //Do listu uloz jmeno softwaru
+                if (keyName != null && keyName != "")
+                {
+                    displayNames.Add(subkey.GetValue("DisplayName") as string);
+                    displayVersions.Add(subkey.GetValue("DisplayVersion") as string);
+                    uninstallStrings.Add(subkey.GetValue("UninstallString") as string);
+                    publishers.Add(subkey.GetValue("Publisher") as string);
+                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                }
+            }
 
+            //Localmachine (on remote pc) 64-bit
+            key = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computername).OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall");
+            foreach (String keyName in key.GetSubKeyNames())
+            {
+                //Otevri prave prochazeny klic
+                RegistryKey subkey = key.OpenSubKey(keyName);
+                //Do listu uloz jmeno softwaru
+                if (keyName != null && keyName != "")
+                {
+                    displayNames.Add(subkey.GetValue("DisplayName") as string);
+                    displayVersions.Add(subkey.GetValue("DisplayVersion") as string);
+                    uninstallStrings.Add(subkey.GetValue("UninstallString") as string);
+                    publishers.Add(subkey.GetValue("Publisher") as string);
+                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                }
+            }
+
+
+            //Magicka radka kodu, ktera smaze whitespace a duplikaty
+            //displayNames = displayNames.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (textBoxComputername.Text == "")
                 if (!checkBoxLocalPC.Checked)
                 {
                     buttonVyhledat.Enabled = false;
@@ -356,6 +460,11 @@ namespace TechnolToolkit
 
             // Perform the sort with these new sort options.
             this.listView1.Sort();
+        }
+
+        private void tableLayoutPanelHorniVnoreny_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(new Pen(themeColor, 1), 157, 33, 330, 33);
         }
     }
 }

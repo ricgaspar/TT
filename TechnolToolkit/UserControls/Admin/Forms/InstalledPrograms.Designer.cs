@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanelHorniVnoreny = new System.Windows.Forms.TableLayoutPanel();
             this.checkBoxLocalPC = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxComputername = new System.Windows.Forms.TextBox();
             this.buttonVyhledat = new System.Windows.Forms.Button();
             this.checkBoxKopirujVerze = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
@@ -53,9 +53,11 @@
             // 
             // listView1
             // 
-            this.listView1.BackColor = System.Drawing.Color.White;
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.ForeColor = System.Drawing.Color.Black;
+            this.listView1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listView1.ForeColor = System.Drawing.Color.Gainsboro;
             this.listView1.Location = new System.Drawing.Point(3, 81);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(944, 488);
@@ -85,16 +87,16 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label1.Location = new System.Drawing.Point(0, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(371, 30);
+            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(409, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Vyhledání nainstalovaných programů";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,14 +105,14 @@
             // 
             this.tableLayoutPanelHorniVnoreny.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanelHorniVnoreny.ColumnCount = 4;
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199F));
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.checkBoxLocalPC, 0, 1);
-            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.textBox1, 1, 1);
-            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.buttonVyhledat, 2, 1);
+            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.textBoxComputername, 1, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.checkBoxKopirujVerze, 3, 1);
+            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.buttonVyhledat, 2, 1);
             this.tableLayoutPanelHorniVnoreny.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelHorniVnoreny.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanelHorniVnoreny.Margin = new System.Windows.Forms.Padding(0);
@@ -120,47 +122,54 @@
             this.tableLayoutPanelHorniVnoreny.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelHorniVnoreny.Size = new System.Drawing.Size(950, 43);
             this.tableLayoutPanelHorniVnoreny.TabIndex = 0;
+            this.tableLayoutPanelHorniVnoreny.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelHorniVnoreny_Paint);
             // 
             // checkBoxLocalPC
             // 
-            this.checkBoxLocalPC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxLocalPC.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBoxLocalPC.AutoSize = true;
             this.checkBoxLocalPC.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxLocalPC.Checked = true;
             this.checkBoxLocalPC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLocalPC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxLocalPC.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxLocalPC.Location = new System.Drawing.Point(30, 13);
-            this.checkBoxLocalPC.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
+            this.checkBoxLocalPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxLocalPC.ForeColor = System.Drawing.Color.White;
+            this.checkBoxLocalPC.Location = new System.Drawing.Point(7, 9);
+            this.checkBoxLocalPC.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxLocalPC.Name = "checkBoxLocalPC";
-            this.checkBoxLocalPC.Size = new System.Drawing.Size(102, 25);
+            this.checkBoxLocalPC.Size = new System.Drawing.Size(147, 25);
             this.checkBoxLocalPC.TabIndex = 1;
-            this.checkBoxLocalPC.Text = "Lokální PC";
+            this.checkBoxLocalPC.Text = "Lokální počítač";
             this.checkBoxLocalPC.UseVisualStyleBackColor = true;
             this.checkBoxLocalPC.CheckedChanged += new System.EventHandler(this.checkBoxLocalPC_CheckedChanged);
             // 
-            // textBox1
+            // textBoxComputername
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(138, 13);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 25);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxComputername.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxComputername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxComputername.Enabled = false;
+            this.textBoxComputername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxComputername.ForeColor = System.Drawing.Color.White;
+            this.textBoxComputername.Location = new System.Drawing.Point(157, 11);
+            this.textBoxComputername.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.textBoxComputername.Name = "textBoxComputername";
+            this.textBoxComputername.Size = new System.Drawing.Size(174, 20);
+            this.textBoxComputername.TabIndex = 2;
+            this.textBoxComputername.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBoxComputername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // buttonVyhledat
             // 
-            this.buttonVyhledat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVyhledat.ForeColor = System.Drawing.Color.Black;
-            this.buttonVyhledat.Location = new System.Drawing.Point(337, 13);
-            this.buttonVyhledat.Margin = new System.Windows.Forms.Padding(3, 13, 0, 3);
+            this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonVyhledat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonVyhledat.FlatAppearance.BorderSize = 0;
+            this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonVyhledat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
+            this.buttonVyhledat.Location = new System.Drawing.Point(341, 6);
+            this.buttonVyhledat.Margin = new System.Windows.Forms.Padding(0);
             this.buttonVyhledat.Name = "buttonVyhledat";
-            this.buttonVyhledat.Size = new System.Drawing.Size(80, 25);
+            this.buttonVyhledat.Size = new System.Drawing.Size(121, 30);
             this.buttonVyhledat.TabIndex = 3;
             this.buttonVyhledat.Text = "Vyhledat";
             this.buttonVyhledat.UseVisualStyleBackColor = false;
@@ -170,13 +179,11 @@
             // 
             this.checkBoxKopirujVerze.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBoxKopirujVerze.AutoSize = true;
-            this.checkBoxKopirujVerze.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxKopirujVerze.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxKopirujVerze.Location = new System.Drawing.Point(818, 9);
-            this.checkBoxKopirujVerze.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.checkBoxKopirujVerze.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxKopirujVerze.ForeColor = System.Drawing.Color.White;
+            this.checkBoxKopirujVerze.Location = new System.Drawing.Point(818, 11);
             this.checkBoxKopirujVerze.Name = "checkBoxKopirujVerze";
-            this.checkBoxKopirujVerze.Padding = new System.Windows.Forms.Padding(10, 6, 0, 0);
-            this.checkBoxKopirujVerze.Size = new System.Drawing.Size(129, 27);
+            this.checkBoxKopirujVerze.Size = new System.Drawing.Size(129, 21);
             this.checkBoxKopirujVerze.TabIndex = 4;
             this.checkBoxKopirujVerze.Text = "Kopírovat verze";
             this.checkBoxKopirujVerze.UseVisualStyleBackColor = true;
@@ -213,25 +220,27 @@
             // otevrenoToolStripMenuItem
             // 
             this.otevrenoToolStripMenuItem.AutoSize = false;
-            this.otevrenoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
+            this.otevrenoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.otevrenoToolStripMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.otevrenoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.otevrenoToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.otevrenoToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
             this.otevrenoToolStripMenuItem.Name = "otevrenoToolStripMenuItem";
             this.otevrenoToolStripMenuItem.ReadOnly = true;
             this.otevrenoToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.otevrenoToolStripMenuItem.Size = new System.Drawing.Size(250, 19);
+            this.otevrenoToolStripMenuItem.Size = new System.Drawing.Size(250, 15);
             this.otevrenoToolStripMenuItem.Text = "Otevřeno: NULL";
             // 
             // pocetToolStripMenuItem
             // 
             this.pocetToolStripMenuItem.AutoSize = false;
-            this.pocetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
+            this.pocetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.pocetToolStripMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pocetToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.pocetToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pocetToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
             this.pocetToolStripMenuItem.Name = "pocetToolStripMenuItem";
             this.pocetToolStripMenuItem.ReadOnly = true;
             this.pocetToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pocetToolStripMenuItem.Size = new System.Drawing.Size(250, 19);
+            this.pocetToolStripMenuItem.Size = new System.Drawing.Size(250, 15);
             this.pocetToolStripMenuItem.Text = "Počet: 0";
             // 
             // contextMenuStrip1
@@ -262,7 +271,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(950, 596);
             this.Controls.Add(this.tableLayoutPanelVnejsi);
             this.Controls.Add(this.menuStrip1);
@@ -293,7 +302,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorni;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorniVnoreny;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxComputername;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVnejsi;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.CheckBox checkBoxLocalPC;

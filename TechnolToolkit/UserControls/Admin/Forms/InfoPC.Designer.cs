@@ -30,6 +30,7 @@
         {
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonMenuCPUGPU = new System.Windows.Forms.Button();
             this.buttonMenuOS = new System.Windows.Forms.Button();
             this.buttonMenuDrive = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.buttonVyhledat = new System.Windows.Forms.Button();
             this.checkBoxLocalPC = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanelVnitrniPravo.SuspendLayout();
@@ -82,6 +82,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 581);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(184)))), ((int)(((byte)(216)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(0, 318);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(200, 69);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Spuštěné procesy";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonMenuCPUGPU_Click);
+            this.button1.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMenuCPUGPU_Paint);
             // 
             // buttonMenuCPUGPU
             // 
@@ -296,24 +314,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(750, 518);
             this.panel2.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(184)))), ((int)(((byte)(216)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(0, 318);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(200, 69);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Spuštěné procesy";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonMenuCPUGPU_Click);
-            this.button1.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMenuCPUGPU_Paint);
             // 
             // InfoPC
             // 

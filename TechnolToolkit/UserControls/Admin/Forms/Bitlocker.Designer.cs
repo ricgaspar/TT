@@ -51,10 +51,10 @@
             this.textBoxDevice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDevice.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.textBoxDevice.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxDevice.Location = new System.Drawing.Point(98, 0);
+            this.textBoxDevice.Location = new System.Drawing.Point(98, 3);
             this.textBoxDevice.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxDevice.Name = "textBoxDevice";
-            this.textBoxDevice.Size = new System.Drawing.Size(209, 28);
+            this.textBoxDevice.Size = new System.Drawing.Size(209, 23);
             this.textBoxDevice.TabIndex = 0;
             this.textBoxDevice.TextChanged += new System.EventHandler(this.textBoxDevice_TextChanged);
             this.textBoxDevice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDevice_KeyDown);
