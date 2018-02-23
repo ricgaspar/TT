@@ -36,7 +36,6 @@
             this.checkBoxLocalPC = new System.Windows.Forms.CheckBox();
             this.textBoxComputername = new System.Windows.Forms.TextBox();
             this.buttonVyhledat = new System.Windows.Forms.Button();
-            this.checkBoxKopirujVerze = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.otevrenoToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
@@ -44,6 +43,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kopírovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zrušitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kopírovatVseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanelHorni.SuspendLayout();
             this.tableLayoutPanelHorniVnoreny.SuspendLayout();
             this.tableLayoutPanelVnejsi.SuspendLayout();
@@ -111,7 +111,6 @@
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.checkBoxLocalPC, 0, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.textBoxComputername, 1, 1);
-            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.checkBoxKopirujVerze, 3, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.buttonVyhledat, 2, 1);
             this.tableLayoutPanelHorniVnoreny.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelHorniVnoreny.Location = new System.Drawing.Point(0, 35);
@@ -129,8 +128,6 @@
             this.checkBoxLocalPC.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBoxLocalPC.AutoSize = true;
             this.checkBoxLocalPC.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxLocalPC.Checked = true;
-            this.checkBoxLocalPC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLocalPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxLocalPC.ForeColor = System.Drawing.Color.White;
             this.checkBoxLocalPC.Location = new System.Drawing.Point(7, 9);
@@ -147,7 +144,6 @@
             this.textBoxComputername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxComputername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxComputername.Enabled = false;
             this.textBoxComputername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxComputername.ForeColor = System.Drawing.Color.White;
             this.textBoxComputername.Location = new System.Drawing.Point(157, 11);
@@ -157,6 +153,7 @@
             this.textBoxComputername.TabIndex = 2;
             this.textBoxComputername.Click += new System.EventHandler(this.textBox1_Click);
             this.textBoxComputername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxComputername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxComputername_KeyDown);
             // 
             // buttonVyhledat
             // 
@@ -174,19 +171,6 @@
             this.buttonVyhledat.Text = "Vyhledat";
             this.buttonVyhledat.UseVisualStyleBackColor = false;
             this.buttonVyhledat.Click += new System.EventHandler(this.buttonOK_Click);
-            // 
-            // checkBoxKopirujVerze
-            // 
-            this.checkBoxKopirujVerze.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.checkBoxKopirujVerze.AutoSize = true;
-            this.checkBoxKopirujVerze.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxKopirujVerze.ForeColor = System.Drawing.Color.White;
-            this.checkBoxKopirujVerze.Location = new System.Drawing.Point(818, 11);
-            this.checkBoxKopirujVerze.Name = "checkBoxKopirujVerze";
-            this.checkBoxKopirujVerze.Size = new System.Drawing.Size(129, 21);
-            this.checkBoxKopirujVerze.TabIndex = 4;
-            this.checkBoxKopirujVerze.Text = "Kopírovat verze";
-            this.checkBoxKopirujVerze.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelVnejsi
             // 
@@ -228,7 +212,6 @@
             this.otevrenoToolStripMenuItem.ReadOnly = true;
             this.otevrenoToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.otevrenoToolStripMenuItem.Size = new System.Drawing.Size(250, 15);
-            this.otevrenoToolStripMenuItem.Text = "Otevřeno: NULL";
             // 
             // pocetToolStripMenuItem
             // 
@@ -241,31 +224,41 @@
             this.pocetToolStripMenuItem.ReadOnly = true;
             this.pocetToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pocetToolStripMenuItem.Size = new System.Drawing.Size(250, 15);
-            this.pocetToolStripMenuItem.Text = "Počet: 0";
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kopírovatToolStripMenuItem,
+            this.kopírovatVseToolStripMenuItem,
             this.zrušitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(290, 70);
             // 
             // kopírovatToolStripMenuItem
             // 
             this.kopírovatToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
             this.kopírovatToolStripMenuItem.Name = "kopírovatToolStripMenuItem";
             this.kopírovatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.kopírovatToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.kopírovatToolStripMenuItem.Text = "Kopírovat";
+            this.kopírovatToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
+            this.kopírovatToolStripMenuItem.Text = "Kopírovat název";
             this.kopírovatToolStripMenuItem.Click += new System.EventHandler(this.kopírovatToolStripMenuItem_Click);
             // 
             // zrušitToolStripMenuItem
             // 
             this.zrušitToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
             this.zrušitToolStripMenuItem.Name = "zrušitToolStripMenuItem";
-            this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
             this.zrušitToolStripMenuItem.Text = "Zrušit";
+            // 
+            // kopírovatVseToolStripMenuItem
+            // 
+            this.kopírovatVseToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
+            this.kopírovatVseToolStripMenuItem.Name = "kopírovatVseToolStripMenuItem";
+            this.kopírovatVseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.kopírovatVseToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
+            this.kopírovatVseToolStripMenuItem.Text = "Kopírovat všechny sloupce";
+            this.kopírovatVseToolStripMenuItem.Click += new System.EventHandler(this.kopírovatVseToolStripMenuItem_Click);
             // 
             // InstalledPrograms
             // 
@@ -308,10 +301,10 @@
         private System.Windows.Forms.CheckBox checkBoxLocalPC;
         private System.Windows.Forms.Button buttonVyhledat;
         private System.Windows.Forms.ToolStripTextBox pocetToolStripMenuItem;
-        private System.Windows.Forms.CheckBox checkBoxKopirujVerze;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem kopírovatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zrušitToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox otevrenoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kopírovatVseToolStripMenuItem;
     }
 }

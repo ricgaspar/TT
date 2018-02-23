@@ -65,7 +65,8 @@ namespace TechnolToolkit
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             //this.Icon = new Icon(Properties.Resources.)
             menuStrip1.Renderer = new MyRenderer();
-            
+#warning Prepracovat funkce do co nejvice trid.. Napr vse pro kopirovani textu do jedne tridy, atd..
+
         }
         public static string getBetween(string strSource, string strStart, string strEnd)
         {
@@ -136,7 +137,6 @@ namespace TechnolToolkit
         private void obnovListView()
         {
             listView1.Clear();
-            int sirkaListView1 = listView1.Width;
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
 
@@ -200,91 +200,12 @@ namespace TechnolToolkit
         {
             obnovListView();
             searchInstalledSoftware(textBoxComputername.Text);
-            //CurrentUser
-            
+            otevrenoToolStripMenuItem.Text = "Software na " + textBoxComputername.Text;
+            pocetToolStripMenuItem.Text = "Počet: " + listView1.Items.Count;
 
-            #region oldCode
-            /*
-            
-            Process p = new Process();
-            string format = DateTime.Now.ToString("yyy_mm_dd_hh_mm_ss");
-            string pcName = Environment.MachineName;
-            string slozkaLogy = @"C:\ProgramData\TechnolToolkit\InstalledPrograms\" + pcName + "\\";
-            p.StartInfo.CreateNoWindow = true;
-            if (checkBoxLocalPC.Checked)
-            {
-                p.StartInfo.FileName = @"C:\WINDOWS\system32\reg.exe";
-                p.StartInfo.Arguments = @"query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall /s /f Display";
-            }
-            else
-            {
-                p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\PsExec.exe";
-                p.StartInfo.Arguments = @"\\" + textBox1.Text + @" reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall /s /f Display";
-                
-            }
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.RedirectStandardOutput = true;
-
-            statusBox sb = new statusBox();
-            sb.Show();
-
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-
-                if (checkBoxLocalPC.Checked)
-                {
-                    //local pc, nebudeme provadet ping
-                    p.Start();
-                    string output = p.StandardOutput.ReadToEnd();
-                    p.WaitForExit();
-
-                    Invoke(new Action(() =>
-                    {
-                        InstalovaneProgramy(output, false);
-                        sb.Close();
-                    }));
-                }
-                else
-                {
-                    //remote pc, provedeme ping
-                    try {
-                        Ping ping = new Ping();
-                        PingReply pingReply = ping.Send(textBox1.Text);
-                        if (pingReply.Status == IPStatus.Success)
-                        {
-                         
-                            //Machine is alive
-                            p.Start();
-                            
-                            string output = p.StandardOutput.ReadToEnd();
-                            p.WaitForExit();
-
-                            Invoke(new Action(() =>
-                            {
-                                InstalovaneProgramy(output, false);
-                                sb.Close();
-                            }));
-                        }
-                    }
-                    catch
-                    {
-                        Invoke(new Action(() =>
-                        {
-                            sb.Close();
-                        }));
-                        MessageBox.Show(textBox1.Text + " není na síti. Zadali jste správný HostName?\nZkuste zadat IP adresu místo HostName.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }                
-            }).Start(); 
-            
-            */
-            #endregion
         }
         private void searchInstalledSoftware(string computername)
         {
-            #warning Dodelat - nezobrazuje do listView
-            //
             //Dictionary<String, List<List<>>> data = new
             List<string> displayNames = new List<string>();
             List<string> displayVersions = new List<string>();
@@ -352,10 +273,26 @@ namespace TechnolToolkit
                     installLocation.Add(subkey.GetValue("InstallLocation") as string);
                 }
             }
-
-
-            //Magicka radka kodu, ktera smaze whitespace a duplikaty
-            //displayNames = displayNames.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+            
+            //Delete all whitespace or null
+            int pocetSW = displayNames.Count;
+            for (int i = 0; i < pocetSW; ++i )
+            {
+                if(displayNames[i] == "" || displayNames[i] == null)
+                {
+                    displayNames.RemoveAt(i);
+                    displayVersions.RemoveAt(i);
+                    uninstallStrings.RemoveAt(i);
+                    publishers.RemoveAt(i);
+                    installSource.RemoveAt(i);
+                    installDate.RemoveAt(i);
+                    installLocation.RemoveAt(i);
+                    pocetSW = displayNames.Count;
+                    continue;
+                }
+                fillListView(displayNames[i], displayVersions[i], installDate[i], publishers[i], installLocation[i], installSource[i], uninstallStrings[i]);
+            }
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -399,6 +336,7 @@ namespace TechnolToolkit
 
         private void listView1_KeyDown(object sender, KeyEventArgs e)
         {
+            //CTRL + C = Kopirovat nazev SW
             if (e.Control && e.KeyCode == Keys.C)
             {
                         
@@ -406,19 +344,31 @@ namespace TechnolToolkit
                 String text = "";
                 foreach (ListViewItem item in selectedItems)
                 {
-                    if(checkBoxKopirujVerze.Checked)
-                        text += item.SubItems[1].Text + " - " + item.SubItems[2].Text + "\n";
-                    else
-                        text += item.SubItems[1].Text + "\n";
+                    text += item.SubItems[1].Text + "\n";
                 }
                 Clipboard.SetText(text);
                 listView1.SelectedItems.Clear();
             }
+            //CTRL + A = Oznac vse
             if (e.Control && e.KeyCode == Keys.A)
                 foreach (ListViewItem item in listView1.Items)
                 {
                     item.Selected = true;
                 }
+            //CTRL + SHIFT + C = Kopirovat vsechny sloupce
+            if (e.Control && e.Shift && e.KeyCode == Keys.C)
+            {
+            #error Nefunguje - o radky nize stejny kod jde.. Opravit!
+                ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+                String text = "";
+                foreach (ListViewItem item in selectedItems)
+                {
+                    text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + item.SubItems[2].Text + ";" + item.SubItems[3].Text + ";"
+                    + item.SubItems[4].Text + ";" + item.SubItems[5].Text + ";" + item.SubItems[6].Text + ";" + "\n";
+                }
+                Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
         }
 
         private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
@@ -427,10 +377,7 @@ namespace TechnolToolkit
             String text = "";
             foreach (ListViewItem item in selectedItems)
             {
-                if (checkBoxKopirujVerze.Checked)
-                    text += item.SubItems[1].Text + " - " + item.SubItems[2].Text + "\n";
-                else
-                    text += item.SubItems[1].Text + "\n";
+                text += item.SubItems[1].Text + "\n";
             }
             Clipboard.SetText(text);
             listView1.SelectedItems.Clear();
@@ -465,6 +412,30 @@ namespace TechnolToolkit
         private void tableLayoutPanelHorniVnoreny_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawLine(new Pen(themeColor, 1), 157, 33, 330, 33);
+        }
+
+        private void kopírovatVseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            String text = "";
+            foreach (ListViewItem item in selectedItems)
+            {
+                text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + item.SubItems[2].Text + ";" + item.SubItems[3].Text + ";"
+                + item.SubItems[4].Text + ";" + item.SubItems[5].Text + ";" + item.SubItems[6].Text + ";" + "\n";
+            }
+            Clipboard.SetText(text);
+            listView1.SelectedItems.Clear();
+        }
+
+        private void textBoxComputername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                obnovListView();
+                searchInstalledSoftware(textBoxComputername.Text);
+                otevrenoToolStripMenuItem.Text = "Software na " + textBoxComputername.Text;
+                pocetToolStripMenuItem.Text = "Počet: " + listView1.Items.Count;
+            }
         }
     }
 }
