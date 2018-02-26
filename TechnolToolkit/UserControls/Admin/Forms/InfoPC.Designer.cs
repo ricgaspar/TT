@@ -185,7 +185,7 @@
             this.buttonMenuAll.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.buttonMenuAll.Size = new System.Drawing.Size(200, 50);
             this.buttonMenuAll.TabIndex = 1;
-            this.buttonMenuAll.Text = "Veškeré";
+            this.buttonMenuAll.Text = "Kompletní";
             this.buttonMenuAll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMenuAll.UseVisualStyleBackColor = true;
             this.buttonMenuAll.Click += new System.EventHandler(this.buttonMenuAll_Click);

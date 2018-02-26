@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlAddToGroup));
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("test");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("test");
             this.labelConnectedTo = new System.Windows.Forms.Label();
             this.labelDateTimeConnected = new System.Windows.Forms.Label();
             this.tableLayoutPanelPridaniDoSkup = new System.Windows.Forms.TableLayoutPanel();
@@ -148,7 +148,6 @@
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = global::TechnolToolkit.Properties.Resources.icons8_User_96_color;
             this.pictureBox2.Location = new System.Drawing.Point(0, 30);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
@@ -159,7 +158,6 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::TechnolToolkit.Properties.Resources.icons8_User_Groups_96_color;
             this.pictureBox3.Location = new System.Drawing.Point(0, 60);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox3.Name = "pictureBox3";
@@ -384,7 +382,6 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::TechnolToolkit.Properties.Resources.icons8_calendar_96;
             this.pictureBox4.Location = new System.Drawing.Point(471, 60);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox4.Name = "pictureBox4";
@@ -461,7 +458,6 @@
             // 
             // zobrazitUzivatelskeJmenoToolStripMenuItem
             // 
-            this.zobrazitUzivatelskeJmenoToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_User_96_color;
             this.zobrazitUzivatelskeJmenoToolStripMenuItem.Name = "zobrazitUzivatelskeJmenoToolStripMenuItem";
             this.zobrazitUzivatelskeJmenoToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.zobrazitUzivatelskeJmenoToolStripMenuItem.Text = "Zobrazit uživatelské jméno";
@@ -469,7 +465,6 @@
             // 
             // smazatClenaZeSkupinyToolStripMenuItem
             // 
-            this.smazatClenaZeSkupinyToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
             this.smazatClenaZeSkupinyToolStripMenuItem.Name = "smazatClenaZeSkupinyToolStripMenuItem";
             this.smazatClenaZeSkupinyToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.smazatClenaZeSkupinyToolStripMenuItem.Text = "Smazat člena ze skupiny";
@@ -592,7 +587,7 @@
             this.listView1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.listView1.ForeColor = System.Drawing.Color.Gainsboro;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6});
+            listViewItem1});
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";

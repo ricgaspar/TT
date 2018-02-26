@@ -40,7 +40,7 @@ namespace TechnolToolkit
         private void buttonInstalovanyProgramy_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_Installer_96, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), (buttonInstalovanyProgramy.Height / 2) - (picSize / 2) - heightOffset - 10);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Software_96_color, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), (buttonInstalovanyProgramy.Height / 2) - (picSize / 2) - heightOffset - 10);
         }
 
         private void buttonNajdiPC_Paint(object sender, PaintEventArgs e)
@@ -51,8 +51,11 @@ namespace TechnolToolkit
 
         private void buttonMSI_Paint(object sender, PaintEventArgs e)
         {
+#warning ButtonMSI nema ikonu
+            /*
             Graphics g = e.Graphics;
             g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_SoftwareUninstall_96_color, picSize, picSize), (buttonMSI.Width / 2) - (picSize / 2), (buttonMSI.Height / 2) - (picSize / 2) - heightOffset);
+            */
         }
 
         private void buttonNapajeniPC_Paint(object sender, PaintEventArgs e)
@@ -70,7 +73,7 @@ namespace TechnolToolkit
         private void buttonVAS_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_Car_96_color, picSize, picSize), (buttonVAS.Width / 2) - (picSize / 2), (buttonVAS.Height / 2) - (picSize / 2) - heightOffset);
+            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_F1_Car_96_color, picSize, picSize), (buttonVAS.Width / 2) - (picSize / 2), (buttonVAS.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonBitlocker_Paint(object sender, PaintEventArgs e)

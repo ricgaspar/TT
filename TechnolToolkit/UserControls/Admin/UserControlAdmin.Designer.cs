@@ -134,7 +134,7 @@
             // 
             // buttonNapajeniPC
             // 
-            this.buttonNapajeniPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonNapajeniPC.BackColor = System.Drawing.Color.Maroon;
             this.buttonNapajeniPC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNapajeniPC.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonNapajeniPC.FlatAppearance.BorderSize = 0;
@@ -156,7 +156,7 @@
             // buttonInfoPC
             // 
             this.buttonInfoPC.AccessibleDescription = "";
-            this.buttonInfoPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonInfoPC.BackColor = System.Drawing.Color.Maroon;
             this.buttonInfoPC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonInfoPC.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonInfoPC.FlatAppearance.BorderSize = 0;
@@ -178,7 +178,7 @@
             // 
             // buttonVAS
             // 
-            this.buttonVAS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonVAS.BackColor = System.Drawing.Color.Maroon;
             this.buttonVAS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonVAS.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonVAS.FlatAppearance.BorderSize = 0;
@@ -274,7 +274,7 @@
             // 
             // buttonSCCM
             // 
-            this.buttonSCCM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonSCCM.BackColor = System.Drawing.Color.Maroon;
             this.buttonSCCM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSCCM.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonSCCM.FlatAppearance.BorderSize = 0;
@@ -295,7 +295,7 @@
             // 
             // buttonMultiping
             // 
-            this.buttonMultiping.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.buttonMultiping.BackColor = System.Drawing.Color.Maroon;
             this.buttonMultiping.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonMultiping.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonMultiping.FlatAppearance.BorderSize = 0;

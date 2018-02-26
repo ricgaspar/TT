@@ -14,6 +14,7 @@ namespace TechnolToolkit
 {
     public partial class DZCsearch : Form
     {
+        public Color themeColor = Color.FromArgb(174, 0, 0);
         public DZCsearch()
         {
             InitializeComponent();
@@ -33,29 +34,37 @@ namespace TechnolToolkit
                     bool dzcFound;
                     using (UserPrincipal userp = new UserPrincipal(context))
                     {
+                        //Vyhledame vsechny uzivatelske id (DZCxxxx, nikoliv Pepa Novak), ktera zacinaji tim, co jsme dostali v promene od uzivatele
                         userp.SamAccountName = user + "*";
                         using (var searcher = new PrincipalSearcher(userp))
                         {
+                            //Aby prohledaval pouze podvetev a nezatezoval server hledanim v celym AD...
                             ((DirectorySearcher)searcher.GetUnderlyingSearcher()).SearchScope = SearchScope.Subtree;
-                            List<string> allUsers = new List<string>();
+                            //List pro vsechny nalezeny usery
+                            List<string> foundUsers = new List<string>();
                             foreach (var result in searcher.FindAll())
                             {
-                                allUsers.Add(result.SamAccountName.ToString() + " = " + result.DisplayName.ToString());
+                                //Nalezene uzivatele pridame do listu
+                                foundUsers.Add(result.SamAccountName.ToString() + " = " + result.DisplayName.ToString());
                             }
-                            allUsers.Sort();
-                            if (allUsers.Count() > 0)
+                            foundUsers.Sort();
+                            //Nasli jsme podle uzivateskeho id (DZCxxxx) nejake uzivatele, tak je vypiseme
+                            if (foundUsers.Count() > 0)
                             {
                                 dzcFound = true;
-                                string toDisplay = string.Join(Environment.NewLine, allUsers);
+                                string toDisplay = string.Join(Environment.NewLine, foundUsers);
                                 MessageBox.Show(toDisplay, "Výsledek");
                             }
+                            //Nenasli jsme podle uzivatelskeho id (DZCxxxx), budeme hledat podle jmena uzivatele (Pepa Novak)
                             else dzcFound = false;
                         }
                     }
                     if (dzcFound == false)
                     {
+                        //Vse jako nahore krome radku, kde je komentar (viz. nize komentar)
                         using (UserPrincipal userp = new UserPrincipal(context))
                         {
+                            //Rozdil je .DisplayName, ktery vyhleda zobrazovane jmeno (Jan Novak) a nikoliv user id(DZCxxx)
                             userp.DisplayName = user + "*";
                             using (var searcher = new PrincipalSearcher(userp))
                             {
@@ -100,10 +109,7 @@ namespace TechnolToolkit
 
         private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
         {
-            using (Form1 form1 = new Form1())
-            {
-                e.Graphics.DrawLine(new Pen(form1.themeColor, 1), 52, 37,52+textBoxUser.Width,37);
-            }
+            e.Graphics.DrawLine(new Pen(themeColor, 1), 52, 37,52+textBoxUser.Width,37);
         }
 
         private void buttonSearch_EnabledChanged(object sender, EventArgs e)

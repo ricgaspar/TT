@@ -121,8 +121,13 @@
     <Compile Include="DZCsearch.Designer.cs">
       <DependentUpon>DZCsearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SpravaSkupin\GroupsAndMember.cs" />
-    <Compile Include="Resources\CustomControls\CustomButton.cs">
+    <Compile Include="CustomControls\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\SpravaSkupin\UserControlAddToGroup.cs">
@@ -155,11 +160,6 @@
     </Compile>
     <Compile Include="UserControls\Admin\Forms\Napajeni.Designer.cs">
       <DependentUpon>Napajeni.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\InfoPC\UserControl_InfoPCAll.cs">
       <SubType>UserControl</SubType>
@@ -343,73 +343,38 @@
     <EmbeddedResource Include="Resources\Change_Groups.hta" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\RegSearch.exe" />
-    <EmbeddedResource Include="Resources\Zjistit_IPconfig.vbs" />
+    <Content Include="Resources\UserControl_Admin_icons\icons8-individual-server-96.png" />
     <EmbeddedResource Include="Resources\bitlocker.vbs" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Under Computer-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-User Group Man Man-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-User-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Car Service-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Electrical-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Heart Monitor-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Laptop-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-LaptopInfo-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Message-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Network Card-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Processor-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Registry Editor-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Remote Working-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Software Installer-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Software-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Text Color-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Heart MonitorWarning-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Encrypt-96.png" />
     <Content Include="logo2.ico" />
     <Content Include="Resources\Context_Menu\icons8-Close Window-96.png" />
-    <Content Include="Resources\Context_Menu\icons8-Copy to Clipboard-96.png" />
-    <None Include="Resources\icons8-Car-96_color.png" />
-    <None Include="Resources\icons8-Encrypt-96_color.png" />
-    <None Include="Resources\icons8-F1 Car-96_color.png" />
-    <None Include="Resources\icons8-Heart Monitor-96_color.png" />
-    <None Include="Resources\icons8-Heart MonitorAll-96_color.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Encrypt-96_color.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-F1 Car-96_color.png" />
+    <None Include="Resources\Unused_icons\icons8-Heart Monitor-96_color.png" />
+    <None Include="Resources\Unused_icons\icons8-Heart MonitorAll-96_color.png" />
     <None Include="Resources\Login_icons\icons8-Key 2-96_color.png" />
-    <None Include="Resources\icons8-Laptop-96_color.png" />
-    <None Include="Resources\icons8-LaptopSearch-96_color.png" />
-    <None Include="Resources\icons8-Lock 2-96_color.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-LaptopSearch-96_color.png" />
     <None Include="Resources\Menu_icons\icons8-Menu-96_color.png" />
     <None Include="Resources\Menu_icons\icons8-Moderator-96_color.png" />
     <None Include="Resources\Login_icons\icons8-Name-96_color.png" />
-    <None Include="Resources\icons8-Network Card-96_color.png" />
-    <None Include="Resources\icons8-Post-96_color.png" />
-    <None Include="Resources\icons8-Processor-96_color.png" />
-    <None Include="Resources\icons8-Registry Editor-96_color.png" />
-    <None Include="Resources\icons8-Remote Working-96_color.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Post-96_color.png" />
+    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-Processor-96_color.png" />
     <None Include="Resources\Menu_icons\icons8-SAP-96_color.png" />
-    <None Include="Resources\icons8-Software-96_color.png" />
-    <None Include="Resources\icons8-SoftwareUninstall-96_color.png" />
-    <None Include="Resources\icons8-Sublime Text-96_color.png" />
-    <None Include="Resources\icons8-Under Computer-96_color.png" />
-    <None Include="Resources\icons8-User Groups-96_color.png" />
-    <None Include="Resources\icons8-User-96_color.png" />
-    <None Include="Resources\icons8-UserSearcg-96_color.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Software-96_color.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-User Groups-96_color.png" />
+    <None Include="Resources\Group_Management_icons\icons8-User-96_color.png" />
+    <None Include="Resources\Menu_icons\icons8-UserSearcg-96_color.png" />
     <None Include="Resources\Context_Menu\icons8-Copy to Clipboard-96_color.png" />
-    <None Include="Resources\icons8-Electrical-96_color.png" />
-    <None Include="Resources\icons8-Computer-Repair96.png" />
-    <None Include="Resources\icons8-Windows8-96.png" />
-    <None Include="Resources\icons8-System Information-96.png" />
-    <None Include="Resources\icons8-SSD-96.png" />
-    <None Include="Resources\icons8-Network Cable-96.png" />
-    <None Include="Resources\icons8-HDMI Cable-96.png" />
-    <None Include="Resources\icons8-List-96.png" />
-    <None Include="Resources\icons8-Workstation-96.png" />
-    <None Include="Resources\icons8-Software Installer-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-Electrical-96_color.png" />
+    <None Include="Resources\Unused_icons\icons8-Computer-Repair96.png" />
+    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-Windows8-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-System Information-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-SSD-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-Network Cable-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-List-96.png" />
+    <None Include="Resources\Group_Management_icons\icons8-Workstation-96.png" />
     <None Include="Resources\Menu_icons\icons8-add-user-group-man-man-96.png" />
-    <None Include="Resources\icons8-calendar-96.png" />
-    <None Include="Resources\icons8-services-528.png" />
-    <None Include="Resources\icons8-Workstation-961.png" />
-    <None Include="Resources\icons8-broadcasting-96.png" />
-    <None Include="Resources\icons8-individual-server-96.png" />
-    <Content Include="Resources\Menu_icons\icons8-Menu-96.png" />
+    <None Include="Resources\Group_Management_icons\icons8-calendar-96.png" />
+    <None Include="Resources\UserControl_Admin_icons\icons8-broadcasting-96.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -423,6 +388,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

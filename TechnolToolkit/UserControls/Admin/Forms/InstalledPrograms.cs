@@ -18,38 +18,7 @@ namespace TechnolToolkit
 {
     public partial class InstalledPrograms : Form
     {
-        private class MyRenderer : ToolStripProfessionalRenderer
-        {
-            public MyRenderer() : base(new MyColors()) { }
-        }
-
-        private class MyColors : ProfessionalColorTable
-        {
-            public override Color MenuItemSelected
-            {
-                get { return Color.FromArgb(46, 45, 48); }
-            }
-            public override Color MenuItemSelectedGradientBegin
-            {
-                get { return Color.FromArgb(75, 74, 77); }
-            }
-            public override Color MenuItemSelectedGradientEnd
-            {
-                get { return Color.FromArgb(46, 45, 48); }
-            }
-            public override Color MenuItemBorder
-            {
-                get { return Color.Transparent; }
-            }
-            public override Color MenuItemPressedGradientBegin
-            {
-                get { return Color.FromArgb(46, 45, 48); }
-            }
-            public override Color MenuItemPressedGradientEnd
-            {
-                get { return Color.FromArgb(75, 74, 77); }
-            }
-        }
+       
 
         public Color themeColor = Color.FromArgb(174, 0, 0);
 
@@ -63,8 +32,7 @@ namespace TechnolToolkit
             listView1.ListViewItemSorter = lvwColumnSorter;
             obnovListView();
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            //this.Icon = new Icon(Properties.Resources.)
-            menuStrip1.Renderer = new MyRenderer();
+
 #warning Prepracovat funkce do co nejvice trid.. Napr vse pro kopirovani textu do jedne tridy, atd..
 
         }
@@ -112,11 +80,13 @@ namespace TechnolToolkit
         }
         private void checkBoxLocalPC_CheckedChanged(object sender, EventArgs e)
         {
+            textBoxComputername.Text = "";
             //Chceme lokalni pc?
             if (checkBoxLocalPC.Checked == true)
             {
                 textBoxComputername.Enabled = false;
                 buttonVyhledat.Enabled = true;
+
             }
             //Nechceme
             else
@@ -140,13 +110,13 @@ namespace TechnolToolkit
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
 
-            listView1.Columns.Add("Software", 50);
-            listView1.Columns.Add("Verze", 50);
-            listView1.Columns.Add("Datum instalace", 50);
-            listView1.Columns.Add("Vydavatel", 50);
-            listView1.Columns.Add("Umístění softwaru", 50);
-            listView1.Columns.Add("Instalováno z", 50);
-            listView1.Columns.Add("Odinstalační string", 50);
+            listView1.Columns.Add("Software", 100);
+            listView1.Columns.Add("Verze", 100);
+            listView1.Columns.Add("Datum instalace", 150);
+            listView1.Columns.Add("Vydavatel", 100);
+            listView1.Columns.Add("Umístění softwaru", 150);
+            listView1.Columns.Add("Instalováno z", 120);
+            listView1.Columns.Add("Odinstalační string", 150);
         }
         private void fillListView(string software, string verze, string datumInstalace, string vydavatel, string umisteniSoftwaru, string instalovanoZ, string odinstalacniString)
         {
@@ -167,41 +137,21 @@ namespace TechnolToolkit
             listView1.Items.Add(lvi);
         }
 
-        private void InstalovaneProgramy(string output, bool isRemotePC)
-        {
-            string[] pole = output.Split(new[] { "HKEY_LOCAL_MACHINE" }, StringSplitOptions.RemoveEmptyEntries);
-            obnovListView();
-            foreach(string blok in pole)
-            {
-                Match m1 = Regex.Match(blok, @"DisplayName\s+REG_SZ(.*)",RegexOptions.Multiline);
-                Match m2 = Regex.Match(blok, @"DisplayVersion\s+REG_SZ(.*)", RegexOptions.Multiline);
-                if (m1.Success && m2.Success)
-                {
-                    string name = m1.Groups[1].ToString().Trim();
-                    string version = m2.Groups[1].ToString().Trim();
-
-                    /*if (checkBoxLocalPC.Checked)
-                        fillListView(Environment.MachineName, name, version);
-                    else fillListView(textBoxComputername.Text, name, version);
-                    */
-                }
-            }
-            if (checkBoxLocalPC.Checked)
-                otevrenoToolStripMenuItem.Text = "Otevřeno: " + Environment.MachineName;
-            else otevrenoToolStripMenuItem.Text = "Otevřeno: " + textBoxComputername.Text;
-            // Loop through and size each column header to fit the column header text.
-            foreach (ColumnHeader ch in this.listView1.Columns)
-            {
-                ch.Width = -2;
-            }
-            pocetToolStripMenuItem.Text = "Počet: " + listView1.Items.Count;
-        }
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            obnovListView();
-            searchInstalledSoftware(textBoxComputername.Text);
-            otevrenoToolStripMenuItem.Text = "Software na " + textBoxComputername.Text;
-            pocetToolStripMenuItem.Text = "Počet: " + listView1.Items.Count;
+            if (checkBoxLocalPC.Checked)
+            {
+                obnovListView();
+                searchInstalledSoftware(Environment.MachineName);
+                labelSoftwareAt.Text = "Software na zařízení: " + Environment.MachineName;
+                labelPocetSW.Text = "Počet: " + listView1.Items.Count;
+            } else
+            {
+                obnovListView();
+                searchInstalledSoftware(textBoxComputername.Text);
+                labelSoftwareAt.Text = "Software na zařízení: " + textBoxComputername.Text;
+                labelPocetSW.Text = "Počet: " + listView1.Items.Count;
+            }
 
         }
         private void searchInstalledSoftware(string computername)
@@ -273,12 +223,11 @@ namespace TechnolToolkit
                     installLocation.Add(subkey.GetValue("InstallLocation") as string);
                 }
             }
-            
-            //Delete all whitespace or null
+            //Delete all whitespace, null or duplicates
             int pocetSW = displayNames.Count;
             for (int i = 0; i < pocetSW; ++i )
             {
-                if(displayNames[i] == "" || displayNames[i] == null)
+                if (displayNames[i] == "" || displayNames[i] == null)
                 {
                     displayNames.RemoveAt(i);
                     displayVersions.RemoveAt(i);
@@ -290,6 +239,20 @@ namespace TechnolToolkit
                     pocetSW = displayNames.Count;
                     continue;
                 }
+                //if (i != 0)
+                    //pokud najdes duplikat, proved toto v zavorkach
+                    //musi nechat aleaspon jeden prvek! (nasel jsem 4 stejny stringy, 3 odstranim, 1 necham)
+                    {
+                        displayNames.RemoveAt(i);
+                        displayVersions.RemoveAt(i);
+                        uninstallStrings.RemoveAt(i);
+                        publishers.RemoveAt(i);
+                        installSource.RemoveAt(i);
+                        installDate.RemoveAt(i);
+                        installLocation.RemoveAt(i);
+                        pocetSW = displayNames.Count;
+                        continue;
+                    }
                 fillListView(displayNames[i], displayVersions[i], installDate[i], publishers[i], installLocation[i], installSource[i], uninstallStrings[i]);
             }
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -311,16 +274,11 @@ namespace TechnolToolkit
             }
 
         }
-        private void otevrenoToolStripMenuItem_TextChanged(object sender, EventArgs e)
-        {
-            Size size = TextRenderer.MeasureText(pocetToolStripMenuItem.Text, pocetToolStripMenuItem.Font);
-            pocetToolStripMenuItem.Width = size.Width;
-        }
-
         private void InstalledPrograms_FormClosing(object sender, FormClosingEventArgs e)
         {
             obnovListView();
-            pocetToolStripMenuItem.Text = "";
+            labelPocetSW.Text = "Počet: 0";
+            labelSoftwareAt.Text = "Software na zařízení: ";
         }
 
         private void listView1_MouseClick(object sender, MouseEventArgs e)
@@ -339,15 +297,21 @@ namespace TechnolToolkit
             //CTRL + C = Kopirovat nazev SW
             if (e.Control && e.KeyCode == Keys.C)
             {
-                        
-                ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
-                String text = "";
-                foreach (ListViewItem item in selectedItems)
+                if (listView1.SelectedItems.Count > 0)
                 {
-                    text += item.SubItems[1].Text + "\n";
+                    ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+                    String text = "";
+                    foreach (ListViewItem item in selectedItems)
+                    {
+                        text += item.SubItems[0].Text + "\n";
+                    }
+                    Clipboard.SetText(text);
+                    listView1.SelectedItems.Clear();
                 }
-                Clipboard.SetText(text);
-                listView1.SelectedItems.Clear();
+                else
+                {
+                    MessageBox.Show("Není označen žádný řádek!\nOznačte alespoň jeden řádek!");
+                }
             }
             //CTRL + A = Oznac vse
             if (e.Control && e.KeyCode == Keys.A)
@@ -355,20 +319,6 @@ namespace TechnolToolkit
                 {
                     item.Selected = true;
                 }
-            //CTRL + SHIFT + C = Kopirovat vsechny sloupce
-            if (e.Control && e.Shift && e.KeyCode == Keys.C)
-            {
-            #error Nefunguje - o radky nize stejny kod jde.. Opravit!
-                ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
-                String text = "";
-                foreach (ListViewItem item in selectedItems)
-                {
-                    text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + item.SubItems[2].Text + ";" + item.SubItems[3].Text + ";"
-                    + item.SubItems[4].Text + ";" + item.SubItems[5].Text + ";" + item.SubItems[6].Text + ";" + "\n";
-                }
-                Clipboard.SetText(text);
-                listView1.SelectedItems.Clear();
-            }
         }
 
         private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
@@ -377,7 +327,7 @@ namespace TechnolToolkit
             String text = "";
             foreach (ListViewItem item in selectedItems)
             {
-                text += item.SubItems[1].Text + "\n";
+                text += item.SubItems[0].Text + "\n";
             }
             Clipboard.SetText(text);
             listView1.SelectedItems.Clear();
@@ -420,8 +370,8 @@ namespace TechnolToolkit
             String text = "";
             foreach (ListViewItem item in selectedItems)
             {
-                text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + item.SubItems[2].Text + ";" + item.SubItems[3].Text + ";"
-                + item.SubItems[4].Text + ";" + item.SubItems[5].Text + ";" + item.SubItems[6].Text + ";" + "\n";
+                text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + ";" + item.SubItems[2].Text + ";" + item.SubItems[3].Text + ";"
+                    + item.SubItems[4].Text + ";" + item.SubItems[5].Text + ";" + item.SubItems[6].Text + ";\n";
             }
             Clipboard.SetText(text);
             listView1.SelectedItems.Clear();
@@ -433,8 +383,8 @@ namespace TechnolToolkit
             {
                 obnovListView();
                 searchInstalledSoftware(textBoxComputername.Text);
-                otevrenoToolStripMenuItem.Text = "Software na " + textBoxComputername.Text;
-                pocetToolStripMenuItem.Text = "Počet: " + listView1.Items.Count;
+                labelSoftwareAt.Text = "Software na zařízení: " + textBoxComputername.Text;
+                labelPocetSW.Text = "Počet: " + listView1.Items.Count;
             }
         }
     }

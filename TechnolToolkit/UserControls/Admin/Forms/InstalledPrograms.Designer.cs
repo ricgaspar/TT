@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.tableLayoutPanelHorni = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanelHorniVnoreny = new System.Windows.Forms.TableLayoutPanel();
@@ -37,35 +36,20 @@
             this.textBoxComputername = new System.Windows.Forms.TextBox();
             this.buttonVyhledat = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.otevrenoToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
-            this.pocetToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kopírovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zrušitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kopírovatVseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zrušitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelPocetSW = new System.Windows.Forms.Label();
+            this.labelSoftwareAt = new System.Windows.Forms.Label();
             this.tableLayoutPanelHorni.SuspendLayout();
             this.tableLayoutPanelHorniVnoreny.SuspendLayout();
             this.tableLayoutPanelVnejsi.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listView1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.listView1.Location = new System.Drawing.Point(3, 81);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(944, 488);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
-            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
-            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
             // tableLayoutPanelHorni
             // 
@@ -82,7 +66,7 @@
             this.tableLayoutPanelHorni.RowCount = 2;
             this.tableLayoutPanelHorni.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHorni.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanelHorni.Size = new System.Drawing.Size(950, 78);
+            this.tableLayoutPanelHorni.Size = new System.Drawing.Size(951, 78);
             this.tableLayoutPanelHorni.TabIndex = 2;
             // 
             // label1
@@ -119,7 +103,7 @@
             this.tableLayoutPanelHorniVnoreny.RowCount = 2;
             this.tableLayoutPanelHorniVnoreny.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelHorniVnoreny.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelHorniVnoreny.Size = new System.Drawing.Size(950, 43);
+            this.tableLayoutPanelHorniVnoreny.Size = new System.Drawing.Size(951, 43);
             this.tableLayoutPanelHorniVnoreny.TabIndex = 0;
             this.tableLayoutPanelHorniVnoreny.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelHorniVnoreny_Paint);
             // 
@@ -178,52 +162,16 @@
             this.tableLayoutPanelVnejsi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanelHorni, 0, 0);
             this.tableLayoutPanelVnejsi.Controls.Add(this.listView1, 0, 1);
+            this.tableLayoutPanelVnejsi.Controls.Add(this.tableLayoutPanel1, 0, 2);
             this.tableLayoutPanelVnejsi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelVnejsi.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelVnejsi.Name = "tableLayoutPanelVnejsi";
-            this.tableLayoutPanelVnejsi.RowCount = 2;
+            this.tableLayoutPanelVnejsi.RowCount = 3;
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelVnejsi.Size = new System.Drawing.Size(950, 572);
+            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelVnejsi.Size = new System.Drawing.Size(951, 602);
             this.tableLayoutPanelVnejsi.TabIndex = 3;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.otevrenoToolStripMenuItem,
-            this.pocetToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 572);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 5, 0, 0);
-            this.menuStrip1.Size = new System.Drawing.Size(950, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // otevrenoToolStripMenuItem
-            // 
-            this.otevrenoToolStripMenuItem.AutoSize = false;
-            this.otevrenoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.otevrenoToolStripMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.otevrenoToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.otevrenoToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
-            this.otevrenoToolStripMenuItem.Name = "otevrenoToolStripMenuItem";
-            this.otevrenoToolStripMenuItem.ReadOnly = true;
-            this.otevrenoToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.otevrenoToolStripMenuItem.Size = new System.Drawing.Size(250, 15);
-            // 
-            // pocetToolStripMenuItem
-            // 
-            this.pocetToolStripMenuItem.AutoSize = false;
-            this.pocetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.pocetToolStripMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pocetToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.pocetToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
-            this.pocetToolStripMenuItem.Name = "pocetToolStripMenuItem";
-            this.pocetToolStripMenuItem.ReadOnly = true;
-            this.pocetToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pocetToolStripMenuItem.Size = new System.Drawing.Size(250, 15);
             // 
             // contextMenuStrip1
             // 
@@ -232,44 +180,99 @@
             this.kopírovatVseToolStripMenuItem,
             this.zrušitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(290, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(216, 70);
             // 
             // kopírovatToolStripMenuItem
             // 
             this.kopírovatToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
             this.kopírovatToolStripMenuItem.Name = "kopírovatToolStripMenuItem";
             this.kopírovatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.kopírovatToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
+            this.kopírovatToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.kopírovatToolStripMenuItem.Text = "Kopírovat název";
             this.kopírovatToolStripMenuItem.Click += new System.EventHandler(this.kopírovatToolStripMenuItem_Click);
-            // 
-            // zrušitToolStripMenuItem
-            // 
-            this.zrušitToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
-            this.zrušitToolStripMenuItem.Name = "zrušitToolStripMenuItem";
-            this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
-            this.zrušitToolStripMenuItem.Text = "Zrušit";
             // 
             // kopírovatVseToolStripMenuItem
             // 
             this.kopírovatVseToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
             this.kopírovatVseToolStripMenuItem.Name = "kopírovatVseToolStripMenuItem";
-            this.kopírovatVseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.C)));
-            this.kopírovatVseToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
+            this.kopírovatVseToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.kopírovatVseToolStripMenuItem.Text = "Kopírovat všechny sloupce";
             this.kopírovatVseToolStripMenuItem.Click += new System.EventHandler(this.kopírovatVseToolStripMenuItem_Click);
+            // 
+            // zrušitToolStripMenuItem
+            // 
+            this.zrušitToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
+            this.zrušitToolStripMenuItem.Name = "zrušitToolStripMenuItem";
+            this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.zrušitToolStripMenuItem.Text = "Zrušit";
+            // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listView1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.listView1.Location = new System.Drawing.Point(3, 81);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(945, 498);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
+            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 395F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.labelPocetSW, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelSoftwareAt, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 582);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(951, 20);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // labelPocetSW
+            // 
+            this.labelPocetSW.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelPocetSW.AutoSize = true;
+            this.labelPocetSW.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPocetSW.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelPocetSW.Location = new System.Drawing.Point(3, 1);
+            this.labelPocetSW.Name = "labelPocetSW";
+            this.labelPocetSW.Size = new System.Drawing.Size(50, 17);
+            this.labelPocetSW.TabIndex = 0;
+            this.labelPocetSW.Text = "Počet: ";
+            this.labelPocetSW.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSoftwareAt
+            // 
+            this.labelSoftwareAt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSoftwareAt.AutoSize = true;
+            this.labelSoftwareAt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelSoftwareAt.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelSoftwareAt.Location = new System.Drawing.Point(108, 1);
+            this.labelSoftwareAt.Name = "labelSoftwareAt";
+            this.labelSoftwareAt.Size = new System.Drawing.Size(132, 17);
+            this.labelSoftwareAt.TabIndex = 1;
+            this.labelSoftwareAt.Text = "Software na zařízení: ";
+            this.labelSoftwareAt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // InstalledPrograms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(950, 596);
+            this.ClientSize = new System.Drawing.Size(951, 602);
             this.Controls.Add(this.tableLayoutPanelVnejsi);
-            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(672, 530);
             this.Name = "InstalledPrograms";
             this.ShowIcon = false;
@@ -281,30 +284,28 @@
             this.tableLayoutPanelHorniVnoreny.ResumeLayout(false);
             this.tableLayoutPanelHorniVnoreny.PerformLayout();
             this.tableLayoutPanelVnejsi.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorni;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorniVnoreny;
         private System.Windows.Forms.TextBox textBoxComputername;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVnejsi;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.CheckBox checkBoxLocalPC;
         private System.Windows.Forms.Button buttonVyhledat;
-        private System.Windows.Forms.ToolStripTextBox pocetToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem kopírovatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zrušitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox otevrenoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kopírovatVseToolStripMenuItem;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label labelPocetSW;
+        private System.Windows.Forms.Label labelSoftwareAt;
     }
 }
