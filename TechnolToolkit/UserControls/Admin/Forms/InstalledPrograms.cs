@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TechnolToolkit.CustomControls_and_Clases;
 
 namespace TechnolToolkit
 {
@@ -32,8 +33,6 @@ namespace TechnolToolkit
             listView1.ListViewItemSorter = lvwColumnSorter;
             obnovListView();
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-#warning Prepracovat funkce do co nejvice trid.. Napr vse pro kopirovani textu do jedne tridy, atd..
 
         }
         public static string getBetween(string strSource, string strStart, string strEnd)
@@ -81,14 +80,12 @@ namespace TechnolToolkit
         private void checkBoxLocalPC_CheckedChanged(object sender, EventArgs e)
         {
             textBoxComputername.Text = "";
-            //Chceme lokalni pc?
             if (checkBoxLocalPC.Checked == true)
             {
                 textBoxComputername.Enabled = false;
                 buttonVyhledat.Enabled = true;
 
             }
-            //Nechceme
             else
             {
                 textBoxComputername.Enabled = true;
@@ -112,24 +109,18 @@ namespace TechnolToolkit
 
             listView1.Columns.Add("Software", 100);
             listView1.Columns.Add("Verze", 100);
-            listView1.Columns.Add("Datum instalace", 150);
             listView1.Columns.Add("Vydavatel", 100);
+            listView1.Columns.Add("Datum instalace", 150);
             listView1.Columns.Add("Umístění softwaru", 150);
             listView1.Columns.Add("Instalováno z", 120);
             listView1.Columns.Add("Odinstalační string", 150);
         }
-        private void fillListView(string software, string verze, string datumInstalace, string vydavatel, string umisteniSoftwaru, string instalovanoZ, string odinstalacniString)
+        private void fillListView(string software, string verze, string vydavatel, string datumInstalace, string umisteniSoftwaru, string instalovanoZ, string odinstalacniString)
         {
-            /*
-            ListViewItem lvi = new ListViewItem(pcName);
-            lvi.SubItems.Add(program);
-            lvi.SubItems.Add(verze);
-            listView1.Items.Add(lvi);
-            */
             ListViewItem lvi = new ListViewItem(software);
             lvi.SubItems.Add(verze);
-            lvi.SubItems.Add(datumInstalace);
             lvi.SubItems.Add(vydavatel);
+            lvi.SubItems.Add(datumInstalace);
             lvi.SubItems.Add(umisteniSoftwaru);
             lvi.SubItems.Add(instalovanoZ);
             lvi.SubItems.Add(odinstalacniString);
@@ -153,10 +144,16 @@ namespace TechnolToolkit
                 labelPocetSW.Text = "Počet: " + listView1.Items.Count;
             }
 
+            lvwColumnSorter.SortColumn = 0;
+            lvwColumnSorter.Order = SortOrder.Ascending;
+            // Perform the sort with these new sort options.
+            this.listView1.Sort();
         }
+
         private void searchInstalledSoftware(string computername)
         {
-            //Dictionary<String, List<List<>>> data = new
+            if(!checkBoxLocalPC.Checked)
+                ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.run);
             List<string> displayNames = new List<string>();
             List<string> displayVersions = new List<string>();
             List<string> uninstallStrings = new List<string>();
@@ -165,7 +162,8 @@ namespace TechnolToolkit
             List<string> installDate = new List<string>();
             List<string> installLocation = new List<string>();
             RegistryKey key;
-            
+
+            #region currentUser
             //CurrentUser
             key = RegistryKey.OpenRemoteBaseKey(RegistryHive.CurrentUser, computername).OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
             foreach (String keyName in key.GetSubKeyNames())
@@ -175,7 +173,6 @@ namespace TechnolToolkit
                 //Do listu uloz jmeno softwaru
                 if (keyName != null && keyName != "")
                 { 
-                    
                     displayNames.Add(subkey.GetValue("DisplayName") as string);
                     displayVersions.Add(subkey.GetValue("DisplayVersion") as string);
                     uninstallStrings.Add(subkey.GetValue("UninstallString") as string);
@@ -185,8 +182,9 @@ namespace TechnolToolkit
                     installLocation.Add(subkey.GetValue("InstallLocation") as string);
                 }
             }
-            
-            //Localmachine (on remote pc) 32-bit
+            #endregion
+            #region localmachine 64-bit
+            //Localmachine (on remote pc) 64-bit
             key = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computername).OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
             foreach (String keyName in key.GetSubKeyNames())
             {
@@ -204,8 +202,10 @@ namespace TechnolToolkit
                     installLocation.Add(subkey.GetValue("InstallLocation") as string);
                 }
             }
-
-            //Localmachine (on remote pc) 64-bit
+            #endregion
+            #region localmachine 32-bit
+            
+            //Localmachine (on remote pc) 32-bit
             key = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computername).OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall");
             foreach (String keyName in key.GetSubKeyNames())
             {
@@ -223,9 +223,96 @@ namespace TechnolToolkit
                     installLocation.Add(subkey.GetValue("InstallLocation") as string);
                 }
             }
-            //Delete all whitespace, null or duplicates
-            int pocetSW = displayNames.Count;
-            for (int i = 0; i < pocetSW; ++i )
+
+            #endregion
+
+            #region Delete duplicates
+            //ulozi do listu vsechny polozky, az na jednu, ktere se opakuji     
+            List<string> duplicates = displayNames.GroupBy(s => s).SelectMany(grp => grp.Skip(1)).ToList();
+            
+            //Smazani duplikatu
+            for (int i = 0; i < duplicates.Count; i++)
+            {
+                for (int y = 0; y < displayNames.Count; y++)
+                {
+                    if (duplicates[i] == displayNames[y])
+                    {    
+                        displayNames.RemoveAt(y);
+                        displayVersions.RemoveAt(y);
+                        uninstallStrings.RemoveAt(y);
+                        publishers.RemoveAt(y);
+                        installSource.RemoveAt(y);
+                        installDate.RemoveAt(y);
+                        installLocation.RemoveAt(y);
+                        continue;
+                    }
+                }
+            }
+            #endregion
+
+            #region Filters
+            //Hide Updates
+            if (checkBoxHideUpdates.Checked)
+            {
+                for (int i = 0; i < displayNames.Count; i++)
+                {
+                    if (displayNames[i].Contains("Update") && publishers[i].Contains("Microsoft"))
+                    {
+                        displayNames.RemoveAt(i);
+                        displayVersions.RemoveAt(i);
+                        uninstallStrings.RemoveAt(i);
+                        publishers.RemoveAt(i);
+                        installSource.RemoveAt(i);
+                        installDate.RemoveAt(i);
+                        installLocation.RemoveAt(i);
+                        continue;
+                    }
+                }
+            }
+            //Hide MUIs
+            if (checkBoxHideMUI.Checked)
+            {
+                for (int i = 0; i < displayNames.Count; i++)
+                {
+                    if (displayNames[i].Contains("MUI"))
+                    {
+                        displayNames.RemoveAt(i);
+                        displayVersions.RemoveAt(i);
+                        uninstallStrings.RemoveAt(i);
+                        publishers.RemoveAt(i);
+                        installSource.RemoveAt(i);
+                        installDate.RemoveAt(i);
+                        installLocation.RemoveAt(i);
+                        continue;
+                    }
+                }
+            }
+            //Hide Microsoft
+            if (checkBoxHideMicrosoft.Checked)
+            {
+                int pocetVydavatelu = publishers.Count;
+                for (int i = 0; i < pocetVydavatelu; i++)
+                {
+                    if (publishers[i] != null)
+                        if (publishers[i].Contains("Microsoft"))
+                        {
+                            displayNames.RemoveAt(i);
+                            displayVersions.RemoveAt(i);
+                            uninstallStrings.RemoveAt(i);
+                            publishers.RemoveAt(i);
+                            installSource.RemoveAt(i);
+                            installDate.RemoveAt(i);
+                            installLocation.RemoveAt(i);
+                            pocetVydavatelu = publishers.Count;
+                            continue;                            
+                        }
+                }
+            }
+
+            #endregion
+
+            #region Delete Null items and fill listView
+            for (int i = 0; i < displayNames.Count; ++i )
             {
                 if (displayNames[i] == "" || displayNames[i] == null)
                 {
@@ -236,43 +323,24 @@ namespace TechnolToolkit
                     installSource.RemoveAt(i);
                     installDate.RemoveAt(i);
                     installLocation.RemoveAt(i);
-                    pocetSW = displayNames.Count;
                     continue;
                 }
-                //if (i != 0)
-                    //pokud najdes duplikat, proved toto v zavorkach
-                    //musi nechat aleaspon jeden prvek! (nasel jsem 4 stejny stringy, 3 odstranim, 1 necham)
-                    {
-                        displayNames.RemoveAt(i);
-                        displayVersions.RemoveAt(i);
-                        uninstallStrings.RemoveAt(i);
-                        publishers.RemoveAt(i);
-                        installSource.RemoveAt(i);
-                        installDate.RemoveAt(i);
-                        installLocation.RemoveAt(i);
-                        pocetSW = displayNames.Count;
-                        continue;
-                    }
-                fillListView(displayNames[i], displayVersions[i], installDate[i], publishers[i], installLocation[i], installSource[i], uninstallStrings[i]);
+                fillListView(displayNames[i], displayVersions[i], publishers[i], installDate[i], installLocation[i], installSource[i], uninstallStrings[i]);
             }
+            #endregion
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            if (!checkBoxLocalPC.Checked)
+                ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.stop);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (textBoxComputername.Text == "")
                 if (!checkBoxLocalPC.Checked)
-                {
                     buttonVyhledat.Enabled = false;
-                }
                 else
-                {
                     buttonVyhledat.Enabled = true;
-                }
             else
-            {
                 buttonVyhledat.Enabled = true;
-            }
-
         }
         private void InstalledPrograms_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -310,7 +378,7 @@ namespace TechnolToolkit
                 }
                 else
                 {
-                    MessageBox.Show("Není označen žádný řádek!\nOznačte alespoň jeden řádek!");
+                    MessageBox.Show("Není označen žádný řádek!\nOznačte alespoň jeden řádek!","Není co kopírovat",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
             //CTRL + A = Oznac vse
@@ -364,7 +432,7 @@ namespace TechnolToolkit
             e.Graphics.DrawLine(new Pen(themeColor, 1), 157, 33, 330, 33);
         }
 
-        private void kopírovatVseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void kopirovatVseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
             String text = "";
@@ -386,6 +454,61 @@ namespace TechnolToolkit
                 labelSoftwareAt.Text = "Software na zařízení: " + textBoxComputername.Text;
                 labelPocetSW.Text = "Počet: " + listView1.Items.Count;
             }
+        }
+
+        private void pictureBoxInfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tento nástroj prohledává registry na zvoleném PC.\n\nJe možné, že nalezne již odinstalovaný software, který ale zůstal v registrech zapsaný.\n\nNapříklad se může stát: \nPokud se zobrazí 2 softwary stejného jména, ale jiné verze, je možné, že starší verze již neexistuje, ale záznam v registru zůstal.\nAtp...\n\n\nProhledávané větve registrů:\nHKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\nHKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\nHKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall", "Jak to vlastně funguje? :)",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        float imageOpacity = 0.4f;
+        float imageMinimalOpacity = 0.4f;
+
+        private void pictureBoxInfo_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(ImageManipulation.ResizeImage(ImageManipulation.SetOpacity(Properties.Resources.icons8_info_96,imageOpacity),25,25),0,0);
+        }
+
+        public enum opacityAction { increase, decrease };
+
+        private void mouseVisitOpacity(opacityAction increseOrDecreseOpacity)
+        {
+            switch(increseOrDecreseOpacity)
+            {
+                case opacityAction.increase:
+                    timer1.Start();
+                    timer1.Interval = 5;
+                    while (imageOpacity < 1)
+                    {
+                        imageOpacity += 0.001f;
+                        if (imageOpacity > 1)
+                            imageOpacity = 1;
+                        pictureBoxInfo.Refresh();
+                    }
+                    timer1.Stop();
+                    break;
+                case opacityAction.decrease:
+                    timer1.Start();
+                    timer1.Interval = 5;
+                    while (imageOpacity > imageMinimalOpacity)
+                    {
+                        imageOpacity -= 0.001f;
+                        if (imageOpacity < imageMinimalOpacity)
+                            imageOpacity = imageMinimalOpacity;
+                        pictureBoxInfo.Refresh();
+                    }
+                    timer1.Stop();
+                    break;
+            }
+        }
+        private void pictureBoxInfo_MouseEnter(object sender, EventArgs e)
+        {
+            mouseVisitOpacity(opacityAction.increase);
+        }
+
+        private void pictureBoxInfo_MouseLeave(object sender, EventArgs e)
+        {
+            mouseVisitOpacity(opacityAction.decrease);
         }
     }
 }

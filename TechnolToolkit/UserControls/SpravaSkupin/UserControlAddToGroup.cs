@@ -1,35 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.DirectoryServices;
-using System.Collections;
 using System.Net.NetworkInformation;
 using System.DirectoryServices.AccountManagement;
 using System.IO;
-using System.Data.SqlClient;
 using System.Threading;
-using System.Globalization;
 using Microsoft.Win32.TaskScheduler;
-using System.Diagnostics;
 using Microsoft.Win32;
-using System.Management;
-using System.ServiceProcess;
+using TechnolToolkit.CustomControls_and_Clases;
 
 namespace TechnolToolkit
 {
     public partial class UserControlAddToGroup : UserControl
     {
-        public enum serviceAction
-        {
-            run,
-            stop,
-        }
         public UserControlAddToGroup()
         {
             InitializeComponent();
@@ -232,7 +216,7 @@ namespace TechnolToolkit
         }
         private void smazatClenaZeSkupinyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
             registryFix(textBoxComputername.Text);
 
             //Check if any node is selected
@@ -275,7 +259,7 @@ namespace TechnolToolkit
             }
             else return;
 
-            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
+            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
         }
 
         private void buttonConnectToDevice_Click(object sender, EventArgs e)
@@ -285,10 +269,11 @@ namespace TechnolToolkit
 
         private void buttonAddMemberToGroup_Click(object sender, EventArgs e)
         {
-            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+#warning FIX_ME! ServiceManipulation.runOrStopService
+            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
             registryFix(textBoxComputername.Text);
             addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
-            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
+            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
             radioButtonAutomatickeOdebrani.Checked = false;
             radioButtonNeomezenaPlatnost.Checked = false;
         }
@@ -363,7 +348,7 @@ namespace TechnolToolkit
 
         private void zobrazitUzivatelskeJmenoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
             registryFix(textBoxComputername.Text);
 
             if (treeViewGroups.SelectedNode.Parent != null)
@@ -387,7 +372,7 @@ namespace TechnolToolkit
                 }
             }
 
-            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
+            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
         }
         private void fillLoggedDatatoListView()
         {
@@ -511,43 +496,6 @@ namespace TechnolToolkit
             {
                 RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).CreateSubKey("RegisteredOrganization");
                 RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOrganization", "SKODA AUTO a.s.", RegistryValueKind.String);
-            }
-        }
-        private void runOrStopService(string serviceName, string computer, serviceAction action)
-        {
-            
-            switch(action)
-            {
-                case serviceAction.run:
-                    using (ServiceController sc = new ServiceController(serviceName, computer))
-                    {
-                        if (sc.Status != ServiceControllerStatus.Running)
-                        {
-                            sc.Start();
-                            sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(60));
-                            if (sc.Status != ServiceControllerStatus.Running)
-                            {
-                                MessageBox.Show("Sluzbu " + serviceName + " se nepodarilo spustit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                break;
-                case serviceAction.stop:
-                    using (ServiceController sc = new ServiceController(serviceName, computer))
-                    {
-                        if (sc.Status != ServiceControllerStatus.Stopped)
-                        {
-                            sc.Stop();
-                            sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(60));
-                            if (sc.Status != ServiceControllerStatus.Stopped)
-                            {
-                                MessageBox.Show("Sluzbu " + serviceName + " se nepodarilo zastavit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                    break;
-                default:
-                    throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
             }
         }
     }

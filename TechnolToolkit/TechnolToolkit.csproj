@@ -115,6 +115,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls and Clases\ServiceManipulation.cs" />
+    <Compile Include="CustomControls and Clases\ImageManipulation.cs" />
     <Compile Include="DZCsearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,7 +129,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SpravaSkupin\GroupsAndMember.cs" />
-    <Compile Include="CustomControls\CustomButton.cs">
+    <Compile Include="CustomControls and Clases\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\SpravaSkupin\UserControlAddToGroup.cs">
@@ -154,7 +156,7 @@
     <Compile Include="UserControls\Admin\Forms\InfoPC.Designer.cs">
       <DependentUpon>InfoPC.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Admin\Forms\ListViewColumnSorter.cs" />
+    <Compile Include="CustomControls and Clases\ListViewColumnSorter.cs" />
     <Compile Include="UserControls\Admin\Forms\Napajeni.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +346,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\UserControl_Admin_icons\icons8-individual-server-96.png" />
+    <Content Include="Resources\UserControl_Admin_icons\InstalledProgram_icons\icons8-info-96.png" />
     <EmbeddedResource Include="Resources\bitlocker.vbs" />
     <Content Include="logo2.ico" />
     <Content Include="Resources\Context_Menu\icons8-Close Window-96.png" />

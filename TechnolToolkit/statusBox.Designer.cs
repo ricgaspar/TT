@@ -63,7 +63,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(188, 38);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Teď můžeme jen doufat, že se to načte.. Hodně štěstí!";
+            this.label2.Text = "Teď můžeme jen doufat, že se to načte.. Hodně štěstí! :)\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1

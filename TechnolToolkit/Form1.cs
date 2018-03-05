@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using System.DirectoryServices;
+using TechnolToolkit.CustomControls_and_Clases;
 
 namespace TechnolToolkit
 {
@@ -34,35 +35,6 @@ namespace TechnolToolkit
             ucAG.Size = flowLayoutPanel1.Size;
             pozadiAktivnihoButtonu(aktivniPanel);
             this.MaximizeBox = false;
-        }
-
-        public static Bitmap ResizeImage(Image image, int width, int height)
-        {
-            //Graphics g = e.Graphics;
-            //g.DrawImage(ResizeImage(Properties.Resources.Admin, 45, 45), 5, -5);
-            //https://stackoverflow.com/questions/1922040/resize-an-image-c-sharp
-            //Nemazat
-            var destRect = new Rectangle(0, 0, width, height);
-            var destImage = new Bitmap(width, height);
-
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-            using (var graphics = Graphics.FromImage(destImage))
-            {
-                graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-                using (var wrapMode = new ImageAttributes())
-                {
-                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-                }
-            }
-
-            return destImage;
         }
 
         //Aktualizace velikosti UserControlů
@@ -163,7 +135,7 @@ namespace TechnolToolkit
         private void buttonAdminTools_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_Moderator_96_color, 50, 50), 10, 2);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Moderator_96_color, 50, 50), 10, 2);
             if (aktivniPanel == "ucA")
             {
                 Pen pen = new Pen(Color.Blue, 3);
@@ -178,13 +150,13 @@ namespace TechnolToolkit
         private void buttonMenu_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_Menu_96_color, 35, 35), 21, 9);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Menu_96_color, 35, 35), 21, 9);
         }
         //SAP button
         private void buttonSAP_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ResizeImage(Properties.Resources.icons8_SAP_96_color, 50, 50), 14, (buttonSAP.Height/2) - 25);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_SAP_96_color, 50, 50), 14, (buttonSAP.Height/2) - 25);
             if (aktivniPanel == "ucS")
             {
                 Pen pen = new Pen(Color.Blue, 3);
@@ -197,7 +169,7 @@ namespace TechnolToolkit
         private void buttonAddToGroup_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_add_user_group_man_man_96, 100, 100), 8, 0);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_add_user_group_man_man_96, 100, 100), 8, 0);
             if (aktivniPanel == "ucAG")
             {
                 Pen pen = new Pen(Color.Blue, 3);
@@ -210,7 +182,7 @@ namespace TechnolToolkit
         private void buttonDZC_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(Form1.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
         }
 
         #endregion
