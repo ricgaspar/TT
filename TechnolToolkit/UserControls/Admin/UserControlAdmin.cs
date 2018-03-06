@@ -184,5 +184,10 @@ namespace TechnolToolkit
             Graphics g = e.Graphics;
             g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 180, 180), (buttonMultiping.Width / 2) - (picSize / 2), (buttonMultiping.Height / 2) - (picSize / 2) - heightOffset);
         }
+        Napajeni np = new Napajeni();
+        private void buttonNapajeniPC_Click(object sender, EventArgs e)
+        {
+            np.ShowDialog();
+        }
     }
 }

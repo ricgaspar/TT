@@ -8,58 +8,114 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management;
+using System.Diagnostics;
 
 namespace TechnolToolkit
 {
     public partial class Napajeni : Form
     {
+        public Color themeColor = Color.FromArgb(174, 0, 0);
         public Napajeni()
         {
             InitializeComponent();
         }
-        void Shutdown()
+
+        private void buttonActionValidation()
         {
-            try
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+            
+            e.Graphics.DrawLine(new Pen(themeColor, 1), textBoxComputername.Location.X, textBoxComputername.Location.Y + textBoxComputername.Height, textBoxComputername.Location.X + textBoxComputername.Width, textBoxComputername.Location.Y + textBoxComputername.Height);
+        }
+
+        private void textBoxComputername_TextChanged(object sender, EventArgs e)
+        {
+            if(textBoxComputername.Text.Contains("Název počítače"))
             {
-                const string computerName = "COMPUTER"; // computer name or IP address
+                textBoxComputername.Text = textBoxComputername.Text.Replace("Název počítače", "");
+                textBoxComputername.ForeColor = Color.White;
+                textBoxComputername.SelectionStart = 1;
+                textBoxComputername.SelectionLength = 0;
+            }
+            if (textBoxComputername.TextLength > 0)
+                buttonActionValidation();
+        }
 
-                ConnectionOptions options = new ConnectionOptions();
-                options.EnablePrivileges = true;
-                // To connect to the remote computer using a different account, specify these values:
-                // options.Username = "USERNAME";
-                // options.Password = "PASSWORD";
-                // options.Authority = "ntlmdomain:DOMAIN";
+        private void textBoxComputername_Enter(object sender, EventArgs e)
+        {
+            if (textBoxComputername.Text == "Název počítače")
+                textBoxComputername.SelectionStart = 0;
+                textBoxComputername.SelectionLength = 0;
+        }
 
-                ManagementScope scope = new ManagementScope(
-                  "\\\\" + computerName + "\\root\\CIMV2", options);
-                scope.Connect();
+        private void textBoxComputername_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (textBoxComputername.Text == "Název počítače")
+            {
+                textBoxComputername.Text = "";
+                textBoxComputername.ForeColor = Color.White;
+            }
+        }
 
-                SelectQuery query = new SelectQuery("Win32_OperatingSystem");
-                ManagementObjectSearcher searcher =
-                    new ManagementObjectSearcher(scope, query);
+        private void buttonAction_Click(object sender, EventArgs e)
+        {
+            if (radioButtonNoAction.Checked)
+                return;
 
-                foreach (ManagementObject os in searcher.Get())
+            if (radioButtonPowerOffAction.Checked)
+            {
+                if(radioButtonVisibilityHidden.Checked)
                 {
-                    // Obtain in-parameters for the method
-                    ManagementBaseObject inParams =
-                        os.GetMethodParameters("Win32Shutdown");
-
-                    // Add the input parameters.
-                    inParams["Flags"] = 2;
-
-                    // Execute the method and obtain the return values.
-                    ManagementBaseObject outParams =
-                        os.InvokeMethod("Win32Shutdown", inParams, null);
+                    
+                }
+                if(radioButtonVisibilityVisible.Checked)
+                {
+                    if (radioButtonActionTimeNow.Checked)
+                    {
+                        var psi = new ProcessStartInfo("shutdown");
+                        psi.CreateNoWindow = true;
+                        psi.Arguments = "/m \\" + textBoxComputername.Text + " /s /t 0 /f";
+                        psi.UseShellExecute = false;
+                        Process.Start(psi);
+                    }
+                    if (radioButtonActionTimeLater.Checked)
+                    {
+                        var psi = new ProcessStartInfo("shutdown");
+                        psi.CreateNoWindow = true;
+                        psi.Arguments = "/m \\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) +" /f";
+                        psi.UseShellExecute = false;
+                        Process.Start(psi);
+                    }
                 }
             }
-            catch (ManagementException err)
+            if (radioButtonRestartAction.Checked)
             {
-                MessageBox.Show("An error occurred while trying to execute the WMI method: " + err.Message);
+                //Restart code
             }
-            catch (System.UnauthorizedAccessException unauthorizedErr)
+            if (radioButtonSleepAction.Checked)
             {
-                MessageBox.Show("Connection error (user name or password might be incorrect): " + unauthorizedErr.Message);
+                //sleep code
             }
+        }
+
+        private void buttonMultiplePCs_Click(object sender, EventArgs e)
+        {
+            var psi = new ProcessStartInfo("shutdown", "/i");
+            psi.CreateNoWindow = true;
+            psi.UseShellExecute = false;
+            Process.Start(psi);
+        }
+
+        private void radioButtonActionTimeLater_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonActionTimeLater.Checked)
+                numericUpDown1.Enabled = true;
+            else
+                numericUpDown1.Enabled = false;
+            if (radioButtonVisibilityHidden.Checked)
+                MessageBox.Show("Vypnutí(například) PC za dobu větší než 0 sekund bez jakéhokoliv upozornění na vypínaném PC není standartně možné.\n\nTím pádem tento program vytvoří proces na okamžité vypnutí vzáleného PC a zároveň jej uspí na Vámi zvolenou dobu. Tím se vyřeší tento problém. Bohužel pokud vyprší doba uspání a vzdálený PC již nebude na síti, není možné jej vypnout.\n\nJsou způsoby jak tento problém vyřešit elegantněji, ale vzhledem k místu užívaní programu je toto nejsnažší cesta.");
         }
     }
 }

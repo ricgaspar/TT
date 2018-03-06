@@ -151,6 +151,7 @@
             this.buttonNapajeniPC.Text = "Napájení PC";
             this.buttonNapajeniPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNapajeniPC.UseVisualStyleBackColor = false;
+            this.buttonNapajeniPC.Click += new System.EventHandler(this.buttonNapajeniPC_Click);
             this.buttonNapajeniPC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonNapajeniPC_Paint);
             // 
             // buttonInfoPC
