@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management;
 using System.Diagnostics;
+using System.Threading;
 
 namespace TechnolToolkit
 {
@@ -18,16 +19,20 @@ namespace TechnolToolkit
         public Napajeni()
         {
             InitializeComponent();
+            radioButtonNoAction.Focus();
         }
 
         private void buttonActionValidation()
         {
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-            
-            e.Graphics.DrawLine(new Pen(themeColor, 1), textBoxComputername.Location.X, textBoxComputername.Location.Y + textBoxComputername.Height, textBoxComputername.Location.X + textBoxComputername.Width, textBoxComputername.Location.Y + textBoxComputername.Height);
+            if (radioButtonNoAction.Checked)
+                buttonAction.Enabled = false;
+            else
+            {
+                if (textBoxComputername.Text != "" && textBoxComputername.Text != "Název počítače")
+                {
+                    buttonAction.Enabled = true;
+                }
+            }
         }
 
         private void textBoxComputername_TextChanged(object sender, EventArgs e)
@@ -46,8 +51,16 @@ namespace TechnolToolkit
         private void textBoxComputername_Enter(object sender, EventArgs e)
         {
             if (textBoxComputername.Text == "Název počítače")
+            { 
                 textBoxComputername.SelectionStart = 0;
                 textBoxComputername.SelectionLength = 0;
+            }
+        }
+
+        private void textBoxComputername_Leave(object sender, EventArgs e)
+        {
+            if (textBoxComputername.Text == "")
+                textBoxComputername.Text = "Název počítače";
         }
 
         private void textBoxComputername_MouseClick(object sender, MouseEventArgs e)
@@ -66,37 +79,56 @@ namespace TechnolToolkit
 
             if (radioButtonPowerOffAction.Checked)
             {
-                if(radioButtonVisibilityHidden.Checked)
+                if (radioButtonActionTimeNow.Checked)
                 {
-                    
+                    var psi = new ProcessStartInfo("shutdown");
+                    psi.CreateNoWindow = true;
+                    psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /s /t 0 /f";
+                    psi.UseShellExecute = false;
+                    Process.Start(psi);
                 }
-                if(radioButtonVisibilityVisible.Checked)
+                if (radioButtonActionTimeLater.Checked)
                 {
-                    if (radioButtonActionTimeNow.Checked)
-                    {
-                        var psi = new ProcessStartInfo("shutdown");
-                        psi.CreateNoWindow = true;
-                        psi.Arguments = "/m \\" + textBoxComputername.Text + " /s /t 0 /f";
-                        psi.UseShellExecute = false;
-                        Process.Start(psi);
-                    }
-                    if (radioButtonActionTimeLater.Checked)
-                    {
-                        var psi = new ProcessStartInfo("shutdown");
-                        psi.CreateNoWindow = true;
-                        psi.Arguments = "/m \\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) +" /f";
-                        psi.UseShellExecute = false;
-                        Process.Start(psi);
-                    }
+                    var psi = new ProcessStartInfo("shutdown");
+                    psi.CreateNoWindow = true;
+                    if(textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
+                        psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) + " /f";
+                    else psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) + " /c \"" + textBoxComment.Text + "\" /f";
+                    psi.UseShellExecute = false;
+                    Process.Start(psi);
                 }
             }
             if (radioButtonRestartAction.Checked)
             {
-                //Restart code
+                if (radioButtonActionTimeNow.Checked)
+                {
+                    var psi = new ProcessStartInfo("shutdown");
+                    psi.CreateNoWindow = true;
+                    psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /r /t 0 /f";
+                    psi.UseShellExecute = false;
+                    Process.Start(psi);
+                }
+                if (radioButtonActionTimeLater.Checked)
+                {
+                    var psi = new ProcessStartInfo("shutdown");
+                    psi.CreateNoWindow = true;
+                    if(textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
+                        psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /r /t " + (numericUpDown1.Value * 60) + " /f";
+                    else psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /r /t " + (numericUpDown1.Value * 60) + " /c \"" + textBoxComment.Text + "\" /f";
+                    psi.UseShellExecute = false;
+                    Process.Start(psi);
+                }
             }
-            if (radioButtonSleepAction.Checked)
+            if (radioButtonStopAction.Checked)
             {
-                //sleep code
+                if (radioButtonActionTimeNow.Checked)
+                {
+                    var psi = new ProcessStartInfo("shutdown");
+                    psi.CreateNoWindow = true;
+                    psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /a";
+                    psi.UseShellExecute = false;
+                    Process.Start(psi);
+                }
             }
         }
 
@@ -111,11 +143,97 @@ namespace TechnolToolkit
         private void radioButtonActionTimeLater_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonActionTimeLater.Checked)
+            {
                 numericUpDown1.Enabled = true;
+                labelUpozorneni.Visible = true;
+            }
             else
+            {
                 numericUpDown1.Enabled = false;
-            if (radioButtonVisibilityHidden.Checked)
-                MessageBox.Show("Vypnutí(například) PC za dobu větší než 0 sekund bez jakéhokoliv upozornění na vypínaném PC není standartně možné.\n\nTím pádem tento program vytvoří proces na okamžité vypnutí vzáleného PC a zároveň jej uspí na Vámi zvolenou dobu. Tím se vyřeší tento problém. Bohužel pokud vyprší doba uspání a vzdálený PC již nebude na síti, není možné jej vypnout.\n\nJsou způsoby jak tento problém vyřešit elegantněji, ale vzhledem k místu užívaní programu je toto nejsnažší cesta.");
+                labelUpozorneni.Visible = false;
+            }
+        }
+
+        private void textBoxComment_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxComment.Text.Contains("Komentář k prováděné akci (nepovinné)"))
+            {
+                textBoxComment.Text = textBoxComment.Text.Replace("Komentář k prováděné akci (nepovinné)", "");
+                textBoxComment.ForeColor = Color.White;
+                textBoxComment.SelectionStart = 1;
+                textBoxComment.SelectionLength = 0;
+            }
+            if (textBoxComment.TextLength > 0)
+                buttonActionValidation();
+        }
+
+        private void textBoxComment_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
+            {
+                textBoxComment.Text = "";
+                textBoxComment.ForeColor = Color.White;
+            }
+        }
+
+        private void textBoxComment_Enter(object sender, EventArgs e)
+        {
+            if (textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
+            {
+                textBoxComment.SelectionStart = 0;
+                textBoxComment.SelectionLength = 0;
+            }
+        }
+        private void textBoxComment_Leave(object sender, EventArgs e)
+        {
+            if (textBoxComment.Text == "")
+            {
+                textBoxComment.Text = "Komentář k prováděné akci (nepovinné)";
+            }
+        }
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            SByte offset = 2;
+            e.Graphics.DrawLine(new Pen(themeColor, 1), textBoxComment.Location.X, textBoxComment.Location.Y + textBoxComment.Height + offset, textBoxComment.Location.X + textBoxComment.Width, textBoxComment.Location.Y + textBoxComment.Height + offset);            
+        }
+
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        {
+            SByte offset = 2;
+            e.Graphics.DrawLine(new Pen(themeColor, 1), textBoxComputername.Location.X, textBoxComputername.Location.Y + textBoxComputername.Height + offset, textBoxComputername.Location.X + textBoxComputername.Width, textBoxComputername.Location.Y + textBoxComputername.Height + offset);
+        }
+
+        private void radioButtonSleepAction_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonStopAction.Checked)
+            {
+                textBoxComment.Enabled = false;
+                radioButtonActionTimeLater.Enabled = false;
+                buttonActionValidation();
+            }
+            else
+            {
+                textBoxComment.Enabled = true;
+                radioButtonActionTimeLater.Enabled = true;
+            }
+        }
+
+        private void radioButtonRestartAction_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonRestartAction.Checked)
+                buttonActionValidation();
+        }
+
+        private void radioButtonPowerOffAction_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonPowerOffAction.Checked)
+                buttonActionValidation();
+        }
+
+        private void radioButtonNoAction_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNoAction.Checked)
+                buttonActionValidation();
         }
     }
 }

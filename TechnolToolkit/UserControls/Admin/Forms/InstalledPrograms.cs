@@ -290,11 +290,10 @@ namespace TechnolToolkit
             //Hide Microsoft
             if (checkBoxHideMicrosoft.Checked)
             {
-                int pocetVydavatelu = publishers.Count;
-                for (int i = 0; i < pocetVydavatelu; i++)
+                for (int i = 0; i < publishers.Count; i++)
                 {
                     if (publishers[i] != null)
-                        if (publishers[i].Contains("Microsoft"))
+                        if (publishers[i] == ("Microsoft") || publishers[i] == ("Microsoft Corporation"))
                         {
                             displayNames.RemoveAt(i);
                             displayVersions.RemoveAt(i);
@@ -303,7 +302,6 @@ namespace TechnolToolkit
                             installSource.RemoveAt(i);
                             installDate.RemoveAt(i);
                             installLocation.RemoveAt(i);
-                            pocetVydavatelu = publishers.Count;
                             continue;                            
                         }
                 }

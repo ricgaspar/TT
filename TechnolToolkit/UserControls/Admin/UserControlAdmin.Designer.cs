@@ -134,7 +134,7 @@
             // 
             // buttonNapajeniPC
             // 
-            this.buttonNapajeniPC.BackColor = System.Drawing.Color.Maroon;
+            this.buttonNapajeniPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.buttonNapajeniPC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNapajeniPC.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonNapajeniPC.FlatAppearance.BorderSize = 0;
