@@ -138,21 +138,35 @@ namespace TechnolToolkit
         }
         public void extractVAS()
         {
-            if (!Directory.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154"))
+            if (!Directory.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154_Configurator"))
             {
-                string zipPath = @"C:\ProgramData\TechnolToolkit\VAS6154.zip";
-                string extractPath = @"C:\ProgramData\TechnolToolkit";
-
+                string zipPath = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator.zip";
+                string extractPath = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator";
                 ZipFile.ExtractToDirectory(zipPath, extractPath);
             }
         }
-        VASConfig vc = new VASConfig();
+        //VASConfig vc = new VASConfig();
         private void buttonVAS_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154"))
+            if (!Directory.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154_Configurator"))
                 extractVAS();
-            vc.restore();
-            vc.ShowDialog();
+            if (File.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154_Configurator\start.bat"))
+            {
+                #warning Nemuze pristoupit k souboru VasConfig.jar
+                //Po rucnim spusteni funguje...
+                Process p = new Process();
+                p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator\start.bat";
+                p.Start();
+            }
+            else
+            {
+                Directory.Delete(@"C:\ProgramData\TechnolToolkit\VAS6154_Configurator",true);
+                extractVAS();
+                MessageBox.Show("Soubor \"C:\\ProgramData\\TechnolToolkit\\VAS6154_Configurator\\start.bat\" nenalezen!\n\nNo tak já to po tobě teda opravím :)", "I ty brute, že ty jsi ten soubor smazal?!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process p = new Process();
+                p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator\start.bat";
+                p.Start();
+            }
         }
 
         Bitlocker bit = new Bitlocker();
