@@ -142,17 +142,11 @@
   <data name="icons8_add_user_group_man_man_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\menu_icons\icons8-add-user-group-man-man-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_broadcasting_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\icons8-broadcasting-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_calendar_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\group_management_icons\icons8-calendar-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_Electrical_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\usercontrol_admin_icons\icons8-electrical-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_Encrypt_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\icons8-encrypt-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_F1_Car_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\usercontrol_admin_icons\icons8-f1 car-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,26 +154,8 @@
   <data name="icons8_individual_server_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\usercontrol_admin_icons\icons8-individual-server-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_LaptopSearch_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\icons8-laptopsearch-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_List_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\info_o_pc_icons\icons8-list-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_Network_Cable_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\info_o_pc_icons\icons8-network cable-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_Post_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\icons8-post-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_Processor_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\info_o_pc_icons\icons8-processor-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_Software_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\usercontrol_admin_icons\icons8-software-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_SSD_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\info_o_pc_icons\icons8-ssd-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_UserSearcg_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\menu_icons\icons8-usersearcg-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,19 +163,28 @@
   <data name="icons8_User_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\group_management_icons\icons8-user-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_User_Groups_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\icons8-user groups-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_Windows8_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\info_o_pc_icons\icons8-windows8-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_Workstation_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\group_management_icons\icons8-workstation-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_System_Information_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\info_o_pc_icons\icons8-system information-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_broadcasting_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\menu_icons\icons8-broadcasting-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_info_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\usercontrol_admin_icons\installedprogram_icons\icons8-info-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_data_encryption_528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\usercontrol_admin_icons\icons8-data-encryption-528.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_information_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\usercontrol_admin_icons\installedprogram_icons\icons8-information-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_remove_book_528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\usercontrol_admin_icons\icons8-remove-book-528.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_system_information_528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\usercontrol_admin_icons\icons8-system-information-528.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_telegram_app_528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\usercontrol_admin_icons\icons8-telegram-app-528.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_user_group_528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\usercontrol_admin_icons\icons8-user-group-528.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

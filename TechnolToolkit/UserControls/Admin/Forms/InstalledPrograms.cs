@@ -464,7 +464,7 @@ namespace TechnolToolkit
 
         private void pictureBoxInfo_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(ImageManipulation.ResizeImage(ImageManipulation.SetOpacity(Properties.Resources.icons8_info_96,imageOpacity),25,25),0,0);
+            e.Graphics.DrawImage(ImageManipulation.ResizeImage(ImageManipulation.SetOpacity(Properties.Resources.icons8_information_96,imageOpacity),25,25),0,0);
         }
 
         public enum opacityAction { increase, decrease };

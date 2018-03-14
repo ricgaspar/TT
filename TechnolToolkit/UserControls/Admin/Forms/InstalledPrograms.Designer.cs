@@ -176,6 +176,7 @@
             // 
             this.checkBoxHideUpdates.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxHideUpdates.AutoSize = true;
+            this.checkBoxHideUpdates.BackColor = System.Drawing.Color.DarkOrange;
             this.checkBoxHideUpdates.Checked = true;
             this.checkBoxHideUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHideUpdates.Location = new System.Drawing.Point(0, 1);
@@ -185,7 +186,7 @@
             this.checkBoxHideUpdates.TabIndex = 0;
             this.checkBoxHideUpdates.Text = "skrýt aktualizace";
             this.toolTip1.SetToolTip(this.checkBoxHideUpdates, "Z nějakého důvodu to nějaké vypisuje... Automaticky zaškrtnuto");
-            this.checkBoxHideUpdates.UseVisualStyleBackColor = true;
+            this.checkBoxHideUpdates.UseVisualStyleBackColor = false;
             // 
             // checkBoxHideMUI
             // 

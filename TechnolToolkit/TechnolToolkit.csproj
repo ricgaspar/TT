@@ -72,6 +72,9 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AltoControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AltoControls.1.0.1\lib\AltoControls.dll</HintPath>
@@ -117,6 +120,12 @@
   <ItemGroup>
     <Compile Include="CustomControls and Clases\ServiceManipulation.cs" />
     <Compile Include="CustomControls and Clases\ImageManipulation.cs" />
+    <Compile Include="DeleteFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteFiles.Designer.cs">
+      <DependentUpon>DeleteFiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="DZCsearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,10 +137,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SpravaSkupin\GroupsAndMember.cs" />
-    <Compile Include="CustomControls and Clases\CustomButton.cs">
-      <SubType>Component</SubType>
+    <Compile Include="UserControls\Admin\Forms\SCCMKlient.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UserControls\Admin\Forms\SCCMKlient.Designer.cs">
+      <DependentUpon>SCCMKlient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SpravaSkupin\GroupsAndMember.cs" />
     <Compile Include="UserControls\SpravaSkupin\UserControlAddToGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,54 +162,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Admin\Forms\InfoPC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\Admin\Forms\InfoPC.Designer.cs">
-      <DependentUpon>InfoPC.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls and Clases\ListViewColumnSorter.cs" />
     <Compile Include="UserControls\Admin\Forms\Napajeni.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\Admin\Forms\Napajeni.Designer.cs">
       <DependentUpon>Napajeni.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCAll.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCAll.Designer.cs">
-      <DependentUpon>UserControl_InfoPCAll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCDrives.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCDrives.Designer.cs">
-      <DependentUpon>UserControl_InfoPCDrives.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGeneral.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGeneral.Designer.cs">
-      <DependentUpon>UserControl_InfoPCGeneral.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGPUCPU.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCGPUCPU.Designer.cs">
-      <DependentUpon>UserControl_InfoPCGPUCPU.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCNetwork.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCNetwork.Designer.cs">
-      <DependentUpon>UserControl_InfoPCNetwork.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCSystem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\InfoPC\UserControl_InfoPCSystem.Designer.cs">
-      <DependentUpon>UserControl_InfoPCSystem.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Admin\Forms\VASConfig.cs">
       <SubType>Form</SubType>
@@ -249,8 +219,14 @@
     <Compile Include="UserControls\SAP\UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DeleteFiles.resx">
+      <DependentUpon>DeleteFiles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DZCsearch.resx">
       <DependentUpon>DZCsearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Admin\Forms\SCCMKlient.resx">
+      <DependentUpon>SCCMKlient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SpravaSkupin\UserControlAddToGroup.resx">
       <DependentUpon>UserControlAddToGroup.cs</DependentUpon>
@@ -260,9 +236,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Admin\Forms\InfoPC.resx">
-      <DependentUpon>InfoPC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\Napajeni.resx">
       <DependentUpon>Napajeni.cs</DependentUpon>
@@ -293,27 +266,12 @@
     <EmbeddedResource Include="UserControls\Admin\UserControlAdmin.resx">
       <DependentUpon>UserControlAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCAll.resx">
-      <DependentUpon>UserControl_InfoPCAll.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCDrives.resx">
-      <DependentUpon>UserControl_InfoPCDrives.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCGeneral.resx">
-      <DependentUpon>UserControl_InfoPCGeneral.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCGPUCPU.resx">
-      <DependentUpon>UserControl_InfoPCGPUCPU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCNetwork.resx">
-      <DependentUpon>UserControl_InfoPCNetwork.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InfoPC\UserControl_InfoPCSystem.resx">
-      <DependentUpon>UserControl_InfoPCSystem.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SAP\UserControlSAP.resx">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -346,39 +304,33 @@
     <EmbeddedResource Include="Resources\Change_Groups.hta" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\UserControl_Admin_icons\icons8-data-encryption-528.png" />
+    <Content Include="Resources\UserControl_Admin_icons\icons8-remove-book-528.png" />
+    <Content Include="Resources\UserControl_Admin_icons\icons8-system-information-528.png" />
+    <Content Include="Resources\UserControl_Admin_icons\icons8-telegram-app-528.png" />
+    <Content Include="Resources\UserControl_Admin_icons\icons8-user-group-528.png" />
+    <Content Include="Resources\UserControl_Admin_icons\InstalledProgram_icons\icons8-information-96.png" />
+    <None Include="Resources\icons8-data-encryption-96.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-individual-server-96.png" />
-    <Content Include="Resources\UserControl_Admin_icons\InstalledProgram_icons\icons8-info-96.png" />
     <EmbeddedResource Include="Resources\bitlocker.vbs" />
     <Content Include="logo2.ico" />
     <Content Include="Resources\Context_Menu\icons8-Close Window-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Encrypt-96_color.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-F1 Car-96_color.png" />
     <None Include="Resources\Unused_icons\icons8-Heart Monitor-96_color.png" />
-    <None Include="Resources\Unused_icons\icons8-Heart MonitorAll-96_color.png" />
     <None Include="Resources\Login_icons\icons8-Key 2-96_color.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-LaptopSearch-96_color.png" />
     <None Include="Resources\Menu_icons\icons8-Menu-96_color.png" />
     <None Include="Resources\Menu_icons\icons8-Moderator-96_color.png" />
     <None Include="Resources\Login_icons\icons8-Name-96_color.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-Post-96_color.png" />
-    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-Processor-96_color.png" />
     <None Include="Resources\Menu_icons\icons8-SAP-96_color.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Software-96_color.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-User Groups-96_color.png" />
     <None Include="Resources\Group_Management_icons\icons8-User-96_color.png" />
     <None Include="Resources\Menu_icons\icons8-UserSearcg-96_color.png" />
     <None Include="Resources\Context_Menu\icons8-Copy to Clipboard-96_color.png" />
     <None Include="Resources\UserControl_Admin_icons\icons8-Electrical-96_color.png" />
-    <None Include="Resources\Unused_icons\icons8-Computer-Repair96.png" />
-    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-Windows8-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-System Information-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-SSD-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-Network Cable-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\Info_o_PC_icons\icons8-List-96.png" />
     <None Include="Resources\Group_Management_icons\icons8-Workstation-96.png" />
     <None Include="Resources\Menu_icons\icons8-add-user-group-man-man-96.png" />
     <None Include="Resources\Group_Management_icons\icons8-calendar-96.png" />
-    <None Include="Resources\UserControl_Admin_icons\icons8-broadcasting-96.png" />
+    <None Include="Resources\Menu_icons\icons8-broadcasting-96.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

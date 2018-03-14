@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using TechnolToolkit.CustomControls_and_Clases;
+using TechnolToolkit.UserControls.Admin.Forms;
 
 namespace TechnolToolkit
 {
@@ -29,30 +30,31 @@ namespace TechnolToolkit
         private void buttonZprava_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Post_96_color, picSize, picSize), (buttonZprava.Width / 2) - (picSize / 2), (buttonZprava.Height / 2) - (picSize / 2 ) - heightOffset);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_telegram_app_528, picSize, picSize), (buttonZprava.Width / 2) - (picSize / 2), (buttonZprava.Height / 2) - (picSize / 2 ) - heightOffset);
         }
 
         private void buttonZmenaSkupin_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_User_Groups_96_color, picSize, picSize), (buttonZmenaSkupin.Width / 2) - (picSize / 2), (buttonZmenaSkupin.Height / 2) - (picSize / 2) - heightOffset);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_user_group_528, picSize*2, picSize*2), (buttonZmenaSkupin.Width / 2) - (picSize / 2), (buttonZmenaSkupin.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonInstalovanyProgramy_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Software_96_color, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), (buttonInstalovanyProgramy.Height / 2) - (picSize / 2) - heightOffset - 10);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Software_96_color, picSize, picSize), (buttonInstalovanyProgramy.Width / 2) - (picSize / 2), (buttonInstalovanyProgramy.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonNajdiPC_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_LaptopSearch_96_color, picSize, picSize), (buttonNajdiPC.Width / 2) - (picSize / 2), (buttonNajdiPC.Height / 2) - (picSize / 2) - heightOffset);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_system_information_528, picSize*2+20,picSize*2+20), (buttonNajdiPC.Width / 2) - (picSize/ 2)-7, (buttonNajdiPC.Height / 2) - (picSize / 2) - heightOffset-5);
         }
 
         private void buttonMSI_Paint(object sender, PaintEventArgs e)
         {
-            
+            Graphics g = e.Graphics;
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_remove_book_528, picSize, picSize), (buttonMSI.Width / 2) - (picSize / 2), (buttonMSI.Height / 2) - (picSize / 2) - heightOffset);
         }
 
         private void buttonNapajeniPC_Paint(object sender, PaintEventArgs e)
@@ -61,12 +63,6 @@ namespace TechnolToolkit
             g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Electrical_96_color, picSize, picSize), (buttonNapajeniPC.Width / 2) - (picSize / 2), (buttonNapajeniPC.Height / 2) - (picSize / 2) - heightOffset);
         }
        
-        private void buttonInfoPC_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Workstation_96, picSize, picSize), (buttonInfoPC.Width / 2) - (picSize / 2), (buttonInfoPC.Height / 2) - (picSize / 2) - heightOffset);
-        }
-
         private void buttonVAS_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -76,7 +72,7 @@ namespace TechnolToolkit
         private void buttonBitlocker_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Encrypt_96_color, picSize, picSize), (buttonBitlocker.Width / 2) - (picSize / 2), (buttonBitlocker.Height / 2) - (picSize / 2) - heightOffset);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_data_encryption_528, picSize,picSize), (buttonBitlocker.Width / 2) - (picSize / 2), (buttonBitlocker.Height / 2) - (picSize / 2) - heightOffset);
         }
         
         private void buttonZprava_Click(object sender, EventArgs e)
@@ -152,10 +148,10 @@ namespace TechnolToolkit
                 extractVAS();
             if (File.Exists(@"C:\ProgramData\TechnolToolkit\VAS6154_Configurator\start.bat"))
             {
-                #warning Nemuze pristoupit k souboru VasConfig.jar
                 //Po rucnim spusteni funguje...
                 Process p = new Process();
-                p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator\start.bat";
+                p.StartInfo.FileName = "start.bat";
+                p.StartInfo.WorkingDirectory = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator";
                 p.Start();
             }
             else
@@ -164,7 +160,8 @@ namespace TechnolToolkit
                 extractVAS();
                 MessageBox.Show("Soubor \"C:\\ProgramData\\TechnolToolkit\\VAS6154_Configurator\\start.bat\" nenalezen!\n\nNo tak já to po tobě teda opravím :)", "I ty brute, že ty jsi ten soubor smazal?!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process p = new Process();
-                p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator\start.bat";
+                p.StartInfo.FileName = "start.bat";
+                p.StartInfo.WorkingDirectory = @"C:\ProgramData\TechnolToolkit\VAS6154_Configurator";
                 p.Start();
             }
         }
@@ -177,31 +174,22 @@ namespace TechnolToolkit
             bit.ShowDialog();
         }
 
-        private void buttonUserPCname_Click(object sender, EventArgs e)
-        {
-
-        }
-        InfoPC ipc = new InfoPC();
-        private void buttonInfoPC_Click(object sender, EventArgs e)
-        {
-            ipc.ShowDialog();
-        }
-
         private void buttonSCCM_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_individual_server_96, 180, 180), (buttonSCCM.Width / 2) - (100 / 2), (buttonSCCM.Height / 2) - (picSize / 2) - heightOffset);
         }
 
-        private void buttonMultiping_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 180, 180), (buttonMultiping.Width / 2) - (picSize / 2), (buttonMultiping.Height / 2) - (picSize / 2) - heightOffset);
-        }
         Napajeni np = new Napajeni();
         private void buttonNapajeniPC_Click(object sender, EventArgs e)
         {
             np.ShowDialog();
+        }
+
+        SCCMKlient sk = new SCCMKlient();
+        private void buttonSCCM_Click(object sender, EventArgs e)
+        {
+            sk.ShowDialog();
         }
     }
 }

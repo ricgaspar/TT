@@ -36,8 +36,10 @@
             this.buttonAddToGroup = new System.Windows.Forms.Button();
             this.buttonSAP = new System.Windows.Forms.Button();
             this.buttonDZC = new System.Windows.Forms.Button();
+            this.linkLabelDeleteAllFiles = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanelPocitacAFlowlayout = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonMultiping = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelMenu.SuspendLayout();
             this.tableLayoutPanelPocitacAFlowlayout.SuspendLayout();
@@ -56,7 +58,7 @@
             this.tableLayoutPanelVnejsi.Name = "tableLayoutPanelVnejsi";
             this.tableLayoutPanelVnejsi.RowCount = 1;
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 711F));
+            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 691F));
             this.tableLayoutPanelVnejsi.Size = new System.Drawing.Size(1234, 711);
             this.tableLayoutPanelVnejsi.TabIndex = 0;
             // 
@@ -70,6 +72,8 @@
             this.tableLayoutPanelMenu.Controls.Add(this.buttonAddToGroup, 0, 4);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonSAP, 0, 2);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonDZC, 0, 3);
+            this.tableLayoutPanelMenu.Controls.Add(this.linkLabelDeleteAllFiles, 0, 6);
+            this.tableLayoutPanelMenu.Controls.Add(this.buttonMultiping, 0, 5);
             this.tableLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMenu.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(0);
@@ -82,6 +86,7 @@
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelMenu.Size = new System.Drawing.Size(250, 711);
             this.tableLayoutPanelMenu.TabIndex = 10;
             this.tableLayoutPanelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
@@ -113,7 +118,7 @@
             this.buttonAdminTools.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonAdminTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdminTools.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAdminTools.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonAdminTools.ForeColor = System.Drawing.Color.White;
             this.buttonAdminTools.Location = new System.Drawing.Point(0, 70);
             this.buttonAdminTools.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.buttonAdminTools.Name = "buttonAdminTools";
@@ -134,7 +139,7 @@
             this.buttonAddToGroup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonAddToGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddToGroup.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAddToGroup.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonAddToGroup.ForeColor = System.Drawing.Color.White;
             this.buttonAddToGroup.Location = new System.Drawing.Point(0, 260);
             this.buttonAddToGroup.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.buttonAddToGroup.Name = "buttonAddToGroup";
@@ -155,7 +160,7 @@
             this.buttonSAP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonSAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSAP.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSAP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonSAP.ForeColor = System.Drawing.Color.White;
             this.buttonSAP.Location = new System.Drawing.Point(0, 130);
             this.buttonSAP.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.buttonSAP.Name = "buttonSAP";
@@ -176,7 +181,7 @@
             this.buttonDZC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonDZC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDZC.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonDZC.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonDZC.ForeColor = System.Drawing.Color.White;
             this.buttonDZC.Location = new System.Drawing.Point(0, 200);
             this.buttonDZC.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.buttonDZC.Name = "buttonDZC";
@@ -189,6 +194,22 @@
             this.buttonDZC.Click += new System.EventHandler(this.buttonDZC_Click);
             this.buttonDZC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonDZC_Paint);
             // 
+            // linkLabelDeleteAllFiles
+            // 
+            this.linkLabelDeleteAllFiles.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.linkLabelDeleteAllFiles.AutoSize = true;
+            this.linkLabelDeleteAllFiles.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linkLabelDeleteAllFiles.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.linkLabelDeleteAllFiles.Location = new System.Drawing.Point(44, 684);
+            this.linkLabelDeleteAllFiles.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.linkLabelDeleteAllFiles.Name = "linkLabelDeleteAllFiles";
+            this.linkLabelDeleteAllFiles.Size = new System.Drawing.Size(162, 17);
+            this.linkLabelDeleteAllFiles.TabIndex = 10;
+            this.linkLabelDeleteAllFiles.TabStop = true;
+            this.linkLabelDeleteAllFiles.Text = "Vyčistit soubory programu";
+            this.linkLabelDeleteAllFiles.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.linkLabelDeleteAllFiles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDeleteAllFiles_LinkClicked);
+            // 
             // tableLayoutPanelPocitacAFlowlayout
             // 
             this.tableLayoutPanelPocitacAFlowlayout.ColumnCount = 1;
@@ -200,12 +221,13 @@
             this.tableLayoutPanelPocitacAFlowlayout.Name = "tableLayoutPanelPocitacAFlowlayout";
             this.tableLayoutPanelPocitacAFlowlayout.RowCount = 1;
             this.tableLayoutPanelPocitacAFlowlayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPocitacAFlowlayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelPocitacAFlowlayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 691F));
             this.tableLayoutPanelPocitacAFlowlayout.Size = new System.Drawing.Size(984, 711);
             this.tableLayoutPanelPocitacAFlowlayout.TabIndex = 11;
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -213,6 +235,23 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(984, 711);
             this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // buttonMultiping
+            // 
+            this.buttonMultiping.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonMultiping.FlatAppearance.BorderSize = 0;
+            this.buttonMultiping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMultiping.Font = new System.Drawing.Font("Century Gothic", 17.25F);
+            this.buttonMultiping.Location = new System.Drawing.Point(0, 320);
+            this.buttonMultiping.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.buttonMultiping.Name = "buttonMultiping";
+            this.buttonMultiping.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
+            this.buttonMultiping.Size = new System.Drawing.Size(249, 60);
+            this.buttonMultiping.TabIndex = 11;
+            this.buttonMultiping.Text = "Multiping";
+            this.buttonMultiping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMultiping.UseVisualStyleBackColor = true;
+            this.buttonMultiping.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMultiping_Paint);
             // 
             // Form1
             // 
@@ -232,6 +271,7 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.tableLayoutPanelVnejsi.ResumeLayout(false);
             this.tableLayoutPanelMenu.ResumeLayout(false);
+            this.tableLayoutPanelMenu.PerformLayout();
             this.tableLayoutPanelPocitacAFlowlayout.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -248,6 +288,8 @@
         private System.Windows.Forms.Button buttonAddToGroup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMenu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPocitacAFlowlayout;
+        private System.Windows.Forms.LinkLabel linkLabelDeleteAllFiles;
+        private System.Windows.Forms.Button buttonMultiping;
     }
 }
 

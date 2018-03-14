@@ -33,13 +33,11 @@
             this.buttonInstalovanyProgramy = new System.Windows.Forms.Button();
             this.buttonBitlocker = new System.Windows.Forms.Button();
             this.buttonNapajeniPC = new System.Windows.Forms.Button();
-            this.buttonInfoPC = new System.Windows.Forms.Button();
             this.buttonVAS = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonMSI = new System.Windows.Forms.Button();
             this.buttonNajdiPC = new System.Windows.Forms.Button();
             this.buttonSCCM = new System.Windows.Forms.Button();
-            this.buttonMultiping = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,10 +52,10 @@
             this.buttonZprava.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZprava.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonZprava.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonZprava.Location = new System.Drawing.Point(30, 35);
-            this.buttonZprava.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonZprava.Location = new System.Drawing.Point(682, 30);
+            this.buttonZprava.Margin = new System.Windows.Forms.Padding(30);
             this.buttonZprava.Name = "buttonZprava";
-            this.buttonZprava.Size = new System.Drawing.Size(182, 161);
+            this.buttonZprava.Size = new System.Drawing.Size(266, 175);
             this.buttonZprava.TabIndex = 1;
             this.buttonZprava.Text = "Odeslání zprávy";
             this.buttonZprava.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -76,10 +74,10 @@
             this.buttonZmenaSkupin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZmenaSkupin.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonZmenaSkupin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonZmenaSkupin.Location = new System.Drawing.Point(30, 497);
-            this.buttonZmenaSkupin.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonZmenaSkupin.Location = new System.Drawing.Point(682, 500);
+            this.buttonZmenaSkupin.Margin = new System.Windows.Forms.Padding(30);
             this.buttonZmenaSkupin.Name = "buttonZmenaSkupin";
-            this.buttonZmenaSkupin.Size = new System.Drawing.Size(182, 161);
+            this.buttonZmenaSkupin.Size = new System.Drawing.Size(266, 175);
             this.buttonZmenaSkupin.TabIndex = 3;
             this.buttonZmenaSkupin.Text = "Změna skupin (Lálovina)";
             this.buttonZmenaSkupin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -90,7 +88,7 @@
             // buttonInstalovanyProgramy
             // 
             this.buttonInstalovanyProgramy.AccessibleDescription = "";
-            this.buttonInstalovanyProgramy.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonInstalovanyProgramy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.buttonInstalovanyProgramy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonInstalovanyProgramy.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonInstalovanyProgramy.FlatAppearance.BorderSize = 0;
@@ -99,10 +97,10 @@
             this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonInstalovanyProgramy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(272, 35);
-            this.buttonInstalovanyProgramy.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(682, 265);
+            this.buttonInstalovanyProgramy.Margin = new System.Windows.Forms.Padding(30);
             this.buttonInstalovanyProgramy.Name = "buttonInstalovanyProgramy";
-            this.buttonInstalovanyProgramy.Size = new System.Drawing.Size(182, 161);
+            this.buttonInstalovanyProgramy.Size = new System.Drawing.Size(266, 175);
             this.buttonInstalovanyProgramy.TabIndex = 4;
             this.buttonInstalovanyProgramy.Text = "Nainstalovaný software";
             this.buttonInstalovanyProgramy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -121,10 +119,10 @@
             this.buttonBitlocker.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonBitlocker.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonBitlocker.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonBitlocker.Location = new System.Drawing.Point(514, 35);
-            this.buttonBitlocker.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonBitlocker.Location = new System.Drawing.Point(30, 30);
+            this.buttonBitlocker.Margin = new System.Windows.Forms.Padding(30);
             this.buttonBitlocker.Name = "buttonBitlocker";
-            this.buttonBitlocker.Size = new System.Drawing.Size(182, 161);
+            this.buttonBitlocker.Size = new System.Drawing.Size(266, 175);
             this.buttonBitlocker.TabIndex = 12;
             this.buttonBitlocker.Text = "BitLocker";
             this.buttonBitlocker.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -143,10 +141,10 @@
             this.buttonNapajeniPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNapajeniPC.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonNapajeniPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNapajeniPC.Location = new System.Drawing.Point(30, 266);
-            this.buttonNapajeniPC.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonNapajeniPC.Location = new System.Drawing.Point(30, 500);
+            this.buttonNapajeniPC.Margin = new System.Windows.Forms.Padding(30);
             this.buttonNapajeniPC.Name = "buttonNapajeniPC";
-            this.buttonNapajeniPC.Size = new System.Drawing.Size(182, 161);
+            this.buttonNapajeniPC.Size = new System.Drawing.Size(266, 175);
             this.buttonNapajeniPC.TabIndex = 10;
             this.buttonNapajeniPC.Text = "Napájení PC";
             this.buttonNapajeniPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -154,32 +152,9 @@
             this.buttonNapajeniPC.Click += new System.EventHandler(this.buttonNapajeniPC_Click);
             this.buttonNapajeniPC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonNapajeniPC_Paint);
             // 
-            // buttonInfoPC
-            // 
-            this.buttonInfoPC.AccessibleDescription = "";
-            this.buttonInfoPC.BackColor = System.Drawing.Color.Maroon;
-            this.buttonInfoPC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonInfoPC.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.buttonInfoPC.FlatAppearance.BorderSize = 0;
-            this.buttonInfoPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.buttonInfoPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonInfoPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonInfoPC.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonInfoPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonInfoPC.Location = new System.Drawing.Point(756, 35);
-            this.buttonInfoPC.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
-            this.buttonInfoPC.Name = "buttonInfoPC";
-            this.buttonInfoPC.Size = new System.Drawing.Size(182, 161);
-            this.buttonInfoPC.TabIndex = 11;
-            this.buttonInfoPC.Text = "Info o PC";
-            this.buttonInfoPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonInfoPC.UseVisualStyleBackColor = false;
-            this.buttonInfoPC.Click += new System.EventHandler(this.buttonInfoPC_Click);
-            this.buttonInfoPC.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonInfoPC_Paint);
-            // 
             // buttonVAS
             // 
-            this.buttonVAS.BackColor = System.Drawing.Color.Maroon;
+            this.buttonVAS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.buttonVAS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonVAS.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonVAS.FlatAppearance.BorderSize = 0;
@@ -188,46 +163,16 @@
             this.buttonVAS.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonVAS.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonVAS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonVAS.Location = new System.Drawing.Point(756, 266);
-            this.buttonVAS.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonVAS.Location = new System.Drawing.Point(30, 265);
+            this.buttonVAS.Margin = new System.Windows.Forms.Padding(30);
             this.buttonVAS.Name = "buttonVAS";
-            this.buttonVAS.Size = new System.Drawing.Size(182, 161);
+            this.buttonVAS.Size = new System.Drawing.Size(266, 175);
             this.buttonVAS.TabIndex = 15;
             this.buttonVAS.Text = "VAS6154 nastavení";
             this.buttonVAS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonVAS.UseVisualStyleBackColor = false;
             this.buttonVAS.Click += new System.EventHandler(this.buttonVAS_Click);
             this.buttonVAS.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonVAS_Paint);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.buttonZmenaSkupin, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.buttonZprava, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonMSI, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.buttonInstalovanyProgramy, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonBitlocker, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonInfoPC, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonVAS, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.buttonNajdiPC, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.buttonNapajeniPC, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.buttonSCCM, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.buttonMultiping, 2, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(989, 765);
-            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // buttonMSI
             // 
@@ -240,10 +185,10 @@
             this.buttonMSI.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMSI.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonMSI.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonMSI.Location = new System.Drawing.Point(514, 497);
-            this.buttonMSI.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonMSI.Location = new System.Drawing.Point(356, 265);
+            this.buttonMSI.Margin = new System.Windows.Forms.Padding(30);
             this.buttonMSI.Name = "buttonMSI";
-            this.buttonMSI.Size = new System.Drawing.Size(182, 161);
+            this.buttonMSI.Size = new System.Drawing.Size(266, 175);
             this.buttonMSI.TabIndex = 8;
             this.buttonMSI.Text = "Odinstalační stringy";
             this.buttonMSI.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -262,10 +207,10 @@
             this.buttonNajdiPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNajdiPC.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonNajdiPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNajdiPC.Location = new System.Drawing.Point(272, 497);
-            this.buttonNajdiPC.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonNajdiPC.Location = new System.Drawing.Point(356, 500);
+            this.buttonNajdiPC.Margin = new System.Windows.Forms.Padding(30);
             this.buttonNajdiPC.Name = "buttonNajdiPC";
-            this.buttonNajdiPC.Size = new System.Drawing.Size(182, 161);
+            this.buttonNajdiPC.Size = new System.Drawing.Size(266, 175);
             this.buttonNajdiPC.TabIndex = 5;
             this.buttonNajdiPC.Text = "Najdi PC (Lálovina)";
             this.buttonNajdiPC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -275,7 +220,7 @@
             // 
             // buttonSCCM
             // 
-            this.buttonSCCM.BackColor = System.Drawing.Color.Maroon;
+            this.buttonSCCM.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonSCCM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSCCM.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonSCCM.FlatAppearance.BorderSize = 0;
@@ -284,49 +229,53 @@
             this.buttonSCCM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSCCM.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonSCCM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonSCCM.Location = new System.Drawing.Point(272, 266);
-            this.buttonSCCM.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
+            this.buttonSCCM.Location = new System.Drawing.Point(356, 30);
+            this.buttonSCCM.Margin = new System.Windows.Forms.Padding(30);
             this.buttonSCCM.Name = "buttonSCCM";
-            this.buttonSCCM.Size = new System.Drawing.Size(182, 161);
+            this.buttonSCCM.Size = new System.Drawing.Size(266, 175);
             this.buttonSCCM.TabIndex = 10;
             this.buttonSCCM.Text = "SCCM klient";
             this.buttonSCCM.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonSCCM.UseVisualStyleBackColor = false;
+            this.buttonSCCM.Click += new System.EventHandler(this.buttonSCCM_Click);
             this.buttonSCCM.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonSCCM_Paint);
             // 
-            // buttonMultiping
+            // tableLayoutPanel1
             // 
-            this.buttonMultiping.BackColor = System.Drawing.Color.Maroon;
-            this.buttonMultiping.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonMultiping.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.buttonMultiping.FlatAppearance.BorderSize = 0;
-            this.buttonMultiping.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.buttonMultiping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMultiping.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonMultiping.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonMultiping.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonMultiping.Location = new System.Drawing.Point(514, 266);
-            this.buttonMultiping.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
-            this.buttonMultiping.Name = "buttonMultiping";
-            this.buttonMultiping.Size = new System.Drawing.Size(182, 161);
-            this.buttonMultiping.TabIndex = 10;
-            this.buttonMultiping.Text = "Multiping";
-            this.buttonMultiping.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonMultiping.UseVisualStyleBackColor = false;
-            this.buttonMultiping.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMultiping_Paint);
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonInstalovanyProgramy, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonBitlocker, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonSCCM, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonMSI, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonVAS, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonZprava, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonNajdiPC, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.buttonZmenaSkupin, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.buttonNapajeniPC, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(978, 705);
+            this.tableLayoutPanel1.TabIndex = 16;
             // 
             // UserControlAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(0, 680);
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserControlAdmin";
             this.Padding = new System.Windows.Forms.Padding(3);
-            this.Size = new System.Drawing.Size(995, 771);
+            this.Size = new System.Drawing.Size(984, 711);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -337,13 +286,11 @@
         private System.Windows.Forms.Button buttonZmenaSkupin;
         private System.Windows.Forms.Button buttonInstalovanyProgramy;
         private System.Windows.Forms.Button buttonNapajeniPC;
-        private System.Windows.Forms.Button buttonInfoPC;
         private System.Windows.Forms.Button buttonVAS;
         private System.Windows.Forms.Button buttonBitlocker;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button buttonNajdiPC;
         private System.Windows.Forms.Button buttonMSI;
         private System.Windows.Forms.Button buttonSCCM;
-        private System.Windows.Forms.Button buttonMultiping;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

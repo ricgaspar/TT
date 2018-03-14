@@ -269,7 +269,6 @@ namespace TechnolToolkit
 
         private void buttonAddMemberToGroup_Click(object sender, EventArgs e)
         {
-#warning FIX_ME! ServiceManipulation.runOrStopService
             ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
             registryFix(textBoxComputername.Text);
             addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);

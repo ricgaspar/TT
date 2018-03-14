@@ -185,6 +185,12 @@ namespace TechnolToolkit
             g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
         }
 
+        private void buttonMultiping_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 100,100), 8,0);
+        }
+
         #endregion
 
         //Funkce která se stará o změnu zobrazovaného UserControl a volá funkci na změnu pozadí buttonu
@@ -274,7 +280,12 @@ namespace TechnolToolkit
             Pen pen = new Pen(Color.FromArgb(48, 48, 48), 1);
             e.Graphics.DrawLine(pen, tableLayoutPanelMenu.Width - 1, 0, tableLayoutPanelMenu.Width - 1, tableLayoutPanelMenu.Height - 1);
         }
+        DeleteFiles df = new DeleteFiles();
+        private void linkLabelDeleteAllFiles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            df.ShowDialog();
+        }
 
-
+        
     }
 }
