@@ -9,6 +9,9 @@ using System.IO;
 using System.Windows.Forms;
 using System.DirectoryServices;
 using TechnolToolkit.CustomControls_and_Clases;
+using System.Security.Cryptography;
+using System.Text;
+using TechnolToolkit.Resources;
 
 namespace TechnolToolkit
 {
@@ -23,8 +26,6 @@ namespace TechnolToolkit
         UserControl ucS = new UserControlSAP();
         //Pridani do skupin
         UserControlAddToGroup ucAG = new UserControlAddToGroup();
-        //Login
-        Login loginScreen = new Login();
 
         public Form1()
         {
@@ -55,13 +56,13 @@ namespace TechnolToolkit
                     MessageBox.Show("Chyba při pokusu o resize! Není definovaný aktivní panel!", "RESIZE ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-            
+
         }
-        
+
         //Nastavuje pozadi pro aktivni buttony
         private void pozadiAktivnihoButtonu(string activePanel)
         {
-            Color barvaButtonu = Color.FromArgb(48,48,48); 
+            Color barvaButtonu = Color.FromArgb(48, 48, 48);
             //Black - Color barvaButtonu = Color.FromArgb(37, 51, 79);
             if (activePanel == "ucA")
             {
@@ -86,7 +87,7 @@ namespace TechnolToolkit
                 buttonAddToGroup.BackColor = Color.Transparent;
                 buttonAddToGroup.FlatAppearance.MouseOverBackColor = Color.Transparent;
             }
-            if(activePanel == "ucAG")
+            if (activePanel == "ucAG")
             {
                 //aktivni
                 buttonAddToGroup.BackColor = barvaButtonu;
@@ -98,7 +99,7 @@ namespace TechnolToolkit
                 buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
             }
         }
-        
+
         #region Button Click funkce
         private void buttonAdminTools_Click(object sender, EventArgs e)
         {
@@ -106,12 +107,12 @@ namespace TechnolToolkit
             /*if (aktivniPanel == "ucA")
             {
               */
-              /*
-                Graphics dc = this.CreateGraphics();
-                Pen pen = new Pen(Color.Blue, 3);
-                dc.DrawRectangle(pen, 0, 0, 50, 50);
-                Refresh();
-                */
+            /*
+              Graphics dc = this.CreateGraphics();
+              Pen pen = new Pen(Color.Blue, 3);
+              dc.DrawRectangle(pen, 0, 0, 50, 50);
+              Refresh();
+              */
             //}
         }
         private void ButtonSAP_Click(object sender, EventArgs e)
@@ -156,7 +157,7 @@ namespace TechnolToolkit
         private void buttonSAP_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_SAP_96_color, 50, 50), 14, (buttonSAP.Height/2) - 25);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_SAP_96_color, 50, 50), 14, (buttonSAP.Height / 2) - 25);
             if (aktivniPanel == "ucS")
             {
                 Pen pen = new Pen(Color.Blue, 3);
@@ -188,7 +189,7 @@ namespace TechnolToolkit
         private void buttonMultiping_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 100,100), 8,0);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 100, 100), 8, 0);
         }
 
         #endregion
@@ -196,7 +197,7 @@ namespace TechnolToolkit
         //Funkce která se stará o změnu zobrazovaného UserControl a volá funkci na změnu pozadí buttonu
         private void activePanelFuntion(string activePanel, string buttonClicked)
         {
-            switch(buttonClicked)
+            switch (buttonClicked)
             {
                 case "ucA":
                     #region ucA code...
@@ -262,18 +263,22 @@ namespace TechnolToolkit
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             foreach (var resourceName in assembly.GetManifestResourceNames())
             {
-                System.Diagnostics.Trace.WriteLine("Kopiruji: "+ resourceName);
                 if (resourceName.StartsWith("TechnolToolkit.Resources."))
                 {
-                    using (var fs = File.Create(@"C:\ProgramData\TechnolToolkit\" + resourceName.Replace("TechnolToolkit.Resources.", "")))
+                    string soubor = resourceName.Replace("TechnolToolkit.Resources.", "");
+                    if (!File.Exists(@"C:\ProgramData\TechnolToolkit\" + soubor))
                     {
-                        var rs = assembly.GetManifestResourceStream(resourceName);
-                        rs.CopyTo(fs);
-                        rs.Close();
+                        System.Diagnostics.Trace.WriteLine("Kopiruji: " + resourceName);
+                        using (var fs = File.Create(@"C:\ProgramData\TechnolToolkit\" + resourceName.Replace("TechnolToolkit.Resources.", "")))
+                        {
+                            var rs = assembly.GetManifestResourceStream(resourceName);
+                            rs.CopyTo(fs);
+                            rs.Close();
+                        }
                     }
-                }   
+                }
             }
-        }  
+        }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -286,6 +291,71 @@ namespace TechnolToolkit
             df.ShowDialog();
         }
 
-        
+        private string ToSHA512_HEX(string value)
+        {
+            SHA512 sha512 = SHA512.Create();
+            byte[] hashData = sha512.ComputeHash(Encoding.UTF8.GetBytes(value));
+            StringBuilder hex = new StringBuilder(hashData.Length * 2);
+            StringBuilder returnValue = new StringBuilder();
+            foreach (byte b in hashData)
+                hex.AppendFormat("{0:x2}", b);
+            return hex.ToString();
+        }
+
+        private string fromHexatoString(string value)
+        {
+            int NumberChars = value.Length;
+            byte[] bytes = new byte[NumberChars / 2];
+            for (int i = 0; i < NumberChars; i += 2)
+                bytes[i / 2] = Convert.ToByte(value.ToString().Substring(i, 2), 16);
+
+            StringBuilder str = new StringBuilder();
+            foreach (byte b in bytes)
+                str.Append(b);
+            return str.ToString();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(@"C:\ProgramData\TechnolToolkit\License.dat"))
+            {
+                this.Enabled = false;
+                this.Visible = false;
+                bool accessGranted = false;
+
+                string[] fileContent = File.ReadAllLines(@"C:\ProgramData\TechnolToolkit\License.dat");
+
+                foreach (string line in fileContent)
+                {
+                    //kontrola, zda-li alespon jeden radek v licencnim souboru ma spravny hash
+                    if (line == ToSHA512_HEX(Environment.UserName + ";" + Environment.MachineName))
+                    {
+                        accessGranted = true;
+                        break;
+                    }
+                    else accessGranted = false;
+                }
+                if (accessGranted != true)
+                {
+                    MessageBox.Show("Licence není platná!\n\nUkončuji program...");
+                    Application.Exit();
+                }
+                else
+                {
+                    this.Enabled = true;
+                    this.Visible = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nebyla nalezena licence!\n\nUkončuji program...");
+                Application.Exit();
+            }
+        }
+        SHA512_Generator sh = new SHA512_Generator();
+        private void buttonSHA512Generator_Click(object sender, EventArgs e)
+        {
+            sh.ShowDialog();
+        }
     }
 }

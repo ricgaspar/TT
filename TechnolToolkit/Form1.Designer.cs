@@ -37,9 +37,10 @@
             this.buttonSAP = new System.Windows.Forms.Button();
             this.buttonDZC = new System.Windows.Forms.Button();
             this.linkLabelDeleteAllFiles = new System.Windows.Forms.LinkLabel();
+            this.buttonMultiping = new System.Windows.Forms.Button();
+            this.buttonSHA512Generator = new System.Windows.Forms.Button();
             this.tableLayoutPanelPocitacAFlowlayout = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonMultiping = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelMenu.SuspendLayout();
             this.tableLayoutPanelPocitacAFlowlayout.SuspendLayout();
@@ -72,16 +73,18 @@
             this.tableLayoutPanelMenu.Controls.Add(this.buttonAddToGroup, 0, 4);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonSAP, 0, 2);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonDZC, 0, 3);
-            this.tableLayoutPanelMenu.Controls.Add(this.linkLabelDeleteAllFiles, 0, 6);
+            this.tableLayoutPanelMenu.Controls.Add(this.linkLabelDeleteAllFiles, 0, 7);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonMultiping, 0, 5);
+            this.tableLayoutPanelMenu.Controls.Add(this.buttonSHA512Generator, 0, 6);
             this.tableLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMenu.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelMenu.Name = "tableLayoutPanelMenu";
-            this.tableLayoutPanelMenu.RowCount = 7;
+            this.tableLayoutPanelMenu.RowCount = 8;
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
@@ -210,6 +213,41 @@
             this.linkLabelDeleteAllFiles.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.linkLabelDeleteAllFiles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDeleteAllFiles_LinkClicked);
             // 
+            // buttonMultiping
+            // 
+            this.buttonMultiping.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonMultiping.FlatAppearance.BorderSize = 0;
+            this.buttonMultiping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMultiping.Font = new System.Drawing.Font("Century Gothic", 17.25F);
+            this.buttonMultiping.ForeColor = System.Drawing.Color.DarkOrange;
+            this.buttonMultiping.Location = new System.Drawing.Point(0, 320);
+            this.buttonMultiping.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.buttonMultiping.Name = "buttonMultiping";
+            this.buttonMultiping.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
+            this.buttonMultiping.Size = new System.Drawing.Size(249, 60);
+            this.buttonMultiping.TabIndex = 11;
+            this.buttonMultiping.Text = "Multiping";
+            this.buttonMultiping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMultiping.UseVisualStyleBackColor = true;
+            this.buttonMultiping.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMultiping_Paint);
+            // 
+            // buttonSHA512Generator
+            // 
+            this.buttonSHA512Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSHA512Generator.FlatAppearance.BorderSize = 0;
+            this.buttonSHA512Generator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSHA512Generator.Font = new System.Drawing.Font("Century Gothic", 17.25F);
+            this.buttonSHA512Generator.Location = new System.Drawing.Point(0, 380);
+            this.buttonSHA512Generator.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.buttonSHA512Generator.Name = "buttonSHA512Generator";
+            this.buttonSHA512Generator.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
+            this.buttonSHA512Generator.Size = new System.Drawing.Size(249, 60);
+            this.buttonSHA512Generator.TabIndex = 11;
+            this.buttonSHA512Generator.Text = "SHA512";
+            this.buttonSHA512Generator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSHA512Generator.UseVisualStyleBackColor = true;
+            this.buttonSHA512Generator.Click += new System.EventHandler(this.buttonSHA512Generator_Click);
+            // 
             // tableLayoutPanelPocitacAFlowlayout
             // 
             this.tableLayoutPanelPocitacAFlowlayout.ColumnCount = 1;
@@ -236,23 +274,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(984, 711);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // buttonMultiping
-            // 
-            this.buttonMultiping.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonMultiping.FlatAppearance.BorderSize = 0;
-            this.buttonMultiping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMultiping.Font = new System.Drawing.Font("Century Gothic", 17.25F);
-            this.buttonMultiping.Location = new System.Drawing.Point(0, 320);
-            this.buttonMultiping.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.buttonMultiping.Name = "buttonMultiping";
-            this.buttonMultiping.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.buttonMultiping.Size = new System.Drawing.Size(249, 60);
-            this.buttonMultiping.TabIndex = 11;
-            this.buttonMultiping.Text = "Multiping";
-            this.buttonMultiping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonMultiping.UseVisualStyleBackColor = true;
-            this.buttonMultiping.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMultiping_Paint);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,7 +288,8 @@
             this.MinimumSize = new System.Drawing.Size(1250, 730);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Technology Toolkit";
+            this.Text = "Technol Toolkit";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.tableLayoutPanelVnejsi.ResumeLayout(false);
             this.tableLayoutPanelMenu.ResumeLayout(false);
@@ -290,6 +312,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPocitacAFlowlayout;
         private System.Windows.Forms.LinkLabel linkLabelDeleteAllFiles;
         private System.Windows.Forms.Button buttonMultiping;
+        private System.Windows.Forms.Button buttonSHA512Generator;
     }
 }
 

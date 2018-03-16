@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlAddToGroup));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("test");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("test");
             this.labelConnectedTo = new System.Windows.Forms.Label();
             this.labelDateTimeConnected = new System.Windows.Forms.Label();
             this.tableLayoutPanelPridaniDoSkup = new System.Windows.Forms.TableLayoutPanel();
@@ -587,7 +587,7 @@
             this.listView1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.listView1.ForeColor = System.Drawing.Color.Gainsboro;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";

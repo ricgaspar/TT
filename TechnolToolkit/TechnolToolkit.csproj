@@ -137,6 +137,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SHA512_Generator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SHA512_Generator.Designer.cs">
+      <DependentUpon>SHA512_Generator.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Admin\Forms\SCCMKlient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,12 +187,6 @@
     <Compile Include="UserControls\Admin\Forms\InstalledPrograms.Designer.cs">
       <DependentUpon>InstalledPrograms.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Admin\Forms\MSIUninstall.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +225,9 @@
     <EmbeddedResource Include="DZCsearch.resx">
       <DependentUpon>DZCsearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SHA512_Generator.resx">
+      <DependentUpon>SHA512_Generator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\SCCMKlient.resx">
       <DependentUpon>SCCMKlient.cs</DependentUpon>
     </EmbeddedResource>
@@ -245,9 +248,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\InstalledPrograms.resx">
       <DependentUpon>InstalledPrograms.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\MSIUninstall.resx">
       <DependentUpon>MSIUninstall.cs</DependentUpon>
@@ -310,6 +310,7 @@
     <Content Include="Resources\UserControl_Admin_icons\icons8-telegram-app-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-user-group-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\InstalledProgram_icons\icons8-information-96.png" />
+    <Content Include="Resources\UserControl_Admin_icons\SCCCMKlient_icons\icons8-maintenance-96.png" />
     <None Include="Resources\icons8-data-encryption-96.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-individual-server-96.png" />
     <EmbeddedResource Include="Resources\bitlocker.vbs" />

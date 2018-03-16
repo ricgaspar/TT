@@ -31,7 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxComputername = new System.Windows.Forms.TextBox();
+            this.buttonPing = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -53,9 +55,8 @@
             this.buttonRepair = new System.Windows.Forms.Button();
             this.buttonPolicy = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -66,7 +67,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -103,7 +103,23 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(529, 287);
             this.tableLayoutPanel3.TabIndex = 9;
-            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.34593F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.65406F));
+            this.tableLayoutPanel8.Controls.Add(this.textBoxComputername, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.buttonPing, 1, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(529, 38);
+            this.tableLayoutPanel8.TabIndex = 11;
+            this.tableLayoutPanel8.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel8_Paint);
             // 
             // textBoxComputername
             // 
@@ -115,7 +131,7 @@
             this.textBoxComputername.Location = new System.Drawing.Point(5, 11);
             this.textBoxComputername.Margin = new System.Windows.Forms.Padding(5, 5, 3, 0);
             this.textBoxComputername.Name = "textBoxComputername";
-            this.textBoxComputername.Size = new System.Drawing.Size(356, 20);
+            this.textBoxComputername.Size = new System.Drawing.Size(380, 20);
             this.textBoxComputername.TabIndex = 8;
             this.textBoxComputername.Text = "Název počítače";
             this.toolTip1.SetToolTip(this.textBoxComputername, "Název počítače");
@@ -123,6 +139,23 @@
             this.textBoxComputername.TextChanged += new System.EventHandler(this.textBoxComputername_TextChanged);
             this.textBoxComputername.Enter += new System.EventHandler(this.textBoxComputername_Enter);
             this.textBoxComputername.Leave += new System.EventHandler(this.textBoxComputername_Leave);
+            // 
+            // buttonPing
+            // 
+            this.buttonPing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonPing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonPing.Enabled = false;
+            this.buttonPing.FlatAppearance.BorderSize = 0;
+            this.buttonPing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPing.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonPing.ForeColor = System.Drawing.Color.White;
+            this.buttonPing.Location = new System.Drawing.Point(391, 3);
+            this.buttonPing.Name = "buttonPing";
+            this.buttonPing.Size = new System.Drawing.Size(135, 32);
+            this.buttonPing.TabIndex = 9;
+            this.buttonPing.Text = "PING";
+            this.buttonPing.UseVisualStyleBackColor = false;
+            this.buttonPing.Click += new System.EventHandler(this.buttonPing_Click);
             // 
             // groupBox1
             // 
@@ -317,7 +350,7 @@
             0,
             0});
             this.numericUpDown1.Minimum = new decimal(new int[] {
-            1024,
+            500,
             0,
             0,
             0});
@@ -361,6 +394,7 @@
             this.buttonClearCache.Text = "Vyčistit cache paměť";
             this.toolTip1.SetToolTip(this.buttonClearCache, "Vymaže korektním způsobem obsah mezipaměti pro stahování balíčků");
             this.buttonClearCache.UseVisualStyleBackColor = false;
+            this.buttonClearCache.Click += new System.EventHandler(this.buttonClearCache_Click);
             // 
             // buttonSetCache
             // 
@@ -424,6 +458,7 @@
             this.toolTip1.SetToolTip(this.buttonRepair, "Vyšle příkaz na opravu klienta");
             this.buttonRepair.UseVisualStyleBackColor = false;
             this.buttonRepair.Click += new System.EventHandler(this.buttonRepair_Click);
+            this.buttonRepair.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonRepair_Paint);
             // 
             // buttonPolicy
             // 
@@ -442,31 +477,7 @@
             this.buttonPolicy.Text = "Aktualizace politik počítače (SCCM)";
             this.toolTip1.SetToolTip(this.buttonPolicy, "Aktualizuje seznam softwaru v Centru softwaru, atd..");
             this.buttonPolicy.UseVisualStyleBackColor = false;
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.80907F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.19093F));
-            this.tableLayoutPanel8.Controls.Add(this.textBoxComputername, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 30);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(529, 38);
-            this.tableLayoutPanel8.TabIndex = 11;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(367, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "PING";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonPolicy.Click += new System.EventHandler(this.buttonPolicy_Click);
             // 
             // SCCMKlient
             // 
@@ -482,6 +493,8 @@
             this.Text = "SCCMKlient";
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -494,8 +507,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -526,6 +537,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonPing;
     }
 }
