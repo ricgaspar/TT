@@ -229,6 +229,7 @@
             this.buttonMultiping.Text = "Multiping";
             this.buttonMultiping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMultiping.UseVisualStyleBackColor = true;
+            this.buttonMultiping.Click += new System.EventHandler(this.buttonMultiping_Click);
             this.buttonMultiping.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonMultiping_Paint);
             // 
             // buttonSHA512Generator
@@ -243,7 +244,7 @@
             this.buttonSHA512Generator.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.buttonSHA512Generator.Size = new System.Drawing.Size(249, 60);
             this.buttonSHA512Generator.TabIndex = 11;
-            this.buttonSHA512Generator.Text = "SHA512";
+            this.buttonSHA512Generator.Text = "Hashování";
             this.buttonSHA512Generator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSHA512Generator.UseVisualStyleBackColor = true;
             this.buttonSHA512Generator.Click += new System.EventHandler(this.buttonSHA512Generator_Click);

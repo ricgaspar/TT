@@ -95,7 +95,7 @@
             this.buttonInstalovanyProgramy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonInstalovanyProgramy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.Gainsboro;
+            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.DarkOrange;
             this.buttonInstalovanyProgramy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(682, 265);
             this.buttonInstalovanyProgramy.Margin = new System.Windows.Forms.Padding(30);
@@ -220,7 +220,7 @@
             // 
             // buttonSCCM
             // 
-            this.buttonSCCM.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonSCCM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.buttonSCCM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSCCM.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.buttonSCCM.FlatAppearance.BorderSize = 0;

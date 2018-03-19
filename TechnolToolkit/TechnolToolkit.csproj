@@ -149,6 +149,12 @@
     <Compile Include="UserControls\Admin\Forms\SCCMKlient.Designer.cs">
       <DependentUpon>SCCMKlient.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Multiping\Multiping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Multiping\Multiping.Designer.cs">
+      <DependentUpon>Multiping.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SpravaSkupin\GroupsAndMember.cs" />
     <Compile Include="UserControls\SpravaSkupin\UserControlAddToGroup.cs">
       <SubType>UserControl</SubType>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\SCCMKlient.resx">
       <DependentUpon>SCCMKlient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Multiping\Multiping.resx">
+      <DependentUpon>Multiping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SpravaSkupin\UserControlAddToGroup.resx">
       <DependentUpon>UserControlAddToGroup.cs</DependentUpon>

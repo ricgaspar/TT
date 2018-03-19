@@ -12,6 +12,7 @@ using TechnolToolkit.CustomControls_and_Clases;
 using System.Security.Cryptography;
 using System.Text;
 using TechnolToolkit.Resources;
+using TechnolToolkit.UserControls.Multiping;
 
 namespace TechnolToolkit
 {
@@ -26,7 +27,6 @@ namespace TechnolToolkit
         UserControl ucS = new UserControlSAP();
         //Pridani do skupin
         UserControlAddToGroup ucAG = new UserControlAddToGroup();
-
         public Form1()
         {
             InitializeComponent();
@@ -98,9 +98,15 @@ namespace TechnolToolkit
                 buttonSAP.BackColor = Color.Transparent;
                 buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
             }
+            
         }
 
         #region Button Click funkce
+        Multiping mp = new Multiping();
+        private void buttonMultiping_Click(object sender, EventArgs e)
+        {
+            mp.Show();
+        }
         private void buttonAdminTools_Click(object sender, EventArgs e)
         {
             activePanelFuntion(aktivniPanel, "ucA");
@@ -144,8 +150,6 @@ namespace TechnolToolkit
                 Brush br = new SolidBrush(activeButtonLineColor);
                 g.FillRectangle(br, rect);
             }
-
-
         }
         //Menu button (skryvani menu)
         private void buttonMenu_Paint(object sender, PaintEventArgs e)
@@ -180,18 +184,17 @@ namespace TechnolToolkit
             }
         }
 
+        private void buttonMultiping_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 100,100), 12, 0);
+        }
+
         private void buttonDZC_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_UserSearcg_96_color, 50, 50), 8, 0);
         }
-
-        private void buttonMultiping_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 100, 100), 8, 0);
-        }
-
         #endregion
 
         //Funkce která se stará o změnu zobrazovaného UserControl a volá funkci na změnu pozadí buttonu
@@ -357,5 +360,7 @@ namespace TechnolToolkit
         {
             sh.ShowDialog();
         }
+
+       
     }
 }

@@ -143,9 +143,9 @@
             this.checkBoxHEX.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxHEX.Location = new System.Drawing.Point(70, 133);
             this.checkBoxHEX.Name = "checkBoxHEX";
-            this.checkBoxHEX.Size = new System.Drawing.Size(276, 21);
+            this.checkBoxHEX.Size = new System.Drawing.Size(390, 21);
             this.checkBoxHEX.TabIndex = 4;
-            this.checkBoxHEX.Text = "Převést výstup na hexadecimální string";
+            this.checkBoxHEX.Text = "Převést výstup na hexadecimální string (nejčastější zápis)";
             this.checkBoxHEX.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
