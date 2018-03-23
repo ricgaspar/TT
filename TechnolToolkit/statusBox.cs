@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,14 @@ namespace TechnolToolkit
 {
     public partial class statusBox : Form
     {
-        //int remaningTime = 20;
+        public int runningSeconds = 0;
         public statusBox()
         {
             InitializeComponent();
-            //timer1.Interval = 1000;
-            //timer1.Start();
-            //timer1.Tick += new System.EventHandler(timer1_Tick);
+            Timer timer1 = new Timer();
+            timer1.Interval = 1000;
+            timer1.Start();
+            timer1.Tick += new System.EventHandler(timer1_Tick);
         }
         
 
@@ -27,16 +29,27 @@ namespace TechnolToolkit
             if (e.KeyCode == Keys.Escape)
                 this.Close();
         }
-        /*
+
+        private void buttonRestart_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Opravdu chcete restartovat aplikaci?", "Potvrzení restartu aplikace", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if(result == DialogResult.Yes)
+            {
+                string cesta = Application.ExecutablePath;
+                Process p = new Process();
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.FileName = "cmd.exe";
+                p.StartInfo.Arguments = "/c timeout /t 1 > nul &" + cesta;
+                p.Start();
+                Application.Exit();
+            }
+        }
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label2.Text = "Timeout: " + remaningTime + " sekund";
-            if (remaningTime <= 0)
-            {
-                timer1.Stop();
-                this.Close();
-            } else remaningTime -= 1;            
+            runningSeconds++;
+            labelRunningForAmmountOfTime.Text = "Běží již " + runningSeconds.ToString() + " sekund";
         }
-        */
     }
 }

@@ -49,7 +49,7 @@
             this.buttonZprava.FlatAppearance.BorderSize = 0;
             this.buttonZprava.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonZprava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonZprava.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonZprava.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZprava.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonZprava.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZprava.Location = new System.Drawing.Point(682, 30);
@@ -71,7 +71,7 @@
             this.buttonZmenaSkupin.FlatAppearance.BorderSize = 0;
             this.buttonZmenaSkupin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonZmenaSkupin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonZmenaSkupin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonZmenaSkupin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZmenaSkupin.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonZmenaSkupin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonZmenaSkupin.Location = new System.Drawing.Point(682, 500);
@@ -94,7 +94,7 @@
             this.buttonInstalovanyProgramy.FlatAppearance.BorderSize = 0;
             this.buttonInstalovanyProgramy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonInstalovanyProgramy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.DarkOrange;
             this.buttonInstalovanyProgramy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(682, 265);
@@ -116,7 +116,7 @@
             this.buttonBitlocker.FlatAppearance.BorderSize = 0;
             this.buttonBitlocker.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonBitlocker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBitlocker.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonBitlocker.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonBitlocker.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonBitlocker.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonBitlocker.Location = new System.Drawing.Point(30, 30);
@@ -138,7 +138,7 @@
             this.buttonNapajeniPC.FlatAppearance.BorderSize = 0;
             this.buttonNapajeniPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonNapajeniPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNapajeniPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonNapajeniPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNapajeniPC.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonNapajeniPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonNapajeniPC.Location = new System.Drawing.Point(30, 500);
@@ -160,7 +160,7 @@
             this.buttonVAS.FlatAppearance.BorderSize = 0;
             this.buttonVAS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonVAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVAS.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonVAS.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonVAS.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonVAS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonVAS.Location = new System.Drawing.Point(30, 265);
@@ -182,7 +182,7 @@
             this.buttonMSI.FlatAppearance.BorderSize = 0;
             this.buttonMSI.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonMSI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMSI.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonMSI.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonMSI.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonMSI.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonMSI.Location = new System.Drawing.Point(356, 265);
@@ -204,7 +204,7 @@
             this.buttonNajdiPC.FlatAppearance.BorderSize = 0;
             this.buttonNajdiPC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonNajdiPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNajdiPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonNajdiPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNajdiPC.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonNajdiPC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonNajdiPC.Location = new System.Drawing.Point(356, 500);
@@ -226,7 +226,7 @@
             this.buttonSCCM.FlatAppearance.BorderSize = 0;
             this.buttonSCCM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonSCCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSCCM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSCCM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSCCM.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonSCCM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonSCCM.Location = new System.Drawing.Point(356, 30);

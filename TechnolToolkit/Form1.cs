@@ -187,7 +187,7 @@ namespace TechnolToolkit
         private void buttonMultiping_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 100,100), 12, 0);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_broadcasting_96, 100,100), 8, 3);
         }
 
         private void buttonDZC_Paint(object sender, PaintEventArgs e)

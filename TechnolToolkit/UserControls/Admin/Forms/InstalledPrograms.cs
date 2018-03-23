@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.ServiceProcess;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -130,30 +131,33 @@ namespace TechnolToolkit
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            
             if (checkBoxLocalPC.Checked)
             {
                 obnovListView();
                 searchInstalledSoftware(Environment.MachineName);
                 labelSoftwareAt.Text = "Software na zařízení: " + Environment.MachineName;
                 labelPocetSW.Text = "Počet: " + listView1.Items.Count;
-            } else
+                    
+            }
+            else
             {
                 obnovListView();
                 searchInstalledSoftware(textBoxComputername.Text);
                 labelSoftwareAt.Text = "Software na zařízení: " + textBoxComputername.Text;
                 labelPocetSW.Text = "Počet: " + listView1.Items.Count;
             }
-
             lvwColumnSorter.SortColumn = 0;
             lvwColumnSorter.Order = SortOrder.Ascending;
             // Perform the sort with these new sort options.
             this.listView1.Sort();
-        }
+    }
 
-        private void searchInstalledSoftware(string computername)
+    private void searchInstalledSoftware(string computername)
         {
             if(!checkBoxLocalPC.Checked)
-                ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.run);
+                runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+            //ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.run);
             List<string> displayNames = new List<string>();
             List<string> displayVersions = new List<string>();
             List<string> uninstallStrings = new List<string>();
@@ -328,7 +332,8 @@ namespace TechnolToolkit
             #endregion
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             if (!checkBoxLocalPC.Checked)
-                ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.stop);
+                runOrStopService("RemoteRegistry", computername, serviceAction.stop);
+                    //ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.stop);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -507,6 +512,80 @@ namespace TechnolToolkit
         private void pictureBoxInfo_MouseLeave(object sender, EventArgs e)
         {
             mouseVisitOpacity(opacityAction.decrease);
+        }
+
+        public static void EnableTheService(string serviceName, string computername, serviceAction serAction)
+        {
+            switch (serAction)
+            {
+                case serviceAction.run:
+                    Process p = new Process();
+                    p.StartInfo.FileName = "cmd.exe";
+                    p.StartInfo.Arguments = @"/c sc \\" + computername + " config " + serviceName + " start= demand";
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.UseShellExecute = false;
+                    p.Start();
+                    p.WaitForExit(10000);
+                    break;
+                case serviceAction.stop:
+                    Process p1 = new Process();
+                    p1.StartInfo.FileName = "cmd.exe";
+                    p1.StartInfo.Arguments = @"/c sc \\" + computername + " config " + serviceName + " start= disabled";
+                    p1.StartInfo.CreateNoWindow = true;
+                    p1.StartInfo.UseShellExecute = false;
+                    p1.Start();
+                    p1.WaitForExit(10000);
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
+            }
+
+        }
+
+        public enum serviceAction
+        {
+            run,
+            stop,
+        }
+        public static void runOrStopService(string serviceName, string computer, serviceAction action)
+        {
+            Console.WriteLine("==========Service Manipulation==========");
+            switch (action)
+            {
+                case serviceAction.run:
+                    EnableTheService(serviceName, computer, action);
+                    using (ServiceController sc = new ServiceController(serviceName, computer))
+                        if (sc.Status != ServiceControllerStatus.Running)
+                        {
+                            Console.WriteLine("Start sluzby {0}", sc.DisplayName);
+                            sc.Start();
+                            Console.WriteLine("Cekani na status: Running");
+                            sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(60));
+                            if (sc.Status != ServiceControllerStatus.Running)
+                                MessageBox.Show("Sluzbu " + sc.DisplayName + " se nepodarilo spustit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else Console.WriteLine("Status sluzby {0}: {1}", sc.DisplayName, sc.Status);
+                        }
+                        else Console.WriteLine("Status sluzby {0}: {1}", sc.DisplayName, sc.Status);
+                    break;
+
+                case serviceAction.stop:
+                    EnableTheService(serviceName, computer, action);
+                    using (ServiceController sc = new ServiceController(serviceName, computer))
+                        if (sc.Status != ServiceControllerStatus.Stopped)
+                        {
+                            Console.WriteLine("Zastavovani sluzby {0}", sc.DisplayName);
+                            sc.Stop();
+                            Console.WriteLine("Cekani na status: Stopped");
+                            sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(60));
+                            if (sc.Status != ServiceControllerStatus.Stopped)
+                                MessageBox.Show("Sluzbu " + sc.DisplayName + " se nepodarilo zastavit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else Console.WriteLine("Status sluzby {0}: {1}", sc.DisplayName, sc.Status);
+                        }
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
+            }
+            Console.WriteLine("========================================");
         }
     }
 }

@@ -93,6 +93,7 @@ namespace TechnolToolkit.UserControls.Multiping
 
         private void buttonStartMultiPing_Click(object sender, EventArgs e)
         {
+            
             buttonStartMultiPing.BackColor = Color.DarkOrange;
             buttonStartMultiPing.Text = "Probíhá... Klikni znovu pro zastavení";
 
@@ -100,6 +101,7 @@ namespace TechnolToolkit.UserControls.Multiping
 
             buttonStopMultiping.Enabled = true;
             buttonStartMultiPing.Enabled = false;
+            
         }
 
         private void buttonStopMultiping_Click(object sender, EventArgs e)

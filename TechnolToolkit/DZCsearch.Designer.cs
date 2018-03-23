@@ -173,6 +173,7 @@
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(361, 20);
             this.textBoxUser.TabIndex = 0;
+            this.textBoxUser.Text = "dodelat zobrazeni fotek";
             this.textBoxUser.TextChanged += new System.EventHandler(this.textBoxUser_TextChanged);
             this.textBoxUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUser_KeyDown);
             // 

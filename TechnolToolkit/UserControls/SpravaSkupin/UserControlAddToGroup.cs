@@ -9,6 +9,11 @@ using System.Threading;
 using Microsoft.Win32.TaskScheduler;
 using Microsoft.Win32;
 using TechnolToolkit.CustomControls_and_Clases;
+using System.ServiceProcess;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
+using System.Management;
+using System.Diagnostics;
 
 namespace TechnolToolkit
 {
@@ -46,7 +51,7 @@ namespace TechnolToolkit
             {
                 statusBox sb = new statusBox();
                 sb.Show();
-
+                
                 new Thread(() =>
                 {
                     Thread.CurrentThread.IsBackground = true;
@@ -216,13 +221,12 @@ namespace TechnolToolkit
         }
         private void smazatClenaZeSkupinyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
-            registryFix(textBoxComputername.Text);
-
             //Check if any node is selected
             if (treeViewGroups.SelectedNode != null)
             {
-
+                runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+                //ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
+                registryFix(textBoxComputername.Text);
                 //Fill List skupiny with all groups on remote machine for later use
                 List<string> skupiny = new List<string>();
                 for (int i = 0; i < comboBox1.Items.Count; i++)
@@ -256,10 +260,11 @@ namespace TechnolToolkit
                             MessageBox.Show(E.Message.ToString(), "Chyba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                 }
+                //ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
+                runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
             }
             else return;
-
-            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
+            
         }
 
         private void buttonConnectToDevice_Click(object sender, EventArgs e)
@@ -269,10 +274,12 @@ namespace TechnolToolkit
 
         private void buttonAddMemberToGroup_Click(object sender, EventArgs e)
         {
-            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
+            //ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
             registryFix(textBoxComputername.Text);
             addMemberToGroup(textBoxUsername.Text, textBoxComputername.Text, comboBox1.Text);
-            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
+            runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
+            //ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
             radioButtonAutomatickeOdebrani.Checked = false;
             radioButtonNeomezenaPlatnost.Checked = false;
         }
@@ -347,11 +354,11 @@ namespace TechnolToolkit
 
         private void zobrazitUzivatelskeJmenoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
-            registryFix(textBoxComputername.Text);
-
             if (treeViewGroups.SelectedNode.Parent != null)
             {
+                runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
+                //ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.run);
+                registryFix(textBoxComputername.Text);
                 string selectedUser = treeViewGroups.SelectedNode.Text;
                 string selectedGroup = treeViewGroups.SelectedNode.Parent.Text;
                 try
@@ -369,9 +376,10 @@ namespace TechnolToolkit
                 {
                     MessageBox.Show(E.Message.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.stop);
+                //ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
             }
 
-            ServiceManipulation.runOrStopService("RemoteRegistry", textBoxComputername.Text, ServiceManipulation.serviceAction.stop);
         }
         private void fillLoggedDatatoListView()
         {
@@ -471,30 +479,133 @@ namespace TechnolToolkit
         }
         private void registryFix(string computer)
         {
-            //RegisteredOwner
-            var regOwn = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion").GetValue("RegisteredOwner");
-            if (regOwn != null)
-            {
-                if (regOwn.ToString() != "SKODA AUTO a.s.")
+            try {
+                pauza(2);
+                //RegisteredOwner
+                var regOwn = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion").GetValue("RegisteredOwner");
+                if (regOwn != null)
+                {
+                    if (regOwn.ToString() != "SKODA AUTO a.s.")
+                        RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOwner", "SKODA AUTO a.s.", RegistryValueKind.String);
+                }
+                else
+                {
+                    RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).CreateSubKey("RegisteredOwner");
                     RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOwner", "SKODA AUTO a.s.", RegistryValueKind.String);
-            }
-            else
-            {
-                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).CreateSubKey("RegisteredOwner");
-                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOwner", "SKODA AUTO a.s.", RegistryValueKind.String);
-            }
+                }
 
-            //RegisteredOrganization
-            var regOrg = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion").GetValue("RegisteredOrganization");
-            if (regOrg != null)
-            {
-                if (regOrg.ToString() != "SKODA AUTO a.s.")
+                //RegisteredOrganization
+                var regOrg = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion").GetValue("RegisteredOrganization");
+                if (regOrg != null)
+                {
+                    if (regOrg.ToString() != "SKODA AUTO a.s.")
+                        RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOrganization", "SKODA AUTO a.s.", RegistryValueKind.String);
+                }
+                else
+                {
+                    RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).CreateSubKey("RegisteredOrganization");
                     RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOrganization", "SKODA AUTO a.s.", RegistryValueKind.String);
-            }
-            else
+                }
+            } catch(Exception ex)
             {
-                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).CreateSubKey("RegisteredOrganization");
-                RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, computer).OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", true).SetValue("RegisteredOrganization", "SKODA AUTO a.s.", RegistryValueKind.String);
+                MessageBox.Show("Zkuste to prosím znovu\n\nZde je nicneříkající hláška:\n" + ex.Message.ToString(), "Něco se pokazilo :(", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static void EnableTheService(string serviceName, string computername, serviceAction serAction)
+        {
+            switch(serAction)
+            {
+                case serviceAction.run:
+                    Process p = new Process();
+                    p.StartInfo.FileName = "cmd.exe";
+                    p.StartInfo.Arguments = @"/c sc \\" + computername + " config " + serviceName + " start= demand";
+                    p.StartInfo.CreateNoWindow = true;                    
+                    p.StartInfo.UseShellExecute = false;
+                    p.Start();
+                    p.WaitForExit(10000);
+                    break;
+                case serviceAction.stop:
+                    Process p1 = new Process();
+                    p1.StartInfo.FileName = "cmd.exe";
+                    p1.StartInfo.Arguments = @"/c sc \\" + computername + " config " + serviceName + " start= disabled";
+                    p1.StartInfo.CreateNoWindow = true;
+                    p1.StartInfo.UseShellExecute = false;
+                    p1.Start();
+                    p1.WaitForExit(10000);
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
+            }
+            
+        }
+        public enum serviceAction
+        {
+            run,
+            stop,
+        }
+        public static void runOrStopService(string serviceName, string computer, serviceAction action)
+        {
+            Console.WriteLine("==========Service Manipulation==========");
+            switch (action)
+            {
+                case serviceAction.run:
+                    EnableTheService(serviceName,computer,action);
+                    using (ServiceController sc = new ServiceController(serviceName, computer))
+                        if (sc.Status != ServiceControllerStatus.Running)
+                        {
+                            
+                            Console.WriteLine("Start sluzby {0}", sc.DisplayName);
+                            sc.Start();
+                            Console.WriteLine("Cekani na status: Running");
+                            sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(60));
+                            if (sc.Status != ServiceControllerStatus.Running)
+                                MessageBox.Show("Sluzbu " + sc.DisplayName + " se nepodarilo spustit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else Console.WriteLine("Status sluzby {0}: {1}", sc.DisplayName, sc.Status);
+                        }
+                        else Console.WriteLine("Status sluzby {0}: {1}", sc.DisplayName, sc.Status);
+                    break;
+
+                case serviceAction.stop:
+                    EnableTheService(serviceName, computer, action);
+                    using (ServiceController sc = new ServiceController(serviceName, computer))
+                        if (sc.Status != ServiceControllerStatus.Stopped)
+                        {
+                            Console.WriteLine("Zastavovani sluzby {0}", sc.DisplayName);
+                            sc.Stop();
+                            Console.WriteLine("Cekani na status: Stopped");
+                            sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(60));
+                            if (sc.Status != ServiceControllerStatus.Stopped)
+                                MessageBox.Show("Sluzbu " + sc.DisplayName + " se nepodarilo zastavit", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else Console.WriteLine("Status sluzby {0}: {1}", sc.DisplayName, sc.Status);
+                        }
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
+            }
+            Console.WriteLine("========================================");
+        }
+
+        private void pauza(int kolikSekund)
+        {
+            Stopwatch sw = new Stopwatch(); // sw cotructor
+            sw.Start(); // starts the stopwatch
+            for (int i = 0; ; i++)
+            {
+                if (i % 100000 == 0) // if in 100000th iteration (could be any other large number
+                                     // depending on how often you want the time to be checked) 
+                {
+                    sw.Stop(); // stop the time measurement
+                    if (sw.ElapsedMilliseconds > kolikSekund * 1000) // check if desired period of time has elapsed
+                    {
+                        break; // if more than xx milliseconds have passed, stop looping and return
+                               // to the existing code
+                    }
+                    else
+                    {
+                        sw.Start(); // if less than xx milliseconds have elapsed, continue looping
+                                    // and resume time measurement
+                    }
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace TechnolToolkit.CustomControls_and_Clases
 {
     class ServiceManipulation
@@ -22,8 +23,6 @@ namespace TechnolToolkit.CustomControls_and_Clases
             switch (action)
             {
                 case serviceAction.run:
-        #warning FIX_ME! Pri pripojeni na pocitac se dostane az do tohoto kroku a pak zazrakem vyskoci
-                    //U skdatvwt0432 mi to jde.. Prijit na pricinu... WinRM to nemuze byt?
                     using (ServiceController sc = new ServiceController(serviceName, computer))
                         if (sc.Status != ServiceControllerStatus.Running)
                         {

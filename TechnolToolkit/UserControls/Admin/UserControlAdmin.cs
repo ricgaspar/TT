@@ -77,6 +77,7 @@ namespace TechnolToolkit
         
         private void buttonZprava_Click(object sender, EventArgs e)
         {
+#warning Fix me I am shit!
             Process p = new Process();
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\runpwshell_parameter.bat";
             p.StartInfo.Arguments = "/RemoteDialog.ps1";

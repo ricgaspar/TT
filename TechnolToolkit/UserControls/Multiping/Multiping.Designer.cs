@@ -297,8 +297,8 @@
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.38095F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.61905F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44F));
             this.tableLayoutPanel6.Controls.Add(this.radioButtonradioButtonMarkAfterSuccesPing, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.radioButtonradioButtonContinueAfterSucces, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -314,19 +314,19 @@
             // 
             this.radioButtonradioButtonMarkAfterSuccesPing.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radioButtonradioButtonMarkAfterSuccesPing.AutoSize = true;
-            this.radioButtonradioButtonMarkAfterSuccesPing.Location = new System.Drawing.Point(4, 4);
+            this.radioButtonradioButtonMarkAfterSuccesPing.Location = new System.Drawing.Point(22, 4);
             this.radioButtonradioButtonMarkAfterSuccesPing.Name = "radioButtonradioButtonMarkAfterSuccesPing";
-            this.radioButtonradioButtonMarkAfterSuccesPing.Size = new System.Drawing.Size(349, 21);
+            this.radioButtonradioButtonMarkAfterSuccesPing.Size = new System.Drawing.Size(249, 21);
             this.radioButtonradioButtonMarkAfterSuccesPing.TabIndex = 0;
             this.radioButtonradioButtonMarkAfterSuccesPing.TabStop = true;
-            this.radioButtonradioButtonMarkAfterSuccesPing.Text = "Označit a dále PING na dané zařízení neprovádět";
+            this.radioButtonradioButtonMarkAfterSuccesPing.Text = "PING na dané zařízení neprovádět";
             this.radioButtonradioButtonMarkAfterSuccesPing.UseVisualStyleBackColor = true;
             // 
             // radioButtonradioButtonContinueAfterSucces
             // 
             this.radioButtonradioButtonContinueAfterSucces.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radioButtonradioButtonContinueAfterSucces.AutoSize = true;
-            this.radioButtonradioButtonContinueAfterSucces.Location = new System.Drawing.Point(362, 4);
+            this.radioButtonradioButtonContinueAfterSucces.Location = new System.Drawing.Point(330, 4);
             this.radioButtonradioButtonContinueAfterSucces.Name = "radioButtonradioButtonContinueAfterSucces";
             this.radioButtonradioButtonContinueAfterSucces.Size = new System.Drawing.Size(158, 21);
             this.radioButtonradioButtonContinueAfterSucces.TabIndex = 0;
