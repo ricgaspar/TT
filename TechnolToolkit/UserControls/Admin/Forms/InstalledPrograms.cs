@@ -128,17 +128,16 @@ namespace TechnolToolkit
 
             listView1.Items.Add(lvi);
         }
-
+        
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            
             if (checkBoxLocalPC.Checked)
             {
                 obnovListView();
                 searchInstalledSoftware(Environment.MachineName);
                 labelSoftwareAt.Text = "Software na zařízení: " + Environment.MachineName;
                 labelPocetSW.Text = "Počet: " + listView1.Items.Count;
-                    
+
             }
             else
             {
@@ -151,17 +150,17 @@ namespace TechnolToolkit
             lvwColumnSorter.Order = SortOrder.Ascending;
             // Perform the sort with these new sort options.
             this.listView1.Sort();
-    }
+        }
 
     private void searchInstalledSoftware(string computername)
         {
             if(!checkBoxLocalPC.Checked)
                 runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
             //ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.run);
-            List<string> displayNames = new List<string>();
-            List<string> displayVersions = new List<string>();
-            List<string> uninstallStrings = new List<string>();
-            List<string> publishers = new List<string>();
+            List<string> displayName = new List<string>();
+            List<string> displayVersion = new List<string>();
+            List<string> uninstallString = new List<string>();
+            List<string> publisher = new List<string>();
             List<string> installSource = new List<string>();
             List<string> installDate = new List<string>();
             List<string> installLocation = new List<string>();
@@ -170,20 +169,107 @@ namespace TechnolToolkit
             #region currentUser
             //CurrentUser
             key = RegistryKey.OpenRemoteBaseKey(RegistryHive.CurrentUser, computername).OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+#warning Otevření registrů - Odkaz na objekt není nastaven na instanci objektu.
+            //Pravdepodobne se nemuze pripojit.. FIX ME!
             foreach (String keyName in key.GetSubKeyNames())
             {
                 //Otevri prave prochazeny klic
                 RegistryKey subkey = key.OpenSubKey(keyName);
-                //Do listu uloz jmeno softwaru
-                if (keyName != null && keyName != "")
-                { 
-                    displayNames.Add(subkey.GetValue("DisplayName") as string);
-                    displayVersions.Add(subkey.GetValue("DisplayVersion") as string);
-                    uninstallStrings.Add(subkey.GetValue("UninstallString") as string);
-                    publishers.Add(subkey.GetValue("Publisher") as string);
-                    installSource.Add(subkey.GetValue("InstallSource") as string);
-                    installDate.Add(subkey.GetValue("InstallDate") as string);
-                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                if ((subkey.GetValue("DisplayName") as string) != null && (subkey.GetValue("DisplayName") as string) != "")
+                {
+                    //Hide Microsoft
+                    if (checkBoxHideMicrosoft.Checked)
+                    {
+                        if ((subkey.GetValue("Publisher") as string) != "Microsoft" && (subkey.GetValue("Publisher") as string) != "Microsoft Corporation" && (subkey.GetValue("Publisher") as string) != "Microsoft\0P")
+                        {
+                            //Hide Updates neni potreba, protoze to je stejne od Microsoftu...
+                            //Hide MUI - jazykove mutace
+                            if (checkBoxHideMUI.Checked)
+                            {
+                                if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                {
+                                    displayName.Add(subkey.GetValue("DisplayName") as string);
+                                    displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                    uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                    publisher.Add(subkey.GetValue("Publisher") as string);
+                                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                }
+                            }
+                            else
+                            {
+                                displayName.Add(subkey.GetValue("DisplayName") as string);
+                                displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                publisher.Add(subkey.GetValue("Publisher") as string);
+                                installSource.Add(subkey.GetValue("InstallSource") as string);
+                                installDate.Add(subkey.GetValue("InstallDate") as string);
+                                installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if (checkBoxHideUpdates.Checked)
+                        {
+                            if ((subkey.GetValue("Publisher") as string) != null && (subkey.GetValue("Publisher") as string) != "")
+                                if (!((subkey.GetValue("Publisher") as string).Contains("Microsoft") && (subkey.GetValue("DisplayName") as string).Contains("Update")))
+                                {
+                                    //Hide Updates + MUI
+                                    if (checkBoxHideMUI.Checked)
+                                    {
+                                        if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                        {
+                                            displayName.Add(subkey.GetValue("DisplayName") as string);
+                                            displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                            uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                            publisher.Add(subkey.GetValue("Publisher") as string);
+                                            installSource.Add(subkey.GetValue("InstallSource") as string);
+                                            installDate.Add(subkey.GetValue("InstallDate") as string);
+                                            installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                        }
+                                        //Hide Updates
+                                    }
+                                    else
+                                    {
+                                        displayName.Add(subkey.GetValue("DisplayName") as string);
+                                        displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                        uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                        publisher.Add(subkey.GetValue("Publisher") as string);
+                                        installSource.Add(subkey.GetValue("InstallSource") as string);
+                                        installDate.Add(subkey.GetValue("InstallDate") as string);
+                                        installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                    }
+                                }
+                        }
+                        //Hide MUI
+                        if (checkBoxHideMUI.Checked)
+                        {
+                            if ((subkey.GetValue("DisplayName") as string) != null && (subkey.GetValue("DisplayName") as string) != "")
+                                if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                {
+                                    displayName.Add(subkey.GetValue("DisplayName") as string);
+                                    displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                    uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                    publisher.Add(subkey.GetValue("Publisher") as string);
+                                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                }
+                        }
+                        else
+                        {
+                            displayName.Add(subkey.GetValue("DisplayName") as string);
+                            displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                            uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                            publisher.Add(subkey.GetValue("Publisher") as string);
+                            installSource.Add(subkey.GetValue("InstallSource") as string);
+                            installDate.Add(subkey.GetValue("InstallDate") as string);
+                            installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                        }
+                    }
                 }
             }
             #endregion
@@ -194,16 +280,101 @@ namespace TechnolToolkit
             {
                 //Otevri prave prochazeny klic
                 RegistryKey subkey = key.OpenSubKey(keyName);
-                //Do listu uloz jmeno softwaru
-                if (keyName != null && keyName != "")
+                if ((subkey.GetValue("DisplayName") as string) != null && (subkey.GetValue("DisplayName") as string) != "")
                 {
-                    displayNames.Add(subkey.GetValue("DisplayName") as string);
-                    displayVersions.Add(subkey.GetValue("DisplayVersion") as string);
-                    uninstallStrings.Add(subkey.GetValue("UninstallString") as string);
-                    publishers.Add(subkey.GetValue("Publisher") as string);
-                    installSource.Add(subkey.GetValue("InstallSource") as string);
-                    installDate.Add(subkey.GetValue("InstallDate") as string);
-                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                    //Hide Microsoft
+                    if (checkBoxHideMicrosoft.Checked)
+                    {
+                        if ((subkey.GetValue("Publisher") as string) != "Microsoft" && (subkey.GetValue("Publisher") as string) != "Microsoft Corporation" && (subkey.GetValue("Publisher") as string) != "Microsoft\0P")
+                        {
+                            //Hide Updates neni potreba, protoze to je stejne od Microsoftu...
+                            //Hide MUI - jazykove mutace
+                            if (checkBoxHideMUI.Checked)
+                            {
+                                if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                {
+                                    displayName.Add(subkey.GetValue("DisplayName") as string);
+                                    displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                    uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                    publisher.Add(subkey.GetValue("Publisher") as string);
+                                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                }
+                            }
+                            else
+                            {
+                                displayName.Add(subkey.GetValue("DisplayName") as string);
+                                displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                publisher.Add(subkey.GetValue("Publisher") as string);
+                                installSource.Add(subkey.GetValue("InstallSource") as string);
+                                installDate.Add(subkey.GetValue("InstallDate") as string);
+                                installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if (checkBoxHideUpdates.Checked)
+                        {
+                            if ((subkey.GetValue("Publisher") as string) != null && (subkey.GetValue("Publisher") as string) != "")
+                                if (!((subkey.GetValue("Publisher") as string).Contains("Microsoft") && (subkey.GetValue("DisplayName") as string).Contains("Update")))
+                                {
+                                    //Hide Updates + MUI
+                                    if (checkBoxHideMUI.Checked)
+                                    {
+                                        if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                        {
+                                            displayName.Add(subkey.GetValue("DisplayName") as string);
+                                            displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                            uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                            publisher.Add(subkey.GetValue("Publisher") as string);
+                                            installSource.Add(subkey.GetValue("InstallSource") as string);
+                                            installDate.Add(subkey.GetValue("InstallDate") as string);
+                                            installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                        }
+                                        //Hide Updates
+                                    }
+                                    else
+                                    {
+                                        displayName.Add(subkey.GetValue("DisplayName") as string);
+                                        displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                        uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                        publisher.Add(subkey.GetValue("Publisher") as string);
+                                        installSource.Add(subkey.GetValue("InstallSource") as string);
+                                        installDate.Add(subkey.GetValue("InstallDate") as string);
+                                        installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                    }
+                                }
+                        }
+                        //Hide MUI
+                        if (checkBoxHideMUI.Checked)
+                        {
+                            if ((subkey.GetValue("DisplayName") as string) != null && (subkey.GetValue("DisplayName") as string) != "")
+                                if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                {
+                                    displayName.Add(subkey.GetValue("DisplayName") as string);
+                                    displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                    uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                    publisher.Add(subkey.GetValue("Publisher") as string);
+                                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                }
+                        }
+                        else
+                        {
+                            displayName.Add(subkey.GetValue("DisplayName") as string);
+                            displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                            uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                            publisher.Add(subkey.GetValue("Publisher") as string);
+                            installSource.Add(subkey.GetValue("InstallSource") as string);
+                            installDate.Add(subkey.GetValue("InstallDate") as string);
+                            installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                        }
+                    }
                 }
             }
             #endregion
@@ -215,16 +386,101 @@ namespace TechnolToolkit
             {
                 //Otevri prave prochazeny klic
                 RegistryKey subkey = key.OpenSubKey(keyName);
-                //Do listu uloz jmeno softwaru
-                if (keyName != null && keyName != "")
+                if ((subkey.GetValue("DisplayName") as string) != null && (subkey.GetValue("DisplayName") as string) != "")
                 {
-                    displayNames.Add(subkey.GetValue("DisplayName") as string);
-                    displayVersions.Add(subkey.GetValue("DisplayVersion") as string);
-                    uninstallStrings.Add(subkey.GetValue("UninstallString") as string);
-                    publishers.Add(subkey.GetValue("Publisher") as string);
-                    installSource.Add(subkey.GetValue("InstallSource") as string);
-                    installDate.Add(subkey.GetValue("InstallDate") as string);
-                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                    //Hide Microsoft
+                    if (checkBoxHideMicrosoft.Checked)
+                    {
+                        if ((subkey.GetValue("Publisher") as string) != "Microsoft" && (subkey.GetValue("Publisher") as string) != "Microsoft Corporation" && (subkey.GetValue("Publisher") as string) != "Microsoft\0P")
+                        {
+                            //Hide Updates neni potreba, protoze to je stejne od Microsoftu...
+                            //Hide MUI - jazykove mutace
+                            if (checkBoxHideMUI.Checked)
+                            {
+                                if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                {
+                                    displayName.Add(subkey.GetValue("DisplayName") as string);
+                                    displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                    uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                    publisher.Add(subkey.GetValue("Publisher") as string);
+                                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                }
+                            }
+                            else
+                            {
+                                displayName.Add(subkey.GetValue("DisplayName") as string);
+                                displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                publisher.Add(subkey.GetValue("Publisher") as string);
+                                installSource.Add(subkey.GetValue("InstallSource") as string);
+                                installDate.Add(subkey.GetValue("InstallDate") as string);
+                                installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if (checkBoxHideUpdates.Checked)
+                        {
+                            if ((subkey.GetValue("Publisher") as string) != null && (subkey.GetValue("Publisher") as string) != "")
+                                if (!((subkey.GetValue("Publisher") as string).Contains("Microsoft") && (subkey.GetValue("DisplayName") as string).Contains("Update")))
+                                {
+                                    //Hide Updates + MUI
+                                    if (checkBoxHideMUI.Checked)
+                                    {
+                                        if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                        {
+                                            displayName.Add(subkey.GetValue("DisplayName") as string);
+                                            displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                            uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                            publisher.Add(subkey.GetValue("Publisher") as string);
+                                            installSource.Add(subkey.GetValue("InstallSource") as string);
+                                            installDate.Add(subkey.GetValue("InstallDate") as string);
+                                            installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                        }
+                                        //Hide Updates
+                                    }
+                                    else
+                                    {
+                                        displayName.Add(subkey.GetValue("DisplayName") as string);
+                                        displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                        uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                        publisher.Add(subkey.GetValue("Publisher") as string);
+                                        installSource.Add(subkey.GetValue("InstallSource") as string);
+                                        installDate.Add(subkey.GetValue("InstallDate") as string);
+                                        installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                    }
+                                }
+                        }
+                        //Hide MUI
+                        if (checkBoxHideMUI.Checked)
+                        {
+                            if ((subkey.GetValue("DisplayName") as string) != null && (subkey.GetValue("DisplayName") as string) != "")
+                                if (!(subkey.GetValue("DisplayName") as string).Contains("MUI"))
+                                {
+                                    displayName.Add(subkey.GetValue("DisplayName") as string);
+                                    displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                                    uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                                    publisher.Add(subkey.GetValue("Publisher") as string);
+                                    installSource.Add(subkey.GetValue("InstallSource") as string);
+                                    installDate.Add(subkey.GetValue("InstallDate") as string);
+                                    installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                                }
+                        }
+                        else
+                        {
+                            displayName.Add(subkey.GetValue("DisplayName") as string);
+                            displayVersion.Add(subkey.GetValue("DisplayVersion") as string);
+                            uninstallString.Add(subkey.GetValue("UninstallString") as string);
+                            publisher.Add(subkey.GetValue("Publisher") as string);
+                            installSource.Add(subkey.GetValue("InstallSource") as string);
+                            installDate.Add(subkey.GetValue("InstallDate") as string);
+                            installLocation.Add(subkey.GetValue("InstallLocation") as string);
+                        }
+                    }
                 }
             }
 
@@ -232,19 +488,19 @@ namespace TechnolToolkit
 
             #region Delete duplicates
             //ulozi do listu vsechny polozky, az na jednu, ktere se opakuji     
-            List<string> duplicates = displayNames.GroupBy(s => s).SelectMany(grp => grp.Skip(1)).ToList();
+            List<string> duplicates = displayName.GroupBy(s => s).SelectMany(grp => grp.Skip(1)).ToList();
             
             //Smazani duplikatu
             for (int i = 0; i < duplicates.Count; i++)
             {
-                for (int y = 0; y < displayNames.Count; y++)
+                for (int y = 0; y < displayName.Count; y++)
                 {
-                    if (duplicates[i] == displayNames[y])
+                    if (duplicates[i] == displayName[y])
                     {    
-                        displayNames.RemoveAt(y);
-                        displayVersions.RemoveAt(y);
-                        uninstallStrings.RemoveAt(y);
-                        publishers.RemoveAt(y);
+                        displayName.RemoveAt(y);
+                        displayVersion.RemoveAt(y);
+                        uninstallString.RemoveAt(y);
+                        publisher.RemoveAt(y);
                         installSource.RemoveAt(y);
                         installDate.RemoveAt(y);
                         installLocation.RemoveAt(y);
@@ -254,86 +510,26 @@ namespace TechnolToolkit
             }
             #endregion
 
-            #region Filters
-            //Hide Updates
-            if (checkBoxHideUpdates.Checked)
-            {
-                for (int i = 0; i < displayNames.Count; i++)
-                {
-                    if (displayNames[i].Contains("Update") && publishers[i].Contains("Microsoft"))
-                    {
-                        displayNames.RemoveAt(i);
-                        displayVersions.RemoveAt(i);
-                        uninstallStrings.RemoveAt(i);
-                        publishers.RemoveAt(i);
-                        installSource.RemoveAt(i);
-                        installDate.RemoveAt(i);
-                        installLocation.RemoveAt(i);
-                        continue;
-                    }
-                }
-            }
-            //Hide MUIs
-            if (checkBoxHideMUI.Checked)
-            {
-                for (int i = 0; i < displayNames.Count; i++)
-                {
-                    if (displayNames[i].Contains("MUI"))
-                    {
-                        displayNames.RemoveAt(i);
-                        displayVersions.RemoveAt(i);
-                        uninstallStrings.RemoveAt(i);
-                        publishers.RemoveAt(i);
-                        installSource.RemoveAt(i);
-                        installDate.RemoveAt(i);
-                        installLocation.RemoveAt(i);
-                        continue;
-                    }
-                }
-            }
-            //Hide Microsoft
-            if (checkBoxHideMicrosoft.Checked)
-            {
-                for (int i = 0; i < publishers.Count; i++)
-                {
-                    if (publishers[i] != null)
-                        if (publishers[i] == ("Microsoft") || publishers[i] == ("Microsoft Corporation"))
-                        {
-                            displayNames.RemoveAt(i);
-                            displayVersions.RemoveAt(i);
-                            uninstallStrings.RemoveAt(i);
-                            publishers.RemoveAt(i);
-                            installSource.RemoveAt(i);
-                            installDate.RemoveAt(i);
-                            installLocation.RemoveAt(i);
-                            continue;                            
-                        }
-                }
-            }
-
-            #endregion
-
             #region Delete Null items and fill listView
-            for (int i = 0; i < displayNames.Count; ++i )
+            for (int i = 0; i < displayName.Count; ++i )
             {
-                if (displayNames[i] == "" || displayNames[i] == null)
+                if (displayName[i] == "" || displayName[i] == null)
                 {
-                    displayNames.RemoveAt(i);
-                    displayVersions.RemoveAt(i);
-                    uninstallStrings.RemoveAt(i);
-                    publishers.RemoveAt(i);
+                    displayName.RemoveAt(i);
+                    displayVersion.RemoveAt(i);
+                    uninstallString.RemoveAt(i);
+                    publisher.RemoveAt(i);
                     installSource.RemoveAt(i);
                     installDate.RemoveAt(i);
                     installLocation.RemoveAt(i);
                     continue;
                 }
-                fillListView(displayNames[i], displayVersions[i], publishers[i], installDate[i], installLocation[i], installSource[i], uninstallStrings[i]);
+                fillListView(displayName[i], displayVersion[i], publisher[i], installDate[i], installLocation[i], installSource[i], uninstallString[i]);
             }
             #endregion
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             if (!checkBoxLocalPC.Checked)
                 runOrStopService("RemoteRegistry", computername, serviceAction.stop);
-                    //ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.stop);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -381,7 +577,7 @@ namespace TechnolToolkit
                 }
                 else
                 {
-                    MessageBox.Show("Není označen žádný řádek!\nOznačte alespoň jeden řádek!","Není co kopírovat",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             //CTRL + A = Oznac vse
@@ -395,13 +591,17 @@ namespace TechnolToolkit
         private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
-            String text = "";
-            foreach (ListViewItem item in selectedItems)
+            if (selectedItems.Count > 0)
             {
-                text += item.SubItems[0].Text + "\n";
+                String text = "";
+                foreach (ListViewItem item in selectedItems)
+                {
+                    text += item.SubItems[0].Text + "\n";
+                }
+                Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
             }
-            Clipboard.SetText(text);
-            listView1.SelectedItems.Clear();
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -438,14 +638,18 @@ namespace TechnolToolkit
         private void kopirovatVseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
-            String text = "";
-            foreach (ListViewItem item in selectedItems)
+            if (selectedItems.Count > 0)
             {
-                text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + ";" + item.SubItems[2].Text + ";" + item.SubItems[3].Text + ";"
-                    + item.SubItems[4].Text + ";" + item.SubItems[5].Text + ";" + item.SubItems[6].Text + ";\n";
+                String text = "";
+                foreach (ListViewItem item in selectedItems)
+                {
+                    text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + ";" + item.SubItems[2].Text + ";" + item.SubItems[3].Text + ";"
+                        + item.SubItems[4].Text + ";" + item.SubItems[5].Text + ";" + item.SubItems[6].Text + ";\n";
+                }
+                Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
             }
-            Clipboard.SetText(text);
-            listView1.SelectedItems.Clear();
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void textBoxComputername_KeyDown(object sender, KeyEventArgs e)
@@ -461,7 +665,7 @@ namespace TechnolToolkit
 
         private void pictureBoxInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tento nástroj prohledává registry na zvoleném PC.\n\nJe možné, že nalezne již odinstalovaný software, který ale zůstal v registrech zapsaný.\n\nNapříklad se může stát: \nPokud se zobrazí 2 softwary stejného jména, ale jiné verze, je možné, že starší verze již neexistuje, ale záznam v registru zůstal.\nAtp...\n\n\nProhledávané větve registrů:\nHKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\nHKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\nHKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall", "Jak to vlastně funguje? :)",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Tento nástroj prohledává registry na zvoleném PC.\n\nJe možné, že nalezne již odinstalovaný software, který ale zůstal v registrech zapsaný.\n\nNapříklad se může stát: \nPokud se zobrazí 2 softwary stejného jména, ale jiné verze, je možné, že starší verze již neexistuje, ale záznam v registru zůstal.\nAtp...\n\n\nProhledávané větve registrů:\nHKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\nHKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\nHKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\nPokud chceš aplikaci upravit/vylepšit/přečíst si zdrojový kód přečti si \"O programu\"", "Jak to vlastně funguje? :)",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         float imageOpacity = 0.4f;
@@ -525,7 +729,7 @@ namespace TechnolToolkit
                     p.StartInfo.CreateNoWindow = true;
                     p.StartInfo.UseShellExecute = false;
                     p.Start();
-                    p.WaitForExit(10000);
+                    p.WaitForExit();
                     break;
                 case serviceAction.stop:
                     Process p1 = new Process();
@@ -534,7 +738,7 @@ namespace TechnolToolkit
                     p1.StartInfo.CreateNoWindow = true;
                     p1.StartInfo.UseShellExecute = false;
                     p1.Start();
-                    p1.WaitForExit(10000);
+                    p1.WaitForExit();
                     break;
                 default:
                     throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
@@ -553,7 +757,8 @@ namespace TechnolToolkit
             switch (action)
             {
                 case serviceAction.run:
-                    EnableTheService(serviceName, computer, action);
+#warning EnableService commented!!!
+                    //EnableTheService(serviceName, computer, action);
                     using (ServiceController sc = new ServiceController(serviceName, computer))
                         if (sc.Status != ServiceControllerStatus.Running)
                         {
@@ -569,7 +774,7 @@ namespace TechnolToolkit
                     break;
 
                 case serviceAction.stop:
-                    EnableTheService(serviceName, computer, action);
+                    //EnableTheService(serviceName, computer, action);
                     using (ServiceController sc = new ServiceController(serviceName, computer))
                         if (sc.Status != ServiceControllerStatus.Stopped)
                         {
@@ -586,6 +791,18 @@ namespace TechnolToolkit
                     throw new InvalidEnumArgumentException("Invalid parameter in serviceAction enum");
             }
             Console.WriteLine("========================================");
+        }
+
+        private void checkBoxHideMicrosoft_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxHideMicrosoft.Checked)
+            {
+                checkBoxHideUpdates.Checked = true;
+                checkBoxHideUpdates.Enabled = false;
+            } else
+            {
+                checkBoxHideUpdates.Enabled = true;
+            }
         }
     }
 }

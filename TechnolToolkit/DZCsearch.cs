@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.DirectoryServices.AccountManagement;
 using System.DirectoryServices;
+using System.Net;
+using System.IO;
 
 namespace TechnolToolkit
 {
     public partial class DZCsearch : Form
     {
-        public Color themeColor = Color.FromArgb(174, 0, 0);
+        private int minChars = 3; //minimal number of characters needed to search for user
         public DZCsearch()
         {
             InitializeComponent();
@@ -23,12 +25,14 @@ namespace TechnolToolkit
         }
         private void searchUsers(string user)
         {
+            obnovListView();
             if (textBoxUser.Text.StartsWith("*") == true)
             {
                 MessageBox.Show("Řetězec nesmí začínat znakem hvězdy ( * )", "Nepovolený znak", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
+                int foundUsers = 0;
                 using (var context = new PrincipalContext(ContextType.Domain))
                 {
                     bool dzcFound;
@@ -38,60 +42,63 @@ namespace TechnolToolkit
                         userp.SamAccountName = user + "*";
                         using (var searcher = new PrincipalSearcher(userp))
                         {
-                            //Aby prohledaval pouze podvetev a nezatezoval server hledanim v celym AD...
+                            //Aby prohledaval pouze podvetev a nezatezoval server hledanim v celym AD... snad to takhle funguje.. byl jsem linej se podivat
                             ((DirectorySearcher)searcher.GetUnderlyingSearcher()).SearchScope = SearchScope.Subtree;
-                            //List pro vsechny nalezeny usery
-                            List<string> foundUsers = new List<string>();
+                           
                             foreach (var result in searcher.FindAll())
                             {
-                                //Nalezene uzivatele pridame do listu
-                                foundUsers.Add(result.SamAccountName.ToString() + " = " + result.DisplayName.ToString());
+                                DirectoryEntry direntry = result.GetUnderlyingObject() as DirectoryEntry;
+                                string telefon = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
+                                try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch { telefon = ""; }
+                                try { email = direntry.Properties["mail"].Value.ToString(); } catch { email = ""; }
+                                try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch { kancelar = ""; }
+                                try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch { oddeleni = ""; }
+                                fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(),oddeleni,telefon,email,kancelar);
+                                foundUsers++;
                             }
-                            foundUsers.Sort();
-                            //Nasli jsme podle uzivateskeho id (DZCxxxx) nejake uzivatele, tak je vypiseme
-                            if (foundUsers.Count() > 0)
-                            {
+                            
+                            if (foundUsers > 0) //Nasli jsme podle uzivateskeho id (DZCxxxx) nejake uzivatele, tak je vypiseme
                                 dzcFound = true;
-                                string toDisplay = string.Join(Environment.NewLine, foundUsers);
-                                MessageBox.Show(toDisplay, "Výsledek");
-                            }
-                            //Nenasli jsme podle uzivatelskeho id (DZCxxxx), budeme hledat podle jmena uzivatele (Pepa Novak)
-                            else dzcFound = false;
+                            else dzcFound = false; //Nenasli jsme podle uzivatelskeho id (DZCxxxx), budeme hledat podle jmena uzivatele (Pepa Novak)
                         }
                     }
                     if (dzcFound == false)
                     {
                         //Vse jako nahore krome radku, kde je komentar (viz. nize komentar)
-                        using (UserPrincipal userp = new UserPrincipal(context))
+                        using (UserPrincipal userPrincipal = new UserPrincipal(context))
                         {
                             //Rozdil je .DisplayName, ktery vyhleda zobrazovane jmeno (Jan Novak) a nikoliv user id(DZCxxx)
-                            userp.DisplayName = user + "*";
-                            using (var searcher = new PrincipalSearcher(userp))
+                            userPrincipal.DisplayName = user + "*";
+                            using (var searcher = new PrincipalSearcher(userPrincipal))
                             {
                                 ((DirectorySearcher)searcher.GetUnderlyingSearcher()).SearchScope = SearchScope.Subtree;
-                                List<string> allUsers = new List<string>();
                                 foreach (var result in searcher.FindAll())
                                 {
-                                    allUsers.Add(result.SamAccountName.ToString() + " = " + result.DisplayName.ToString());
+                                    DirectoryEntry direntry = result.GetUnderlyingObject() as DirectoryEntry;
+                                    string telefon = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
+                                    try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch { telefon = ""; }
+                                    try { email = direntry.Properties["mail"].Value.ToString(); } catch { email = ""; }
+                                    try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch { kancelar = ""; }
+                                    try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch { oddeleni = ""; }
+
+                                    fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(), oddeleni, telefon, email, kancelar);
+                                    foundUsers++;
                                 }
-                                allUsers.Sort();
-                                string toDisplay = string.Join(Environment.NewLine, allUsers);
-                                MessageBox.Show(toDisplay, "Výsledek");
                             }
                         }
                     }
                 }
-
+                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
         private void buttonSearch_Click(object sender, EventArgs e)
-        {            
+        {
             searchUsers(textBoxUser.Text);           
         }
 
         private void textBoxUser_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxUser.Text != "" && textBoxUser.TextLength > 4)
+            if (textBoxUser.Text != "" && textBoxUser.TextLength > minChars)
                 buttonSearch.Enabled = true;
             else buttonSearch.Enabled = false;
         }
@@ -103,26 +110,107 @@ namespace TechnolToolkit
 
         private void textBoxUser_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter && textBoxUser.TextLength > 4)
+            if(e.KeyCode == Keys.Enter && textBoxUser.TextLength > minChars)
                 searchUsers(textBoxUser.Text);
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawLine(new Pen(themeColor, 1), 52, 37,52+textBoxUser.Width,37);
         }
 
         private void buttonSearch_EnabledChanged(object sender, EventArgs e)
         {
             if (buttonSearch.Enabled)
             {
-                buttonSearch.ForeColor = Color.FromArgb(142, 166, 4);
+                buttonSearch.ForeColor = Color.LimeGreen;
                 buttonSearch.Font = new Font(buttonSearch.Font.FontFamily, buttonSearch.Font.Size, FontStyle.Bold);
             }
             else
             {
                 buttonSearch.ForeColor = Color.White;
                 buttonSearch.Font = new Font(buttonSearch.Font.FontFamily, buttonSearch.Font.Size, FontStyle.Regular);
+            }
+        }
+
+        private void obnovListView()
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+
+            listView1.Columns.Add("DZC", 50);
+            listView1.Columns.Add("Jméno", 100);
+            listView1.Columns.Add("Oddělení", 50);
+            listView1.Columns.Add("Telefon",100);
+            listView1.Columns.Add("Email", 100);
+            listView1.Columns.Add("Kancelář", 100);
+        }
+        private void fillListView(string dzc, string jmeno, string oddeleni, string telefon, string email, string kancelar)
+        {
+            ListViewItem lvi = new ListViewItem(dzc);
+            lvi.SubItems.Add(jmeno);
+            lvi.SubItems.Add(oddeleni);
+            lvi.SubItems.Add(telefon);
+            lvi.SubItems.Add(email);
+            lvi.SubItems.Add(kancelar);
+
+            listView1.Items.Add(lvi);
+        }
+
+        private void listView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+                if (selectedItems.Count > 0)
+                {
+                    string text = "";
+                    foreach (ListViewItem item in selectedItems)
+                    {
+                        //6 protoze mame dohromady 6 udaju, ktere jsme nasli
+                        for (int i = 0; i < 6; i++)
+                        {
+                            text += item.SubItems[i].Text + ";";
+                        }
+
+                    }
+                    Clipboard.SetText(text);
+                    listView1.SelectedItems.Clear();
+                }
+                else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                foreach (ListViewItem item in listView1.Items)
+                    item.Selected = true;
+            }
+        }
+
+        private void kopirovatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                String text = "";
+                foreach (ListViewItem item in selectedItems)
+                {
+                    //6 protoze mame dohromady 6 udaju, ktere jsme nasli
+                    for (int i = 0; i < 6; i++)
+                    {
+                        text += item.SubItems[i].Text + ";";
+                    }
+
+                }
+                Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
             }
         }
     }

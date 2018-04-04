@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(521, 254);
@@ -67,12 +67,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(3, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(416, 28);
+            this.label1.Size = new System.Drawing.Size(398, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Převodník z textu na hash (SHA512)";
+            this.label1.Text = "Převodník textu na hash (SHA512)";
             // 
             // tableLayoutPanel2
             // 
@@ -85,14 +85,14 @@
             this.tableLayoutPanel2.Controls.Add(this.textBoxHash, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkBoxHEX, 1, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 42);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 47);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(521, 157);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(521, 152);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // label3
@@ -100,7 +100,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(16, 87);
+            this.label3.Location = new System.Drawing.Point(16, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 2;
@@ -111,7 +111,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(21, 22);
+            this.label2.Location = new System.Drawing.Point(21, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 21);
             this.label2.TabIndex = 0;
@@ -123,17 +123,17 @@
             this.textBoxText.Location = new System.Drawing.Point(70, 3);
             this.textBoxText.Multiline = true;
             this.textBoxText.Name = "textBoxText";
-            this.textBoxText.Size = new System.Drawing.Size(448, 59);
+            this.textBoxText.Size = new System.Drawing.Size(448, 57);
             this.textBoxText.TabIndex = 1;
             // 
             // textBoxHash
             // 
             this.textBoxHash.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxHash.Location = new System.Drawing.Point(70, 68);
+            this.textBoxHash.Location = new System.Drawing.Point(70, 66);
             this.textBoxHash.Multiline = true;
             this.textBoxHash.Name = "textBoxHash";
             this.textBoxHash.ReadOnly = true;
-            this.textBoxHash.Size = new System.Drawing.Size(448, 59);
+            this.textBoxHash.Size = new System.Drawing.Size(448, 57);
             this.textBoxHash.TabIndex = 1;
             // 
             // checkBoxHEX
@@ -141,11 +141,11 @@
             this.checkBoxHEX.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxHEX.AutoSize = true;
             this.checkBoxHEX.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxHEX.Location = new System.Drawing.Point(70, 133);
+            this.checkBoxHEX.Location = new System.Drawing.Point(70, 129);
             this.checkBoxHEX.Name = "checkBoxHEX";
-            this.checkBoxHEX.Size = new System.Drawing.Size(390, 21);
+            this.checkBoxHEX.Size = new System.Drawing.Size(419, 20);
             this.checkBoxHEX.TabIndex = 4;
-            this.checkBoxHEX.Text = "Převést výstup na hexadecimální string (nejčastější zápis)";
+            this.checkBoxHEX.Text = "Převést výstup na hexadecimální zápis (nejčastěji používané)";
             this.checkBoxHEX.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3

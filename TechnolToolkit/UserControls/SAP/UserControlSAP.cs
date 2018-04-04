@@ -122,18 +122,21 @@ namespace TechnolToolkit
         {
             if (e.Control && e.KeyCode == Keys.C)
             {
-
                 ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
-                String text = "";
-                foreach (ListViewItem item in selectedItems)
+                if (selectedItems.Count > 0)
                 {
-                    if (checkBoxZarizeni.Checked)
-                        text += item.SubItems[1].Text + " - " + item.SubItems[0].Text + "\n";
-                    else
-                        text += item.SubItems[0].Text + "\n";
+                    String text = "";
+                    foreach (ListViewItem item in selectedItems)
+                    {
+                        if (checkBoxZarizeni.Checked)
+                            text += item.SubItems[1].Text + " - " + item.SubItems[0].Text + "\n";
+                        else
+                            text += item.SubItems[0].Text + "\n";
+                    }
+                    Clipboard.SetText(text);
+                    listView1.SelectedItems.Clear();
                 }
-                Clipboard.SetText(text);
-                listView1.SelectedItems.Clear();
+                else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (e.Control && e.KeyCode == Keys.A)
                 foreach (ListViewItem item in listView1.Items)
@@ -145,16 +148,20 @@ namespace TechnolToolkit
         private void kopírovatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
-            String text = "";
-            foreach (ListViewItem item in selectedItems)
+            if (selectedItems.Count > 0)
             {
-                if (checkBoxZarizeni.Checked)
-                    text += item.SubItems[1].Text + " - " + item.SubItems[0].Text + "\n";
-                else
-                    text += item.SubItems[0].Text + "\n";
+                String text = "";
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if (checkBoxZarizeni.Checked)
+                        text += item.SubItems[1].Text + " - " + item.SubItems[0].Text + "\n";
+                    else
+                        text += item.SubItems[0].Text + "\n";
+                }
+                Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
             }
-            Clipboard.SetText(text);
-            listView1.SelectedItems.Clear();
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void tableLayoutPanelHorniVnitrni_Paint(object sender, PaintEventArgs e)

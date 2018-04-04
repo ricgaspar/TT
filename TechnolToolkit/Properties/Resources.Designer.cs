@@ -183,9 +183,9 @@ namespace TechnolToolkit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Menu_96_color {
+        internal static System.Drawing.Bitmap icons8_menu_528 {
             get {
-                object obj = ResourceManager.GetObject("icons8_Menu_96_color", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_menu_528", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +206,16 @@ namespace TechnolToolkit.Properties {
         internal static System.Drawing.Bitmap icons8_Name_96_color {
             get {
                 object obj = ResourceManager.GetObject("icons8_Name_96_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_password_528 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_password_528", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

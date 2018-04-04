@@ -155,7 +155,7 @@ namespace TechnolToolkit
         private void buttonMenu_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_Menu_96_color, 35, 35), 21, 9);
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_menu_528, 80, 80), 13, 6);
         }
         //SAP button
         private void buttonSAP_Paint(object sender, PaintEventArgs e)
@@ -361,6 +361,10 @@ namespace TechnolToolkit
             sh.ShowDialog();
         }
 
-       
+        private void buttonSHA512Generator_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_password_528, 50,50), 12, 1);
+        }
     }
 }

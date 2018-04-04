@@ -127,9 +127,6 @@
   <data name="icons8_Key_2_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\login_icons\icons8-key 2-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_Menu_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\menu_icons\icons8-menu-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_Moderator_96_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\menu_icons\icons8-moderator-96_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -189,5 +186,11 @@
   </data>
   <data name="icons8_maintenance_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\usercontrol_admin_icons\scccmklient_icons\icons8-maintenance-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_menu_528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-menu-528.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_password_528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-password-528.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

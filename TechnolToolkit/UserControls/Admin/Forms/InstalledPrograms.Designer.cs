@@ -86,9 +86,9 @@
             this.tableLayoutPanelHorniVnoreny.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanelHorniVnoreny.ColumnCount = 4;
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 415F));
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.checkBoxLocalPC, 0, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.textBoxComputername, 1, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.buttonVyhledat, 2, 1);
@@ -111,8 +111,8 @@
             this.checkBoxLocalPC.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxLocalPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxLocalPC.ForeColor = System.Drawing.Color.White;
-            this.checkBoxLocalPC.Location = new System.Drawing.Point(7, 9);
-            this.checkBoxLocalPC.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxLocalPC.Location = new System.Drawing.Point(4, 10);
+            this.checkBoxLocalPC.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.checkBoxLocalPC.Name = "checkBoxLocalPC";
             this.checkBoxLocalPC.Size = new System.Drawing.Size(147, 25);
             this.checkBoxLocalPC.TabIndex = 1;
@@ -122,15 +122,15 @@
             // 
             // textBoxComputername
             // 
-            this.textBoxComputername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxComputername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxComputername.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxComputername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxComputername.ForeColor = System.Drawing.Color.White;
-            this.textBoxComputername.Location = new System.Drawing.Point(157, 11);
-            this.textBoxComputername.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.textBoxComputername.Location = new System.Drawing.Point(157, 8);
+            this.textBoxComputername.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.textBoxComputername.Name = "textBoxComputername";
-            this.textBoxComputername.Size = new System.Drawing.Size(174, 20);
+            this.textBoxComputername.Size = new System.Drawing.Size(229, 27);
             this.textBoxComputername.TabIndex = 2;
             this.textBoxComputername.Click += new System.EventHandler(this.textBox1_Click);
             this.textBoxComputername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -138,17 +138,17 @@
             // 
             // buttonVyhledat
             // 
-            this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonVyhledat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonVyhledat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonVyhledat.Enabled = false;
             this.buttonVyhledat.FlatAppearance.BorderSize = 0;
             this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVyhledat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
-            this.buttonVyhledat.Location = new System.Drawing.Point(341, 6);
-            this.buttonVyhledat.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVyhledat.Location = new System.Drawing.Point(395, 6);
+            this.buttonVyhledat.Margin = new System.Windows.Forms.Padding(6);
             this.buttonVyhledat.Name = "buttonVyhledat";
-            this.buttonVyhledat.Size = new System.Drawing.Size(121, 30);
+            this.buttonVyhledat.Size = new System.Drawing.Size(135, 31);
             this.buttonVyhledat.TabIndex = 3;
             this.buttonVyhledat.Text = "Vyhledat";
             this.buttonVyhledat.UseVisualStyleBackColor = false;
@@ -163,20 +163,20 @@
             this.tableLayoutPanel2.Controls.Add(this.checkBoxHideMUI, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkBoxHideMicrosoft, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(474, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(548, 3);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(12, 3, 0, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.81395F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.18605F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(477, 37);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(403, 37);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // checkBoxHideUpdates
             // 
             this.checkBoxHideUpdates.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxHideUpdates.AutoSize = true;
-            this.checkBoxHideUpdates.BackColor = System.Drawing.Color.DarkOrange;
+            this.checkBoxHideUpdates.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxHideUpdates.Checked = true;
             this.checkBoxHideUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHideUpdates.Location = new System.Drawing.Point(0, 1);
@@ -207,10 +207,10 @@
             // 
             this.checkBoxHideMicrosoft.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxHideMicrosoft.AutoSize = true;
-            this.checkBoxHideMicrosoft.BackColor = System.Drawing.Color.DarkOrange;
+            this.checkBoxHideMicrosoft.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxHideMicrosoft.Checked = true;
             this.checkBoxHideMicrosoft.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHideMicrosoft.Location = new System.Drawing.Point(244, 1);
+            this.checkBoxHideMicrosoft.Location = new System.Drawing.Point(206, 1);
             this.checkBoxHideMicrosoft.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxHideMicrosoft.Name = "checkBoxHideMicrosoft";
             this.checkBoxHideMicrosoft.Size = new System.Drawing.Size(194, 17);
@@ -218,6 +218,7 @@
             this.checkBoxHideMicrosoft.Text = "skrýt vše od vydavatele Microsoft";
             this.toolTip1.SetToolTip(this.checkBoxHideMicrosoft, "Pro aplikování filtru klikněte znovu na \"Vyhledat\"");
             this.checkBoxHideMicrosoft.UseVisualStyleBackColor = false;
+            this.checkBoxHideMicrosoft.CheckedChanged += new System.EventHandler(this.checkBoxHideMicrosoft_CheckedChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -411,10 +412,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorni;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorniVnoreny;
-        private System.Windows.Forms.TextBox textBoxComputername;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVnejsi;
-        private System.Windows.Forms.CheckBox checkBoxLocalPC;
-        private System.Windows.Forms.Button buttonVyhledat;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem kopírovatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zrušitToolStripMenuItem;
@@ -423,13 +421,16 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelPocetSW;
         private System.Windows.Forms.Label labelSoftwareAt;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.CheckBox checkBoxHideUpdates;
-        private System.Windows.Forms.CheckBox checkBoxHideMUI;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.CheckBox checkBoxHideMicrosoft;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.PictureBox pictureBoxInfo;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox checkBoxLocalPC;
+        private System.Windows.Forms.TextBox textBoxComputername;
+        private System.Windows.Forms.Button buttonVyhledat;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.CheckBox checkBoxHideUpdates;
+        private System.Windows.Forms.CheckBox checkBoxHideMUI;
+        private System.Windows.Forms.CheckBox checkBoxHideMicrosoft;
     }
 }

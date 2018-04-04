@@ -44,6 +44,7 @@ namespace TechnolToolkit.Resources
             checkBoxHEX.Checked = true;
             textBoxText.Text = Environment.UserName + ";" + Environment.MachineName;
             textBoxHash.Text = ToSHA512_HEX(textBoxText.Text, true);
+            MessageBox.Show("Vložte vygenerovaný hash do souboru \"C:\\ProgramData\\TechnolToolkit\\License.dat\"\nNa každý řádek jeden klíč!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void SHA512_Generator_Shown(object sender, EventArgs e)

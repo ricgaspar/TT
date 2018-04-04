@@ -95,7 +95,7 @@
             this.buttonInstalovanyProgramy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonInstalovanyProgramy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInstalovanyProgramy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.DarkOrange;
+            this.buttonInstalovanyProgramy.ForeColor = System.Drawing.Color.White;
             this.buttonInstalovanyProgramy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonInstalovanyProgramy.Location = new System.Drawing.Point(682, 265);
             this.buttonInstalovanyProgramy.Margin = new System.Windows.Forms.Padding(30);

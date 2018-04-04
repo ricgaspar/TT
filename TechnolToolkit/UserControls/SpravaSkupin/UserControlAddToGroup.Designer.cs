@@ -204,15 +204,14 @@
             // textBoxUsername
             // 
             this.textBoxUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxUsername.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxUsername.Enabled = false;
             this.textBoxUsername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxUsername.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxUsername.Location = new System.Drawing.Point(3, 6);
-            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.textBoxUsername.Location = new System.Drawing.Point(3, 3);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(215, 20);
+            this.textBoxUsername.Size = new System.Drawing.Size(215, 27);
             this.textBoxUsername.TabIndex = 0;
             this.textBoxUsername.Text = "Uživatel (DZC)";
             this.textBoxUsername.Click += new System.EventHandler(this.textBoxUsername_Click);
@@ -276,14 +275,13 @@
             // textBoxComputername
             // 
             this.textBoxComputername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxComputername.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxComputername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxComputername.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBoxComputername.Location = new System.Drawing.Point(3, 6);
-            this.textBoxComputername.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.textBoxComputername.Location = new System.Drawing.Point(3, 3);
             this.textBoxComputername.Name = "textBoxComputername";
-            this.textBoxComputername.Size = new System.Drawing.Size(215, 20);
+            this.textBoxComputername.Size = new System.Drawing.Size(215, 27);
             this.textBoxComputername.TabIndex = 0;
             this.textBoxComputername.Text = "Název PC";
             this.textBoxComputername.Click += new System.EventHandler(this.textBoxComputername_Click);
@@ -456,7 +454,7 @@
             this.zobrazitUzivatelskeJmenoToolStripMenuItem,
             this.smazatClenaZeSkupinyToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 70);
             // 
             // zobrazitUzivatelskeJmenoToolStripMenuItem
             // 

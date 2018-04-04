@@ -199,12 +199,6 @@
     <Compile Include="UserControls\Admin\Forms\MSIUninstall.Designer.cs">
       <DependentUpon>MSIUninstall.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Admin\Forms\Procesy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\Admin\Forms\Procesy.Designer.cs">
-      <DependentUpon>Procesy.cs</DependentUpon>
-    </Compile>
     <Compile Include="statusBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,9 +255,6 @@
     <EmbeddedResource Include="UserControls\Admin\Forms\MSIUninstall.resx">
       <DependentUpon>MSIUninstall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Admin\Forms\Procesy.resx">
-      <DependentUpon>Procesy.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -313,6 +304,8 @@
     <EmbeddedResource Include="Resources\Change_Groups.hta" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-password-528.png" />
+    <None Include="Resources\icons8-menu-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-data-encryption-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-remove-book-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-system-information-528.png" />
