@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.DirectoryServices.AccountManagement;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
-using System.DirectoryServices;
 using TechnolToolkit.CustomControls_and_Clases;
 using System.Security.Cryptography;
 using System.Text;
 using TechnolToolkit.Resources;
 using TechnolToolkit.UserControls.Multiping;
-
 namespace TechnolToolkit
 {
     public partial class Form1 : Form
@@ -56,9 +49,7 @@ namespace TechnolToolkit
                     MessageBox.Show("Chyba při pokusu o resize! Není definovaný aktivní panel!", "RESIZE ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-
         }
-
         //Nastavuje pozadi pro aktivni buttony
         private void pozadiAktivnihoButtonu(string activePanel)
         {
@@ -97,8 +88,7 @@ namespace TechnolToolkit
                 buttonAdminTools.FlatAppearance.MouseOverBackColor = Color.Transparent;
                 buttonSAP.BackColor = Color.Transparent;
                 buttonSAP.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            }
-            
+            }            
         }
 
         #region Button Click funkce
@@ -110,16 +100,6 @@ namespace TechnolToolkit
         private void buttonAdminTools_Click(object sender, EventArgs e)
         {
             activePanelFuntion(aktivniPanel, "ucA");
-            /*if (aktivniPanel == "ucA")
-            {
-              */
-            /*
-              Graphics dc = this.CreateGraphics();
-              Pen pen = new Pen(Color.Blue, 3);
-              dc.DrawRectangle(pen, 0, 0, 50, 50);
-              Refresh();
-              */
-            //}
         }
         private void ButtonSAP_Click(object sender, EventArgs e)
         {
@@ -253,7 +233,7 @@ namespace TechnolToolkit
                         this.MaximizeBox = true;
                     }
                     #endregion
-                    break;
+                    break;                
             }
             pozadiAktivnihoButtonu(buttonClicked);
         }
@@ -287,6 +267,7 @@ namespace TechnolToolkit
         {
             Pen pen = new Pen(Color.FromArgb(48, 48, 48), 1);
             e.Graphics.DrawLine(pen, tableLayoutPanelMenu.Width - 1, 0, tableLayoutPanelMenu.Width - 1, tableLayoutPanelMenu.Height - 1);
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(60, 60, 60), 1), 0, buttonMenu.Location.Y+55, tableLayoutPanelMenu.Width, buttonMenu.Location.Y + 55);
         }
         DeleteFiles df = new DeleteFiles();
         private void linkLabelDeleteAllFiles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -340,7 +321,7 @@ namespace TechnolToolkit
                 }
                 if (accessGranted != true)
                 {
-                    MessageBox.Show("Licence není platná!\n\nUkončuji program...");
+                    MessageBox.Show("Licence není platná!\n\nVložte licenční kód do následujícího souboru C:\\ProgramData\\TechnolToolkit\\License.dat\n\n---------------------------------\n\nLicense is not valid!\n\nInsert the license code into the following file C:\\ProgramData\\TechnolToolkit\\License.dat", "Neplatná licence \\ Invalid license", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     Application.Exit();
                 }
                 else
@@ -351,13 +332,14 @@ namespace TechnolToolkit
             }
             else
             {
-                MessageBox.Show("Nebyla nalezena licence!\n\nUkončuji program...");
+                MessageBox.Show("Licence není platná!\n\nVložte licenční kód do následujícího souboru C:\\ProgramData\\TechnolToolkit\\License.dat\n\n---------------------------------\n\nLicense is not valid!\n\nInsert the license code into the following file C:\\ProgramData\\TechnolToolkit\\License.dat", "Neplatná licence \\ Invalid license", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 Application.Exit();
             }
         }
-        SHA512_Generator sh = new SHA512_Generator();
+        
         private void buttonSHA512Generator_Click(object sender, EventArgs e)
         {
+            SHA512_Generator sh = new SHA512_Generator();
             sh.ShowDialog();
         }
 

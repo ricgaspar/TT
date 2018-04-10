@@ -306,6 +306,13 @@
   <ItemGroup>
     <None Include="Resources\icons8-password-528.png" />
     <None Include="Resources\icons8-menu-528.png" />
+    <None Include="Resources\icons8-about-528.png" />
+    <None Include="Resources\icons8-popup-96.png" />
+    <None Include="Resources\icons8-speaker-96.png" />
+    <None Include="Resources\icons8-next-96.png" />
+    <None Include="Resources\icons8-stop-sign-96.png" />
+    <None Include="Resources\icons8-exercise-96.png" />
+    <None Include="Resources\icons8-counselor-96.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-data-encryption-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-remove-book-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-system-information-528.png" />
@@ -347,7 +354,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UserControls\AboutMe\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

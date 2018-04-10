@@ -630,11 +630,6 @@ namespace TechnolToolkit
             this.listView1.Sort();
         }
 
-        private void tableLayoutPanelHorniVnoreny_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawLine(new Pen(themeColor, 1), 157, 33, 330, 33);
-        }
-
         private void kopirovatVseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
@@ -674,48 +669,6 @@ namespace TechnolToolkit
         private void pictureBoxInfo_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(ImageManipulation.ResizeImage(ImageManipulation.SetOpacity(Properties.Resources.icons8_information_96,imageOpacity),25,25),0,0);
-        }
-
-        public enum opacityAction { increase, decrease };
-
-        private void mouseVisitOpacity(opacityAction increseOrDecreseOpacity)
-        {
-            switch(increseOrDecreseOpacity)
-            {
-                case opacityAction.increase:
-                    timer1.Start();
-                    timer1.Interval = 5;
-                    while (imageOpacity < 1)
-                    {
-                        imageOpacity += 0.001f;
-                        if (imageOpacity > 1)
-                            imageOpacity = 1;
-                        pictureBoxInfo.Refresh();
-                    }
-                    timer1.Stop();
-                    break;
-                case opacityAction.decrease:
-                    timer1.Start();
-                    timer1.Interval = 5;
-                    while (imageOpacity > imageMinimalOpacity)
-                    {
-                        imageOpacity -= 0.001f;
-                        if (imageOpacity < imageMinimalOpacity)
-                            imageOpacity = imageMinimalOpacity;
-                        pictureBoxInfo.Refresh();
-                    }
-                    timer1.Stop();
-                    break;
-            }
-        }
-        private void pictureBoxInfo_MouseEnter(object sender, EventArgs e)
-        {
-            mouseVisitOpacity(opacityAction.increase);
-        }
-
-        private void pictureBoxInfo_MouseLeave(object sender, EventArgs e)
-        {
-            mouseVisitOpacity(opacityAction.decrease);
         }
 
         public static void EnableTheService(string serviceName, string computername, serviceAction serAction)

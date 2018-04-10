@@ -17,9 +17,12 @@ namespace TechnolToolkit
     public partial class DZCsearch : Form
     {
         private int minChars = 3; //minimal number of characters needed to search for user
+        private ListViewColumnSorter lvwColumnSorter;
         public DZCsearch()
         {
             InitializeComponent();
+            lvwColumnSorter = new ListViewColumnSorter();
+            listView1.ListViewItemSorter = lvwColumnSorter;
             this.ActiveControl = textBoxUser;
             textBoxUser.Focus();
         }
@@ -48,12 +51,13 @@ namespace TechnolToolkit
                             foreach (var result in searcher.FindAll())
                             {
                                 DirectoryEntry direntry = result.GetUnderlyingObject() as DirectoryEntry;
-                                string telefon = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
+                                string telefon = string.Empty; string mobil = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
                                 try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch { telefon = ""; }
+                                try { mobil = direntry.Properties["mobile"].Value.ToString(); } catch { mobil = ""; }
                                 try { email = direntry.Properties["mail"].Value.ToString(); } catch { email = ""; }
                                 try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch { kancelar = ""; }
                                 try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch { oddeleni = ""; }
-                                fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(),oddeleni,telefon,email,kancelar);
+                                fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(), oddeleni, telefon, mobil, email, kancelar);
                                 foundUsers++;
                             }
                             
@@ -75,13 +79,14 @@ namespace TechnolToolkit
                                 foreach (var result in searcher.FindAll())
                                 {
                                     DirectoryEntry direntry = result.GetUnderlyingObject() as DirectoryEntry;
-                                    string telefon = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
+                                    string telefon = string.Empty; string mobil = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
                                     try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch { telefon = ""; }
+                                    try { mobil = direntry.Properties["mobile"].Value.ToString(); } catch { mobil = ""; }
                                     try { email = direntry.Properties["mail"].Value.ToString(); } catch { email = ""; }
                                     try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch { kancelar = ""; }
                                     try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch { oddeleni = ""; }
 
-                                    fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(), oddeleni, telefon, email, kancelar);
+                                    fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(), oddeleni, telefon, mobil, email, kancelar);
                                     foundUsers++;
                                 }
                             }
@@ -138,15 +143,17 @@ namespace TechnolToolkit
             listView1.Columns.Add("Jméno", 100);
             listView1.Columns.Add("Oddělení", 50);
             listView1.Columns.Add("Telefon",100);
+            listView1.Columns.Add("Mobil", 100);
             listView1.Columns.Add("Email", 100);
             listView1.Columns.Add("Kancelář", 100);
         }
-        private void fillListView(string dzc, string jmeno, string oddeleni, string telefon, string email, string kancelar)
+        private void fillListView(string dzc, string jmeno, string oddeleni, string telefon, string mobil, string email, string kancelar)
         {
             ListViewItem lvi = new ListViewItem(dzc);
             lvi.SubItems.Add(jmeno);
             lvi.SubItems.Add(oddeleni);
             lvi.SubItems.Add(telefon);
+            lvi.SubItems.Add(mobil);
             lvi.SubItems.Add(email);
             lvi.SubItems.Add(kancelar);
 
@@ -212,6 +219,32 @@ namespace TechnolToolkit
                     contextMenuStrip1.Show(Cursor.Position);
                 }
             }
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listView1.Sort();
         }
     }
 }

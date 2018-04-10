@@ -42,6 +42,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kopírovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zrušitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelHorniVnitrni.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,18 +70,20 @@
             // tableLayoutPanelHorniVnitrni
             // 
             this.tableLayoutPanelHorniVnitrni.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanelHorniVnitrni.ColumnCount = 6;
+            this.tableLayoutPanelHorniVnitrni.ColumnCount = 7;
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
-            this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
+            this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 291F));
+            this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.checkBoxZarizeni, 5, 0);
+            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.checkBoxZarizeni, 6, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.buttonVyhledat, 4, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.textBoxPC, 3, 0);
+            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.button1, 5, 0);
             this.tableLayoutPanelHorniVnitrni.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelHorniVnitrni.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanelHorniVnitrni.Margin = new System.Windows.Forms.Padding(0);
@@ -89,7 +92,6 @@
             this.tableLayoutPanelHorniVnitrni.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHorniVnitrni.Size = new System.Drawing.Size(981, 36);
             this.tableLayoutPanelHorniVnitrni.TabIndex = 0;
-            this.tableLayoutPanelHorniVnitrni.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelHorniVnitrni_Paint);
             // 
             // label1
             // 
@@ -124,7 +126,7 @@
             this.checkBoxZarizeni.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxZarizeni.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxZarizeni.ForeColor = System.Drawing.Color.Gainsboro;
-            this.checkBoxZarizeni.Location = new System.Drawing.Point(543, 8);
+            this.checkBoxZarizeni.Location = new System.Drawing.Point(722, 8);
             this.checkBoxZarizeni.Margin = new System.Windows.Forms.Padding(10, 4, 3, 3);
             this.checkBoxZarizeni.Name = "checkBoxZarizeni";
             this.checkBoxZarizeni.Size = new System.Drawing.Size(187, 21);
@@ -135,12 +137,12 @@
             // buttonVyhledat
             // 
             this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVyhledat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonVyhledat.BackColor = System.Drawing.Color.ForestGreen;
             this.buttonVyhledat.FlatAppearance.BorderSize = 0;
             this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVyhledat.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
-            this.buttonVyhledat.Location = new System.Drawing.Point(388, 3);
+            this.buttonVyhledat.Location = new System.Drawing.Point(477, 3);
             this.buttonVyhledat.Name = "buttonVyhledat";
             this.buttonVyhledat.Size = new System.Drawing.Size(128, 30);
             this.buttonVyhledat.TabIndex = 2;
@@ -150,17 +152,16 @@
             // 
             // textBoxPC
             // 
-            this.textBoxPC.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBoxPC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPC.ForeColor = System.Drawing.Color.White;
-            this.textBoxPC.Location = new System.Drawing.Point(186, 8);
-            this.textBoxPC.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.textBoxPC.Location = new System.Drawing.Point(183, 5);
+            this.textBoxPC.Margin = new System.Windows.Forms.Padding(0, 5, 3, 3);
             this.textBoxPC.Name = "textBoxPC";
-            this.textBoxPC.Size = new System.Drawing.Size(179, 20);
+            this.textBoxPC.Size = new System.Drawing.Size(288, 27);
             this.textBoxPC.TabIndex = 9;
-            this.textBoxPC.TextChanged += new System.EventHandler(this.textBoxPC_TextChanged);
             this.textBoxPC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPC_KeyDown);
             // 
             // listView1
@@ -219,6 +220,22 @@
             this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.zrušitToolStripMenuItem.Text = "Zrušit";
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.button1.Location = new System.Drawing.Point(611, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 30);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Vytisknout";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.buttonVyhledat_Click);
+            // 
             // UserControlSAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,5 +269,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxPC;
+        private System.Windows.Forms.Button button1;
     }
 }

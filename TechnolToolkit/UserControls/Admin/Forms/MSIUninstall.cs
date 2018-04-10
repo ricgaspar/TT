@@ -101,16 +101,9 @@ namespace TechnolToolkit
                 }
         }
 
-        private void MSIUninstall_Paint(object sender, PaintEventArgs e)
+        private void pictureBoxInfo_Click(object sender, EventArgs e)
         {
-            PointF computerTxt = new PointF(textBoxComputerName.FindForm().PointToClient(textBoxComputerName.Parent.PointToScreen(textBoxComputerName.Location)).X,
-                textBoxComputerName.FindForm().PointToClient(textBoxComputerName.Parent.PointToScreen(textBoxComputerName.Location)).Y);
-            e.Graphics.DrawLine(new Pen(themeColor, 1), computerTxt.X, computerTxt.Y + textBoxComputerName.Height + 2, computerTxt.X + textBoxComputerName.Width, computerTxt.Y + textBoxComputerName.Height + 2);
-
-            PointF msiTxt = new PointF(textBoxMSIstring.FindForm().PointToClient(textBoxMSIstring.Parent.PointToScreen(textBoxMSIstring.Location)).X,
-                textBoxMSIstring.FindForm().PointToClient(textBoxMSIstring.Parent.PointToScreen(textBoxMSIstring.Location)).Y);
-            
-            e.Graphics.DrawLine(new Pen(themeColor, 1),msiTxt.X,msiTxt.Y + textBoxMSIstring.Height + 2, msiTxt.X + textBoxMSIstring.Width, msiTxt.Y + textBoxMSIstring.Height + 2);
+            MessageBox.Show("Výstup tohoto programu je užitečný například při vytváření odinstalačních skriptů, ale lze jej použít i pro ověření přítomnosti daného softwaru zařízení.","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
     }
 }

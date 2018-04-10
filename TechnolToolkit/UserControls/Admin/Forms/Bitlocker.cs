@@ -18,6 +18,7 @@ namespace TechnolToolkit
         {
             InitializeComponent();
             resetListView();
+            numericUpDown1.Value = (decimal)listView1.Font.Size;
         }
         public void resetTextBox()
         {
@@ -144,6 +145,17 @@ namespace TechnolToolkit
                 listView1.SelectedItems.Clear();
             }
             else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void pictureBox2_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(60, 60, 60), 1), pictureBox2.Width / 2, 0, pictureBox2.Width / 2, pictureBox2.Height);
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            listView1.Font = new Font(listView1.Font.FontFamily, (float)numericUpDown1.Value, listView1.Font.Style);
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
     }
 }

@@ -38,10 +38,9 @@
             this.buttonDZC = new System.Windows.Forms.Button();
             this.buttonMultiping = new System.Windows.Forms.Button();
             this.buttonSHA512Generator = new System.Windows.Forms.Button();
+            this.linkLabelDeleteAllFiles = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanelPocitacAFlowlayout = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonAboutMe = new System.Windows.Forms.Button();
-            this.linkLabelDeleteAllFiles = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelMenu.SuspendLayout();
             this.tableLayoutPanelPocitacAFlowlayout.SuspendLayout();
@@ -76,13 +75,12 @@
             this.tableLayoutPanelMenu.Controls.Add(this.buttonDZC, 0, 3);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonMultiping, 0, 5);
             this.tableLayoutPanelMenu.Controls.Add(this.buttonSHA512Generator, 0, 6);
-            this.tableLayoutPanelMenu.Controls.Add(this.buttonAboutMe, 0, 7);
-            this.tableLayoutPanelMenu.Controls.Add(this.linkLabelDeleteAllFiles, 0, 8);
+            this.tableLayoutPanelMenu.Controls.Add(this.linkLabelDeleteAllFiles, 0, 9);
             this.tableLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMenu.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelMenu.Name = "tableLayoutPanelMenu";
-            this.tableLayoutPanelMenu.RowCount = 9;
+            this.tableLayoutPanelMenu.RowCount = 10;
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
@@ -90,9 +88,9 @@
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelMenu.Size = new System.Drawing.Size(250, 711);
             this.tableLayoutPanelMenu.TabIndex = 10;
             this.tableLayoutPanelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
@@ -105,7 +103,7 @@
             this.buttonMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMenu.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonMenu.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonMenu.ForeColor = System.Drawing.Color.White;
             this.buttonMenu.Location = new System.Drawing.Point(3, 3);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
@@ -166,7 +164,7 @@
             this.buttonSAP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonSAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSAP.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSAP.ForeColor = System.Drawing.Color.White;
+            this.buttonSAP.ForeColor = System.Drawing.Color.DarkOrange;
             this.buttonSAP.Location = new System.Drawing.Point(0, 130);
             this.buttonSAP.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.buttonSAP.Name = "buttonSAP";
@@ -237,6 +235,22 @@
             this.buttonSHA512Generator.Click += new System.EventHandler(this.buttonSHA512Generator_Click);
             this.buttonSHA512Generator.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonSHA512Generator_Paint);
             // 
+            // linkLabelDeleteAllFiles
+            // 
+            this.linkLabelDeleteAllFiles.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.linkLabelDeleteAllFiles.AutoSize = true;
+            this.linkLabelDeleteAllFiles.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linkLabelDeleteAllFiles.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.linkLabelDeleteAllFiles.Location = new System.Drawing.Point(44, 691);
+            this.linkLabelDeleteAllFiles.Margin = new System.Windows.Forms.Padding(3);
+            this.linkLabelDeleteAllFiles.Name = "linkLabelDeleteAllFiles";
+            this.linkLabelDeleteAllFiles.Size = new System.Drawing.Size(162, 17);
+            this.linkLabelDeleteAllFiles.TabIndex = 10;
+            this.linkLabelDeleteAllFiles.TabStop = true;
+            this.linkLabelDeleteAllFiles.Text = "Vyčistit soubory programu";
+            this.linkLabelDeleteAllFiles.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.linkLabelDeleteAllFiles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDeleteAllFiles_LinkClicked);
+            // 
             // tableLayoutPanelPocitacAFlowlayout
             // 
             this.tableLayoutPanelPocitacAFlowlayout.ColumnCount = 1;
@@ -262,40 +276,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(984, 711);
             this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // buttonAboutMe
-            // 
-            this.buttonAboutMe.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonAboutMe.FlatAppearance.BorderSize = 0;
-            this.buttonAboutMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAboutMe.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAboutMe.Location = new System.Drawing.Point(0, 607);
-            this.buttonAboutMe.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.buttonAboutMe.Name = "buttonAboutMe";
-            this.buttonAboutMe.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.buttonAboutMe.Size = new System.Drawing.Size(249, 60);
-            this.buttonAboutMe.TabIndex = 11;
-            this.buttonAboutMe.Text = "O programu";
-            this.buttonAboutMe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAboutMe.UseVisualStyleBackColor = true;
-            this.buttonAboutMe.Click += new System.EventHandler(this.buttonSHA512Generator_Click);
-            this.buttonAboutMe.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonSHA512Generator_Paint);
-            // 
-            // linkLabelDeleteAllFiles
-            // 
-            this.linkLabelDeleteAllFiles.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.linkLabelDeleteAllFiles.AutoSize = true;
-            this.linkLabelDeleteAllFiles.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linkLabelDeleteAllFiles.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.linkLabelDeleteAllFiles.Location = new System.Drawing.Point(44, 691);
-            this.linkLabelDeleteAllFiles.Margin = new System.Windows.Forms.Padding(3);
-            this.linkLabelDeleteAllFiles.Name = "linkLabelDeleteAllFiles";
-            this.linkLabelDeleteAllFiles.Size = new System.Drawing.Size(162, 17);
-            this.linkLabelDeleteAllFiles.TabIndex = 10;
-            this.linkLabelDeleteAllFiles.TabStop = true;
-            this.linkLabelDeleteAllFiles.Text = "Vyčistit soubory programu";
-            this.linkLabelDeleteAllFiles.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.linkLabelDeleteAllFiles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDeleteAllFiles_LinkClicked);
             // 
             // Form1
             // 
@@ -335,7 +315,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPocitacAFlowlayout;
         private System.Windows.Forms.Button buttonMultiping;
         private System.Windows.Forms.Button buttonSHA512Generator;
-        private System.Windows.Forms.Button buttonAboutMe;
         private System.Windows.Forms.LinkLabel linkLabelDeleteAllFiles;
     }
 }

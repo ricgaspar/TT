@@ -164,18 +164,6 @@ namespace TechnolToolkit
             else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void tableLayoutPanelHorniVnitrni_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawLine(new Pen(Color.FromArgb(174,0,0), 1), 187, 28, 369, 28);
-        }
-
-        private void textBoxPC_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxPC.Text != "")
-                buttonVyhledat.Enabled = true;
-            else buttonVyhledat.Enabled = false;
-        }
-
         private void textBoxPC_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
