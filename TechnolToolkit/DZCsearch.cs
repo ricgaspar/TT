@@ -52,11 +52,11 @@ namespace TechnolToolkit
                             {
                                 DirectoryEntry direntry = result.GetUnderlyingObject() as DirectoryEntry;
                                 string telefon = string.Empty; string mobil = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
-                                try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch { telefon = ""; }
-                                try { mobil = direntry.Properties["mobile"].Value.ToString(); } catch { mobil = ""; }
-                                try { email = direntry.Properties["mail"].Value.ToString(); } catch { email = ""; }
-                                try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch { kancelar = ""; }
-                                try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch { oddeleni = ""; }
+                                try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch (Exception) { telefon = ""; }
+                                try { mobil = direntry.Properties["mobile"].Value.ToString(); } catch (Exception) { mobil = ""; }
+                                try { email = direntry.Properties["mail"].Value.ToString(); } catch (Exception) { email = ""; }
+                                try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch (Exception) { kancelar = ""; }
+                                try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch (Exception) { oddeleni = ""; }
                                 fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(), oddeleni, telefon, mobil, email, kancelar);
                                 foundUsers++;
                             }
@@ -80,11 +80,11 @@ namespace TechnolToolkit
                                 {
                                     DirectoryEntry direntry = result.GetUnderlyingObject() as DirectoryEntry;
                                     string telefon = string.Empty; string mobil = string.Empty; string email = string.Empty; string kancelar = string.Empty; string oddeleni = string.Empty;
-                                    try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch { telefon = ""; }
-                                    try { mobil = direntry.Properties["mobile"].Value.ToString(); } catch { mobil = ""; }
-                                    try { email = direntry.Properties["mail"].Value.ToString(); } catch { email = ""; }
-                                    try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch { kancelar = ""; }
-                                    try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch { oddeleni = ""; }
+                                    try { telefon = direntry.Properties["telephoneNumber"].Value.ToString(); } catch (Exception) { telefon = ""; }
+                                    try { mobil = direntry.Properties["mobile"].Value.ToString(); } catch (Exception) { mobil = ""; }
+                                    try { email = direntry.Properties["mail"].Value.ToString(); } catch(Exception) { email = ""; }
+                                    try { kancelar = direntry.Properties["physicalDeliveryOfficeName"].Value.ToString(); } catch (Exception) { kancelar = ""; }
+                                    try { oddeleni = direntry.Properties["department"].Value.ToString(); } catch (Exception) { oddeleni = ""; }
 
                                     fillListView(result.SamAccountName.ToString(), result.DisplayName.ToString(), oddeleni, telefon, mobil, email, kancelar);
                                     foundUsers++;
@@ -145,7 +145,7 @@ namespace TechnolToolkit
             listView1.Columns.Add("Telefon",100);
             listView1.Columns.Add("Mobil", 100);
             listView1.Columns.Add("Email", 100);
-            listView1.Columns.Add("Kancelář", 100);
+            listView1.Columns.Add("Budova, kancelář", 100);
         }
         private void fillListView(string dzc, string jmeno, string oddeleni, string telefon, string mobil, string email, string kancelar)
         {

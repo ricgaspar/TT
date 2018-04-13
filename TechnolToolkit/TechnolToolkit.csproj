@@ -118,6 +118,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls and Clases\ServiceManipulation.cs" />
     <Compile Include="CustomControls and Clases\ImageManipulation.cs" />
     <Compile Include="DeleteFiles.cs">
@@ -219,6 +225,9 @@
     <Compile Include="UserControls\SAP\UserControlSAP.Designer.cs">
       <DependentUpon>UserControlSAP.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeleteFiles.resx">
       <DependentUpon>DeleteFiles.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,8 +320,8 @@
     <None Include="Resources\icons8-speaker-96.png" />
     <None Include="Resources\icons8-next-96.png" />
     <None Include="Resources\icons8-stop-sign-96.png" />
-    <None Include="Resources\icons8-exercise-96.png" />
-    <None Include="Resources\icons8-counselor-96.png" />
+    <None Include="Resources\icons8-toolbox-528.png" />
+    <None Include="Resources\icons8-toolbox.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-data-encryption-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-remove-book-528.png" />
     <Content Include="Resources\UserControl_Admin_icons\icons8-system-information-528.png" />
@@ -354,9 +363,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\AboutMe\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

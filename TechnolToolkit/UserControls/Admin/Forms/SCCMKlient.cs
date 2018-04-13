@@ -229,11 +229,6 @@ namespace TechnolToolkit.UserControls.Admin.Forms
             }
         }
 
-        private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawLine(new Pen(Color.FromArgb(174, 0, 0), 1), textBoxComputername.Location.X, textBoxComputername.Location.Y + textBoxComputername.Height + 2, textBoxComputername.Location.X + textBoxComputername.Width, textBoxComputername.Location.Y + textBoxComputername.Height + 2);
-        }
-
         private void buttonPolicy_Click(object sender, EventArgs e)
         {
             Process p = new Process();

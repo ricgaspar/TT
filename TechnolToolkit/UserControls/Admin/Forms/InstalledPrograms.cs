@@ -169,7 +169,7 @@ namespace TechnolToolkit
             #region currentUser
             //CurrentUser
             key = RegistryKey.OpenRemoteBaseKey(RegistryHive.CurrentUser, computername).OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
-#warning Otevření registrů - Odkaz na objekt není nastaven na instanci objektu.
+            #warning Otevření registrů - Odkaz na objekt není nastaven na instanci objektu.
             //Pravdepodobne se nemuze pripojit.. FIX ME!
             foreach (String keyName in key.GetSubKeyNames())
             {
@@ -664,7 +664,6 @@ namespace TechnolToolkit
         }
 
         float imageOpacity = 0.4f;
-        float imageMinimalOpacity = 0.4f;
 
         private void pictureBoxInfo_Paint(object sender, PaintEventArgs e)
         {
@@ -756,6 +755,16 @@ namespace TechnolToolkit
             {
                 checkBoxHideUpdates.Enabled = true;
             }
+        }
+
+        private void pictureBoxSeparator1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(60, 60, 60), 1), pictureBoxSeparator1.Width / 2 , 0, pictureBoxSeparator1.Width / 2, pictureBoxSeparator1.Height);
+        }
+
+        private void pictureBoxSeparator2_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(60, 60, 60), 1), pictureBoxSeparator2.Width / 2, 0, pictureBoxSeparator2.Width / 2, pictureBoxSeparator2.Height);
         }
     }
 }

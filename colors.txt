@@ -1,4 +1,0 @@
-60 A2 E8 Nadpis
-1C 90 FF button
-01 49 8D menu
-9B 9B 9D

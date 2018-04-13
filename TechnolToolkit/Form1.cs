@@ -7,6 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using TechnolToolkit.Resources;
 using TechnolToolkit.UserControls.Multiping;
+using System.Diagnostics;
+
 namespace TechnolToolkit
 {
     public partial class Form1 : Form
@@ -26,9 +28,9 @@ namespace TechnolToolkit
             kopirujSoubory();
             //Vyhozi obrazovka
             flowLayoutPanel1.Controls.Add(ucA);
-            ucAG.Size = flowLayoutPanel1.Size;
             pozadiAktivnihoButtonu(aktivniPanel);
             this.MaximizeBox = false;
+            ucAG.Size = flowLayoutPanel1.Size;
         }
 
         //Aktualizace velikosti UserControlů
@@ -92,9 +94,9 @@ namespace TechnolToolkit
         }
 
         #region Button Click funkce
-        Multiping mp = new Multiping();
         private void buttonMultiping_Click(object sender, EventArgs e)
         {
+            Multiping mp = new Multiping();
             mp.Show();
         }
         private void buttonAdminTools_Click(object sender, EventArgs e)
@@ -274,7 +276,10 @@ namespace TechnolToolkit
         {
             df.ShowDialog();
         }
-
+        #region old_Lincense_check
+        /*
+        This featrue is no longer in use! All license checks are now commented and do not work.
+        That means anyone can use this program.
         private string ToSHA512_HEX(string value)
         {
             SHA512 sha512 = SHA512.Create();
@@ -336,7 +341,9 @@ namespace TechnolToolkit
                 Application.Exit();
             }
         }
-        
+        */
+        #endregion
+
         private void buttonSHA512Generator_Click(object sender, EventArgs e)
         {
             SHA512_Generator sh = new SHA512_Generator();
@@ -347,6 +354,23 @@ namespace TechnolToolkit
         {
             Graphics g = e.Graphics;
             g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_password_528, 50,50), 12, 1);
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(60,60,60), 1), 0, pictureBox1.Height / 2, pictureBox1.Width, pictureBox1.Height / 2);
+        }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            AboutBox1 ab = new AboutBox1();
+            ab.ShowDialog();
+        }
+
+        private void buttonAbout_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_about_528, 500,500), 12, 5);
         }
     }
 }

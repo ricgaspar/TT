@@ -38,7 +38,8 @@ namespace TechnolToolkit.Resources
                 textBoxHash.Text = ToSHA512_HEX(textBoxText.Text, true);
             else textBoxHash.Text = ToSHA512_HEX(textBoxText.Text, false);
         }
-
+        /*
+        Deleted feature because licenses were removed from this project :)
         private void buttonTT_Click(object sender, EventArgs e)
         {
             checkBoxHEX.Checked = true;
@@ -46,7 +47,7 @@ namespace TechnolToolkit.Resources
             textBoxHash.Text = ToSHA512_HEX(textBoxText.Text, true);
             MessageBox.Show("Vložte vygenerovaný hash do souboru \"C:\\ProgramData\\TechnolToolkit\\License.dat\"\nNa každý řádek jeden klíč!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
-
+        */
         private void SHA512_Generator_Shown(object sender, EventArgs e)
         {
             textBoxHash.Text = "";

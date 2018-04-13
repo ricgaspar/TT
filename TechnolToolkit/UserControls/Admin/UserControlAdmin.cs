@@ -77,7 +77,8 @@ namespace TechnolToolkit
         
         private void buttonZprava_Click(object sender, EventArgs e)
         {
-#warning Fix me I am shit!
+#warning Zapremyslet o lepsi implementaci!
+            //Toto neni idealni zpusob jak poslat na pocitac zpravu.
             Process p = new Process();
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\runpwshell_parameter.bat";
             p.StartInfo.Arguments = "/RemoteDialog.ps1";
@@ -90,9 +91,10 @@ namespace TechnolToolkit
             p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\Najdi_PC.hta";
             p.Start();
         }
-        MSIUninstall msi = new MSIUninstall();
+        
         private void buttonMSI_Click(object sender, EventArgs e)
         {
+            MSIUninstall msi = new MSIUninstall();
             msi.restartMsiUninstall();
             msi.ShowDialog();
         }
@@ -104,13 +106,16 @@ namespace TechnolToolkit
             p.Start();
         }
         
-        InstalledPrograms instalP = new InstalledPrograms();
+        
         private void buttonInstalovanyProgramy_Click(object sender, EventArgs e)
         {
+            InstalledPrograms instalP = new InstalledPrograms();
+            /*
             instalP.ShowDialog();
             instalP.WindowState = FormWindowState.Normal;
             instalP.Width = 966;
             instalP.Height = 635;
+            */
         }
 
         private void buttonASCII_Click(object sender, EventArgs e)
@@ -167,9 +172,10 @@ namespace TechnolToolkit
             }
         }
 
-        Bitlocker bit = new Bitlocker();
+        
         private void buttonBitlocker_Click(object sender, EventArgs e)
         {
+            Bitlocker bit = new Bitlocker();
             bit.resetListView();
             bit.resetTextBox();
             bit.ShowDialog();
@@ -181,15 +187,17 @@ namespace TechnolToolkit
             g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_individual_server_96, 180, 180), (buttonSCCM.Width / 2) - (100 / 2), (buttonSCCM.Height / 2) - (picSize / 2) - heightOffset);
         }
 
-        Napajeni np = new Napajeni();
+        
         private void buttonNapajeniPC_Click(object sender, EventArgs e)
         {
+            Napajeni np = new Napajeni();
             np.ShowDialog();
         }
 
-        SCCMKlient sk = new SCCMKlient();
+        
         private void buttonSCCM_Click(object sender, EventArgs e)
         {
+            SCCMKlient sk = new SCCMKlient();
             sk.ShowDialog();
         }
     }

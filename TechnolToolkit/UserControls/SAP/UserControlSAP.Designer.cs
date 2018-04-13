@@ -34,15 +34,18 @@
             this.tableLayoutPanelHorniVnitrni = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBoxZarizeni = new System.Windows.Forms.CheckBox();
             this.buttonVyhledat = new System.Windows.Forms.Button();
             this.textBoxPC = new System.Windows.Forms.TextBox();
+            this.buttonPrintPage = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kopírovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyWithNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zrušitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.tableLayoutPanelVnejsi.SuspendLayout();
             this.tableLayoutPanelHorniVnitrni.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,9 +63,9 @@
             this.tableLayoutPanelVnejsi.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelVnejsi.Name = "tableLayoutPanelVnejsi";
             this.tableLayoutPanelVnejsi.RowCount = 4;
-            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanelVnejsi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelVnejsi.Size = new System.Drawing.Size(981, 670);
             this.tableLayoutPanelVnejsi.TabIndex = 0;
@@ -80,12 +83,11 @@
             this.tableLayoutPanelHorniVnitrni.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.checkBoxZarizeni, 6, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.buttonVyhledat, 4, 0);
             this.tableLayoutPanelHorniVnitrni.Controls.Add(this.textBoxPC, 3, 0);
-            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.button1, 5, 0);
+            this.tableLayoutPanelHorniVnitrni.Controls.Add(this.buttonPrintPage, 5, 0);
             this.tableLayoutPanelHorniVnitrni.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelHorniVnitrni.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanelHorniVnitrni.Location = new System.Drawing.Point(0, 27);
             this.tableLayoutPanelHorniVnitrni.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelHorniVnitrni.Name = "tableLayoutPanelHorniVnitrni";
             this.tableLayoutPanelHorniVnitrni.RowCount = 1;
@@ -119,21 +121,6 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // checkBoxZarizeni
-            // 
-            this.checkBoxZarizeni.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxZarizeni.AutoSize = true;
-            this.checkBoxZarizeni.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxZarizeni.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxZarizeni.ForeColor = System.Drawing.Color.Gainsboro;
-            this.checkBoxZarizeni.Location = new System.Drawing.Point(722, 8);
-            this.checkBoxZarizeni.Margin = new System.Windows.Forms.Padding(10, 4, 3, 3);
-            this.checkBoxZarizeni.Name = "checkBoxZarizeni";
-            this.checkBoxZarizeni.Size = new System.Drawing.Size(187, 21);
-            this.checkBoxZarizeni.TabIndex = 3;
-            this.checkBoxZarizeni.Text = "Kopírovat jméno zařízení";
-            this.checkBoxZarizeni.UseVisualStyleBackColor = false;
-            // 
             // buttonVyhledat
             // 
             this.buttonVyhledat.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -164,6 +151,22 @@
             this.textBoxPC.TabIndex = 9;
             this.textBoxPC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPC_KeyDown);
             // 
+            // buttonPrintPage
+            // 
+            this.buttonPrintPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonPrintPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonPrintPage.FlatAppearance.BorderSize = 0;
+            this.buttonPrintPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrintPage.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonPrintPage.ForeColor = System.Drawing.Color.White;
+            this.buttonPrintPage.Location = new System.Drawing.Point(611, 3);
+            this.buttonPrintPage.Name = "buttonPrintPage";
+            this.buttonPrintPage.Size = new System.Drawing.Size(97, 30);
+            this.buttonPrintPage.TabIndex = 2;
+            this.buttonPrintPage.Text = "Vytisknout";
+            this.buttonPrintPage.UseVisualStyleBackColor = false;
+            this.buttonPrintPage.Click += new System.EventHandler(this.buttonPrintPage_Click);
+            // 
             // listView1
             // 
             this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -172,10 +175,10 @@
             this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listView1.ForeColor = System.Drawing.Color.LightGray;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.Location = new System.Drawing.Point(0, 75);
+            this.listView1.Location = new System.Drawing.Point(0, 68);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(981, 595);
+            this.listView1.Size = new System.Drawing.Size(981, 602);
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -189,7 +192,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(3, 2);
+            this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(344, 25);
             this.label2.TabIndex = 2;
@@ -200,41 +203,48 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kopírovatToolStripMenuItem,
+            this.CopyWithNameToolStripMenuItem,
             this.zrušitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 70);
             // 
             // kopírovatToolStripMenuItem
             // 
             this.kopírovatToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
             this.kopírovatToolStripMenuItem.Name = "kopírovatToolStripMenuItem";
             this.kopírovatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.kopírovatToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.kopírovatToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.kopírovatToolStripMenuItem.Text = "Kopírovat";
             this.kopírovatToolStripMenuItem.Click += new System.EventHandler(this.kopírovatToolStripMenuItem_Click);
+            // 
+            // CopyWithNameToolStripMenuItem
+            // 
+            this.CopyWithNameToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
+            this.CopyWithNameToolStripMenuItem.Name = "CopyWithNameToolStripMenuItem";
+            this.CopyWithNameToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.CopyWithNameToolStripMenuItem.Text = "Kopírovat včetně jména zařízení";
+            this.CopyWithNameToolStripMenuItem.Click += new System.EventHandler(this.CopyWithNameToolStripMenuItem_Click);
             // 
             // zrušitToolStripMenuItem
             // 
             this.zrušitToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
             this.zrušitToolStripMenuItem.Name = "zrušitToolStripMenuItem";
-            this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.zrušitToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.zrušitToolStripMenuItem.Text = "Zrušit";
             // 
-            // button1
+            // printDialog1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.button1.Location = new System.Drawing.Point(611, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Vytisknout";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.buttonVyhledat_Click);
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // UserControlSAP
             // 
@@ -260,7 +270,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVnejsi;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelHorniVnitrni;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.CheckBox checkBoxZarizeni;
         private System.Windows.Forms.Button buttonVyhledat;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem kopírovatToolStripMenuItem;
@@ -269,6 +278,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxPC;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonPrintPage;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ToolStripMenuItem CopyWithNameToolStripMenuItem;
     }
 }

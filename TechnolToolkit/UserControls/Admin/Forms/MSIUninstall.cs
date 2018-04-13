@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TechnolToolkit.CustomControls_and_Clases;
 
 namespace TechnolToolkit
 {
@@ -103,7 +104,12 @@ namespace TechnolToolkit
 
         private void pictureBoxInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Výstup tohoto programu je užitečný například při vytváření odinstalačních skriptů, ale lze jej použít i pro ověření přítomnosti daného softwaru zařízení.","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Výstup tohoto programu je užitečný například při vytváření odinstalačních skriptů, ale lze jej použít i pro ověření přítomnosti daného softwaru na zařízení.","K čemu mi tahle utilita vlastně je?",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        private void pictureBoxInfo_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(ImageManipulation.ResizeImage(ImageManipulation.SetOpacity(Properties.Resources.icons8_information_96, 0.4f), 25, 25), 0, 0);
         }
     }
 }

@@ -33,14 +33,16 @@
             this.tableLayoutPanelHorni = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelHorniVnoreny = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxComputername = new System.Windows.Forms.TextBox();
-            this.buttonVyhledat = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBoxLocalPC = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBoxHideUpdates = new System.Windows.Forms.CheckBox();
             this.checkBoxHideMUI = new System.Windows.Forms.CheckBox();
             this.checkBoxHideMicrosoft = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBoxLocalPC = new System.Windows.Forms.CheckBox();
+            this.buttonVyhledat = new System.Windows.Forms.Button();
+            this.pictureBoxSeparator1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSeparator2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxInfo = new System.Windows.Forms.PictureBox();
@@ -56,8 +58,10 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanelHorni.SuspendLayout();
             this.tableLayoutPanelHorniVnoreny.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSeparator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSeparator2)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfo)).BeginInit();
             this.tableLayoutPanelVnejsi.SuspendLayout();
@@ -87,20 +91,24 @@
             // tableLayoutPanelHorniVnoreny
             // 
             this.tableLayoutPanelHorniVnoreny.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanelHorniVnoreny.ColumnCount = 7;
+            this.tableLayoutPanelHorniVnoreny.ColumnCount = 9;
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
-            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 380F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanelHorniVnoreny.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.textBoxComputername, 3, 1);
-            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.buttonVyhledat, 5, 1);
-            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.tableLayoutPanel2, 6, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.pictureBox1, 1, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.label2, 2, 1);
             this.tableLayoutPanelHorniVnoreny.Controls.Add(this.checkBoxLocalPC, 4, 1);
+            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.tableLayoutPanel2, 6, 1);
+            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.buttonVyhledat, 8, 1);
+            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.pictureBoxSeparator1, 5, 1);
+            this.tableLayoutPanelHorniVnoreny.Controls.Add(this.pictureBoxSeparator2, 7, 1);
             this.tableLayoutPanelHorniVnoreny.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelHorniVnoreny.Location = new System.Drawing.Point(0, 38);
             this.tableLayoutPanelHorniVnoreny.Margin = new System.Windows.Forms.Padding(0);
@@ -121,29 +129,51 @@
             this.textBoxComputername.Location = new System.Drawing.Point(185, 8);
             this.textBoxComputername.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.textBoxComputername.Name = "textBoxComputername";
-            this.textBoxComputername.Size = new System.Drawing.Size(278, 27);
+            this.textBoxComputername.Size = new System.Drawing.Size(258, 27);
             this.textBoxComputername.TabIndex = 2;
             this.textBoxComputername.Click += new System.EventHandler(this.textBox1_Click);
             this.textBoxComputername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBoxComputername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxComputername_KeyDown);
             // 
-            // buttonVyhledat
+            // pictureBox1
             // 
-            this.buttonVyhledat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.buttonVyhledat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonVyhledat.Enabled = false;
-            this.buttonVyhledat.FlatAppearance.BorderSize = 0;
-            this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVyhledat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
-            this.buttonVyhledat.Location = new System.Drawing.Point(622, 6);
-            this.buttonVyhledat.Margin = new System.Windows.Forms.Padding(6);
-            this.buttonVyhledat.Name = "buttonVyhledat";
-            this.buttonVyhledat.Size = new System.Drawing.Size(114, 31);
-            this.buttonVyhledat.TabIndex = 3;
-            this.buttonVyhledat.Text = "Vyhledat";
-            this.buttonVyhledat.UseVisualStyleBackColor = false;
-            this.buttonVyhledat.Click += new System.EventHandler(this.buttonOK_Click);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(8, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label2.Location = new System.Drawing.Point(43, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 21);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Název počítače";
+            // 
+            // checkBoxLocalPC
+            // 
+            this.checkBoxLocalPC.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.checkBoxLocalPC.AutoSize = true;
+            this.checkBoxLocalPC.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxLocalPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxLocalPC.ForeColor = System.Drawing.Color.White;
+            this.checkBoxLocalPC.Location = new System.Drawing.Point(449, 10);
+            this.checkBoxLocalPC.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.checkBoxLocalPC.Name = "checkBoxLocalPC";
+            this.checkBoxLocalPC.Size = new System.Drawing.Size(147, 25);
+            this.checkBoxLocalPC.TabIndex = 11;
+            this.checkBoxLocalPC.Text = "Lokální počítač";
+            this.checkBoxLocalPC.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -154,13 +184,13 @@
             this.tableLayoutPanel2.Controls.Add(this.checkBoxHideMUI, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkBoxHideMicrosoft, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(754, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(619, 3);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(12, 3, 0, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.81395F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.18605F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(390, 37);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(368, 37);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // checkBoxHideUpdates
@@ -201,7 +231,7 @@
             this.checkBoxHideMicrosoft.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxHideMicrosoft.Checked = true;
             this.checkBoxHideMicrosoft.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHideMicrosoft.Location = new System.Drawing.Point(182, 1);
+            this.checkBoxHideMicrosoft.Location = new System.Drawing.Point(171, 1);
             this.checkBoxHideMicrosoft.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxHideMicrosoft.Name = "checkBoxHideMicrosoft";
             this.checkBoxHideMicrosoft.Size = new System.Drawing.Size(194, 17);
@@ -211,45 +241,44 @@
             this.checkBoxHideMicrosoft.UseVisualStyleBackColor = false;
             this.checkBoxHideMicrosoft.CheckedChanged += new System.EventHandler(this.checkBoxHideMicrosoft_CheckedChanged);
             // 
-            // pictureBox1
+            // buttonVyhledat
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(8, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.buttonVyhledat.BackColor = System.Drawing.Color.ForestGreen;
+            this.buttonVyhledat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonVyhledat.Enabled = false;
+            this.buttonVyhledat.FlatAppearance.BorderSize = 0;
+            this.buttonVyhledat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonVyhledat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonVyhledat.ForeColor = System.Drawing.Color.White;
+            this.buttonVyhledat.Location = new System.Drawing.Point(1001, 3);
+            this.buttonVyhledat.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.buttonVyhledat.Name = "buttonVyhledat";
+            this.buttonVyhledat.Size = new System.Drawing.Size(137, 37);
+            this.buttonVyhledat.TabIndex = 12;
+            this.buttonVyhledat.Text = "Vyhledat";
+            this.buttonVyhledat.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // pictureBoxSeparator1
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(43, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 21);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Název počítače";
+            this.pictureBoxSeparator1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxSeparator1.Location = new System.Drawing.Point(599, 3);
+            this.pictureBoxSeparator1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.pictureBoxSeparator1.Name = "pictureBoxSeparator1";
+            this.pictureBoxSeparator1.Size = new System.Drawing.Size(8, 37);
+            this.pictureBoxSeparator1.TabIndex = 13;
+            this.pictureBoxSeparator1.TabStop = false;
+            this.pictureBoxSeparator1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxSeparator1_Paint);
             // 
-            // checkBoxLocalPC
+            // pictureBoxSeparator2
             // 
-            this.checkBoxLocalPC.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.checkBoxLocalPC.AutoSize = true;
-            this.checkBoxLocalPC.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxLocalPC.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxLocalPC.ForeColor = System.Drawing.Color.White;
-            this.checkBoxLocalPC.Location = new System.Drawing.Point(470, 10);
-            this.checkBoxLocalPC.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.checkBoxLocalPC.Name = "checkBoxLocalPC";
-            this.checkBoxLocalPC.Size = new System.Drawing.Size(143, 25);
-            this.checkBoxLocalPC.TabIndex = 11;
-            this.checkBoxLocalPC.Text = "lokální počítač";
-            this.checkBoxLocalPC.UseVisualStyleBackColor = true;
+            this.pictureBoxSeparator2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxSeparator2.Location = new System.Drawing.Point(987, 3);
+            this.pictureBoxSeparator2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.pictureBoxSeparator2.Name = "pictureBoxSeparator2";
+            this.pictureBoxSeparator2.Size = new System.Drawing.Size(8, 37);
+            this.pictureBoxSeparator2.TabIndex = 14;
+            this.pictureBoxSeparator2.TabStop = false;
+            this.pictureBoxSeparator2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxSeparator2_Paint);
             // 
             // tableLayoutPanel3
             // 
@@ -424,9 +453,11 @@
             this.tableLayoutPanelHorni.ResumeLayout(false);
             this.tableLayoutPanelHorniVnoreny.ResumeLayout(false);
             this.tableLayoutPanelHorniVnoreny.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSeparator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSeparator2)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfo)).EndInit();
@@ -455,7 +486,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.PictureBox pictureBoxInfo;
         private System.Windows.Forms.TextBox textBoxComputername;
-        private System.Windows.Forms.Button buttonVyhledat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.CheckBox checkBoxHideUpdates;
         private System.Windows.Forms.CheckBox checkBoxHideMUI;
@@ -463,5 +493,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxLocalPC;
+        private System.Windows.Forms.Button buttonVyhledat;
+        private System.Windows.Forms.PictureBox pictureBoxSeparator1;
+        private System.Windows.Forms.PictureBox pictureBoxSeparator2;
     }
 }

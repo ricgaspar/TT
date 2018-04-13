@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using System.Drawing.Printing;
 
 namespace TechnolToolkit
 {
@@ -127,12 +128,8 @@ namespace TechnolToolkit
                 {
                     String text = "";
                     foreach (ListViewItem item in selectedItems)
-                    {
-                        if (checkBoxZarizeni.Checked)
-                            text += item.SubItems[1].Text + " - " + item.SubItems[0].Text + "\n";
-                        else
-                            text += item.SubItems[0].Text + "\n";
-                    }
+                        text += item.SubItems[0].Text + Environment.NewLine;
+
                     Clipboard.SetText(text);
                     listView1.SelectedItems.Clear();
                 }
@@ -152,12 +149,23 @@ namespace TechnolToolkit
             {
                 String text = "";
                 foreach (ListViewItem item in selectedItems)
-                {
-                    if (checkBoxZarizeni.Checked)
-                        text += item.SubItems[1].Text + " - " + item.SubItems[0].Text + "\n";
-                    else
-                        text += item.SubItems[0].Text + "\n";
-                }
+                        text += item.SubItems[0].Text + Environment.NewLine;
+
+                Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void CopyWithNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                String text = "";
+                foreach (ListViewItem item in selectedItems)
+                        text += item.SubItems[0].Text + ";" + item.SubItems[1].Text + Environment.NewLine; 
+
                 Clipboard.SetText(text);
                 listView1.SelectedItems.Clear();
             }
@@ -176,5 +184,36 @@ namespace TechnolToolkit
                 listView1.Columns[2].Width = listView1.Columns[2].Width < 100 ? 100 : listView1.Columns[2].Width;
             }
         }
+
+        private void buttonPrintPage_Click(object sender, EventArgs e)
+        {
+            string content = String.Empty;
+            int i = 0;
+            foreach (var item in listView1.Items)
+            {
+                i++;
+                content += i + ". " + getBetween(item.ToString(), "{", "}") + Environment.NewLine;
+            }
+            printDocument1.DocumentName = "Evidovany_software_" + textBoxPC.Text.ToUpper();
+            printDocument1.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString("Datum vygenerování: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"), new Font("Arial", 8, FontStyle.Regular), new SolidBrush(Color.Black), new RectangleF(5, 5, printDocument1.DefaultPageSettings.PrintableArea.Width - 5, 15));
+                e1.Graphics.DrawString("Seznam evidovaného softwaru na zařízení: " + textBoxPC.Text.ToUpper(), new Font("Arial", 14, FontStyle.Bold), new SolidBrush(Color.Black), new RectangleF(5, 25, printDocument1.DefaultPageSettings.PrintableArea.Width - 5, 20));
+                e1.Graphics.DrawString(content, new Font("Arial", 12), new SolidBrush(Color.Black), new RectangleF(5, 50, printDocument1.DefaultPageSettings.PrintableArea.Width-5, printDocument1.DefaultPageSettings.PrintableArea.Height-5));
+            };
+            printDialog1.Document = printDocument1;
+            printPreviewDialog1.Document = printDocument1;
+            try
+            {
+                if (printDialog1.ShowDialog() == DialogResult.OK)
+                    printDocument1.Print();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Occured While Printing", ex);
+            }
+        }
+
+        
     }
 }

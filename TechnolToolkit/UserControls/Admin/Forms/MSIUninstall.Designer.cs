@@ -58,10 +58,10 @@
             this.textBoxComputerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxComputerName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxComputerName.ForeColor = System.Drawing.Color.White;
-            this.textBoxComputerName.Location = new System.Drawing.Point(166, 6);
+            this.textBoxComputerName.Location = new System.Drawing.Point(176, 3);
             this.textBoxComputerName.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.textBoxComputerName.Name = "textBoxComputerName";
-            this.textBoxComputerName.Size = new System.Drawing.Size(265, 27);
+            this.textBoxComputerName.Size = new System.Drawing.Size(255, 27);
             this.textBoxComputerName.TabIndex = 4;
             this.textBoxComputerName.TextChanged += new System.EventHandler(this.textBoxComputerName_TextChanged);
             this.textBoxComputerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxComputerName_KeyDown);
@@ -73,11 +73,11 @@
             this.buttonSearch.Enabled = false;
             this.buttonSearch.FlatAppearance.BorderSize = 0;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(200, 118);
+            this.buttonSearch.Location = new System.Drawing.Point(189, 116);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(135, 30);
+            this.buttonSearch.Size = new System.Drawing.Size(156, 34);
             this.buttonSearch.TabIndex = 6;
             this.buttonSearch.Text = "Vyhledat";
             this.buttonSearch.UseVisualStyleBackColor = false;
@@ -85,11 +85,11 @@
             // 
             // checkBoxTentoPC
             // 
-            this.checkBoxTentoPC.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxTentoPC.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBoxTentoPC.AutoSize = true;
             this.checkBoxTentoPC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxTentoPC.ForeColor = System.Drawing.Color.White;
-            this.checkBoxTentoPC.Location = new System.Drawing.Point(437, 9);
+            this.checkBoxTentoPC.Location = new System.Drawing.Point(440, 9);
             this.checkBoxTentoPC.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.checkBoxTentoPC.Name = "checkBoxTentoPC";
             this.checkBoxTentoPC.Size = new System.Drawing.Size(82, 21);
@@ -105,10 +105,10 @@
             this.textBoxMSIstring.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxMSIstring.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxMSIstring.ForeColor = System.Drawing.Color.White;
-            this.textBoxMSIstring.Location = new System.Drawing.Point(166, 42);
+            this.textBoxMSIstring.Location = new System.Drawing.Point(176, 39);
             this.textBoxMSIstring.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.textBoxMSIstring.Name = "textBoxMSIstring";
-            this.textBoxMSIstring.Size = new System.Drawing.Size(265, 27);
+            this.textBoxMSIstring.Size = new System.Drawing.Size(255, 27);
             this.textBoxMSIstring.TabIndex = 5;
             this.textBoxMSIstring.TextChanged += new System.EventHandler(this.textBoxMSIstring_TextChanged);
             this.textBoxMSIstring.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMSIstring_KeyDown);
@@ -119,7 +119,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(33, 7);
+            this.label3.Location = new System.Drawing.Point(43, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 21);
             this.label3.TabIndex = 9;
@@ -131,7 +131,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(33, 43);
+            this.label4.Location = new System.Drawing.Point(43, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 21);
             this.label4.TabIndex = 10;
@@ -156,18 +156,19 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label3, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.checkBoxTentoPC, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxMSIstring, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxComputerName, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.checkBoxTentoPC, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxMSIstring, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxComputerName, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -182,7 +183,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = global::TechnolToolkit.Properties.Resources.icons8_Software_96_color;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 36);
+            this.pictureBox2.Location = new System.Drawing.Point(10, 36);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 36);
@@ -195,7 +196,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 36);
@@ -222,7 +223,6 @@
             // pictureBoxInfo
             // 
             this.pictureBoxInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxInfo.Image = global::TechnolToolkit.Properties.Resources.icons8_information_96;
             this.pictureBoxInfo.Location = new System.Drawing.Point(510, 0);
             this.pictureBoxInfo.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxInfo.Name = "pictureBoxInfo";
@@ -231,6 +231,7 @@
             this.pictureBoxInfo.TabIndex = 4;
             this.pictureBoxInfo.TabStop = false;
             this.pictureBoxInfo.Click += new System.EventHandler(this.pictureBoxInfo_Click);
+            this.pictureBoxInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxInfo_Paint);
             // 
             // label1
             // 
