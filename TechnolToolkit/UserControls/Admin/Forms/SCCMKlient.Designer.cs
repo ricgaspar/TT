@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBoxComputername = new System.Windows.Forms.TextBox();
             this.buttonPing = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,9 +57,10 @@
             this.buttonRepair = new System.Windows.Forms.Button();
             this.buttonPolicy = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -69,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +80,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(0, 2);
+            this.label1.Location = new System.Drawing.Point(0, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -94,14 +95,15 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel8, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(529, 287);
@@ -109,16 +111,18 @@
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.ColumnCount = 3;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.34594F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.65406F));
+            this.tableLayoutPanel8.ColumnCount = 4;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.textBoxComputername, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.buttonPing, 3, 0);
             this.tableLayoutPanel8.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.textBoxComputername, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.buttonPing, 2, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
@@ -126,24 +130,33 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(529, 38);
             this.tableLayoutPanel8.TabIndex = 11;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(37, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
             // textBoxComputername
             // 
             this.textBoxComputername.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxComputername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.textBoxComputername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxComputername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxComputername.ForeColor = System.Drawing.Color.DarkGray;
-            this.textBoxComputername.Location = new System.Drawing.Point(46, 7);
-            this.textBoxComputername.Margin = new System.Windows.Forms.Padding(5, 0, 3, 3);
+            this.textBoxComputername.ForeColor = System.Drawing.Color.White;
+            this.textBoxComputername.Location = new System.Drawing.Point(187, 6);
+            this.textBoxComputername.Margin = new System.Windows.Forms.Padding(5, 5, 3, 3);
             this.textBoxComputername.Name = "textBoxComputername";
-            this.textBoxComputername.Size = new System.Drawing.Size(348, 27);
+            this.textBoxComputername.Size = new System.Drawing.Size(247, 27);
             this.textBoxComputername.TabIndex = 8;
-            this.textBoxComputername.Text = "Název počítače";
             this.toolTip1.SetToolTip(this.textBoxComputername, "Název počítače");
-            this.textBoxComputername.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxComputername_MouseClick);
             this.textBoxComputername.TextChanged += new System.EventHandler(this.textBoxComputername_TextChanged);
-            this.textBoxComputername.Enter += new System.EventHandler(this.textBoxComputername_Enter);
-            this.textBoxComputername.Leave += new System.EventHandler(this.textBoxComputername_Leave);
             // 
             // buttonPing
             // 
@@ -154,10 +167,9 @@
             this.buttonPing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPing.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonPing.ForeColor = System.Drawing.Color.White;
-            this.buttonPing.Location = new System.Drawing.Point(401, 5);
-            this.buttonPing.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.buttonPing.Location = new System.Drawing.Point(440, 3);
             this.buttonPing.Name = "buttonPing";
-            this.buttonPing.Size = new System.Drawing.Size(125, 30);
+            this.buttonPing.Size = new System.Drawing.Size(86, 32);
             this.buttonPing.TabIndex = 9;
             this.buttonPing.Text = "PING";
             this.toolTip1.SetToolTip(this.buttonPing, "Pokud tlačítko zezelená, ping proběhl v pořádku.");
@@ -170,10 +182,10 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(3, 71);
+            this.groupBox1.Location = new System.Drawing.Point(3, 81);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
-            this.groupBox1.Size = new System.Drawing.Size(523, 142);
+            this.groupBox1.Size = new System.Drawing.Size(523, 132);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nastavení cache paměti";
@@ -191,7 +203,7 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(511, 117);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(511, 107);
             this.tableLayoutPanel7.TabIndex = 11;
             // 
             // groupBox3
@@ -203,7 +215,7 @@
             this.groupBox3.Location = new System.Drawing.Point(195, 0);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(313, 114);
+            this.groupBox3.Size = new System.Drawing.Size(313, 104);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Aktuální data:";
@@ -222,7 +234,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(307, 92);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(307, 82);
             this.tableLayoutPanel5.TabIndex = 10;
             // 
             // tableLayoutPanel6
@@ -240,14 +252,14 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(301, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(301, 38);
             this.tableLayoutPanel6.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Location = new System.Drawing.Point(3, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 17);
             this.label3.TabIndex = 3;
@@ -258,7 +270,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 27);
+            this.label4.Location = new System.Drawing.Point(3, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 17);
             this.label4.TabIndex = 3;
@@ -269,7 +281,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(138, 3);
+            this.label5.Location = new System.Drawing.Point(138, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 17);
             this.label5.TabIndex = 3;
@@ -280,7 +292,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(138, 27);
+            this.label6.Location = new System.Drawing.Point(138, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 17);
             this.label6.TabIndex = 3;
@@ -295,7 +307,7 @@
             this.buttonGetCacheSize.FlatAppearance.BorderSize = 0;
             this.buttonGetCacheSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGetCacheSize.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonGetCacheSize.Location = new System.Drawing.Point(6, 60);
+            this.buttonGetCacheSize.Location = new System.Drawing.Point(6, 50);
             this.buttonGetCacheSize.Margin = new System.Windows.Forms.Padding(6);
             this.buttonGetCacheSize.Name = "buttonGetCacheSize";
             this.buttonGetCacheSize.Size = new System.Drawing.Size(295, 26);
@@ -320,7 +332,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(192, 117);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(192, 107);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
             // tableLayoutPanel1
@@ -396,7 +408,7 @@
             this.buttonClearCache.ForeColor = System.Drawing.Color.Black;
             this.buttonClearCache.Location = new System.Drawing.Point(3, 80);
             this.buttonClearCache.Name = "buttonClearCache";
-            this.buttonClearCache.Size = new System.Drawing.Size(186, 34);
+            this.buttonClearCache.Size = new System.Drawing.Size(186, 24);
             this.buttonClearCache.TabIndex = 4;
             this.buttonClearCache.Text = "Vyčistit cache paměť";
             this.toolTip1.SetToolTip(this.buttonClearCache, "Vymaže korektním způsobem obsah mezipaměti pro stahování balíčků");
@@ -486,18 +498,18 @@
             this.buttonPolicy.UseVisualStyleBackColor = false;
             this.buttonPolicy.Click += new System.EventHandler(this.buttonPolicy_Click);
             // 
-            // pictureBox1
+            // label7
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(43, 3);
+            this.label7.Margin = new System.Windows.Forms.Padding(3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(136, 32);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Název počítače";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SCCMKlient
             // 
@@ -515,6 +527,7 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -527,7 +540,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -560,5 +572,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button buttonPing;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label7;
     }
 }

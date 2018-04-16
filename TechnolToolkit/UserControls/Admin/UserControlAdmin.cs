@@ -77,12 +77,8 @@ namespace TechnolToolkit
         
         private void buttonZprava_Click(object sender, EventArgs e)
         {
-#warning Zapremyslet o lepsi implementaci!
-            //Toto neni idealni zpusob jak poslat na pocitac zpravu.
-            Process p = new Process();
-            p.StartInfo.FileName = @"C:\ProgramData\TechnolToolkit\runpwshell_parameter.bat";
-            p.StartInfo.Arguments = "/RemoteDialog.ps1";
-            p.Start();
+            SendMSG smsg = new SendMSG();
+            smsg.Show();
         }
 
         private void buttonNajdiPC_Click(object sender, EventArgs e)
@@ -110,12 +106,10 @@ namespace TechnolToolkit
         private void buttonInstalovanyProgramy_Click(object sender, EventArgs e)
         {
             InstalledPrograms instalP = new InstalledPrograms();
-            /*
             instalP.ShowDialog();
             instalP.WindowState = FormWindowState.Normal;
             instalP.Width = 966;
             instalP.Height = 635;
-            */
         }
 
         private void buttonASCII_Click(object sender, EventArgs e)

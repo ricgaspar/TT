@@ -128,8 +128,8 @@ namespace TechnolToolkit
 
             listView1.Items.Add(lvi);
         }
-        
-        private void buttonOK_Click(object sender, EventArgs e)
+
+        private void buttonVyhledat_Click(object sender, EventArgs e)
         {
             if (checkBoxLocalPC.Checked)
             {
@@ -153,10 +153,10 @@ namespace TechnolToolkit
         }
 
     private void searchInstalledSoftware(string computername)
-        {
+    {
             if(!checkBoxLocalPC.Checked)
                 runOrStopService("RemoteRegistry", textBoxComputername.Text, serviceAction.run);
-            //ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.run);
+            ServiceManipulation.runOrStopService("RemoteRegistry", computername, ServiceManipulation.serviceAction.run);
             List<string> displayName = new List<string>();
             List<string> displayVersion = new List<string>();
             List<string> uninstallString = new List<string>();
@@ -709,8 +709,7 @@ namespace TechnolToolkit
             switch (action)
             {
                 case serviceAction.run:
-#warning EnableService commented!!!
-                    //EnableTheService(serviceName, computer, action);
+                    EnableTheService(serviceName, computer, action);
                     using (ServiceController sc = new ServiceController(serviceName, computer))
                         if (sc.Status != ServiceControllerStatus.Running)
                         {
@@ -726,7 +725,7 @@ namespace TechnolToolkit
                     break;
 
                 case serviceAction.stop:
-                    //EnableTheService(serviceName, computer, action);
+                    EnableTheService(serviceName, computer, action);
                     using (ServiceController sc = new ServiceController(serviceName, computer))
                         if (sc.Status != ServiceControllerStatus.Stopped)
                         {
@@ -766,5 +765,6 @@ namespace TechnolToolkit
         {
             e.Graphics.DrawLine(new Pen(Color.FromArgb(60, 60, 60), 1), pictureBoxSeparator2.Width / 2, 0, pictureBoxSeparator2.Width / 2, pictureBoxSeparator2.Height);
         }
+
     }
 }

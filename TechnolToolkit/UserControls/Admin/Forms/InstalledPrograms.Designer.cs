@@ -51,6 +51,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelPocetSW = new System.Windows.Forms.Label();
             this.labelSoftwareAt = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kopírovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kopírovatVseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,6 +175,7 @@
             this.checkBoxLocalPC.TabIndex = 11;
             this.checkBoxLocalPC.Text = "Lokální počítač";
             this.checkBoxLocalPC.UseVisualStyleBackColor = true;
+            this.checkBoxLocalPC.CheckedChanged += new System.EventHandler(this.checkBoxLocalPC_CheckedChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -257,6 +259,7 @@
             this.buttonVyhledat.TabIndex = 12;
             this.buttonVyhledat.Text = "Vyhledat";
             this.buttonVyhledat.UseVisualStyleBackColor = false;
+            this.buttonVyhledat.Click += new System.EventHandler(this.buttonVyhledat_Click);
             // 
             // pictureBoxSeparator1
             // 
@@ -367,6 +370,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.labelPocetSW, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelSoftwareAt, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 582);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -402,6 +406,18 @@
             this.labelSoftwareAt.Text = "Software na zařízení: ";
             this.labelSoftwareAt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.labelSoftwareAt, "Indikuje na jakém zařízení je software vyhledávaný");
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.DarkGray;
+            this.label3.Location = new System.Drawing.Point(503, 1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(467, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Vylhedávání softwarů není 100% stabilní. Aplikace může při spuštění spadnout!";
             // 
             // contextMenuStrip1
             // 
@@ -496,5 +512,6 @@
         private System.Windows.Forms.Button buttonVyhledat;
         private System.Windows.Forms.PictureBox pictureBoxSeparator1;
         private System.Windows.Forms.PictureBox pictureBoxSeparator2;
+        private System.Windows.Forms.Label label3;
     }
 }

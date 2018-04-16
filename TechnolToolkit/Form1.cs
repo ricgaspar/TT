@@ -3,11 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using TechnolToolkit.CustomControls_and_Clases;
-using System.Security.Cryptography;
-using System.Text;
-using TechnolToolkit.Resources;
 using TechnolToolkit.UserControls.Multiping;
-using System.Diagnostics;
 
 namespace TechnolToolkit
 {
@@ -343,18 +339,6 @@ namespace TechnolToolkit
         }
         */
         #endregion
-
-        private void buttonSHA512Generator_Click(object sender, EventArgs e)
-        {
-            SHA512_Generator sh = new SHA512_Generator();
-            sh.ShowDialog();
-        }
-
-        private void buttonSHA512Generator_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.DrawImage(ImageManipulation.ResizeImage(Properties.Resources.icons8_password_528, 50,50), 12, 1);
-        }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {

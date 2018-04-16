@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -22,12 +24,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>cs-CZ</TargetCulture>
+    <ProductName>Technol Toolkit</ProductName>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -143,11 +145,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SHA512_Generator.cs">
+    <Compile Include="SendMSG.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SHA512_Generator.Designer.cs">
-      <DependentUpon>SHA512_Generator.cs</DependentUpon>
+    <Compile Include="SendMSG.Designer.cs">
+      <DependentUpon>SendMSG.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Admin\Forms\SCCMKlient.cs">
       <SubType>Form</SubType>
@@ -234,8 +236,8 @@
     <EmbeddedResource Include="DZCsearch.resx">
       <DependentUpon>DZCsearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SHA512_Generator.resx">
-      <DependentUpon>SHA512_Generator.cs</DependentUpon>
+    <EmbeddedResource Include="SendMSG.resx">
+      <DependentUpon>SendMSG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\Forms\SCCMKlient.resx">
       <DependentUpon>SCCMKlient.cs</DependentUpon>
@@ -295,10 +297,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\runpwshell_parameter.bat" />
-    <EmbeddedResource Include="Resources\RemoteDialog.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PC_INFO.hta" />

@@ -49,40 +49,7 @@ namespace TechnolToolkit.UserControls.Admin.Forms
 
         private void textBoxComputername_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxComputername.Text.Contains("Název počítače"))
-            {
-                textBoxComputername.Text = textBoxComputername.Text.Replace("Název počítače", "");
-                textBoxComputername.ForeColor = Color.White;
-                textBoxComputername.SelectionStart = 0;
-                textBoxComputername.SelectionLength = 0;
-            }
             stuffActionValidation();
-        }
-
-        private void textBoxComputername_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (textBoxComputername.Text == "Název počítače")
-            {
-                textBoxComputername.Text = "";
-                textBoxComputername.ForeColor = Color.White;
-            }
-        }
-
-        private void textBoxComputername_Enter(object sender, EventArgs e)
-        {
-            if (textBoxComputername.Text == "Název počítače")
-            {
-                textBoxComputername.SelectionStart = 0;
-                textBoxComputername.SelectionLength = 0;
-            }
-        }
-
-        private void textBoxComputername_Leave(object sender, EventArgs e)
-        {
-            if (textBoxComputername.Text == "")
-            {
-                textBoxComputername.Text = "Název počítače";
-            }
         }
 
         private void buttonRepair_Click(object sender, EventArgs e)
@@ -102,8 +69,12 @@ namespace TechnolToolkit.UserControls.Admin.Forms
             p.StartInfo.CreateNoWindow = true;
             p.Start();
             p.WaitForExit();
+            MessageBox.Show("Pro aplikování nové velikosti cache paměti je nutné pc restarovat, nebo restartovat službu \"ccmexec\"!","Aplikace nového nastavení",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            /*
+            For some reason this function sometimes fucks up remote sccm clinet.
             runOrStopService("ccmexec", textBoxComputername.Text, serviceAction.stop);
             runOrStopService("ccmexec", textBoxComputername.Text, serviceAction.run);
+            */
         }
 
         public static long DirSize(DirectoryInfo d)

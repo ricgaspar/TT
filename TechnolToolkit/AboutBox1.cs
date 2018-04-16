@@ -17,7 +17,7 @@ namespace TechnolToolkit
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
-            this.labelCopyright.Text = "Copyright (C) Adam Pelzer";
+            this.labelAuthor.Text = "";
         }
 
         #region Assembly Attribute Accessors

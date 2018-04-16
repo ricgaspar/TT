@@ -37,39 +37,8 @@ namespace TechnolToolkit
 
         private void textBoxComputername_TextChanged(object sender, EventArgs e)
         {
-            if(textBoxComputername.Text.Contains("Název počítače"))
-            {
-                textBoxComputername.Text = textBoxComputername.Text.Replace("Název počítače", "");
-                textBoxComputername.ForeColor = Color.White;
-                textBoxComputername.SelectionStart = 1;
-                textBoxComputername.SelectionLength = 0;
-            }
             if (textBoxComputername.TextLength > 0)
                 buttonActionValidation();
-        }
-
-        private void textBoxComputername_Enter(object sender, EventArgs e)
-        {
-            if (textBoxComputername.Text == "Název počítače")
-            { 
-                textBoxComputername.SelectionStart = 0;
-                textBoxComputername.SelectionLength = 0;
-            }
-        }
-
-        private void textBoxComputername_Leave(object sender, EventArgs e)
-        {
-            if (textBoxComputername.Text == "")
-                textBoxComputername.Text = "Název počítače";
-        }
-
-        private void textBoxComputername_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (textBoxComputername.Text == "Název počítače")
-            {
-                textBoxComputername.Text = "";
-                textBoxComputername.ForeColor = Color.White;
-            }
         }
 
         private void buttonAction_Click(object sender, EventArgs e)
@@ -81,63 +50,75 @@ namespace TechnolToolkit
             {
                 if (radioButtonActionTimeNow.Checked)
                 {
-                    var psi = new ProcessStartInfo("shutdown");
-                    psi.CreateNoWindow = true;
-                    psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /s /t 0 /f";
-                    psi.UseShellExecute = false;
-                    Process.Start(psi);
+                    Process p = new Process();
+                    p.StartInfo.FileName = "cmd.exe";
+                    p.StartInfo.Arguments = "/c shutdown /m \\\\" + textBoxComputername.Text + " /s /t 0 /f";
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.UseShellExecute = false;
+                    p.Start();
+                    MessageBox.Show("Vypnutí systému spuštěno",textBoxComputername.Text);
+
                 }
                 if (radioButtonActionTimeLater.Checked)
                 {
-                    var psi = new ProcessStartInfo("shutdown");
-                    psi.CreateNoWindow = true;
-                    if(textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
-                        psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) + " /f";
-                    else psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) + " /c \"" + textBoxComment.Text + "\" /f";
-                    psi.UseShellExecute = false;
-                    Process.Start(psi);
+                    Process p = new Process();
+                    p.StartInfo.FileName = "cmd.exe";
+                    if (textBoxComment.Text == "")
+                        p.StartInfo.Arguments = "/c shutdown /m \\\\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) + " /f";
+                    else p.StartInfo.Arguments = "/c shutdown /m \\\\" + textBoxComputername.Text + " /s /t " + (numericUpDown1.Value * 60) + " /c \"" + textBoxComment.Text + "\" /f";
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.UseShellExecute = false;
+                    p.Start();
+                    MessageBox.Show("Vypnutí systému bude spuštěno za " + numericUpDown1.Value + " minut", textBoxComputername.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             if (radioButtonRestartAction.Checked)
             {
                 if (radioButtonActionTimeNow.Checked)
                 {
-                    var psi = new ProcessStartInfo("shutdown");
-                    psi.CreateNoWindow = true;
-                    psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /r /t 0 /f";
-                    psi.UseShellExecute = false;
-                    Process.Start(psi);
+                    Process p = new Process();
+                    p.StartInfo.FileName = "cmd.exe";        
+                    p.StartInfo.Arguments = "/c shutdown /m \\\\" + textBoxComputername.Text + " /r /t 0 /f";
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.UseShellExecute = false;
+                    p.Start();
+                    MessageBox.Show("Restart byl spuštěn", textBoxComputername.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 if (radioButtonActionTimeLater.Checked)
                 {
-                    var psi = new ProcessStartInfo("shutdown");
-                    psi.CreateNoWindow = true;
-                    if(textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
-                        psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /r /t " + (numericUpDown1.Value * 60) + " /f";
-                    else psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /r /t " + (numericUpDown1.Value * 60) + " /c \"" + textBoxComment.Text + "\" /f";
-                    psi.UseShellExecute = false;
-                    Process.Start(psi);
+                    Process p = new Process();
+                    p.StartInfo.FileName = "cmd.exe";
+                    if (textBoxComment.Text == "")
+                        p.StartInfo.Arguments = "/c shutdown /m \\\\" + textBoxComputername.Text + " /r /t " + (numericUpDown1.Value * 60) + " /f";
+                    else p.StartInfo.Arguments = "/c shutdown /m \\\\" + textBoxComputername.Text + " /r /t " + (numericUpDown1.Value * 60) + " /c \"" + textBoxComment.Text + "\" /f";
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.UseShellExecute = false;
+                    p.Start();
+                    MessageBox.Show("Restart bude spuštěn za" + numericUpDown1.Value + " minut", textBoxComputername.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             if (radioButtonStopAction.Checked)
             {
-                if (radioButtonActionTimeNow.Checked)
-                {
-                    var psi = new ProcessStartInfo("shutdown");
-                    psi.CreateNoWindow = true;
-                    psi.Arguments = "/m \\\\" + textBoxComputername.Text + " /a";
-                    psi.UseShellExecute = false;
-                    Process.Start(psi);
-                }
+                Process p = new Process();
+                p.StartInfo.FileName = "cmd.exe";
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.Arguments = "/c shutdown /m \\\\" + textBoxComputername.Text + " /a & timeout /t 3 > nul";
+                p.StartInfo.UseShellExecute = false;
+                //p.StartInfo.RedirectStandardOutput = true;
+                p.Start();
+                MessageBox.Show("Vypínání/restart přerušen(o)", textBoxComputername.Text, MessageBoxButtons.OK,MessageBoxIcon.Information);
+                //MessageBox.Show(p.StandardOutput.ReadToEnd(),"Výstup");
             }
         }
 
         private void buttonMultiplePCs_Click(object sender, EventArgs e)
         {
-            var psi = new ProcessStartInfo("shutdown", "/i");
-            psi.CreateNoWindow = true;
-            psi.UseShellExecute = false;
-            Process.Start(psi);
+            Process p = new Process();
+            p.StartInfo.FileName = "cmd.exe";
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.Arguments = "/c shutdown /i";
+            p.Start();
         }
 
         private void radioButtonActionTimeLater_CheckedChanged(object sender, EventArgs e)
@@ -155,52 +136,9 @@ namespace TechnolToolkit
         }
 
         private void textBoxComment_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxComment.Text.Contains("Komentář k prováděné akci (nepovinné)"))
-            {
-                textBoxComment.Text = textBoxComment.Text.Replace("Komentář k prováděné akci (nepovinné)", "");
-                textBoxComment.ForeColor = Color.White;
-                textBoxComment.SelectionStart = 1;
-                textBoxComment.SelectionLength = 0;
-            }
+        {          
             if (textBoxComment.TextLength > 0)
                 buttonActionValidation();
-        }
-
-        private void textBoxComment_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
-            {
-                textBoxComment.Text = "";
-                textBoxComment.ForeColor = Color.White;
-            }
-        }
-
-        private void textBoxComment_Enter(object sender, EventArgs e)
-        {
-            if (textBoxComment.Text == "Komentář k prováděné akci (nepovinné)")
-            {
-                textBoxComment.SelectionStart = 0;
-                textBoxComment.SelectionLength = 0;
-            }
-        }
-        private void textBoxComment_Leave(object sender, EventArgs e)
-        {
-            if (textBoxComment.Text == "")
-            {
-                textBoxComment.Text = "Komentář k prováděné akci (nepovinné)";
-            }
-        }
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            SByte offset = 2;
-            e.Graphics.DrawLine(new Pen(themeColor, 1), textBoxComment.Location.X, textBoxComment.Location.Y + textBoxComment.Height + offset, textBoxComment.Location.X + textBoxComment.Width, textBoxComment.Location.Y + textBoxComment.Height + offset);            
-        }
-
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-            SByte offset = 2;
-            e.Graphics.DrawLine(new Pen(themeColor, 1), textBoxComputername.Location.X, textBoxComputername.Location.Y + textBoxComputername.Height + offset, textBoxComputername.Location.X + textBoxComputername.Width, textBoxComputername.Location.Y + textBoxComputername.Height + offset);
         }
 
         private void radioButtonSleepAction_CheckedChanged(object sender, EventArgs e)
@@ -222,12 +160,14 @@ namespace TechnolToolkit
         {
             if (radioButtonRestartAction.Checked)
                 buttonActionValidation();
+           
         }
 
         private void radioButtonPowerOffAction_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonPowerOffAction.Checked)
                 buttonActionValidation();
+            
         }
 
         private void radioButtonNoAction_CheckedChanged(object sender, EventArgs e)
