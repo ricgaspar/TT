@@ -167,17 +167,19 @@ namespace TechnolToolkit
                 ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
                 if (selectedItems.Count > 0)
                 {
-                    string text = "";
+                    string text = string.Empty;
                     foreach (ListViewItem item in selectedItems)
                     {
                         //6 protoze mame dohromady 6 udaju, ktere jsme nasli
                         for (int i = 0; i < 6; i++)
                         {
-                            text += item.SubItems[i].Text + ";";
+                            if (item != null)
+                                text += item.SubItems[i].Text + ";";
                         }
 
                     }
-                    Clipboard.SetText(text);
+                    if (text != null && text != "")
+                        Clipboard.SetText(text);
                     listView1.SelectedItems.Clear();
                 }
                 else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -194,17 +196,19 @@ namespace TechnolToolkit
             ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
             if (selectedItems.Count > 0)
             {
-                String text = "";
+                string text = string.Empty;
                 foreach (ListViewItem item in selectedItems)
                 {
                     //6 protoze mame dohromady 6 udaju, ktere jsme nasli
                     for (int i = 0; i < 6; i++)
                     {
-                        text += item.SubItems[i].Text + ";";
+                        if (item != null)
+                            text += item.SubItems[i].Text + ";";
                     }
 
                 }
-                Clipboard.SetText(text);
+                if (text != null && text != "")
+                    Clipboard.SetText(text);
                 listView1.SelectedItems.Clear();
             }
             else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -245,6 +249,154 @@ namespace TechnolToolkit
 
             // Perform the sort with these new sort options.
             this.listView1.Sort();
+        }
+
+        private void kopirovatDZCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                string text = string.Empty;
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if (item.SubItems[0] != null)
+                        if (selectedItems.Count > 1)
+                            text += item.SubItems[0].Text + ";";
+                        else
+                            text += item.SubItems[0].Text;
+                }
+                if (text != null && text != "")
+                    Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void koprovatJmenoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                string text = string.Empty;
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if (item.SubItems[1] != null)
+                        if (selectedItems.Count > 1)
+                            text += item.SubItems[1].Text + ";";
+                        else
+                            text += item.SubItems[1].Text;
+                }
+                if (text != null && text != "")
+                    Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void kopirovatOddeleniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                string text = string.Empty;
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if (item.SubItems[2] != null)
+                        if (selectedItems.Count > 1)
+                            text += item.SubItems[2].Text + ";";
+                        else
+                            text += item.SubItems[2].Text;
+                }
+                if (text != null && text != "")
+                    Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void kopirovatTelefonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                string text = string.Empty;
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if(item.SubItems[3] != null)
+                        if (selectedItems.Count > 1)
+                            text += item.SubItems[3].Text + ";";
+                        else
+                            text += item.SubItems[3].Text;
+                }
+                if (text != null && text != "")
+                    Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void kopirovatMobilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                string text = string.Empty;
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if (item.SubItems[4] != null)
+                        if (selectedItems.Count > 1)
+                            text += item.SubItems[4].Text + ";";
+                        else
+                            text += item.SubItems[4].Text;
+                    
+                }
+                if(text != null && text != "")
+                    Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void kopirovatEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                string text = string.Empty;
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if (item.SubItems[5] != null)
+                        if (selectedItems.Count > 1)
+                            text += item.SubItems[5].Text + ";";
+                        else
+                            text += item.SubItems[5].Text;
+                }
+                if (text != null && text != "")
+                    Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void kopirovatUmisteniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = listView1.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                string text = string.Empty;
+                foreach (ListViewItem item in selectedItems)
+                {
+                    if (item.SubItems[6] != null)
+                        if (selectedItems.Count > 1)
+                            text += item.SubItems[6].Text + ";";
+                        else
+                            text += item.SubItems[6].Text;
+                }
+                if (text != null && text != "")
+                    Clipboard.SetText(text);
+                listView1.SelectedItems.Clear();
+            }
+            else MessageBox.Show("Není co kopírovat! Vyber položky ke kopírování.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

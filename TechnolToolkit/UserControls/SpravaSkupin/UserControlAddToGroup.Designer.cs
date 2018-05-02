@@ -454,7 +454,7 @@
             this.zobrazitUzivatelskeJmenoToolStripMenuItem,
             this.smazatClenaZeSkupinyToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 48);
             // 
             // zobrazitUzivatelskeJmenoToolStripMenuItem
             // 

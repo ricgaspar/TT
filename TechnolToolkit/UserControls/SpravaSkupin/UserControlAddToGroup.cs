@@ -508,7 +508,7 @@ namespace TechnolToolkit
                 }
             } catch(Exception ex)
             {
-                MessageBox.Show("Zkuste to prosím znovu\n\nZde je nicneříkající hláška:\n" + ex.Message.ToString(), "Něco se pokazilo :(", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Zkuste to prosím znovu\n\nZde je nicneříkající hláška:\n" + ex.Message.ToString(), "Něco se pokazilo při manipulaci se službou RemoteRegistry :(", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public static void EnableTheService(string serviceName, string computername, serviceAction serAction)

@@ -141,6 +141,7 @@
             this.textBoxDevices.Location = new System.Drawing.Point(3, 33);
             this.textBoxDevices.Multiline = true;
             this.textBoxDevices.Name = "textBoxDevices";
+            this.textBoxDevices.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxDevices.Size = new System.Drawing.Size(333, 370);
             this.textBoxDevices.TabIndex = 2;
             this.textBoxDevices.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDevices_KeyDown);
@@ -156,6 +157,7 @@
             this.textBoxStatus.Multiline = true;
             this.textBoxStatus.Name = "textBoxStatus";
             this.textBoxStatus.ReadOnly = true;
+            this.textBoxStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxStatus.Size = new System.Drawing.Size(503, 370);
             this.textBoxStatus.TabIndex = 3;
             // 

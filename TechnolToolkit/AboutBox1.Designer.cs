@@ -31,13 +31,13 @@
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
-            this.labelAuthor = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.okButton = new System.Windows.Forms.Button();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.labelAuthor = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
@@ -108,20 +108,6 @@
             this.labelVersion.TabIndex = 0;
             this.labelVersion.Text = "Version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelAuthor
-            // 
-            this.labelAuthor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAuthor.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAuthor.ForeColor = System.Drawing.Color.White;
-            this.labelAuthor.Location = new System.Drawing.Point(153, 78);
-            this.labelAuthor.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelAuthor.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelAuthor.Name = "labelAuthor";
-            this.labelAuthor.Size = new System.Drawing.Size(291, 17);
-            this.labelAuthor.TabIndex = 21;
-            this.labelAuthor.Text = "Created by";
-            this.labelAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel1
             // 
@@ -215,6 +201,20 @@
             this.linkLabel1.Text = "icons8.";
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.White;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // labelAuthor
+            // 
+            this.labelAuthor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelAuthor.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAuthor.ForeColor = System.Drawing.Color.White;
+            this.labelAuthor.Location = new System.Drawing.Point(153, 78);
+            this.labelAuthor.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelAuthor.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelAuthor.Name = "labelAuthor";
+            this.labelAuthor.Size = new System.Drawing.Size(291, 17);
+            this.labelAuthor.TabIndex = 21;
+            this.labelAuthor.Text = "Author";
+            this.labelAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 

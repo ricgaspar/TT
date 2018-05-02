@@ -44,6 +44,14 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kopirovatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zrusitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.kopirovatDZCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.koprovatJmenoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kopirovatOddeleniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kopirovatTelefonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kopirovatMobilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kopirovatEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kopirovatUmisteniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -73,7 +81,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(426, 519);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(517, 519);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // listView1
@@ -87,7 +95,7 @@
             this.listView1.Location = new System.Drawing.Point(9, 158);
             this.listView1.Margin = new System.Windows.Forms.Padding(9);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(408, 297);
+            this.listView1.Size = new System.Drawing.Size(499, 297);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -101,7 +109,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(52, 6);
+            this.label1.Location = new System.Drawing.Point(97, 6);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(322, 28);
@@ -121,7 +129,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(426, 44);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(517, 44);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // pictureBox2
@@ -146,7 +154,7 @@
             this.textBoxUser.Location = new System.Drawing.Point(53, 10);
             this.textBoxUser.Margin = new System.Windows.Forms.Padding(3, 10, 9, 3);
             this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.Size = new System.Drawing.Size(364, 27);
+            this.textBoxUser.Size = new System.Drawing.Size(455, 27);
             this.textBoxUser.TabIndex = 0;
             this.textBoxUser.TextChanged += new System.EventHandler(this.textBoxUser_TextChanged);
             this.textBoxUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUser_KeyDown);
@@ -164,7 +172,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.14286F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.85714F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(426, 70);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(517, 70);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // label2
@@ -173,7 +181,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(44, 7);
+            this.label2.Location = new System.Drawing.Point(89, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(338, 21);
@@ -187,9 +195,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.DarkGray;
-            this.label3.Location = new System.Drawing.Point(4, 34);
+            this.label3.Location = new System.Drawing.Point(3, 43);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(417, 34);
+            this.label3.Size = new System.Drawing.Size(510, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Lze využít hvězdu * jako zástupný znak, který vyjadřuje libovolný počet písmen\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -207,7 +215,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(426, 55);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(517, 55);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // buttonSearch
@@ -219,10 +227,10 @@
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(223, 10);
+            this.buttonSearch.Location = new System.Drawing.Point(268, 10);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(10);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(193, 35);
+            this.buttonSearch.Size = new System.Drawing.Size(239, 35);
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "Vyhledat";
             this.buttonSearch.UseVisualStyleBackColor = false;
@@ -240,7 +248,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(10, 10);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(10);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(193, 35);
+            this.buttonCancel.Size = new System.Drawing.Size(238, 35);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Zavřít";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -250,32 +258,94 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kopirovatToolStripMenuItem,
-            this.zrusitToolStripMenuItem});
+            this.zrusitToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.kopirovatDZCToolStripMenuItem,
+            this.koprovatJmenoToolStripMenuItem,
+            this.kopirovatOddeleniToolStripMenuItem,
+            this.kopirovatTelefonToolStripMenuItem,
+            this.kopirovatMobilToolStripMenuItem,
+            this.kopirovatEmailToolStripMenuItem,
+            this.kopirovatUmisteniToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(188, 208);
             // 
             // kopirovatToolStripMenuItem
             // 
             this.kopirovatToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Copy_to_Clipboard_96_color;
             this.kopirovatToolStripMenuItem.Name = "kopirovatToolStripMenuItem";
             this.kopirovatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.kopirovatToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.kopirovatToolStripMenuItem.Text = "Kopírovat";
+            this.kopirovatToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.kopirovatToolStripMenuItem.Text = "Kopírovat vše";
             this.kopirovatToolStripMenuItem.Click += new System.EventHandler(this.kopirovatToolStripMenuItem_Click);
             // 
             // zrusitToolStripMenuItem
             // 
             this.zrusitToolStripMenuItem.Image = global::TechnolToolkit.Properties.Resources.icons8_Close_Window_96;
             this.zrusitToolStripMenuItem.Name = "zrusitToolStripMenuItem";
-            this.zrusitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.zrusitToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.zrusitToolStripMenuItem.Text = "Zrušit";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
+            // 
+            // kopirovatDZCToolStripMenuItem
+            // 
+            this.kopirovatDZCToolStripMenuItem.Name = "kopirovatDZCToolStripMenuItem";
+            this.kopirovatDZCToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.kopirovatDZCToolStripMenuItem.Text = "Kopírovat DZC";
+            this.kopirovatDZCToolStripMenuItem.Click += new System.EventHandler(this.kopirovatDZCToolStripMenuItem_Click);
+            // 
+            // koprovatJmenoToolStripMenuItem
+            // 
+            this.koprovatJmenoToolStripMenuItem.Name = "koprovatJmenoToolStripMenuItem";
+            this.koprovatJmenoToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.koprovatJmenoToolStripMenuItem.Text = "Kopírovat jméno";
+            this.koprovatJmenoToolStripMenuItem.Click += new System.EventHandler(this.koprovatJmenoToolStripMenuItem_Click);
+            // 
+            // kopirovatOddeleniToolStripMenuItem
+            // 
+            this.kopirovatOddeleniToolStripMenuItem.Name = "kopirovatOddeleniToolStripMenuItem";
+            this.kopirovatOddeleniToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.kopirovatOddeleniToolStripMenuItem.Text = "Kopírovat oddělení";
+            this.kopirovatOddeleniToolStripMenuItem.Click += new System.EventHandler(this.kopirovatOddeleniToolStripMenuItem_Click);
+            // 
+            // kopirovatTelefonToolStripMenuItem
+            // 
+            this.kopirovatTelefonToolStripMenuItem.Name = "kopirovatTelefonToolStripMenuItem";
+            this.kopirovatTelefonToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.kopirovatTelefonToolStripMenuItem.Text = "Kopírovat telefon";
+            this.kopirovatTelefonToolStripMenuItem.Click += new System.EventHandler(this.kopirovatTelefonToolStripMenuItem_Click);
+            // 
+            // kopirovatMobilToolStripMenuItem
+            // 
+            this.kopirovatMobilToolStripMenuItem.Name = "kopirovatMobilToolStripMenuItem";
+            this.kopirovatMobilToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.kopirovatMobilToolStripMenuItem.Text = "Kopírovat mobil";
+            this.kopirovatMobilToolStripMenuItem.Click += new System.EventHandler(this.kopirovatMobilToolStripMenuItem_Click);
+            // 
+            // kopirovatEmailToolStripMenuItem
+            // 
+            this.kopirovatEmailToolStripMenuItem.Name = "kopirovatEmailToolStripMenuItem";
+            this.kopirovatEmailToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.kopirovatEmailToolStripMenuItem.Text = "Kopírovat email";
+            this.kopirovatEmailToolStripMenuItem.Click += new System.EventHandler(this.kopirovatEmailToolStripMenuItem_Click);
+            // 
+            // kopirovatUmisteniToolStripMenuItem
+            // 
+            this.kopirovatUmisteniToolStripMenuItem.Name = "kopirovatUmisteniToolStripMenuItem";
+            this.kopirovatUmisteniToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.kopirovatUmisteniToolStripMenuItem.Text = "Kopírovat umístění";
+            this.kopirovatUmisteniToolStripMenuItem.Click += new System.EventHandler(this.kopirovatUmisteniToolStripMenuItem_Click);
             // 
             // DZCsearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(430, 523);
+            this.ClientSize = new System.Drawing.Size(521, 523);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DZCsearch";
             this.Padding = new System.Windows.Forms.Padding(2);
@@ -312,5 +382,13 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem kopirovatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zrusitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem kopirovatDZCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem koprovatJmenoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kopirovatOddeleniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kopirovatTelefonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kopirovatMobilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kopirovatEmailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kopirovatUmisteniToolStripMenuItem;
     }
 }
